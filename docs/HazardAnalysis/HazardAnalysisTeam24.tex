@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Hazard Analysis}
+\author{Team 24}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Team Members}
+Jianhao Wei, Mingyang Xu, Kevin Ishak, Zain-Alabedeen Garada, Andy Liang
+
+\section*{Table of Revision History}
+\begin{longtable}{|l|l|l|}
+    \hline
+    Date & Developer(s) & Change \\
+    \hline
+    10/25/2024 & Mingyang Xu, Jiahao Wei, Kevin Ishak & Wrote sections 1-7 \\
+    10/25/2024 & Andy Liang & Wrote Appendix: Reflection for team and self \\
+    \hline
+\end{longtable}
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+This document is the hazard analysis of the UNO Flip Remix game. It analyzes potential hazards within the digital game project. Hazards are identified and assessed to ensure safety, data integrity, and uninterrupted gameplay, particularly in a multiplayer online setting.
+
+\section{Scope and Purpose of Hazard Analysis}
+The analysis focuses on identifying hazards related to user interaction, server reliability, AI behaviors, and multiplayer synchronization, and offers mitigation strategies to maintain gameplay integrity and security.
+
+\section{System Boundaries and Components}
+The UNO Flip game project consists of several major software components:
+\begin{itemize}
+    \item \textbf{User Interface (UI)}: Handles player interaction, input validation, and displays the game state.
+    \item \textbf{Game Logic}: Controls gameplay mechanics, rule enforcement, and game state tracking.
+    \item \textbf{Networking Module}: Facilitates communication between players in multiplayer mode.
+    \item \textbf{Database or Game State Storage}: Manages saving of game progress, scores, and player data.
+    \item \textbf{Card Management System}: Manages cards' actions such as shuffling, drawing, and flipping.
+    \item \textbf{Server (if applicable)}: Manages player interactions and game sessions in an online environment.
+    \item \textbf{Audio/Visual Effects Module}: Enhances user experience with animations and sound cues.
+\end{itemize}
+
+\section{Critical Assumptions}
+\begin{itemize}
+    \item \textbf{User Inputs}: Players are assumed to provide valid inputs; however, validation will prevent illegal moves.
+    \item \textbf{Network Stability}: Assumes stable network connections; error handling will address potential disconnections.
+    \item \textbf{System Resources}: Assumes sufficient memory and processing power.
+    \item \textbf{Server Reliability}: Server can handle multiple game sessions without performance degradation.
+    \item \textbf{Deck Management}: Assumes proper shuffling and flipping mechanisms.
+    \item \textbf{Game Logic Accuracy}: Assumes bug-free game logic.
+    \item \textbf{Audio/Visual Synchronization}: Assumes correct synchronization of game cues.
+\end{itemize}
+
+\section{Failure Mode and Effect Analysis}
+% Include a detailed table summarizing failure modes, effects, and mitigation strategies if available.
+
+\section{Safety and Security Requirements}
+\subsection{Access Requirements}
+\begin{itemize}
+    \item AR1: Only server administrators can modify basic game features.
+    \item AR2: Only server administrators can modify user accounts, with user consent.
+\end{itemize}
+
+\subsection{Integrity Requirements}
+\begin{itemize}
+    \item IR1: The system should not unintentionally modify user information and game data.
+    \item IR2: The system should conduct regular authentication checks.
+    \item IR3: The app should store unsynced data locally and upload it when possible.
+\end{itemize}
+
+\subsection{Privacy Requirements}
+\begin{itemize}
+    \item PR1: The app should encrypt conversations and not save unencrypted chat data.
+    \item PR2: The app should not provide personal information to third parties.
+\end{itemize}
+
+\section{Roadmap}
+\begin{itemize}
+    \item \textbf{Sept. 11, 2024}: Team formation and initial brainstorming.
+    \item \textbf{Sept. 23, 2024}: Our projects getting approved after adding desired feature, and the problems, statements and goal has been identified for this document, but need further clarification.
+    \item \textbf{Oct. 11, 2024}: The SRS document has analyzed the scope of our projects and requirements. There are still some part of our project been vague and needs more clarifications, and this will be done in the future documents
+
+    \item \textbf{Oct. 25, 2024}: The hazard analysis has identified several safety and security requirements, some of which will be implemented in the final application. However, due to time constraints, not all requirements may be addressed within the project timeframe. As the project progresses, we will regularly consult the hazard analysis to evaluate which risks have been mitigated and to identify any areas that still require further attention. The final review will assess the effectiveness of the implemented measures and guide future improvements.
+ requirements.
+\end{itemize}
+
+\newpage
+
+\section*{Appendix — Reflection}
+The purpose of reflection questions is to assess your own learning and that of your group as a whole, and to find ways to improve in the future. Reflection is an important part of the learning process, essential for successful software development.
+
+\begin{itemize}
+    \item \textbf{1. What went well while writing this deliverable?}\\
+    Team members collaborated effectively and identified hazards systematically, which allowed for a comprehensive hazard analysis.
+
+    \item \textbf{2. What pain points did you experience during this deliverable, and how did you resolve them?}\\
+    Challenges arose in defining system boundaries clearly and categorizing hazards accurately. The team discussed these issues and revised sections collaboratively to reach a clearer understanding.
+
+    \item \textbf{3. Which of your listed risks had your team thought of before this deliverable, and which did you think of while doing this deliverable?}\\
+    Prior risks included server stability and user data integrity. New risks discovered during this process included specific gameplay interruptions due to network issues and risks associated with card management errors.
+
+    \item \textbf{4. Other than the risk of physical harm, list at least two other types of risks in software products. Why are they important to consider?}\\
+    \begin{enumerate}
+        \item \textbf{Data Privacy Risk}: Ensuring user data is secure and only accessible by authorized individuals is crucial for user trust and regulatory compliance.
+        \item \textbf{System Reliability Risk}: Preventing unexpected crashes and ensuring smooth gameplay are essential for user satisfaction and retention.
+    \end{enumerate}
+\end{itemize}
+
+\end{document}
