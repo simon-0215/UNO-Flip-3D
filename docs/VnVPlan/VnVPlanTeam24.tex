@@ -1,0 +1,88 @@
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+
+\title{System Verification and Validation Plan for Uno-Flip 3D}
+\author{Team 24, Uno-Flip 3D \\ Mingyang Xu, Kevin Ishak, Jianhao Wei \\ Zheng Bang Liang, Zain-Alabedeen Garada}
+\date{November 3, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Revision History}
+\begin{longtable}{|c|c|p{10cm}|}
+\hline
+Date & Version & Notes \\
+\hline
+2024.Oct.29 & 1.0 & Created a shared file \\
+2024.Oct.30 & 1.1 & Wrote section 1-2 \\
+2024.Oct.31 & 1.2 & Wrote section 3 and modified sections 1 and 2 \\
+2024.Nov.1 & 1.3 & Wrote content for section 4 and reflection \\
+\hline
+\end{longtable}
+
+\tableofcontents
+
+\newpage
+
+\section{Symbols, Abbreviations, and Acronyms}
+\begin{longtable}{|l|p{12cm}|}
+\hline
+\textbf{Symbol} & \textbf{Description} \\
+\hline
+SRS & System Requirements Specification \\
+PSAG & Problem statement and goals \\
+\hline
+\end{longtable}
+
+\section{General Information}
+\subsection{Summary}
+The software being tested is an UNO Flip game application, developed to provide an engaging, digital version of the popular card game with additional features for enhanced user experience. The game includes functionalities such as switching between two sides of the cards (light and dark), maintaining score, tracking player moves, and handling various card effects.
+
+\subsection{Objectives}
+The primary objective of the Verification and Validation (V\&V) plan is to build confidence in the correctness and stability of the game software, ensuring a smooth user experience with minimal bugs.
+
+\begin{itemize}
+    \item Verifying functionality: Testing core game mechanics, such as card flipping, turn-taking, and scoring.
+    \item Ensuring performance: Assessing the software’s responsiveness.
+    \item Evaluating user experience: Conducting usability tests.
+\end{itemize}
+
+\subsection{Challenge Level and Extras}
+The challenge level for this project is general, focusing on main gameplay mechanics without advanced AI or complex networking.
+
+\subsection{Relevant Documentation}
+Relevant documents such as the SRS and PSAG are available, which define requirements and project goals.
+
+\section{Plan}
+This section provides an overview of the planned verification and validation (VnV) activities for our project.
+
+\subsection{Verification and Validation Team}
+\begin{longtable}{|l|l|p{9cm}|}
+\hline
+\textbf{Team Member} & \textbf{Role} & \textbf{Responsibilities} \\
+\hline
+Mingyang Xu & Lead Validator & Oversees the overall VnV process and coordinates the team's efforts. \\
+Jiahao Wei & SRS and Design Reviewer & Conducts in-depth reviews of the SRS and design documents. \\
+Zheng Bang Liang & Code Verification Specialist & Responsible for unit and integration tests. \\
+Zain-Alabedeen Garada & System Test Engineer & Designs and executes system tests. \\
+Kevin Ishak & System Test Engineer & Designs and executes system tests. \\
+\hline
+\end{longtable}
+
+% Additional sections will follow the same format, adjusting for brevity.
+
+\section{System Tests}
+\subsection{Tests for Functional Requirements}
+Tests include areas like Authentication, Game Setup, Turn Management, etc.
+
+\subsection{Tests for Nonfunctional Requirements}
+Areas include Appearance, Style, Ease of Use, Personalization, etc.
+
+\section{Appendix}
+Testing tools: JUnit, Jest, Selenium, Cypress, JMeter, and BrowserStack.
+
+\end{document}
