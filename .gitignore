@@ -277,3 +277,50 @@ TSWLatexianTemp*
 
 # DS_Store file from Mac computers
 .DS_Store
+
+# Unity Generated Files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Rider project files
+.idea/
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.pidb
+*.booproj
+*.svd
+*.unityproj
+*.sln
+*.swp
+*.sln.docstates
+
+# Unity 3D generated meta files
+*.pidb.meta
+*.svd.meta
+*.userprefs.meta
+
+# Unity auto-generated files
+*.pidb
+*.bak
+*.bak.meta
+*.tmp
+*.tmp.meta
+*.shaderimporter
+
+# Crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.unitypackage
+
+# OS-specific files
+.DS_Store
+Thumbs.db
