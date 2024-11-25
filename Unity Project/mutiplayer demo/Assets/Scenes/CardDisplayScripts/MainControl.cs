@@ -17,6 +17,15 @@ public class MainControl : MonoBehaviour
     public CardRendering card6;
     public CardRendering card7;
     public CardRendering card8;
+    public int getNumOnList(int index) {
+        return displayInfo[index];
+    }
+    public void resetData() {
+        for (int i = 0; i < 16; i++) {
+            displayInfo[i] = -1;
+        }
+        boundaryIndex = 0;
+    }
     public void addCard(int cardNum, int cardColor){
         if (boundaryIndex <= 15){
             displayInfo[boundaryIndex] = cardNum;
@@ -36,10 +45,6 @@ public class MainControl : MonoBehaviour
     }
     void Start()
     {
-        addCard(2,3);
-        addCard(3,4);
-        addCard(0,1);
-        addCard(7,2);
         card1.updateInfo(displayInfo[0],displayInfo[1]);
         card2.updateInfo(displayInfo[2],displayInfo[3]);
         card3.updateInfo(displayInfo[4],displayInfo[5]);
@@ -48,7 +53,6 @@ public class MainControl : MonoBehaviour
         card6.updateInfo(displayInfo[10],displayInfo[11]);
         card7.updateInfo(displayInfo[12],displayInfo[13]);
         card8.updateInfo(displayInfo[14],displayInfo[15]);
-        
         
     }
 
