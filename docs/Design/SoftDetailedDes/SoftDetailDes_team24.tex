@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{amsmath}
+
+\title{Module Interface Specification for UnoFlip3D}
+\author{Team24 unomaster \\ Mingyang Xu, Kevin Ishak, Jianhao Wei, Zain-Alabedeen Garada, Zheng Beng Liang}
+\date{January 15th, 2025}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Revision History}
+\begin{longtable}{|l|l|l|}
+\hline
+\textbf{Date} & \textbf{Version} & \textbf{Notes} \\
+\hline
+January 12th, 2025 & 0 & Initial Commit \\
+\hline
+\end{longtable}
+
+\section{Symbols and Acronyms}
+% Add symbols and acronyms here if available.
+
+\section{Introduction}
+The following document details the Module Interface Specifications for UNO Flip. \\ 
+\textit{ADD PROJECT DESCRIPTION} \\ 
+Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at: 
+\url{https://github.com/simon-0215/UNO-Flip-3D/tree/main}
+
+\section{Notation}
+The structure of the MIS for modules comes from Hoffman and Strooper (1995), with adaptations from Ghezzi et al. (2003) for template modules. Mathematical notation is drawn from Chapter 3 of Hoffman and Strooper (1995). For example, \texttt{:=} denotes a multiple assignment statement, and conditional rules follow the form \((c_1 \Rightarrow r_1 | c_2 \Rightarrow r_2 | \dots | c_n \Rightarrow r_n)\).
+
+\begin{longtable}{|l|l|p{8cm}|}
+\hline
+\textbf{Data Type} & \textbf{Notation} & \textbf{Description} \\
+\hline
+Character & \texttt{char} & A single symbol or digit \\
+\hline
+Integer & \(\mathbb{Z}\) & A number without a fractional component in \((-\infty, \infty)\) \\
+\hline
+Natural Number & \(\mathbb{N}\) & A number without a fractional component in \([1, \infty)\) \\
+\hline
+Real & \(\mathbb{R}\) & Any number in \((-\infty, \infty)\) \\
+\hline
+\end{longtable}
+
+\section{Module Decomposition}
+\begin{longtable}{|l|l|}
+\hline
+\textbf{Level 1} & \textbf{Level 2} \\
+\hline
+Hardware-hiding & Device Input \\ 
+& Audio Output \\ 
+& Screen Rendering \\
+\hline
+Behaviour-hiding & Game Rules Logic \\ 
+& Turn Management \\ 
+& Card Management \\ 
+& Player Interaction \\
+\hline
+Software Decision & Networking Protocol \\ 
+& Multiplayer System \\
+\hline
+\end{longtable}
+
+\section{MIS of ``Module Name''}
+\subsection{Module}
+% Define the module here.
+
+\subsection{Uses}
+% Specify module dependencies here.
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+% List exported constants.
+
+\subsubsection{Exported Access Programs}
+% List exported access programs.
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+% Define state variables.
+
+\subsubsection{Environment Variables}
+% Define environment variables.
+
+\subsubsection{Assumptions}
+% List assumptions.
+
+\subsubsection{Access Routine Semantics}
+% Describe access routine semantics.
+
+\subsubsection{Local Functions}
+% List local functions.
+
+\section{References}
+% Add references here.
+
+\end{document}
