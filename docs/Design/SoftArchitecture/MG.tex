@@ -16,8 +16,6 @@
     urlcolor=blue
 }
 
-\input{../../Comments}
-\input{../../Common}
 
 \newcounter{acnum}
 \newcommand{\actheacnum}{AC\theacnum}
@@ -46,8 +44,8 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+2025 Jan 13 & 1.0 & Start section 3-5\\
+2025 Jan 14 & 1.1 & Start section 5-7\\
 \bottomrule
 \end{tabularx}
 
@@ -92,54 +90,30 @@ This section records information for easy reference.
 
 \section{Introduction}
 
-Decomposing a system into modules is a commonly accepted approach to developing
-software.  A module is a work assignment for a programmer or programming
-team~\citep{ParnasEtAl1984}.  We advocate a decomposition
-based on the principle of information hiding~\citep{Parnas1972a}.  This
-principle supports design for change, because the ``secrets'' that each module
-hides represent likely future changes.  Design for change is valuable in SC,
-where modifications are frequent, especially during initial development as the
-solution space is explored.  
+Developing software through modular decomposition is a well-accepted practice in software engineering. A module is defined as a work assignment for a programmer or programming team 24. This approach allows the software system to be divided into manageable components, enhancing scalability, maintainability, and adaptability. In this project, we follow the principle of information hiding~\citep{Parnas1972a}, which is essential for accommodating changes during development and maintenance. Given the dynamic and interactive nature of the UNO Flip game, this principle is particularly relevant to ensure flexibility as new features or rules may be incorporated in the future.
 
-Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
-\begin{itemize}
-\item System details that are likely to change independently should be the
-  secrets of separate modules.
-\item Each data structure is implemented in only one module.
-\item Any other program that requires information stored in a module's data
-  structures must obtain it by calling access programs belonging to that module.
-\end{itemize}
+UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with "light" and "dark" sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
 
-After completing the first stage of the design, the Software Requirements
-Specification (SRS), the Module Guide (MG) is developed~\citep{ParnasEtAl1984}. The MG
-specifies the modular structure of the system and is intended to allow both
-designers and maintainers to easily identify the parts of the software.  The
-potential readers of this document are as follows:
+To ensure a robust and maintainable design, we adhere to the modular design principles established by \citet{ParnasEtAl1984}:
 
 \begin{itemize}
-\item New project members: This document can be a guide for a new project member
-  to easily understand the overall structure and quickly find the
-  relevant modules they are searching for.
-\item Maintainers: The hierarchical structure of the module guide improves the
-  maintainers' understanding when they need to make changes to the system. It is
-  important for a maintainer to update the relevant sections of the document
-  after changes have been made.
-\item Designers: Once the module guide has been written, it can be used to
-  check for consistency, feasibility, and flexibility. Designers can verify the
-  system in various ways, such as consistency among modules, feasibility of the
-  decomposition, and flexibility of the design.
+\item System details that are likely to change independently, such as game rules or graphical user interface (GUI) elements, are encapsulated within separate modules.
+\item Each data structure, such as the card deck, player hands, or game state, is implemented in only one module.
+\item Inter-module communication is facilitated through well-defined access programs to ensure data encapsulation and minimize dependencies.
 \end{itemize}
 
-The rest of the document is organized as follows. Section
-\ref{SecChange} lists the anticipated and unlikely changes of the software
-requirements. Section \ref{SecMH} summarizes the module decomposition that
-was constructed according to the likely changes. Section \ref{SecConnection}
-specifies the connections between the software requirements and the
-modules. Section \ref{SecMD} gives a detailed description of the
-modules. Section \ref{SecTM} includes two traceability matrices. One checks
-the completeness of the design against the requirements provided in the SRS. The
-other shows the relation between anticipated changes and the modules. Section
-\ref{SecUse} describes the use relation between modules.
+After completing the initial design phase, including the Software Requirements Specification (SRS), we created the Module Guide (MG)~\citep{ParnasEtAl1984}. The MG outlines the modular structure of the system and serves as a comprehensive reference for all stakeholders. This document is aimed at the following audiences:
+
+\begin{itemize}
+\item \textbf{New project members:} The MG provides a clear overview of the system's modular structure, enabling new members to understand the architecture and locate relevant modules efficiently.
+\item \textbf{Maintainers:} The hierarchical organization of the MG simplifies the process of identifying and updating the relevant modules when changes are made to the system. Maintainers are encouraged to update the MG to reflect any modifications accurately.
+\item \textbf{Designers:} The MG acts as a verification tool to ensure consistency, feasibility, and flexibility in the system design. Designers can assess the coherence among modules, the viability of the decomposition, and the adaptability of the design to future changes.
+\end{itemize}
+
+The rest of this document is structured as follows. Section~\ref{SecChange} outlines the anticipated and unlikely changes in the software requirements, such as the introduction of new game rules or enhancements to the multiplayer functionality. Section~\ref{SecMH} describes the module decomposition strategy, constructed based on the principle of likely changes. Section~\ref{SecConnection} details the connections between the software requirements and the modules. Section~\ref{SecMD} provides a comprehensive description of each module, including its responsibilities and dependencies. Section~\ref{SecTM} includes traceability matrices to ensure the completeness of the design relative to the requirements and anticipated changes. Finally, Section~\ref{SecUse} discusses the use relationships between modules, highlighting their interactions and dependencies.
+
+This modular approach ensures that our UNO Flip software can be developed efficiently while maintaining the flexibility to adapt to future requirements and user feedback.
+
 
 \section{Anticipated and Unlikely Changes} \label{SecChange}
 
@@ -158,10 +132,18 @@ change.
 
 \begin{description}
 \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
-  hardware on which the software is running.
+  hardware on which the software is running. \\
+  \textit{Explanation:} The game should adapt to various hardware platforms, such as desktops, mobile devices, and consoles, by leveraging Unity's cross-platform build tools.
+  
 \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
-  initial input data.
-\item ...
+  initial input data. \\
+  \textit{Explanation:} Unity's Input System allows for flexibility in handling various input methods, such as touch, gamepad, or keyboard input, without impacting the overall game functionality.
+  
+\item[\refstepcounter{acnum} \actheacnum \label{acUI}:] Updating the user interface for accessibility and improved user experience. \\
+  \textit{Explanation:} Changes in UI elements, such as adding new accessibility features or redesigning layouts, can be achieved without affecting the underlying game logic due to Unity's modular UI Toolkit.
+
+\item[\refstepcounter{acnum} \actheacnum \label{acNetwork}:] The communication protocol for multiplayer functionality. \\
+  \textit{Explanation:} Switching from an existing protocol (e.g., UDP) to a more secure or efficient one (e.g., WebSockets) should only require modifications to the networking module.
 \end{description}
 
 \wss{Anticipated changes relate to changes that would be made in requirements,
@@ -173,15 +155,25 @@ at run-time, like the values of parameters.}
 The module design should be as general as possible. However, a general system is
 more complex. Sometimes this complexity is not necessary. Fixing some design
 decisions at the system architecture stage can simplify the software design. If
-these decision should later need to be changed, then many parts of the design
+these decisions should later need to be changed, then many parts of the design
 will potentially need to be modified. Hence, it is not intended that these
 decisions will be changed.
 
 \begin{description}
 \item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
-  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
-\item ...
+  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen). \\
+  \textit{Explanation:} Changing I/O devices is considered unlikely since the Unity Input System already supports a wide range of devices, and most use cases are covered by the current implementation.
+
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucEngine}:] Switching the game engine from Unity to another platform. \\
+  \textit{Explanation:} Rebuilding the game using a different engine would require re-implementation of all assets, scripts, and logic, making this change highly unlikely.
+
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucMechanics}:] Fundamental changes to the core gameplay mechanics. \\
+  \textit{Explanation:} Altering the basic rules of UNO Flip, such as removing the "Flip" mechanic, would require significant rewrites across multiple modules.
+
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucAssets}:] Replacing all graphical assets with a new visual theme. \\
+  \textit{Explanation:} Although possible, replacing all assets would involve modifying Unity scenes, prefabs, and animations extensively, which is not a likely requirement.
 \end{description}
+
 
 \section{Module Hierarchy} \label{SecMH}
 
@@ -191,8 +183,15 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module \\
+  \textit{Purpose:} This module isolates hardware-specific dependencies, such as rendering devices, input devices, and memory management. It allows the rest of the system to remain platform-independent by using Unity's built-in hardware abstraction.
+  
+\item [\refstepcounter{mnum} \mthemnum \label{mBH}:] Behaviour-Hiding Module \\
+  \textit{Purpose:} Encapsulates the core gameplay logic, such as player actions, turn mechanics, and rule enforcement, ensuring that other modules can interact with game behavior through a unified interface.
+
+\item [\refstepcounter{mnum} \mthemnum \label{mSD}:] Software Decision Module \\
+  \textit{Purpose:} Handles system-wide decisions, including UI updates, multiplayer network protocols, and game state transitions. This module integrates decisions that impact user interaction and system-wide consistency.
+
 \end{description}
 
 
@@ -203,28 +202,30 @@ actually be implemented.
 \textbf{Level 1} & \textbf{Level 2}\\
 \midrule
 
-{Hardware-Hiding Module} & ~ \\
+{Hardware-Hiding Module} & \textit{Hardware Abstraction module: Isolate hardware-specific dependencies, such as rendering devices and input/output handling.}\\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+\multirow{5}{0.3\textwidth}{Behaviour-Hiding Module} 
+& Game Logic Module: Handles player actions, turn mechanics, and card rules enforcement.\\
+& Turn Management Module: Ensures correct sequencing of turns, including handling "Skip" or "Reverse" cards.\\
+& Card Effect Module: Implements special card effects such as "Flip" or "Draw Two."\\
+& Score Tracking Module: Manages player scores and determines game-winning conditions.\\
+& Animation Module: Handles animations for card movements, flips, and effects using Unity's animation system.\\
+
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} 
+& UI Module: Manages user interface components, including menus, HUD, and accessibility options.\\
+& Multiplayer Networking Module: Handles online player interactions, matchmaking, and game state synchronization.\\
+& Save/Load Module: Provides functionality for saving and loading game progress.\\
+
 \bottomrule
 
 \end{tabular}
 \caption{Module Hierarchy}
 \label{TblMH}
 \end{table}
+
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
@@ -258,19 +259,19 @@ to be implemented.
 \subsection{Hardware Hiding Modules (\mref{mHH})}
 
 \begin{description}
-\item[Secrets:]The data structure and algorithm used to implement the virtual
+\item[Secrets:] The data structure and algorithm used to implement the virtual
   hardware.
-\item[Services:]Serves as a virtual hardware used by the rest of the
+\item[Services:] Serves as a virtual hardware used by the rest of the
   system. This module provides the interface between the hardware and the
-  software. So, the system can use it to display outputs or to accept inputs.
+  software, allowing the system to display outputs or accept inputs.
 \item[Implemented By:] OS
 \end{description}
 
 \subsection{Behaviour-Hiding Module}
 
 \begin{description}
-\item[Secrets:]The contents of the required behaviours.
-\item[Services:]Includes programs that provide externally visible behaviour of
+\item[Secrets:] The contents of the required behaviours, including turn management, game logic, and card effects.
+\item[Services:] Includes programs that provide externally visible behaviours of
   the system as specified in the software requirements specification (SRS)
   documents. This module serves as a communication layer between the
   hardware-hiding module and the software decision module. The programs in this
@@ -281,31 +282,58 @@ to be implemented.
 \subsubsection{Input Format Module (\mref{mInput})}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Secrets:] The format and structure of the input data, including data serialization for communication.
+\item[Services:] Converts the input data into the data structure used by other
+  modules, such as the game logic or UI modules.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Data Type
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Card Effect Module (\mref{mCardEffect})}
 
+\begin{description}
+\item[Secrets:] The implementation details of special card effects, such as "Flip," "Skip," and "Draw Two."
+\item[Services:] Executes the effects of special cards and updates the game state accordingly.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Turn Management Module (\mref{mTurn})}
+
+\begin{description}
+\item[Secrets:] The sequence and rules for determining the current player.
+\item[Services:] Manages the order of player turns, including handling special conditions like "Reverse" or "Skip" cards.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Record
+\end{description}
 
 \subsection{Software Decision Module}
 
 \begin{description}
-\item[Secrets:] The design decision based on mathematical theorems, physical
-  facts, or programming considerations. The secrets of this module are
-  \emph{not} described in the SRS.
-\item[Services:] Includes data structure and algorithms used in the system that
-  do not provide direct interaction with the user. 
-  % Changes in these modules are more likely to be motivated by a desire to
-  % improve performance than by externally imposed changes.
-\item[Implemented By:] --
+\item[Secrets:] The design decisions based on performance optimizations, networking protocols, and user interaction considerations. These secrets are \emph{not} described in the SRS.
+\item[Services:] Includes data structures and algorithms used in the system that
+  do not provide direct interaction with the user, such as multiplayer matchmaking and game state synchronization.
+\item[Implemented By:] \progname{}
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Multiplayer Networking Module (\mref{mNetwork})}
+
+\begin{description}
+\item[Secrets:] The implementation details of real-time communication, including protocols like UDP or WebSocket.
+\item[Services:] Handles communication between players, including matchmaking, game state synchronization, and latency management.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{UI Module (\mref{mUI})}
+
+\begin{description}
+\item[Secrets:] The layout and design of user interface components, such as menus, HUD, and accessibility features.
+\item[Services:] Displays the game state to the user and accepts user inputs through various interactive elements.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
+\end{description}
+
 
 \section{Traceability Matrix} \label{SecTM}
 
