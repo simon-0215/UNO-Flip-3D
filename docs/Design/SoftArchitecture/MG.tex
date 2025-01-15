@@ -31,8 +31,20 @@
 
 \begin{document}
 
-\title{Module Guide for \progname{}} 
-\author{\authname}
+\title{Module Guide for UNO-Flip\progname{}} 
+
+\author{
+\begin{tabular}{c}
+Team 24\\
+\\
+Mingyang Xu \\
+Jiahao Wei \\
+Kevin Ishak \\
+Zain-Alabedeen Garada \\
+Zheng Bang Liang \\
+\end{tabular}
+}
+
 \date{\today}
 
 \maketitle
@@ -46,6 +58,7 @@
 \midrule
 2025 Jan 13 & 1.0 & Start section 3-5\\
 2025 Jan 14 & 1.1 & Start section 5-7\\
+2025 Jan 15 & 1.2 & Start section 7-11\\
 \bottomrule
 \end{tabularx}
 
@@ -240,6 +253,88 @@ between requirements and modules is listed in Table~\ref{TblRT}.
   requirements, a specific design decision may be made to satisfy those
   requirements with a password.}
 
+\subsection{R1: Basic Game Interaction and Hardware Support}
+The system must provide basic interaction capabilities, including:
+\begin{itemize}
+    \item Managing player turns through a turn management system.
+    \item Handling user inputs from hardware devices and abstracting them into standard data formats.
+    \item Displaying the game state through a user interface.
+    \item Ensuring compatibility with hardware platforms via a hardware-hiding module.
+\end{itemize}
+
+\subsection{R2: Input Processing and Special Card Effects}
+The system must process user inputs and execute card effects accurately, including:
+\begin{itemize}
+    \item Standardizing user inputs into a format usable by the game logic.
+    \item Implementing special card effects, such as "Flip," "Skip," and "Draw Two," to update the game state accordingly.
+\end{itemize}
+
+\subsection{R3: Verification and Score Tracking}
+The system must verify the correctness of game outcomes and track player scores, including:
+\begin{itemize}
+    \item Ensuring compliance with game rules and expected results.
+    \item Recording and updating player scores dynamically.
+    \item Providing a summary of scores at the end of the game.
+\end{itemize}
+
+\subsection{R4: Output Rendering and Game Control}
+The system must render game outputs and manage overall control flow, including:
+\begin{itemize}
+    \item Displaying game outputs, such as scoreboards and game results.
+    \item Managing state transitions and ensuring synchronization between modules.
+    \item Handling error states gracefully.
+\end{itemize}
+
+\subsection{R5: Animation and Special Card Interaction}
+The system must support animations and ensure proper handling of special card interactions, including:
+\begin{itemize}
+    \item Providing smooth animations for card movements and flips.
+    \item Ensuring special card effects are visually represented and correctly executed.
+\end{itemize}
+
+\subsection{R6: Advanced Game Outputs and Interactions}
+The system must handle complex interactions and advanced output scenarios, including:
+\begin{itemize}
+    \item Supporting additional game scenarios with detailed outputs.
+    \item Ensuring consistency in interactions across all modules.
+\end{itemize}
+
+\subsection{R7: User Interface and Score Integration}
+The system must integrate user interface elements with score tracking, including:
+\begin{itemize}
+    \item Displaying dynamic score updates during gameplay.
+    \item Providing interactive elements for players to review their scores.
+\end{itemize}
+
+\subsection{R8: Animation and User Interaction Synchronization}
+The system must synchronize animations with user interactions, including:
+\begin{itemize}
+    \item Ensuring animations are consistent with game logic.
+    \item Allowing user inputs to interrupt or modify animations as needed.
+\end{itemize}
+
+\subsection{R9: Save and Load Functionality}
+The system must provide save and load functionality, including:
+\begin{itemize}
+    \item Saving the current game state to a file or database.
+    \item Loading a saved game state and resuming gameplay seamlessly.
+\end{itemize}
+
+\subsection{R10: Output and Special Card Integration}
+The system must integrate output rendering with special card effects, including:
+\begin{itemize}
+    \item Displaying the outcomes of special card effects clearly.
+    \item Ensuring game outputs are consistent with the effects of special cards.
+\end{itemize}
+
+\subsection{R11: Advanced Scoring and Control Logic}
+The system must handle advanced scoring scenarios and control logic, including:
+\begin{itemize}
+    \item Supporting complex scoring rules and tie-breaking scenarios.
+    \item Managing game control logic for multiplayer and advanced game modes.
+\end{itemize}
+
+
 \section{Module Decomposition} \label{SecMD}
 
 Modules are decomposed according to the principle of ``information hiding''
@@ -256,7 +351,7 @@ Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{Hardware Hiding Modules (\mref{mHH})}
+\subsection{HH (Hardware-Hiding Module)}
 
 \begin{description}
 \item[Secrets:] The data structure and algorithm used to implement the virtual
@@ -267,7 +362,7 @@ to be implemented.
 \item[Implemented By:] OS
 \end{description}
 
-\subsection{Behaviour-Hiding Module}
+\subsection{BH (Behaviour-Hiding Module)}
 
 \begin{description}
 \item[Secrets:] The contents of the required behaviours, including turn management, game logic, and card effects.
@@ -279,7 +374,7 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{IM (Input Module)}
 
 \begin{description}
 \item[Secrets:] The format and structure of the input data, including data serialization for communication.
@@ -289,7 +384,7 @@ to be implemented.
 \item[Type of Module:] Abstract Data Type
 \end{description}
 
-\subsubsection{Card Effect Module (\mref{mCardEffect})}
+\subsubsection{CE (Card Effect Module)}
 
 \begin{description}
 \item[Secrets:] The implementation details of special card effects, such as "Flip," "Skip," and "Draw Two."
@@ -298,7 +393,7 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Turn Management Module (\mref{mTurn})}
+\subsubsection{TM (Turn Management Module)}
 
 \begin{description}
 \item[Secrets:] The sequence and rules for determining the current player.
@@ -307,7 +402,52 @@ to be implemented.
 \item[Type of Module:] Record
 \end{description}
 
-\subsection{Software Decision Module}
+\subsection{OM (Output Module)}
+
+\begin{description}
+\item[Secrets:] The formatting and rendering of game outputs, such as scoreboards and game results.
+\item[Services:] Provides visual or textual outputs to the user based on the game state.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsection{CM (Control Module)}
+
+\begin{description}
+\item[Secrets:] The logic governing the control flow of the game, including state transitions and error handling.
+\item[Services:] Manages the overall game control, ensuring synchronization between modules.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{VO (Verification Output Module)}
+
+\begin{description}
+\item[Secrets:] The methods used to verify the correctness of game outputs.
+\item[Services:] Validates the final output of the game, ensuring compliance with rules and expected results.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{SL (Save/Load Module)}
+
+\begin{description}
+\item[Secrets:] The structure and format of saved game data.
+\item[Services:] Allows saving the current game state and loading it at a later time.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Library
+\end{description}
+
+\subsubsection{AM (Animation Module)}
+
+\begin{description}
+\item[Secrets:] The implementation details of animations, including transitions and visual effects.
+\item[Services:] Provides animations for card movements, flips, and game interactions.
+\item[Implemented By:] \progname{}
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsection{SD (Software Decision Module)}
 
 \begin{description}
 \item[Secrets:] The design decisions based on performance optimizations, networking protocols, and user interaction considerations. These secrets are \emph{not} described in the SRS.
@@ -316,7 +456,7 @@ to be implemented.
 \item[Implemented By:] \progname{}
 \end{description}
 
-\subsubsection{Multiplayer Networking Module (\mref{mNetwork})}
+\subsubsection{MN (Multiplayer Networking Module)}
 
 \begin{description}
 \item[Secrets:] The implementation details of real-time communication, including protocols like UDP or WebSocket.
@@ -325,7 +465,7 @@ to be implemented.
 \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{UI Module (\mref{mUI})}
+\subsubsection{UI (User Interface Module)}
 
 \begin{description}
 \item[Secrets:] The layout and design of user interface components, such as menus, HUD, and accessibility features.
@@ -335,30 +475,29 @@ to be implemented.
 \end{description}
 
 
+
 \section{Traceability Matrix} \label{SecTM}
 
 This section shows two traceability matrices: between the modules and the
 requirements and between the modules and the anticipated changes.
 
-% the table should use mref, the requirements should be named, use something
-% like fref
 \begin{table}[H]
 \centering
 \begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
 \toprule
 \textbf{Req.} & \textbf{Modules}\\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+R1 & HH, IM, TM, UI\\
+R2 & IM, CE\\
+R3 & VM, ST\\
+R4 & OM, CM, UI\\
+R5 & CE, TM, CM, AM\\
+R6 & OM, CE, CM, TM\\
+R7 & UI, ST, CM, TM\\
+R8 & UI, AM, CM, TM\\
+R9 & VO, SL\\
+R10 & OM, CE, CM\\
+R11 & OM, CE, ST, CM\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -371,23 +510,24 @@ R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+Hardware Abstraction Change & HH\\
+Input Format Change & IM\\
+Turn Management Change & TM\\
+UI Adjustment & UI\\
+Card Effect Modification & CE\\
+Verification Update & VM, VO\\
+Output Adjustment & OM\\
+Animation Update & AM\\
+Save/Load Mechanism Update & SL\\
+Control Logic Update & CM\\
+Score Tracking Update & ST\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
 \label{TblACT}
 \end{table}
+
+
 
 \section{Use Hierarchy Between Modules} \label{SecUse}
 
@@ -413,21 +553,57 @@ arrows in the diagram typically correspond to the presence of import statement.}
 
 \begin{figure}[H]
 \centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
+\includegraphics[width=0.7\textwidth]{output.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
+
 
 %\section*{References}
 
 \section{User Interfaces}
 
-\wss{Design of user interface for software and hardware.  Attach an appendix if
-needed. Drawings, Sketches, Figma}
+The user interface (UI) design for this system focuses on creating an intuitive and accessible experience for players. The UI consists of both software and hardware elements that enable seamless interaction with the game. Below are the primary components of the UI design:
+
+\subsection{Software User Interface}
+\begin{itemize}
+    \item \textbf{Main Menu:} The main menu provides options for starting a new game, loading a saved game, viewing instructions, and accessing settings.
+    \item \textbf{Game Screen:} The game screen displays the game state, including player scores, active cards, and the current turn. Interactive elements allow players to perform actions such as playing a card or drawing from the deck.
+    \item \textbf{Pop-Up Notifications:} Notifications are used to inform players about special events, such as a "Skip" card being played or a turn being reversed.
+\end{itemize}
+
+\subsection{Hardware User Interface}
+\begin{itemize}
+    \item \textbf{Input Devices:} Supports mouse, keyboard, and touchscreens for input.
+    \item \textbf{Output Devices:} Designed for compatibility with various screen sizes and resolutions.
+\end{itemize}
+
+
 
 \section{Design of Communication Protocols}
 
-\wss{If appropriate}
+The communication protocols in this system ensure reliable and efficient data exchange between modules, especially for multiplayer functionality. These protocols are designed to handle various aspects such as real-time data synchronization, error handling, and security.
+
+\subsection{Protocol Overview}
+\begin{itemize}
+    \item \textbf{Transport Layer:} Uses WebSocket protocol for real-time communication in multiplayer games. Ensures low latency and high reliability.
+    \item \textbf{Message Format:} Messages are serialized using JSON for simplicity and compatibility. Each message includes a header (e.g., message type) and a body (e.g., card played, turn updated).
+\end{itemize}
+
+\subsection{Error Handling and Recovery}
+\begin{itemize}
+    \item \textbf{Connection Loss:} Implements a reconnection mechanism to recover lost connections without disrupting the game state.
+    \item \textbf{Invalid Messages:} Validates incoming messages to ensure compliance with the protocol specification. Invalid messages are logged and discarded.
+\end{itemize}
+
+\subsection{Security}
+\begin{itemize}
+    \item \textbf{Encryption:} All data exchanged between clients and the server is encrypted using TLS to ensure data security.
+    \item \textbf{Authentication:} Players are authenticated via a token-based system to prevent unauthorized access.
+\end{itemize}
+
+Appendix \ref{AppComm} contains detailed diagrams and examples of protocol specifications.
+
 
 \section{Timeline}
 
