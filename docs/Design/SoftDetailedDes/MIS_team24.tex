@@ -1,107 +1,317 @@
-\documentclass{article}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{amsmath, mathtools}
+
+\usepackage[round]{natbib}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{xr}
 \usepackage{hyperref}
 \usepackage{longtable}
-\usepackage{amsmath}
+\usepackage{xfrac}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[section]{placeins}
+\usepackage{caption}
+\usepackage{fullpage}
 
-\title{Module Interface Specification for UnoFlip3D}
-\author{Team24 unomaster \\ Mingyang Xu, Kevin Ishak, Jianhao Wei, Zain-Alabedeen Garada, Zheng Beng Liang}
-\date{January 15th, 2025}
+\hypersetup{
+bookmarks=true,     % show bookmarks bar?
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+citecolor=blue,      % color of links to bibliography
+filecolor=magenta,  % color of file links
+urlcolor=cyan          % color of external links
+}
+
+\usepackage{array}
+
+\externaldocument{../../SRS/SRS}
+
+
 
 \begin{document}
 
+\title{Module Interface Specification for \progname{UnoFlip3D}}
+
+\author{\authname Mingyang Xu \\ Kevin Ishak \\ Jianhao Wei \\ Zain-Alabedeen Garada \\ Zheng Beng Liang}
+
+\date{\today}
+
 \maketitle
+
+\pagenumbering{roman}
+
+\section{Revision History}
+
+\begin{tabularx}{\textwidth}{p{4cm}p{3cm}X}
+\toprule {\bf Date} & {\bf Developer} & {\bf Notes}\\
+\midrule
+January 12th, 2025 & Kevin Ishak & Initialize template, add rough draft of section 3,4 and 5\\
+January 13th, 2025 & Jianhao Wei & Add modules into section 6\\
+January 13th, 2025 & Zain-Alabedeen Garada & Add modules into section 6\\
+\bottomrule
+\end{tabularx}
+
+~\newpage
+
+\section{Symbols, Abbreviations and Acronyms}
+
+See SRS Documentation at \wss{give url}
+
+\wss{Also add any additional symbols, abbreviations or acronyms}
+
+\newpage
 
 \tableofcontents
 
 \newpage
 
-\section{Revision History}
-\begin{longtable}{|l|l|l|}
-\hline
-\textbf{Date} & \textbf{Version} & \textbf{Notes} \\
-\hline
-January 12th, 2025 & 0 & Initial Commit \\
-\hline
-\end{longtable}
-
-\section{Symbols and Acronyms}
-% Add symbols and acronyms here if available.
+\pagenumbering{arabic}
 
 \section{Introduction}
-The following document details the Module Interface Specifications for UNO Flip. \\ 
-\textit{ADD PROJECT DESCRIPTION} \\ 
-Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at: 
-\url{https://github.com/simon-0215/UNO-Flip-3D/tree/main}
+
+The following document details the Module Interface Specifications for UNO Flip. “ADD PROJECT DESCRIPTION”
+Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at \url{https://github.com/simon-0215/UNO-Flip-3D/tree/main} .
+
 
 \section{Notation}
-The structure of the MIS for modules comes from Hoffman and Strooper (1995), with adaptations from Ghezzi et al. (2003) for template modules. Mathematical notation is drawn from Chapter 3 of Hoffman and Strooper (1995). For example, \texttt{:=} denotes a multiple assignment statement, and conditional rules follow the form \((c_1 \Rightarrow r_1 | c_2 \Rightarrow r_2 | \dots | c_n \Rightarrow r_n)\).
 
-\begin{longtable}{|l|l|p{8cm}|}
-\hline
-\textbf{Data Type} & \textbf{Notation} & \textbf{Description} \\
-\hline
-Character & \texttt{char} & A single symbol or digit \\
-\hline
-Integer & \(\mathbb{Z}\) & A number without a fractional component in \((-\infty, \infty)\) \\
-\hline
-Natural Number & \(\mathbb{N}\) & A number without a fractional component in \([1, \infty)\) \\
-\hline
-Real & \(\mathbb{R}\) & Any number in \((-\infty, \infty)\) \\
-\hline
-\end{longtable}
+\wss{You should describe your notation.  You can use what is below as
+  a starting point.}
+
+The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
+with the addition that template modules have been adapted from
+\cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
+\citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
+multiple assignment statement and conditional rules follow the form $(c_1
+\Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
+
+The following table summarizes the primitive data types used by \progname. 
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\noindent 
+\begin{tabular}{l l p{7.5cm}} 
+\toprule 
+\textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\ 
+\midrule
+character & char & a single symbol or digit\\
+integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
+natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
+real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+\bottomrule
+\end{tabular} 
+\end{center}
+
+\noindent
+The specification of \progname \ uses some derived data types: sequences, strings, and
+tuples. Sequences are lists filled with elements of the same data type. Strings
+are sequences of characters. Tuples contain a list of values, potentially of
+different types. In addition, \progname \ uses functions, which
+are defined by the data types of their inputs and outputs. Local functions are
+described by giving their type signature followed by their specification.
 
 \section{Module Decomposition}
-\begin{longtable}{|l|l|}
-\hline
-\textbf{Level 1} & \textbf{Level 2} \\
-\hline
-Hardware-hiding & Device Input \\ 
-& Audio Output \\ 
-& Screen Rendering \\
-\hline
-Behaviour-hiding & Game Rules Logic \\ 
-& Turn Management \\ 
-& Card Management \\ 
-& Player Interaction \\
-\hline
-Software Decision & Networking Protocol \\ 
-& Multiplayer System \\
-\hline
-\end{longtable}
 
-\section{MIS of ``Module Name''}
+The following table is taken directly from the Module Guide document for this project.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Level 1} & \textbf{Level 2}\\
+\midrule
+
+\multirow{3}{0.3\textwidth}{Hardware-Hiding} & Device Input\\
+& Audio Output\\
+& Screen Rendering\\
+\midrule
+
+\multirow{4}{0.3\textwidth}{Behaviour-Hiding} & Game Rules Logic\\
+& Turn Management\\
+& Card Management\\
+& Player Interaction\\
+\midrule
+
+\multirow{2}{0.3\textwidth}{Software Decision} 
+& Networking Protocol\\
+& Multiplayer System\\
+\bottomrule
+
+\end{tabular}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+
+\newpage
+~\newpage
+
+\section{MIS of GameLogic Module} \label{Module} \wss{Use labels for
+  cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
 \subsection{Module}
-% Define the module here.
+\hspace{1.5em}GameLogic
 
 \subsection{Uses}
-% Specify module dependencies here.
+\hspace{1.5em}Multiplayer, UI, AssetManagement, Server
 
 \subsection{Syntax}
+
 \subsubsection{Exported Constants}
-% List exported constants.
+\hspace{1.5em}None
 
 \subsubsection{Exported Access Programs}
-% List exported access programs.
+
+\hspace{1.5em}validateMove(playerId, card)\\
+\indent endTurn(playerId)\\
+\indent shuffleDeck()\\
+\indent drawCard(playerId)
 
 \subsection{Semantics}
+
 \subsubsection{State Variables}
-% Define state variables.
+\hspace{1.5em}currentPlayer: Tracks the player whose turn it is\\
+\indent deck: Represents the stack of remaining cards in the game.\\
+\indent discardPile: Stores played cards\\
+\indent playerHands: Stores each player's cards
 
 \subsubsection{Environment Variables}
-% Define environment variables.
+\hspace{1.5em}maxPlayers: Maximum number of players allowed in a game\\
+\indent flipEnabled: Boolean to toggle the flip functionality
 
 \subsubsection{Assumptions}
-% List assumptions.
+\hspace{1.5em}The number of players, game rules, player restrictions are preloaded\\
+\indent The game environment is known
 
 \subsubsection{Access Routine Semantics}
-% Describe access routine semantics.
+
+\begin{itemize}
+\item validateMove(playerId, card)\\
+Transition: Checks if a move is valid
+
+\item endTurn(playerId)\\
+Transition: Ends the current player's turn and starts the next
+
+\item shuffleDeck()\\
+Transition: Randomizes the card deck
+
+\item drawCard(playerId)\\
+Transition: Adds a card to the specified player’s hand
+
+\end{itemize}
+
 
 \subsubsection{Local Functions}
-% List local functions.
+\hspace{1.5em}shuffleProcess():Contain the random algorithm to shuffle the deck\\
+\indent CardModifier(): Contain algorithm to draw different card to screen
 
-\section{References}
-% Add references here.
+\section{MIS of Multiplayer Module} \label{Module} \wss{Use labels for
+  cross-referencing}
+
+\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+
+\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+
+\subsection{Module}
+\hspace{1.5em}Multiplayer
+
+\subsection{Uses}
+\hspace{1.5em}GameLogic, Server
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\hspace{1.5em}None
+
+\subsubsection{Exported Access Programs}
+
+\hspace{1.5em}createGameRoom(playerId, roomSettings)\\
+\indent joinGameRoom(playerId, roomId)\\
+\indent broadcastUpdate(gameId, update)\\
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\hspace{1.5em}activeGames: Tracks all ongoing game sessions.\\
+\indent connectedPlayers: List of currently connected players.\\
+
+
+\subsubsection{Environment Variables}
+\hspace{1.5em}serverIP: IP address of the game server.\\
+\indent timeoutLimit: Time limit for a player to respond during their turn.
+
+\subsubsection{Assumptions}
+\hspace{1.5em}The connection to other machines can be established successfully\\
+\indent The encryption and decryption methods are known
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item createGameRoom(playerId, roomSettings)\\
+Creates a new game room
+
+
+\item joinGameRoom(playerId, roomId)\\
+Adds a player to an existing room
+
+\item broadcastUpdate(gameId, update)\\
+Sends game state updates to all players in a room.
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\hspace{1.5em}encryption(information): Contain encryption algorithm to encrypt data before sending\\
+\indent decryption(information): Contain decryption algorithm to decrypt data after receiving
+
+
+
+\bibliographystyle {plainnat}
+\bibliography {../../../refs/References}
+
+\newpage
+
+\section{Appendix} \label{Appendix}
+
+\wss{Extra information if required}
+
+\newpage{}
+
+\section*{Appendix --- Reflection}
+
+\wss{Not required for CAS 741 projects}
+
+The information in this section will be used to evaluate the team members on the
+graduate attribute of Problem Analysis and Design.
+
+
+
+\begin{enumerate}
+  \item What went well while writing this deliverable? 
+  \item What pain points did you experience during this deliverable, and how
+    did you resolve them?
+  \item Which of your design decisions stemmed from speaking to your client(s)
+  or a proxy (e.g. your peers, stakeholders, potential users)? For those that
+  were not, why, and where did they come from?
+  \item While creating the design doc, what parts of your other documents (e.g.
+  requirements, hazard analysis, etc), it any, needed to be changed, and why?
+  \item What are the limitations of your solution?  Put another way, given
+  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)
+  \item Give a brief overview of other design solutions you considered.  What
+  are the benefits and tradeoffs of those other designs compared with the chosen
+  design?  From all the potential options, why did you select the documented design?
+  (LO\_Explores)
+\end{enumerate}
+
 
 \end{document}
