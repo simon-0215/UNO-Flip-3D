@@ -76,7 +76,8 @@ See SRS Documentation at \wss{give url}
 
 \section{Introduction}
 
-The following document details the Module Interface Specifications for UNO Flip. “ADD PROJECT DESCRIPTION”
+UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with ”light” and ”dark” sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
+
 Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at \url{https://github.com/simon-0215/UNO-Flip-3D/tree/main} .
 
 
@@ -152,15 +153,13 @@ The following table is taken directly from the Module Guide document for this pr
 \newpage
 ~\newpage
 
-\section{MIS of GameLogic Module} \label{Module} \wss{Use labels for
-  cross-referencing}
 
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+%Section 6
 
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of Turn Management Module} 
 
 \subsection{Module}
-\hspace{1.5em}GameLogic
+\hspace{1.5em}Turn Management
 
 \subsection{Uses}
 \hspace{1.5em}Multiplayer, UI, AssetManagement, Server
@@ -172,26 +171,34 @@ The following table is taken directly from the Module Guide document for this pr
 
 \subsubsection{Exported Access Programs}
 
-\hspace{1.5em}validateMove(playerId, card)\\
-\indent endTurn(playerId)\\
-\indent shuffleDeck()\\
-\indent drawCard(playerId)
+\begin{itemize}
+\item validateMove(playerId, cardid)
+\item endTurn(playerId)
+\item shuffleDeck()
+\item drawCard(playerId)
+\end{itemize}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-\hspace{1.5em}currentPlayer: Tracks the player whose turn it is\\
-\indent deck: Represents the stack of remaining cards in the game.\\
-\indent discardPile: Stores played cards\\
-\indent playerHands: Stores each player's cards
+\begin{itemize}
+\item currentPlayer: Tracks the player whose turn it is
+\item deck: Represents the stack of remaining cards in the game.
+\item discardPile: Stores played cards
+\item playerHands: Stores each player's cards
+\end{itemize}
 
 \subsubsection{Environment Variables}
-\hspace{1.5em}maxPlayers: Maximum number of players allowed in a game\\
-\indent flipEnabled: Boolean to toggle the flip functionality
+\begin{itemize}
+\item maxPlayers: Maximum number of players allowed in a game
+\item flipEnabled: Boolean to toggle the flip functionality
+\end{itemize}
 
 \subsubsection{Assumptions}
-\hspace{1.5em}The number of players, game rules, player restrictions are preloaded\\
-\indent The game environment is known
+\begin{itemize}
+\item The number of players, game rules, player restrictions are preloaded
+\item The game environment is known
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
@@ -212,15 +219,17 @@ Transition: Adds a card to the specified player’s hand
 
 
 \subsubsection{Local Functions}
-\hspace{1.5em}shuffleProcess():Contain the random algorithm to shuffle the deck\\
-\indent CardModifier(): Contain algorithm to draw different card to screen
+\begin{itemize}
+\item shuffleProcess()\\
+\textbf{Description:} Contain the random algorithm to shuffle the deck
+\item CardModifier()\\
+\textbf{Description:} Contain algorithm to draw different card to screen
+\end{itemize}
 
-\section{MIS of Multiplayer Module} \label{Module} \wss{Use labels for
-  cross-referencing}
 
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+%Section 7
 
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+\section{MIS of Multiplayer Module} 
 
 \subsection{Module}
 \hspace{1.5em}Multiplayer
@@ -234,25 +243,32 @@ Transition: Adds a card to the specified player’s hand
 \hspace{1.5em}None
 
 \subsubsection{Exported Access Programs}
-
-\hspace{1.5em}createGameRoom(playerId, roomSettings)\\
-\indent joinGameRoom(playerId, roomId)\\
-\indent broadcastUpdate(gameId, update)\\
+\begin{itemize}
+\item createGameRoom(playerId, roomSettings)
+\item joinGameRoom(playerId, roomId)
+\item broadcastUpdate(gameId, update)
+\end{itemize}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
-\hspace{1.5em}activeGames: Tracks all ongoing game sessions.\\
-\indent connectedPlayers: List of currently connected players.\\
+\begin{itemize}
+\item activeGames: Tracks all ongoing game sessions.
+\item connectedPlayers: List of currently connected players.
+\end{itemize}
 
 
 \subsubsection{Environment Variables}
-\hspace{1.5em}serverIP: IP address of the game server.\\
-\indent timeoutLimit: Time limit for a player to respond during their turn.
+\begin{itemize}
+\item serverIP: IP address of the game server.
+\item timeoutLimit: Time limit for a player to respond during their turn.
+\end{itemize}
 
 \subsubsection{Assumptions}
-\hspace{1.5em}The connection to other machines can be established successfully\\
-\indent The encryption and decryption methods are known
+\begin{itemize}
+\item The connection to other machines can be established successfully
+\item The encryption and decryption methods are known
+\end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
@@ -271,8 +287,12 @@ Sends game state updates to all players in a room.
 
 
 \subsubsection{Local Functions}
-\hspace{1.5em}encryption(information): Contain encryption algorithm to encrypt data before sending\\
-\indent decryption(information): Contain decryption algorithm to decrypt data after receiving
+\begin{itemize}
+\item encryption(information)\\
+\textbf{Description:} Contain encryption algorithm to encrypt data before sending
+\item decryption(information)\\ 
+\textbf{Description:} Contain decryption algorithm to decrypt data after receiving
+\end{itemize}
 
 
 
