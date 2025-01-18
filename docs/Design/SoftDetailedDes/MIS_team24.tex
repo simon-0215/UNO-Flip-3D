@@ -55,6 +55,7 @@ urlcolor=cyan          % color of external links
 January 12th, 2025 & Kevin Ishak & Initialize template, add rough draft of section 3,4 and 5\\
 January 13th, 2025 & Jianhao Wei & Add modules into section 6\\
 January 13th, 2025 & Zain-Alabedeen Garada & Add modules into section 6\\
+January 17th, 2025 & Zheng Bang Liang & Added all modules for Behavior Hiding Modules\\
 \bottomrule
 \end{tabularx}
 
@@ -292,6 +293,426 @@ Sends game state updates to all players in a room.
 \textbf{Description:} Contain encryption algorithm to encrypt data before sending
 \item decryption(information)\\ 
 \textbf{Description:} Contain decryption algorithm to decrypt data after receiving
+\end{itemize}
+
+\section{Behavior-Hiding Modules}
+
+\subsection{Card Effect Module}
+
+\subsubsection{Module}
+Card Effect (CE)
+
+\subsubsection{Uses}
+Game Logic Module, Animation Module, Turn Management Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+\begin{itemize}
+    \item \texttt{DRAW\_TWO\_EFFECT}: Identifier for the "Draw Two" card effect.
+    \item \texttt{SKIP\_TURN\_EFFECT}: Identifier for the "Skip Turn" card effect.
+    \item \texttt{FLIP\_DECK\_EFFECT}: Identifier for the "Flip Deck" card effect.
+\end{itemize}
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{applyEffect(cardType: char, playerId: char) $\to$ void}
+    \item \texttt{reverseDirection() $\to$ void}
+    \item \texttt{skipTurn(playerId: char) $\to$ void}
+    \item \texttt{triggerDrawCards(playerId: char, cardCount: \mathbb{N}) $\to$ void}
+    \item \texttt{flipDeck() $\to$ void}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{currentEffect: char} -- Tracks the active card effect being applied.
+    \item \texttt{effectQueue: sequence of char} -- Stores pending card effects to be applied sequentially.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{specialCardTypes: sequence of char} -- List of predefined card types with special effects.
+    \item \texttt{deckSide: char} -- Tracks the current state of the deck (light or dark).
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item All card effects are predefined and handled within this module.
+    \item The "Flip" card effect toggles the deck state between light and dark.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{applyEffect(cardType: char, playerId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Applies the specified card effect to the targeted player.
+    \end{itemize}
+    \item \texttt{reverseDirection():}
+    \begin{itemize}
+        \item \textbf{Transition:} Reverses the turn order of players.
+    \end{itemize}
+    \item \texttt{skipTurn(playerId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Skips the specified player's turn.
+    \end{itemize}
+    \item \texttt{triggerDrawCards(playerId: char, cardCount: \mathbb{N}):}
+    \begin{itemize}
+        \item \textbf{Transition:} Forces the player to draw the specified number of cards.
+    \end{itemize}
+    \item \texttt{flipDeck():}
+    \begin{itemize}
+        \item \textbf{Transition:} Toggles the deck's state and updates the game logic accordingly.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{calculateNextPlayer(direction: char) $\to$ char:}
+    \begin{itemize}
+        \item \textbf{Description:} Determines the next player based on the current direction.
+    \end{itemize}
+    \item \texttt{applyChainEffect(effectQueue: sequence of char) $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Resolves multiple card effects in sequence, such as stacked "Draw Two" cards.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Turn Management Module}
+
+\subsubsection{Module}
+Turn Management
+
+\subsubsection{Uses}
+Multiplayer Module, UI Module, Server Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+None
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{validateMove(playerId: char, card: char) $\to$ boolean}
+    \item \texttt{endTurn(playerId: char) $\to$ void}
+    \item \texttt{shuffleDeck() $\to$ void}
+    \item \texttt{drawCard(playerId: char) $\to$ void}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{currentPlayer: char} -- Tracks the player whose turn it is.
+    \item \texttt{deck: sequence of char} -- Represents the stack of cards remaining in the game.
+    \item \texttt{discardPile: sequence of char} -- Stores cards that have been played.
+    \item \texttt{playerHands: sequence of sequence of char} -- Stores the cards in each player's hand.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{maxPlayers: \mathbb{N}} -- Maximum number of players allowed in the game.
+    \item \texttt{flipEnabled: boolean} -- Boolean flag indicating if the "Flip" functionality is active.
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item The number of players and game rules are preloaded.
+    \item Game environment variables are known and properly initialized.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{validateMove(playerId: char, card: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Verifies whether the move made by the player is valid.
+    \end{itemize}
+    \item \texttt{endTurn(playerId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Ends the turn for the current player and initiates the next turn.
+    \end{itemize}
+    \item \texttt{shuffleDeck():}
+    \begin{itemize}
+        \item \textbf{Transition:} Randomizes the cards in the deck.
+    \end{itemize}
+    \item \texttt{drawCard(playerId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Adds a card to the specified player's hand.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{shuffleProcess() $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Implements the randomization algorithm for shuffling the deck.
+    \end{itemize}
+    \item \texttt{updateTurnOrder() $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Updates the order of players based on game logic.
+    \end{itemize}
+\end{itemize}
+
+\subsection{User Interface Module}
+
+\subsubsection{Module}
+User Interface (UI)
+
+\subsubsection{Uses}
+Game Logic Module, Multiplayer Module, Asset Management Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+\begin{itemize}
+    \item \texttt{DEFAULT\_THEME: char} -- Specifies the default theme for the game UI (e.g., light mode).
+    \item \texttt{FONT\_STYLE: char} -- Default font style used across UI elements.
+\end{itemize}
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{updateCardDisplay(playerId: char, cards: sequence of char) $\to$ void}
+    \item \texttt{showTurnIndicator(playerId: char) $\to$ void}
+    \item \texttt{displayMessage(message: char) $\to$ void}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{displayedCards: sequence of char} -- Tracks the cards currently visible for each player.
+    \item \texttt{turnIndicator: char} -- Indicates which player's turn it is.
+    \item \texttt{messageQueue: sequence of char} -- Stores pending notifications or chat messages to be displayed.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{theme: char} -- Specifies the current visual theme (e.g., light/dark mode).
+    \item \texttt{screenResolution: sequence of \mathbb{N}} -- The resolution of the device being used.
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item The UI module assumes that game state updates from the Game Logic Module are reliable.
+    \item All required assets are preloaded by the Asset Management Module.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{updateCardDisplay(playerId: char, cards: sequence of char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Updates the player’s visible hand to reflect the current state of their cards.
+    \end{itemize}
+    \item \texttt{showTurnIndicator(playerId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Highlights the current player's turn using visual indicators.
+    \end{itemize}
+    \item \texttt{displayMessage(message: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Displays a notification or chat message on the game screen.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{applyTheme(themeId: char) $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Configures and applies the selected theme for the game UI.
+    \end{itemize}
+    \item \texttt{renderMessageQueue() $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Processes and displays pending messages in the queue.
+    \end{itemize}
+    \item \texttt{adjustUILayout() $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Dynamically adjusts the layout based on the screen resolution and device type.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Save/Load Module}
+
+\subsubsection{Module}
+Save/Load (SL)
+
+\subsubsection{Uses}
+File Management Module, Game Logic Module, Multiplayer Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+\begin{itemize}
+    \item \texttt{SAVE\_FORMAT: char} -- Specifies the file format used for saving (e.g., JSON).
+\end{itemize}
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{saveGameState(gameId: char, state: char) $\to$ boolean}
+    \item \texttt{loadGameState(gameId: char) $\to$ char}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{saveDirectory: char} -- Tracks the directory where game states are saved.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{availableSpace: \mathbb{N}} -- Tracks available disk space for saving.
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item All files are accessible and writable by the system.
+    \item The file management system is reliable.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{saveGameState(gameId: char, state: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Saves the current game state to the specified location.
+    \end{itemize}
+    \item \texttt{loadGameState(gameId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Loads the game state from the specified file.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{compressSaveData(data: char) $\to$ char:}
+    \begin{itemize}
+        \item \textbf{Description:} Compresses the save data to reduce file size.
+    \end{itemize}
+    \item \texttt{validateSaveFile(file: char) $\to$ boolean:}
+    \begin{itemize}
+        \item \textbf{Description:} Ensures the save file format is correct.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Output Module}
+
+\subsubsection{Module}
+Output (O)
+
+\subsubsection{Uses}
+Game Logic Module, Animation Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+None
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{renderGraphics(graphicsData: char) $\to$ void}
+    \item \texttt{playSound(soundId: char) $\to$ void}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{currentFrame: char} -- Tracks the current frame being rendered.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{graphicsSettings: char} -- Stores graphics settings (e.g., resolution).
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item Rendering and sound systems are operational.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{renderGraphics(graphicsData: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Processes and renders graphics on the display.
+    \end{itemize}
+    \item \texttt{playSound(soundId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Plays the sound associated with the given ID.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{adjustBrightness(level: \mathbb{N}) $\to$ void:}
+    \begin{itemize}
+        \item \textbf{Description:} Adjusts the brightness of the rendered graphics.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Animation Module}
+
+\subsubsection{Module}
+Animation (A)
+
+\subsubsection{Uses}
+Output Module, Game Logic Module
+
+\subsubsection{Syntax}
+
+\paragraph{Exported Constants:}
+\begin{itemize}
+    \item \texttt{FRAME\_RATE: \mathbb{N}} -- Specifies the animation frame rate.
+\end{itemize}
+
+\paragraph{Exported Access Programs:}
+\begin{itemize}
+    \item \texttt{startAnimation(animationId: char) $\to$ void}
+    \item \texttt{stopAnimation(animationId: char) $\to$ void}
+\end{itemize}
+
+\subsubsection{Semantics}
+
+\paragraph{State Variables:}
+\begin{itemize}
+    \item \texttt{runningAnimations: sequence of char} -- Tracks currently running animations.
+\end{itemize}
+
+\paragraph{Environment Variables:}
+\begin{itemize}
+    \item \texttt{maxConcurrentAnimations: \mathbb{N}} -- Maximum animations allowed at once.
+\end{itemize}
+
+\paragraph{Assumptions:}
+\begin{itemize}
+    \item The output module can handle all animation rendering.
+\end{itemize}
+
+\paragraph{Access Routine Semantics:}
+\begin{itemize}
+    \item \texttt{startAnimation(animationId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Begins the specified animation.
+    \end{itemize}
+    \item \texttt{stopAnimation(animationId: char):}
+    \begin{itemize}
+        \item \textbf{Transition:} Stops the specified animation.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Local Functions:}
+\begin{itemize}
+    \item \texttt{interpolateFrames(animationId: char) $\to$ sequence of char:}
+    \begin{itemize}
+        \item \textbf{Description:} Generates intermediate frames for smooth animation.
+    \end{itemize}
 \end{itemize}
 
 
