@@ -57,7 +57,7 @@ January 13th, 2025 & Jianhao Wei & Add modules into section 6\\
 January 13th, 2025 & Zain-Alabedeen Garada & Add modules into section 6\\
 January 17th, 2025 & Zheng Bang Liang & Added all modules for Behavior Hiding Modules\\
 January 17th, 2025 & Jianhao Wei, Kevin Ishak, Zain-Alabedeen Garada & Modify behavior hiding modules that Zheng added and add the rest of the MIS modules \\
-January 17th, 2025 & Jianhao Wei & Modify section 3 and wrote section 4 and 5\\
+January 17th, 2025 & Jianhao Wei & Modify section 3 and wrote section 4, 5, 16. Communicate with other members and wrote section 17\\
 \bottomrule
 \end{tabularx}
 
@@ -905,24 +905,35 @@ $\rightarrow$ void\\
 \end{itemize}
 
 
-%Section 12
+\section{Exception Handling Strategies}
+The exception handling is critical for our software since it directly impacts the user experience of our software. It is our responsibility to ensure that our customers have a good experience with our software. To prevent exception from happening in our software, we implement the following 4 strategies:
+\begin{itemize}
+    \item \textbf{Limit Erroneous User Input:} We design the user interface such that the user input is bounded within a certain range to limit erroneous user input that might crash the software. We also include the input verification in Input module to ensure all the information that passed to the software are legitimate
+    \item \textbf{Wrap External Resources:} We have design all of our function in our modules to wrap the resources and libraries they use  from the global space of the software. This ensures that the exception in third-party software does not impact the integrity of own software.
+    \item \textbf{Cleaning up resources:} We have implemented the mechanism to clean up unused resource promptly and reliably to make sure the exceptions do not occurs due to cache overload
+    \item \textbf{Limiting Errors Instead of Handling Errors:} Instead of designing exception handling mechanism, we make sure our software is carefully designed and tested to reduce the chance of exception happening.
+\end{itemize}
+By implementing these strategies, we can reduce the chance for exception happening and limit the need of the exception handling mechanisms.
 
 
 
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}
+\begin{enumerate}
+    \item M. Xu, "UNO Flip 3D - SRS Volere Documentation," \textit{GitHub Repository}, 2023.
+    \item M. Xu, "UNO Flip 3D - Software Architecture Document," \textit{GitHub Repository}, 2023.
+\end{enumerate}
 
 \newpage
-
 \section{Appendix} \label{Appendix}
 
-\wss{Extra information if required}
 
-\newpage{}
+
+
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741 projects}
+
 
 The information in this section will be used to evaluate the team members on the
 graduate attribute of Problem Analysis and Design.
@@ -930,20 +941,23 @@ graduate attribute of Problem Analysis and Design.
 
 
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item Which of your design decisions stemmed from speaking to your client(s)
-  or a proxy (e.g. your peers, stakeholders, potential users)? For those that
-  were not, why, and where did they come from?
-  \item While creating the design doc, what parts of your other documents (e.g.
-  requirements, hazard analysis, etc), it any, needed to be changed, and why?
+  \item What went well while writing this deliverable? \\ \\
+  Our team is able to divide the task very fast, and everyone is working more collaboratively than before. We also started this deliverable earlier than before and be able to present the rough draft during the informal TA meeting. We get lots of feedback from our TA and we are confident that we can get a higher grade than before. In terms of documents, the module guide is relatively quick to do. We are able to gather information very fast and the communication went really well.
+  
+  \item What pain points did you experience during this deliverable, and how did you resolve them?\\ \\
+  The pain in this deliverable is the implementation of MIS document. The function and variables in every module are hard to visualize because the relationship between the module are very complex and everyone have their own opinion about how the implementation. We have to have extended meeting session to discuss about concept and resolve the conflict between different team members. We tried to absorb the advantages from the opinions from different team member and coming to an integrated idea. But this take a lot of time.
+  
+  \item Which of your design decisions stemmed from speaking to your client(s) or a proxy (e.g. your peers, stakeholders, potential users)? For those that were not, why, and where did they come from?\\ \\
+  The MIS are mainly coming from communicating with our peers and our supervisor. But for software architecture part of our decision, we simply reading the materials on the internet such as past project to get a better feeling about the most abstract part of our implementation.
+  
+  \item While creating the design doc, what parts of your other documents (e.g.requirements, hazard analysis, etc), it any, needed to be changed, and why?\\ \\
+  The document requirements need to be change because we discovered new idea while implementing our project. There are some requirement in the original document doesn't fit with the software architecture we chose. Some of the requirement are also too vague to be implemented properly, some of the requirement are too hard to implement in the actual software. We have to change our SRS document according to the software architecture and modules we implemented, and remove the unnecessary and vague requirement to make our documentation more consistent and integrate. 
+  
   \item What are the limitations of your solution?  Put another way, given
-  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)
-  \item Give a brief overview of other design solutions you considered.  What
-  are the benefits and tradeoffs of those other designs compared with the chosen
-  design?  From all the potential options, why did you select the documented design?
-  (LO\_Explores)
+  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)\\ \\
+  The limitations of our solution is that we never implemented similar software before and this is our first time experience with this kind of project. Even though we have internet but our view is still limited. If the resource and time is unlimited, we would consult with professional people (such as professionals from game companies) to get a better understanding about how should this project be implemented and what is the more efficient way to build this kind of project and managment teams.
+  \item Give a brief overview of other design solutions you considered.  What are the benefits and tradeoffs of those other designs compared with the chosen design?  From all the potential options, why did you select the documented design? (LO\_Explores)\\ \\
+  We had considered about design the same game using AI powered opponent with a single player. The AI solution will more cool and this solution will become more convenient with people who are lonely and don't have the access of the internet. But, the AI solution is also much more challenging and the chance of failure is much greater. The single player might also be less popular than multiplayer game for the public since multiplayer game are more fun and engaging. We select our current solution because it achieve the trade-off between implementation difficulties and public popularity.
 \end{enumerate}
 
 
