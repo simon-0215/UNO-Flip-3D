@@ -39,9 +39,9 @@ urlcolor=cyan          % color of external links
 
 \title{Module Interface Specification for \progname{UnoFlip3D}}
 
-\author{\authname Mingyang Xu \\ Kevin Ishak \\ Jianhao Wei \\ Zain-Alabedeen Garada \\ Zheng Beng Liang}
+\author{\authname Team 24 \\ \\ Mingyang Xu \\ Kevin Ishak \\ Jianhao Wei \\ Zain-Alabedeen Garada \\ Zheng Beng Liang}
 
-\date{\today}
+\date{January 17, 2025}
 
 \maketitle
 
@@ -56,6 +56,8 @@ January 12th, 2025 & Kevin Ishak & Initialize template, add rough draft of secti
 January 13th, 2025 & Jianhao Wei & Add modules into section 6\\
 January 13th, 2025 & Zain-Alabedeen Garada & Add modules into section 6\\
 January 17th, 2025 & Zheng Bang Liang & Added all modules for Behavior Hiding Modules\\
+January 17th, 2025 & Jianhao Wei, Kevin Ishak, Zain-Alabedeen Garada & Modify behavior hiding modules that Zheng added and add the rest of the MIS modules \\
+January 17th, 2025 & Jianhao Wei & Modify section 3 and wrote section 4 and 5\\
 \bottomrule
 \end{tabularx}
 
@@ -63,9 +65,8 @@ January 17th, 2025 & Zheng Bang Liang & Added all modules for Behavior Hiding Mo
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See SRS Documentation at \wss{give url}
+See MG document at \url{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}
 
-\wss{Also add any additional symbols, abbreviations or acronyms}
 
 \newpage
 
@@ -79,22 +80,19 @@ See SRS Documentation at \wss{give url}
 
 UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with ”light” and ”dark” sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
 
-Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at \url{https://github.com/simon-0215/UNO-Flip-3D/tree/main} .
+Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at \url{https://github.com/simon-0215/UNO-Flip-3D/tree/main}. 
 
 
 \section{Notation}
 
-\wss{You should describe your notation.  You can use what is below as
-  a starting point.}
+
 
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
 with the addition that template modules have been adapted from
 \cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-\citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
-multiple assignment statement and conditional rules follow the form $(c_1
-\Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
+\citet{HoffmanAndStrooper1995}. Template used from the SFWRENG 4G06 GitHub at \url{https://github.com/smiths/capTemplate/tree/main/docs/Design/SoftDetailedDes} 
 
-The following table summarizes the primitive data types used by \progname. 
+The following table summarizes the primitive data types used by \progname{UnoFlip3D}. 
 
 \begin{center}
 \renewcommand{\arraystretch}{1.2}
@@ -103,59 +101,229 @@ The following table summarizes the primitive data types used by \progname.
 \toprule 
 \textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\ 
 \midrule
-character & char & a single symbol or digit\\
-integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
-natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
-real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+Boolean & boolean & A variable that represent true or false on a statement \\
+Integer number & int & A number without fractional part with the range between $[-2^{63}, 2^{63}-1]$\\
+Decimal number & float & A number with fractional part represented by 32-bit single-precision float point\\
+Data Stream & serializedData & A stream of binary data for inter-module or inter-device transmissions\\
 \bottomrule
 \end{tabular} 
 \end{center}
 
+The following table summarizes the derived object data types used by \progname{UnoFlip3D}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\noindent 
+\begin{tabular}{l l p{7.5cm}} 
+\toprule 
+\textbf{Object Type} & \textbf{Notation} & \textbf{Description}\\ 
+\midrule
+String Object & String & an object with a sequence of unicode characters that represent word or sentences\\
+Generic Array Object & Array[Type] & A object represented by a set of certain type of variable \\
+Dictionary Object & dictionary & A collection of two arrays with each variable in one array correspond to a specific element in another array\\
+Graphics Description Object & GraphicObject & A object contain all the details that the user interface needed for display the game properly\\
+\bottomrule
+\end{tabular} 
+\end{center}
+
+
+
 \noindent
-The specification of \progname \ uses some derived data types: sequences, strings, and
-tuples. Sequences are lists filled with elements of the same data type. Strings
-are sequences of characters. Tuples contain a list of values, potentially of
-different types. In addition, \progname \ uses functions, which
+\progname{UnoFlip3D} uses functions, which
 are defined by the data types of their inputs and outputs. Local functions are
 described by giving their type signature followed by their specification.
 
 \section{Module Decomposition}
 
-The following table is taken directly from the Module Guide document for this project.
+The following description is taken directly from the Module Guide document for this project. The modules are divided into 3 main categories: Hardware-Hiding, Behaviour-Hiding and Software Decision. Below is a detailed description about how each modules is categorized:
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
+\subsection{Hardwire-Hiding Modules}
 
-\multirow{3}{0.3\textwidth}{Hardware-Hiding} & Device Input\\
-& Audio Output\\
-& Screen Rendering\\
-\midrule
+\begin{itemize}
+\item \textbf{Backend/Server Module:} Serves as a virtual hardware used by the rest of the system. This module provides the interface between the hardware and the software, allowing the system to display
+outputs or accept inputs.
+\end{itemize}
 
-\multirow{4}{0.3\textwidth}{Behaviour-Hiding} & Game Rules Logic\\
-& Turn Management\\
-& Card Management\\
-& Player Interaction\\
-\midrule
+\subsection{Behaviour-Hiding Modules:} 
 
-\multirow{2}{0.3\textwidth}{Software Decision} 
-& Networking Protocol\\
-& Multiplayer System\\
-\bottomrule
+\begin{itemize}
+\item \textbf{Card Effect Module:} Executes the effects of special cards and updates the game state accordingly
+\item \textbf{Turn Management Module:} Manages the order of player turns, including handling special conditions like ”Reverse” or ”Skip” cards.
+\item \textbf{User Interface Module:} Displays the game state to the user and accepts user inputs through various interactive elements.
+\item \textbf{Save/Load Module:} Allows saving the current game state and loading it at a later time.
+\item \textbf{Animation Module:} Provides animations for card movements, flips, and game interactions.
+\item \textbf{Output Module:} Provides visual or textual outputs to the user based on the game state
+\end{itemize}
 
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
-\end{table}
+\subsection{Software Decision Modules}
 
-\newpage
-~\newpage
+\begin{itemize}
+\item \textbf{Multiplayer Networking Module:} Handles communication between players, including matchmaking, game state synchronization, and latency management.
+\item \textbf{Verification Output Module:} Validates the final output of the game, ensuring compliance with rules and expected results.
+\item \textbf{Input Module:} Converts the input data into the data structure used by other modules, such as the game logic or UI modules.
+\end{itemize}
+
+
+\section{MIS of Backend/Server Module} 
+
+\subsection{Module}
+\hspace{1.5em}Backend/Server
+
+\subsection{Uses}
+\hspace{1.5em}N/A
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\begin{itemize}
+\item SUPPORTED\_DEVICES: Enumerates the supported hardware devices
+
+\item DEFAULT\_RESOLUTION: Specifies the default screen resolution for the game.
+\end{itemize}
+
+\subsubsection{Exported Access Programs}
+
+\begin{itemize}
+\item initializeHardware()
+\item captureInput()
+\item renderOutput(graphicsData: GraphicsObject)
+\item detectHardware()
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item connectedDevices: Tracks the list of currently connected input/output devices.
+\item currentResolution: Stores the current screen resolution of the application.
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+\item hardwareDrivers: Represents the drivers required to interface with the supported hardware.
+\item platform: Indicates the operating system or platform the game is running on 
+
+\end{itemize}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+\item All required hardware drivers are installed and operational.
+\item The platform supports Unity's hardware abstraction layer.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item initializeHardware() $\rightarrow$ void\\
+\textbf{Transition:} Sets up the required hardware connections and initializes drivers.
+
+\item captureInput() $\rightarrow$ String\\
+\textbf{Output:} Returns a structured object representing raw input data from connected devices.
+
+
+\item renderOutput(graphicsData: GraphicsObject) $\rightarrow$ void\\
+\textbf{Transition:} Translates graphical data into visual outputs using the rendering hardware.
+
+\item detectHardware() $\rightarrow$ Array[String]\\
+\textbf{Output:} Returns a list of hardware devices detected and compatible with the game.
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item verifyDeviceSupport() $\rightarrow$ boolean\\
+\textbf{Description:} Checks if the provided device is supported by the game.
+
+\item applyDriverSettings() $\rightarrow$ void\\
+\textbf{Description:} Configures hardware drivers based on the detected platform.
+
+\item fallbackToDefault() $\rightarrow$ void\\
+\textbf{Description:} Reverts to default hardware settings if the required device is not detected or initialization fails.
+\end{itemize}
+
+
 
 
 %Section 6
+
+
+\section{MIS of Card Effect Module} 
+
+\subsection{Module}
+\hspace{1.5em}Card Effect
+
+\subsection{Uses}
+\hspace{1.5em}Hardwire Hiding
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\begin{itemize}
+\item DRAW\_TWO\_EFFECT: Specifies the effect identifier for a "Draw Two" card.
+\item SKIP\_TURN\_EFFECT: Specifies the effect identifier for a "Skip" card.
+\item FLIP\_DECK\_EFFECT: Specifies the effect identifier for a "Flip" card.
+\end{itemize}
+
+\subsubsection{Exported Access Programs}
+
+\begin{itemize}
+\item reverseDirection(playerId: int)
+\item skipTurn(playerId: int)
+\item triggerDrawCards(playerId: int, cardCount: Int)
+\item flipDeck()
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item currentEffect: Track the current effect being applied
+\item effectQueue: Store the effects that are waiting to be applied
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+    \item The special card type that current game environment allowed.
+\end{itemize}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+\item All card effects are predefined.
+\item The "Flip" card effect toggles the entire game state between "light" and "dark" sides.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item reverseDirection(playerId: int, previousPlayerId: int): $\rightarrow$ void\\
+\textbf{Transition:} Reverse the direction the game is being played to the previous player by re-assigning the previous player next opportunity
+
+\item skipTurn(playerId: int, nextPlayerId: int) $\rightarrow$ void\\
+\textbf{Transition:} Skip the opportunity for the specified player to play and assignment the opportunity to the next player
+
+\item triggerDrawCards(playerId: int, cardCount: Int) $\rightarrow$ void\\
+\textbf{Transition:} Let the player specified to draw another card into their database and add the card count to their totalPower variable.
+
+\item flipDeck() $\rightarrow$ void\\
+\textbf{Transition:} Changes the deckSide variable and updates the game state to reflect the flipped deck.
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item calculateNextPlayer(direction: String) $\rightarrow$ int\\
+\textbf{Description:} Determines the next player in the turn sequence after applying a "Skip" or "Reverse" effect.
+
+\item applyChainEffect(effectQueue: Array[String]) $\rightarrow$ void\\
+\textbf{Description:} Resolves multiple card effects in sequence defined in the input string array
+
+\item toggleDeckSide() $\rightarrow$ void\\
+\textbf{Description:} Switches the game state between "light" and "dark" sides during a "Flip" card effect.
+\end{itemize}
+
+
 
 \section{MIS of Turn Management Module} 
 
@@ -163,7 +331,7 @@ The following table is taken directly from the Module Guide document for this pr
 \hspace{1.5em}Turn Management
 
 \subsection{Uses}
-\hspace{1.5em}Multiplayer, UI, AssetManagement, Server
+\hspace{1.5em}Input, Card Effect
 
 \subsection{Syntax}
 
@@ -173,10 +341,10 @@ The following table is taken directly from the Module Guide document for this pr
 \subsubsection{Exported Access Programs}
 
 \begin{itemize}
-\item validateMove(playerId, cardid)
-\item endTurn(playerId)
+\item validateMove(playerId: int, cardid: int)
+\item endTurn(playerId: int)
 \item shuffleDeck()
-\item drawCard(playerId)
+\item drawCard(playerId: int)
 \end{itemize}
 
 \subsection{Semantics}
@@ -204,39 +372,151 @@ The following table is taken directly from the Module Guide document for this pr
 \subsubsection{Access Routine Semantics}
 
 \begin{itemize}
-\item validateMove(playerId, card)\\
-Transition: Checks if a move is valid
+\item validateMove(playerId: int, cardId: int) $\rightarrow$ boolean\\
+\textbf{Output:} Checks if a move is valid
 
-\item endTurn(playerId)\\
-Transition: Ends the current player's turn and starts the next
+\item endTurn(playerId:int) $\rightarrow$ void\\
+\textbf{Transition:} Ends the current player's turn and starts the next
 
-\item shuffleDeck()\\
-Transition: Randomizes the card deck
+\item shuffleDeck() $\rightarrow$ void\\
+\textbf{Transition:} Randomizes the card deck
 
-\item drawCard(playerId)\\
-Transition: Adds a card to the specified player’s hand
+\item drawCard(playerId: int) $\rightarrow$ void\\
+\textbf{Transition:} Adds a card to the specified player’s hand
 
 \end{itemize}
 
 
 \subsubsection{Local Functions}
 \begin{itemize}
-\item shuffleProcess()\\
+\item shuffleProcess(original: Array[String]) $\rightarrow$ Array[String]\\
 \textbf{Description:} Contain the random algorithm to shuffle the deck
-\item CardModifier()\\
+\item CardModifier(cardId: int) $\rightarrow$ void\\
 \textbf{Description:} Contain algorithm to draw different card to screen
 \end{itemize}
 
 
-%Section 7
-
-\section{MIS of Multiplayer Module} 
+\section{MIS of User Interface Module} 
 
 \subsection{Module}
-\hspace{1.5em}Multiplayer
+\hspace{1.5em}User Interface
 
 \subsection{Uses}
-\hspace{1.5em}GameLogic, Server
+\hspace{1.5em}Output, Turn Management
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\begin{itemize}
+\item DEFAULT\_THEME: Specifies the default theme for the game UI (e.g., light mode).
+\item FONT\_STYLE: Default font style used across UI elements.
+\item ASSET\_PATH: Directory path where assets are stored
+\item DEFAULT\_CARD\_SPRITE: Specifies the default card sprite to use if none is provided.
+
+\end{itemize}
+
+\subsubsection{Exported Access Programs}
+
+\begin{itemize}
+\item updateCardDisplay(playerId: int, cardId: int)
+\item showTurnIndicator(playerId: int)
+\item displayMessage(message: String)
+\item loadScene(type: String)
+\item loadAsset(assetName: String)
+\item unloadAsset(assetName: String)
+\item playSound(effectName: String)
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item displayedCards: Tracks the cards currently visible for each player.
+\item turnIndicator: Indicates which player’s turn it is.
+\item messageQueue: Stores pending notifications or chat messages to be displayed.
+\item theme: Specifies the current visual theme in light mode or dark mode.
+\item loadedAssets: Tracks assets currently loaded into memory.
+\item audioSettings: Stores configuration for playing audio
+\item assetCache: Cache for frequently accessed assets to improve performance.
+\item assetDirectory: Path to the directory containing all assets 
+
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\begin{itemize}
+\item The resolution of the device being used.
+\end{itemize}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+\item The UI module assumes that game state updates from the multiplayer networking and turn management modules are reliable.
+\item All required assets are preloaded by the Save/Load module.
+\item Multiplayer synchronization ensures accurate real-time updates across all connected devices.
+\item All assets are correctly named and stored in the specified directory.
+\item The module assumes sufficient memory and storage are available for caching assets.
+\item Dependencies for visual and audio formats are preinstalled on the system.
+\end{itemize}
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item updateCardDisplay(playerId: int, cardId: int) $\rightarrow$ void\\
+\textbf{Transition:} Updates the player’s visible hand to reflect the current state of their cards.
+
+\item showTurnIndicator(playerId: int) $\rightarrow$ void\\
+\textbf{Transition:} Highlights the current player's turn using visual indicators.
+
+\item displayMessage(message: String) $\rightarrow$ void\\
+\textbf{Transition:} Displays a notification or chat message on the game screen.
+
+\item loadScene(type: String) $\rightarrow$ void\\
+\textbf{Transition:} Load specific type of background with animation to the user interface
+
+\item loadAsset(assetName: String) $\rightarrow$ void\\
+\textbf{Transition:} Loads the specified asset from the asset directory into memory and returns a reference.
+
+\item unloadAsset(assetName: String) $\rightarrow$ void\\
+\textbf{Transition:} Removes the specified asset from memory to free up resources.
+
+\item playSound(effectName: String) $\rightarrow$ void\\
+\textbf{Transition:} Plays the specified sound effect from the audio assets directory.
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item applyTheme(themeId: int) $\rightarrow$ void\\
+\textbf{Description:} Configures and applies the selected theme for the game UI.
+
+\item renderMessageQueue(messages: Array[String]) $\rightarrow$ void\\
+\textbf{Description:} Processes and displays pending messages in the queue.
+
+\item adjustUILayout() $\rightarrow$ void\\
+\textbf{Description:} Dynamically adjusts the layout based on the screen resolution and device type.
+
+\item cacheAsset(assetName: String) $\rightarrow$ void\\
+\textbf{Description:} Adds the specified asset to the cache for quick retrieval.
+
+\item clearCache() $\rightarrow$ void\\
+\textbf{Description:} Clears the asset cache to free up memory
+
+\item validateAsset(assetName: String) $\rightarrow$ void\\
+\textbf{Description:} Checks if the specified asset exists and is accessible.
+
+\end{itemize}
+
+
+
+
+
+\section{MIS of Save/Load Module} 
+
+\subsection{Module}
+\hspace{1.5em}Save/Load
+
+\subsection{Uses}
+\hspace{1.5em}Hardwire Hiding
 
 \subsection{Syntax}
 
@@ -244,10 +524,204 @@ Transition: Adds a card to the specified player’s hand
 \hspace{1.5em}None
 
 \subsubsection{Exported Access Programs}
+
 \begin{itemize}
-\item createGameRoom(playerId, roomSettings)
-\item joinGameRoom(playerId, roomId)
-\item broadcastUpdate(gameId, update)
+\item save(info: String, description: String)
+\item retrieve(description: String)
+\item delete(description: String)
+\item changeDesc(originalDesc: String, updateDesc: String)
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item ifFull: Track if the database is full
+\item dict: The dictionary that stores the array index correspond with descriptions
+\item infoArray: The array that stores all the information
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\hspace{1.5em}N/A
+
+\subsubsection{Assumptions}
+\hspace{1.5em}The string and description stored does not contain any special characters
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item save(info: String, description: String) $\rightarrow$ void\\
+\textbf{Transition:} Save the information into the database with description
+
+\item retrieve(description: String) $\rightarrow$ String\\
+\textbf{Output:} Return the information by its description
+
+\item delete(description: String) $\rightarrow$ void\\
+\textbf{Transition:} Delete the information in the database by its description
+
+\item changeDesc(originalDesc: String, updateDesc: String) $\rightarrow$ void\\
+\textbf{Transition:} change the description of a piece of information into another
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item returnIndex(description: String) $\rightarrow$ int\\
+\textbf{Description:} Return the index of the infoArray based on the description. 
+\end{itemize}
+
+
+%Section 7
+
+
+
+%Section 8
+
+
+\section{MIS of Animation Module} 
+
+\subsection{Module}
+\hspace{1.5em}Animation
+
+\subsection{Uses}
+\hspace{1.5em}User Interface, Card Effect, Save/Load
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\hspace{1.5em}None
+
+\subsubsection{Exported Access Programs}
+
+\begin{itemize}
+\item move(cardId: int, distance: int, direction: String)
+\item flip(cardId: int)
+\item select(cardId: int)
+\item appear(cardId: int)
+\item disappear(cardId: int)
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+\item cardSide: Track side the card is on
+\item cardColor: Track the color of the card
+\item cardPosition: Track the position of the card 
+\item show: Track if the card is shown on the screen
+\end{itemize}
+
+\subsubsection{Environment Variables}
+\hspace{1.5em}N/A
+
+\subsubsection{Assumptions}
+\hspace{1.5em}Each card has a unique id
+
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item move(cardId: int, distance: int, direction: String) $\rightarrow$ void\\
+\textbf{Transition:} Move the card with specific id by a set amount of pixels with horizontal or vertical direction
+
+\item flip(cardId: int) $\rightarrow$ void\\
+\textbf{Transition:} Flip the card with specific id to show the opposite face
+
+\item select(cardId: int) $\rightarrow$ void\\
+\textbf{Transition:} Show the animation when the card is selected by the user
+
+\item appear(cardId: int) $\rightarrow$ void\\
+\textbf{Transition:} Show the card with specific id to the user screen
+
+\item disappear(cardId: int) $\rightarrow$ void\\
+\textbf{Transition:} Make the card with specific id to disappear from the user screen
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item getCardInfo(id: int) $\rightarrow$ void\\
+\textbf{Description:} Get the info of the card to local state variables
+\item applyVisualElements(id: int) $\rightarrow$ void\\
+\textbf{Description:} Apply the visual effect to the user screen based on the id provided and update local state variables
+\end{itemize}
+
+%Section 9
+
+
+
+%Section 10
+
+\section{MIS of Output Module} 
+
+\subsection{Module}
+\hspace{1.5em}Output
+
+\subsection{Uses}
+\hspace{1.5em}Card Effect
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\hspace{1.5em}None
+
+\subsubsection{Exported Access Programs}
+
+\begin{itemize}
+\item render(info: String, font: int, color: String, location: int)
+\item showCardEffect(id: int, effectNum: int)
+\end{itemize}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\hspace{1.5em}N/A
+
+\subsubsection{Environment Variables}
+\hspace{1.5em}N/A
+
+\subsubsection{Assumptions}
+\hspace{1.5em}Each card has a unique id
+
+
+\subsubsection{Access Routine Semantics}
+
+\begin{itemize}
+\item render(info: String, font: int, color: String, location: int)
+$\rightarrow$ void\\
+\textbf{Transition:} Display the information onto the screen with the font, color and location specified
+
+\item showCardEffect(id: int, effectNum: int) $\rightarrow$ void\\
+\textbf{Transition:} Using Card Effect module to show flip, skip or draw two on specific card 	
+
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item checkEdge(font: int, location: int) $\rightarrow$ boolean\\
+\textbf{Description:} Check if the information displayed exceeds the boundary of the screen
+\end{itemize}
+
+
+\section{MIS of Multiplayer Networking Module} 
+
+\subsection{Module}
+\hspace{1.5em}Multiplayer Networking
+
+\subsection{Uses}
+\hspace{1.5em}Verification Output, Save/Load, Animation
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\hspace{1.5em}serverID: The serial number of the game room upon user request
+\subsubsection{Exported Access Programs}
+\begin{itemize}
+\item createGameRoom(playerId: int, roomSettings: Array[String])
+\item joinGameRoom(playerId: int, roomId: int)
+\item broadcastUpdate(gameId: int, update: String)
 \end{itemize}
 
 \subsection{Semantics}
@@ -267,453 +741,171 @@ Transition: Adds a card to the specified player’s hand
 
 \subsubsection{Assumptions}
 \begin{itemize}
-\item The connection to other machines can be established successfully
+\item The connection between server and other machines can be established successfully
 \item The encryption and decryption methods are known
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 \begin{itemize}
-\item createGameRoom(playerId, roomSettings)\\
-Creates a new game room
+\item createGameRoom(playerId: int, roomSettings: Array[String]) $\rightarrow$ void\\
+\textbf{Transition:} Creates a new game room by a specific user with specific setting
 
 
-\item joinGameRoom(playerId, roomId)\\
-Adds a player to an existing room
+\item joinGameRoom(playerId: int, roomId: int, publicKey: int) $\rightarrow$ int\\
+\textbf{Transition:} Adds a specific player to an existing room by its ID and public key for encryption and decryption purpose purposes \\
+\textbf{Output:} Return the public key of the server for encryption and decryption purposes
 
-\item broadcastUpdate(gameId, update)\\
-Sends game state updates to all players in a room.
+\item broadcastUpdate(gameId: int, update: String) $\rightarrow$ void\\
+\textbf{Transition:} Sends game state updates to all players in a room.
 
 \end{itemize}
 
 
 \subsubsection{Local Functions}
 \begin{itemize}
-\item encryption(information)\\
-\textbf{Description:} Contain encryption algorithm to encrypt data before sending
-\item decryption(information)\\ 
-\textbf{Description:} Contain decryption algorithm to decrypt data after receiving
+\item encryption(information: String, publicKey: int) $\rightarrow$ String\\
+\textbf{Description:} Contain encryption algorithm to encrypt data before sending using public key from user
+\item decryption(information: String, privateKey: int) $\rightarrow$ String\\ 
+\textbf{Description:} Contain decryption algorithm to decrypt data after receiving using the private key of game room
 \end{itemize}
 
-\section{Behavior-Hiding Modules}
 
-\subsection{Card Effect Module}
+\section{MIS of Verification Output Module} 
 
-\subsubsection{Module}
-Card Effect (CE)
+\subsection{Module}
+\hspace{1.5em}Verification Output
 
-\subsubsection{Uses}
-Game Logic Module, Animation Module, Turn Management Module
+\subsection{Uses}
+\hspace{1.5em}N/A
 
-\subsubsection{Syntax}
+\subsection{Syntax}
 
-\paragraph{Exported Constants:}
+\subsubsection{Exported Constants}
+\hspace{1.5em}None
+
+\subsubsection{Exported Access Programs}
+
 \begin{itemize}
-    \item \texttt{DRAW\_TWO\_EFFECT}: Identifier for the "Draw Two" card effect.
-    \item \texttt{SKIP\_TURN\_EFFECT}: Identifier for the "Skip Turn" card effect.
-    \item \texttt{FLIP\_DECK\_EFFECT}: Identifier for the "Flip Deck" card effect.
+\item captureOutput(playerId: int, info: String)
+\item validateOutput(info: String)
 \end{itemize}
 
-\paragraph{Exported Access Programs:}
+\subsection{Semantics}
+
+\subsubsection{State Variables}
 \begin{itemize}
-    \item \texttt{applyEffect(cardType: char, playerId: char) $\to$ void}
-    \item \texttt{reverseDirection() $\to$ void}
-    \item \texttt{skipTurn(playerId: char) $\to$ void}
-    \item \texttt{triggerDrawCards(playerId: char, cardCount: \mathbb{N}) $\to$ void}
-    \item \texttt{flipDeck() $\to$ void}
+\item outputBuffer: Temporarily store the incoming input received for later use
+\item validatedOutput: Store the input that has been validated by the module for later transmission
 \end{itemize}
 
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
+\subsubsection{Environment Variables}
 \begin{itemize}
-    \item \texttt{currentEffect: char} -- Tracks the active card effect being applied.
-    \item \texttt{effectQueue: sequence of char} -- Stores pending card effects to be applied sequentially.
+\item the validation algorithm the device is running on
 \end{itemize}
 
-\paragraph{Environment Variables:}
+\subsubsection{Assumptions}
 \begin{itemize}
-    \item \texttt{specialCardTypes: sequence of char} -- List of predefined card types with special effects.
-    \item \texttt{deckSide: char} -- Tracks the current state of the deck (light or dark).
+\item All output devices conform to Unity's input standard.
+\item The validation algorithm must make sure that there is no error or discrepancy occurring after the validation
 \end{itemize}
 
-\paragraph{Assumptions:}
+\subsubsection{Access Routine Semantics}
+
 \begin{itemize}
-    \item All card effects are predefined and handled within this module.
-    \item The "Flip" card effect toggles the deck state between light and dark.
+\item captureInput(info: String) $\rightarrow$ void\\
+\textbf{Transition:} Capture and save the information into the output buffer
+
+\item validateInput(info: String) $\rightarrow$ String, boolean\\
+\textbf{Transition:} validate the output from the outputBuffer using existing algorithms\\
+\textbf{Output:} Return the original output and a boolean indicating if the input can be validated
+
+
 \end{itemize}
 
-\paragraph{Access Routine Semantics:}
+
+\subsubsection{Local Functions}
 \begin{itemize}
-    \item \texttt{applyEffect(cardType: char, playerId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Applies the specified card effect to the targeted player.
-    \end{itemize}
-    \item \texttt{reverseDirection():}
-    \begin{itemize}
-        \item \textbf{Transition:} Reverses the turn order of players.
-    \end{itemize}
-    \item \texttt{skipTurn(playerId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Skips the specified player's turn.
-    \end{itemize}
-    \item \texttt{triggerDrawCards(playerId: char, cardCount: \mathbb{N}):}
-    \begin{itemize}
-        \item \textbf{Transition:} Forces the player to draw the specified number of cards.
-    \end{itemize}
-    \item \texttt{flipDeck():}
-    \begin{itemize}
-        \item \textbf{Transition:} Toggles the deck's state and updates the game logic accordingly.
-    \end{itemize}
+\item algorithmDatabase(input: String, type: int) $\rightarrow$ String\\
+\textbf{Description:} Contain the algorithm that converts the input string to the format that can be used by other modules and return the converted input string
+
+\item serialization(input: String) $\rightarrow$ serializedData\\
+\textbf{Description:} Contain the algorithm to convert the input string into serialized data for inter-module or internet communications
 \end{itemize}
 
-\paragraph{Local Functions:}
+
+
+
+%Section 11
+
+\section{MIS of Input Module} 
+
+\subsection{Module}
+\hspace{1.5em}Input
+
+\subsection{Uses}
+\hspace{1.5em}Hardwire Hiding
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+\hspace{1.5em}None
+
+\subsubsection{Exported Access Programs}
+
 \begin{itemize}
-    \item \texttt{calculateNextPlayer(direction: char) $\to$ char:}
-    \begin{itemize}
-        \item \textbf{Description:} Determines the next player based on the current direction.
-    \end{itemize}
-    \item \texttt{applyChainEffect(effectQueue: sequence of char) $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Resolves multiple card effects in sequence, such as stacked "Draw Two" cards.
-    \end{itemize}
+\item captureInput(playerId: int, info: String)
+\item validateInput(info: String)
+\item convertInput(info: String, type: String)
 \end{itemize}
 
-\newpage
+\subsection{Semantics}
 
-\subsection{Turn Management Module}
-
-\subsubsection{Module}
-Turn Management
-
-\subsubsection{Uses}
-Multiplayer Module, UI Module, Server Module
-
-\subsubsection{Syntax}
-
-\paragraph{Exported Constants:}
-None
-
-\paragraph{Exported Access Programs:}
+\subsubsection{State Variables}
 \begin{itemize}
-    \item \texttt{validateMove(playerId: char, card: char) $\to$ boolean}
-    \item \texttt{endTurn(playerId: char) $\to$ void}
-    \item \texttt{shuffleDeck() $\to$ void}
-    \item \texttt{drawCard(playerId: char) $\to$ void}
+\item inputBuffer: Temporarily store the incoming input received for later use
+\item validatedInput: Store the input that has been validated by the module for later transmission
 \end{itemize}
 
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
+\subsubsection{Environment Variables}
 \begin{itemize}
-    \item \texttt{currentPlayer: char} -- Tracks the player whose turn it is.
-    \item \texttt{deck: sequence of char} -- Represents the stack of cards remaining in the game.
-    \item \texttt{discardPile: sequence of char} -- Stores cards that have been played.
-    \item \texttt{playerHands: sequence of sequence of char} -- Stores the cards in each player's hand.
+\item The version of supporting device that the software is running on
+\item the validation algorithm the device is running on
 \end{itemize}
 
-\paragraph{Environment Variables:}
+\subsubsection{Assumptions}
 \begin{itemize}
-    \item \texttt{maxPlayers: \mathbb{N}} -- Maximum number of players allowed in the game.
-    \item \texttt{flipEnabled: boolean} -- Boolean flag indicating if the "Flip" functionality is active.
+\item All input devices conform to Unity's input standard.
+\item The validation algorithm must make sure that there is no error or discrepancy occurring after the validation
 \end{itemize}
 
-\paragraph{Assumptions:}
+\subsubsection{Access Routine Semantics}
+
 \begin{itemize}
-    \item The number of players and game rules are preloaded.
-    \item Game environment variables are known and properly initialized.
+\item captureInput(playerId: int, info: String) $\rightarrow$ void\\
+\textbf{Transition:} Capture and save the information into the input buffer
+
+\item validateInput(info: String) $\rightarrow$ String, boolean\\
+\textbf{Transition:} validate the input from the inputBuffer using existing algorithms\\
+\textbf{Output:} Return the original input and a boolean indicating if the input can be validated
+
+\item convertInput(action: String, type: String) $\rightarrow$ String\\
+\textbf{Output:} Convert the input from validatedInput into specific format that can be used by other modules
+
 \end{itemize}
 
-\paragraph{Access Routine Semantics:}
+
+\subsubsection{Local Functions}
 \begin{itemize}
-    \item \texttt{validateMove(playerId: char, card: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Verifies whether the move made by the player is valid.
-    \end{itemize}
-    \item \texttt{endTurn(playerId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Ends the turn for the current player and initiates the next turn.
-    \end{itemize}
-    \item \texttt{shuffleDeck():}
-    \begin{itemize}
-        \item \textbf{Transition:} Randomizes the cards in the deck.
-    \end{itemize}
-    \item \texttt{drawCard(playerId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Adds a card to the specified player's hand.
-    \end{itemize}
+\item algorithmDatabase(input: String, type: int) $\rightarrow$ String\\
+\textbf{Description:} Contain the algorithm that converts the input string to the format that can be used by other modules and return the converted input string
+
+\item serialization(input: String) $\rightarrow$ serializedData\\
+\textbf{Description:} Contain the algorithm to convert the input string into serialized data for inter-module or internet communications
 \end{itemize}
 
-\paragraph{Local Functions:}
-\begin{itemize}
-    \item \texttt{shuffleProcess() $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Implements the randomization algorithm for shuffling the deck.
-    \end{itemize}
-    \item \texttt{updateTurnOrder() $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Updates the order of players based on game logic.
-    \end{itemize}
-\end{itemize}
 
-\subsection{User Interface Module}
-
-\subsubsection{Module}
-User Interface (UI)
-
-\subsubsection{Uses}
-Game Logic Module, Multiplayer Module, Asset Management Module
-
-\subsubsection{Syntax}
-
-\paragraph{Exported Constants:}
-\begin{itemize}
-    \item \texttt{DEFAULT\_THEME: char} -- Specifies the default theme for the game UI (e.g., light mode).
-    \item \texttt{FONT\_STYLE: char} -- Default font style used across UI elements.
-\end{itemize}
-
-\paragraph{Exported Access Programs:}
-\begin{itemize}
-    \item \texttt{updateCardDisplay(playerId: char, cards: sequence of char) $\to$ void}
-    \item \texttt{showTurnIndicator(playerId: char) $\to$ void}
-    \item \texttt{displayMessage(message: char) $\to$ void}
-\end{itemize}
-
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
-\begin{itemize}
-    \item \texttt{displayedCards: sequence of char} -- Tracks the cards currently visible for each player.
-    \item \texttt{turnIndicator: char} -- Indicates which player's turn it is.
-    \item \texttt{messageQueue: sequence of char} -- Stores pending notifications or chat messages to be displayed.
-\end{itemize}
-
-\paragraph{Environment Variables:}
-\begin{itemize}
-    \item \texttt{theme: char} -- Specifies the current visual theme (e.g., light/dark mode).
-    \item \texttt{screenResolution: sequence of \mathbb{N}} -- The resolution of the device being used.
-\end{itemize}
-
-\paragraph{Assumptions:}
-\begin{itemize}
-    \item The UI module assumes that game state updates from the Game Logic Module are reliable.
-    \item All required assets are preloaded by the Asset Management Module.
-\end{itemize}
-
-\paragraph{Access Routine Semantics:}
-\begin{itemize}
-    \item \texttt{updateCardDisplay(playerId: char, cards: sequence of char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Updates the player’s visible hand to reflect the current state of their cards.
-    \end{itemize}
-    \item \texttt{showTurnIndicator(playerId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Highlights the current player's turn using visual indicators.
-    \end{itemize}
-    \item \texttt{displayMessage(message: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Displays a notification or chat message on the game screen.
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Local Functions:}
-\begin{itemize}
-    \item \texttt{applyTheme(themeId: char) $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Configures and applies the selected theme for the game UI.
-    \end{itemize}
-    \item \texttt{renderMessageQueue() $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Processes and displays pending messages in the queue.
-    \end{itemize}
-    \item \texttt{adjustUILayout() $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Dynamically adjusts the layout based on the screen resolution and device type.
-    \end{itemize}
-\end{itemize}
-
-\newpage
-
-\subsection{Save/Load Module}
-
-\subsubsection{Module}
-Save/Load (SL)
-
-\subsubsection{Uses}
-File Management Module, Game Logic Module, Multiplayer Module
-
-\subsubsection{Syntax}
-
-\paragraph{Exported Constants:}
-\begin{itemize}
-    \item \texttt{SAVE\_FORMAT: char} -- Specifies the file format used for saving (e.g., JSON).
-\end{itemize}
-
-\paragraph{Exported Access Programs:}
-\begin{itemize}
-    \item \texttt{saveGameState(gameId: char, state: char) $\to$ boolean}
-    \item \texttt{loadGameState(gameId: char) $\to$ char}
-\end{itemize}
-
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
-\begin{itemize}
-    \item \texttt{saveDirectory: char} -- Tracks the directory where game states are saved.
-\end{itemize}
-
-\paragraph{Environment Variables:}
-\begin{itemize}
-    \item \texttt{availableSpace: \mathbb{N}} -- Tracks available disk space for saving.
-\end{itemize}
-
-\paragraph{Assumptions:}
-\begin{itemize}
-    \item All files are accessible and writable by the system.
-    \item The file management system is reliable.
-\end{itemize}
-
-\paragraph{Access Routine Semantics:}
-\begin{itemize}
-    \item \texttt{saveGameState(gameId: char, state: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Saves the current game state to the specified location.
-    \end{itemize}
-    \item \texttt{loadGameState(gameId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Loads the game state from the specified file.
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Local Functions:}
-\begin{itemize}
-    \item \texttt{compressSaveData(data: char) $\to$ char:}
-    \begin{itemize}
-        \item \textbf{Description:} Compresses the save data to reduce file size.
-    \end{itemize}
-    \item \texttt{validateSaveFile(file: char) $\to$ boolean:}
-    \begin{itemize}
-        \item \textbf{Description:} Ensures the save file format is correct.
-    \end{itemize}
-\end{itemize}
-
-\newpage
-
-\subsection{Output Module}
-
-\subsubsection{Module}
-Output (O)
-
-\subsubsection{Uses}
-Game Logic Module, Animation Module
-
-\subsubsection{Syntax}
-
-\paragraph{Exported Constants:}
-None
-
-\paragraph{Exported Access Programs:}
-\begin{itemize}
-    \item \texttt{renderGraphics(graphicsData: char) $\to$ void}
-    \item \texttt{playSound(soundId: char) $\to$ void}
-\end{itemize}
-
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
-\begin{itemize}
-    \item \texttt{currentFrame: char} -- Tracks the current frame being rendered.
-\end{itemize}
-
-\paragraph{Environment Variables:}
-\begin{itemize}
-    \item \texttt{graphicsSettings: char} -- Stores graphics settings (e.g., resolution).
-\end{itemize}
-
-\paragraph{Assumptions:}
-\begin{itemize}
-    \item Rendering and sound systems are operational.
-\end{itemize}
-
-\paragraph{Access Routine Semantics:}
-\begin{itemize}
-    \item \texttt{renderGraphics(graphicsData: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Processes and renders graphics on the display.
-    \end{itemize}
-    \item \texttt{playSound(soundId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Plays the sound associated with the given ID.
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Local Functions:}
-\begin{itemize}
-    \item \texttt{adjustBrightness(level: \mathbb{N}) $\to$ void:}
-    \begin{itemize}
-        \item \textbf{Description:} Adjusts the brightness of the rendered graphics.
-    \end{itemize}
-\end{itemize}
-
-\newpage
-
-\subsection{Animation Module}
-
-\subsubsection{Module}
-Animation (A)
-
-\subsubsection{Uses}
-Output Module, Game Logic Module
-
-\subsubsection{Syntax}
-
-\paragraph{Exported Constants:}
-\begin{itemize}
-    \item \texttt{FRAME\_RATE: \mathbb{N}} -- Specifies the animation frame rate.
-\end{itemize}
-
-\paragraph{Exported Access Programs:}
-\begin{itemize}
-    \item \texttt{startAnimation(animationId: char) $\to$ void}
-    \item \texttt{stopAnimation(animationId: char) $\to$ void}
-\end{itemize}
-
-\subsubsection{Semantics}
-
-\paragraph{State Variables:}
-\begin{itemize}
-    \item \texttt{runningAnimations: sequence of char} -- Tracks currently running animations.
-\end{itemize}
-
-\paragraph{Environment Variables:}
-\begin{itemize}
-    \item \texttt{maxConcurrentAnimations: \mathbb{N}} -- Maximum animations allowed at once.
-\end{itemize}
-
-\paragraph{Assumptions:}
-\begin{itemize}
-    \item The output module can handle all animation rendering.
-\end{itemize}
-
-\paragraph{Access Routine Semantics:}
-\begin{itemize}
-    \item \texttt{startAnimation(animationId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Begins the specified animation.
-    \end{itemize}
-    \item \texttt{stopAnimation(animationId: char):}
-    \begin{itemize}
-        \item \textbf{Transition:} Stops the specified animation.
-    \end{itemize}
-\end{itemize}
-
-\paragraph{Local Functions:}
-\begin{itemize}
-    \item \texttt{interpolateFrames(animationId: char) $\to$ sequence of char:}
-    \begin{itemize}
-        \item \textbf{Description:} Generates intermediate frames for smooth animation.
-    \end{itemize}
-\end{itemize}
+%Section 12
 
 
 
