@@ -1,0 +1,940 @@
+fileFormatVersion: 2
+guid: c4ace9e3d937fd34aa1f0731560339a8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3044654400991329862
+    second: UnoTextureAtlas_0
+  - first:
+      213: -3621460237907892786
+    second: UnoTextureAtlas_1
+  - first:
+      213: -1557427634611322444
+    second: UnoTextureAtlas_2
+  - first:
+      213: 434043706909133428
+    second: UnoTextureAtlas_3
+  - first:
+      213: 4578995196042205921
+    second: UnoTextureAtlas_4
+  - first:
+      213: -2654211007156624011
+    second: UnoTextureAtlas_5
+  - first:
+      213: 7369042419110406364
+    second: UnoTextureAtlas_6
+  - first:
+      213: -8113415835366484147
+    second: UnoTextureAtlas_7
+  - first:
+      213: -4295180417434720627
+    second: UnoTextureAtlas_8
+  - first:
+      213: 7851609001024104146
+    second: UnoTextureAtlas_9
+  - first:
+      213: 160965285291909337
+    second: UnoTextureAtlas_10
+  - first:
+      213: 6136606334529143270
+    second: UnoTextureAtlas_11
+  - first:
+      213: 156533833822431622
+    second: UnoTextureAtlas_12
+  - first:
+      213: -5055944071250057069
+    second: UnoTextureAtlas_13
+  - first:
+      213: -4851975608960175506
+    second: UnoTextureAtlas_14
+  - first:
+      213: 5390798597658136219
+    second: UnoTextureAtlas_15
+  - first:
+      213: 417282998663341072
+    second: UnoTextureAtlas_16
+  - first:
+      213: -1704162469169959648
+    second: UnoTextureAtlas_17
+  - first:
+      213: -2873188593097776491
+    second: UnoTextureAtlas_18
+  - first:
+      213: -6056866872593512478
+    second: UnoTextureAtlas_19
+  - first:
+      213: -7279451698390317829
+    second: UnoTextureAtlas_20
+  - first:
+      213: 2441948755095315764
+    second: UnoTextureAtlas_21
+  - first:
+      213: -1185372714638435051
+    second: UnoTextureAtlas_22
+  - first:
+      213: 105036663350865946
+    second: UnoTextureAtlas_23
+  - first:
+      213: 4183208931370552919
+    second: UnoTextureAtlas_24
+  - first:
+      213: -8692632498507268273
+    second: UnoTextureAtlas_25
+  - first:
+      213: 8617113777627795950
+    second: UnoTextureAtlas_26
+  - first:
+      213: -880481734343150164
+    second: UnoTextureAtlas_27
+  - first:
+      213: -105314367929602912
+    second: UnoTextureAtlas_28
+  - first:
+      213: 3803096825467231559
+    second: UnoTextureAtlas_29
+  - first:
+      213: -7464268579628756609
+    second: UnoTextureAtlas_30
+  - first:
+      213: -2292558877046085073
+    second: UnoTextureAtlas_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CardColourField2
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 1238
+        width: 281
+        height: 474
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217f23ff3e027214cacd15b1294b050c
+      internalID: 1205293463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardColourField1
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1238
+        width: 281
+        height: 474
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bbcc160a229e8648943743c559945c3
+      internalID: -361390898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardBackground
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1216
+        width: 320
+        height: 517
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d92b4fbb267bc8641a106ce9f7371f7e
+      internalID: -1244998119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CenterColourField
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 869
+        width: 262
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3abb9cb86a709429186704a0d21da5
+      internalID: 2099089056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wild
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 869
+        width: 261
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e10280c5e234da4cb52c9df8914c38b
+      internalID: 779165519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TL
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 1018
+        width: 169
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3540720363d053043b5bbb255aa4ca98
+      internalID: -2028858365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TR
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 983
+        width: 121
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf7fc8384083fb4db39c037e11b063c
+      internalID: 1992458340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reverse
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 907
+        width: 149
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfd6dd9e2ee5e34192825af08a3653a
+      internalID: -179437700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plus2
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 924
+        width: 156
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c962c7a9247b6f54e9131229c77a583b
+      internalID: -1056693036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildRed
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 718
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20153f2978792cc4a95b251b76901ac8
+      internalID: 954721888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildBlue
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 718
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef85f2b7aee784942a7b1d97c2825928
+      internalID: 1686782474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BL
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 818
+        width: 121
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b5a0036bcc08a48949d19738c5fa77
+      internalID: 1275660092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BR
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 830
+        width: 170
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf05bfc3f7c748e49a39ced83e97a000
+      internalID: 2055692726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plus4Coloured
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 670
+        width: 217
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c45264c66a6def4f9797097fa4c512a
+      internalID: -960350907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plus4
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 670
+        width: 218
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3305e209810ac48bde9f3b69b09919
+      internalID: -1310255849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skip
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 606
+        width: 198
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264f0f1ec622b4d4f926059b94e57c78
+      internalID: -982902076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildGreen
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 546
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ded38eb13093a047b2a53b9c734aa7f
+      internalID: 1912434930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildYellow
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 546
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de8d186475bc2d45a80a3992b4678ff
+      internalID: 1179030018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnoTextureAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 626
+        width: 134
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a31a45a7532a14796d92dbe89efaeb
+      internalID: 1881319948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnoTextureAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 626
+        width: 134
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a89a9c1a1fdbf48b2dbada192a0412
+      internalID: 2122647004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnoTextureAtlas_21
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 454
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476b9eac3da29f24ca1004517337fd90
+      internalID: -64674804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnoTextureAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 454
+        width: 134
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67695abdd974ea48a199ddb30b034a4
+      internalID: 277100482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CardOutline
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 247
+        width: 222
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0f70eb271a4994fabf86697da9333a
+      internalID: -1794615099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Circle
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 229
+        width: 189
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eada25f2f214a042b358da2a57d22bb
+      internalID: 497654657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RectangleRounded
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 233
+        width: 186
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e144854604941445ae2c35719ab9f52
+      internalID: 1212985630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowOutline
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 242
+        width: 223
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d213af779fff83f4a8f8567105a51430
+      internalID: -1483987486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RoundedRectangleField
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 236
+        width: 178
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 80, y: 80, z: 80, w: 80}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac07111937937b8488cc7070ddd4e359
+      internalID: 1005006252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CircleGlow
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 3
+        width: 213
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e602683db7db08b40911d6cd213eda18
+      internalID: 1073936087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RectangleGlow
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 7
+        width: 209
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3942583aef4cb52438eb1afee6d1318c
+      internalID: 170448272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullArrow
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 47
+        width: 214
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04e8f0aa4c7462644b361bc6f30d3bc3
+      internalID: 1883368767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cards1
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 0
+        width: 216
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f5ff341c531ee4da132d6d315163f2
+      internalID: -907073785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d7feec269d2e1db4a9a37cc87bf3f8cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ArrowOutline: -1483987486
+      BL: 1275660092
+      BR: 2055692726
+      CardBackground: -1244998119
+      CardColourField1: -361390898
+      CardColourField2: 1205293463
+      CardOutline: -1794615099
+      Cards1: -907073785
+      CenterColourField: 2099089056
+      Circle: 497654657
+      CircleGlow: 1073936087
+      FullArrow: 1883368767
+      Plus2: -1056693036
+      Plus4: -1310255849
+      Plus4Coloured: -960350907
+      RectangleGlow: 170448272
+      RectangleRounded: 1212985630
+      Reverse: -179437700
+      RoundedRectangleField: 1005006252
+      Skip: -982902076
+      TL: -2028858365
+      TR: 1992458340
+      UnoTextureAtlas_19: 1881319948
+      UnoTextureAtlas_20: 2122647004
+      UnoTextureAtlas_21: -64674804
+      UnoTextureAtlas_22: 277100482
+      UnoTextureAtlas_3: 1928706589
+      Wild: 779165519
+      WildBlue: 1686782474
+      WildGreen: 1912434930
+      WildRed: 954721888
+      WildYellow: 1179030018
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
