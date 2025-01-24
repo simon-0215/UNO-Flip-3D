@@ -8,7 +8,7 @@ public enum CardColour
         BLUE,
         GREEN,
         YELLOW,
-        BLACK
+        NONE
     }
 
     public enum CardValue
@@ -30,6 +30,7 @@ public enum CardColour
         PLUS_FOUR
     }
 
+[System.Serializable]
 public class Card
 {
     
@@ -38,7 +39,7 @@ public class Card
 
     public Card(CardColour colour, CardValue value)
     {
-        cardColour = colour;
-        cardValue = value;
+        this.colour = colour;
+        this.CardValue = value;
     }
 }

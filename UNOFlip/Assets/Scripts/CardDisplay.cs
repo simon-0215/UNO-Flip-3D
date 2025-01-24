@@ -45,41 +45,151 @@ public class CardDisplay : MonoBehaviour
         [SerializeField] Image topRightBR;
         [SerializeField] Image bottomRightBR;
 
+        // void OnValidate()
+        // {
+        //     //SetAllColours(CardColour.RED);
+        //     //SetAllColours(CardColour.BLUE);
+        //     //SetAllColours(CardColour.GREEN);
+        //     SetAllColours(CardColour.YELLOW);
+        //     //SetAllColours(CardColour.NONE);
+        // }
+
+        Card myCard;
+
+        public void SetCard(Card card)
+        {
+            myCard = card;
+            SetAllColours(card.colour);
+            SetValue(card.CardValue);
+        }
+        
         void SetAllColours(CardColour cardColour)
         {
             switch (cardColour)
             {
                 case CardColour.RED:
                 {
-                    baseCardColour.colour = red;
-                    imageCenter.colour = red;
+                    baseCardColour.color = red;
+                    imageCenter.color = red;
                 }
                 break;
                 case CardColour.BLUE:
                 {
-                    baseCardColour.colour = blue;
-                    imageCenter.colour = blue;
+                    baseCardColour.color = blue;
+                    imageCenter.color = blue;
                 }
                 break;
                 case CardColour.GREEN:
                 {
-                    baseCardColour.colour = green;
-                    imageCenter.colour = green;
+                    baseCardColour.color = green;
+                    imageCenter.color = green;
                 }
                 break;
                 case CardColour.YELLOW:
                 {
-                    baseCardColour.colour = yellow;
-                    imageCenter.colour = yellow;
+                    baseCardColour.color = yellow;
+                    imageCenter.color = yellow;
                 }
                 break;
                 case CardColour.NONE:
                 {
-                    baseCardColour.colour = black;
-                    imageCenter.colour = black;
+                    baseCardColour.color = black;
+                    imageCenter.color = black;
+
+                    //WILD CARDS
+                    topLeftCenter.color = red;
+                    bottomLeftCenter.color = yellow;
+                    topRightCenter.color = blue;
+                    bottomRightCenter.color = green;
+
+                    topLeftTL.color = red;
+                    bottomLeftTL.color = yellow;
+                    topRightTL.color = blue;
+                    bottomRightTL.color = green;
+
+                    topLeftBR.color = red;
+                    bottomLeftBR.color = yellow;
+                    topRightBR.color = blue;
+                    bottomRightBR.color = green;
                 }
                 break;
+
+                
             }
         }        
 
+        void SetValue(CardValue CardValue)
+        {
+            //DEACTIVATE SPECIAL CARDS
+            wildImageCenter.SetActive(false);
+            wildImageTL.SetActive(false);
+            wildImageBR.SetActive(false);
+            valueImageCenter.gameObject.SetActive(false);
+            valueImageTL.gameObject.SetActive(false);
+            valueImageBR.gameObject.SetActive(false);
+            switch (CardValue)
+            {
+                case CardValue.SKIP:
+                {
+                    valueImageCenter.sprite = skip;
+                    valueImageCenter.gameObject.SetActive(true);
+                    valueImageTL.sprite = skip;
+                    valueImageTL.gameObject.SetActive(true);
+                    valueImageBR.sprite = skip;
+                    valueImageBR.gameObject.SetActive(true);
+                    valueTextCenter.text = "";
+                    valueTextTL.text = "";
+                    valueTextBR.text = "";
+                }
+                break;
+                case CardValue.REVERSE:
+                {
+                    valueImageCenter.sprite = reverse;
+                    valueImageCenter.gameObject.SetActive(true);
+                    valueImageTL.sprite = reverse;
+                    valueImageTL.gameObject.SetActive(true);
+                    valueImageBR.sprite = reverse;
+                    valueImageBR.gameObject.SetActive(true);
+                    valueTextCenter.text = "";
+                    valueTextTL.text = "";
+                    valueTextBR.text = "";
+                }
+                break;
+                case CardValue.PLUS_TWO:
+                {
+                    valueImageCenter.sprite = plusTwo;
+                    valueImageCenter.gameObject.SetActive(true);
+                    valueTextCenter.text = "";
+                    valueTextTL.text = "+2";
+                    valueTextBR.text = "+2";
+                }
+                break;
+                case CardValue.PLUS_FOUR:
+                {
+                    valueImageCenter.sprite = plusFour;
+                    valueImageCenter.gameObject.SetActive(true);
+                    valueTextCenter.text = "";
+                    valueTextTL.text = "+4";
+                    valueTextBR.text = "+4";
+                }
+                break;
+                case CardValue.WILD:
+                {
+                    wildImageCenter.SetActive(true);
+                    wildImageTL.SetActive(true);
+                    wildImageBR.SetActive(true);
+                    valueTextCenter.text = "";
+                    valueTextTL.text = "";
+                    valueTextBR.text = "";
+                }
+                break;
+                default:
+                {
+                    valueTextCenter.text = ((int)CardValue).ToString();
+                    valueTextTL.text = ((int)CardValue).ToString();
+                    valueTextBR.text = ((int)CardValue).ToString();
+                }
+                break;
+            }
+        }
 }
