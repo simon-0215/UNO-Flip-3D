@@ -64,6 +64,9 @@ public class Deck : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.instance.DrawCardFromDeck();
+        if(GameManager.instance.humanHasTurn)
+        {
+            GameManager.instance.DrawCardFromDeck();
+        }
     }
 }

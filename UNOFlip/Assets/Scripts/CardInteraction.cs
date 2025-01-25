@@ -27,7 +27,7 @@ public class CardInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(cardDisplay.Owner.IsHuman)
+        if(cardDisplay.Owner.IsHuman && GameManager.instance.humanHasTurn)
         {
         //PLAY THE CARD
         GameManager.instance.PlayCard(cardDisplay);

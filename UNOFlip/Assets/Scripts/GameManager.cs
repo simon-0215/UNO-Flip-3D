@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] int numberOfAiPlayers = 3;
     [SerializeField] int startingHandSize = 7;
     int currentPlayer = 0;
+    int playDirection = 1; //1 //-1
     [Header("Game Play")]
     [SerializeField] Transform discardPileTransform;
     [SerializeField] CardDisplay topCard;
+    public bool humanHasTurn{get; private set;} 
 
 
     void Awake()
@@ -96,8 +99,18 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
+
+        //HAND OUT TOP CARD
+        Card pileCard = deck.DrawCard();
+        GameObject newCard = Instantiate(cardPrefab);
+        MoveCardToPile(newCard);
+        CardDisplay display = newCard.GetComponentInChildren<CardDisplay>();
+        display.SetCard(pileCard,null);
+        display.ShowCard();
+        newCard.GetComponentInChildren<CardInteraction>().enabled = false; 
         //START GAME
         Debug.Log("Game Started");
+        humanHasTurn = true;
     }
 
     public void PlayCard(CardDisplay cardDisplay)
@@ -119,13 +132,18 @@ public class GameManager : MonoBehaviour
     {
         currentCard.transform.SetParent(discardPileTransform);
         currentCard.transform.localPosition = Vector3.zero;
-        //currentCard.transform.localScale = Vector3.one;
+        currentCard.transform.localScale = Vector3.one;
 
+        RectTransform cardRect = currentCard.GetComponent<RectTransform>();
+        RectTransform pileRect = discardPileTransform.GetComponent<RectTransform>();
+        
+        cardRect.sizeDelta = pileRect.sizeDelta;
         //UNHIDE CARD
     }
     void OnCardPlayed()
     {
-
+        //DO ALL EFFECTS NEEDED
+        SwitchPlayer();
     }
 
     public void DrawCardFromDeck()
@@ -155,4 +173,25 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void SwitchPlayer()
+    {
+        humanHasTurn = false;
+        currentPlayer+= playDirection;
+        if (currentPlayer >= players.Count)
+        {
+            currentPlayer = 0;
+        }
+        else if(currentPlayer < 0)
+        {
+            currentPlayer = players.Count-1;
+        }
+        if (players[currentPlayer].IsHuman)
+        {
+            humanHasTurn = true;
+        }
+        else //AI PLAYER
+        {
+            //DO AI STUFF TIME BASED
+        }
+    }
 }
