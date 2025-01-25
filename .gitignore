@@ -324,3 +324,6 @@ sysinfo.txt
 # OS-specific files
 .DS_Store
 Thumbs.db
+UNOFlip/.vscode/extensions.json
+UNOFlip/.vscode/launch.json
+UNOFlip/.vscode/settings.json

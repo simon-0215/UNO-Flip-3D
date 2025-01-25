@@ -34,12 +34,12 @@ public enum CardColour
 public class Card
 {
     
-    public CardColour colour;
-    public CardValue CardValue;    
+    public CardColour cardColour;
+    public CardValue cardValue;    
 
     public Card(CardColour colour, CardValue value)
     {
-        this.colour = colour;
-        this.CardValue = value;
+        this.cardColour = colour;
+        this.cardValue = value;
     }
 }

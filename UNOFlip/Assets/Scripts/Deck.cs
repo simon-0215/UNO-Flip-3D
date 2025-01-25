@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Deck : MonoBehaviour
+public class Deck : MonoBehaviour, IPointerClickHandler
 {
     List<Card> cardDeck = new List<Card>();
     // Start is called before the first frame update
@@ -59,5 +60,10 @@ public class Deck : MonoBehaviour
             cardDeck.RemoveAt(0);
             return drawnCard;
         
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameManager.instance.DrawCardFromDeck();
     }
 }
