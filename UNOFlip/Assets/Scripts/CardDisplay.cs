@@ -6,13 +6,11 @@ using TMPro;
 
 public class CardDisplay : MonoBehaviour
 {
-
-    [Header("Colours")]
-    [SerializeField] Color32 red;
-    [SerializeField] Color32 blue;
-    [SerializeField] Color32 green;
-    [SerializeField] Color32 yellow;
-    [SerializeField] Color32 black;
+    Color32 red;
+    Color32 blue;
+    Color32 green;
+    Color32 yellow;
+    Color32 black;
     [Header("Sprites")]
     [SerializeField] Sprite reverse;
     [SerializeField] Sprite skip;
@@ -64,6 +62,13 @@ public class CardDisplay : MonoBehaviour
 
     public void SetCard(Card card, Player owner)
     {
+        var Colours = GameManager.instance.GetColours();
+        red = Colours.red;
+        blue = Colours.blue;
+        green = Colours.green;
+        yellow = Colours.yellow;
+        black = Colours.black;
+
         myCard = card;
         SetAllColours(card.cardColour);
         SetValue(card.cardValue);

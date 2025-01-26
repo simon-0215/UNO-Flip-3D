@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Deck : MonoBehaviour, IPointerClickHandler
 {
     List<Card> cardDeck = new List<Card>();
+    List<Card> usedCardDeck = new List<Card>();
+
     // Start is called before the first frame update
     // void Start()
     // {
@@ -53,6 +55,15 @@ public class Deck : MonoBehaviour, IPointerClickHandler
     {
         if (cardDeck.Count == 0)
         {
+            //DECK IS EMPTY SHUFFLE IN USED CARDS
+            cardDeck.AddRange(usedCardDeck);
+            usedCardDeck.Clear();
+            ShuffleDeck();
+            
+            if (usedCardDeck.Count == 0)
+            {
+                return null;
+            }
             return null;
         }
         
@@ -64,9 +75,15 @@ public class Deck : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(GameManager.instance.humanHasTurn)
+        if(GameManager.instance.humanHasTurn && !GameManager.instance.CanPlayAnyCard())
         {
             GameManager.instance.DrawCardFromDeck();
         }
+    }
+
+    //ADD USED CARDS TO USED DECK
+    public void AddUsedCard(Card card)
+    {
+        usedCardDeck.Add(card);
     }
 }

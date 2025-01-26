@@ -11,8 +11,8 @@ public class AiPlayer : Player
     }
 
     //AI LOGIC
-    public void TakeTurn()
+    public override void TakeTurn()
     {
-        
+        Debug.Log("AI TURN");
     }
 }
