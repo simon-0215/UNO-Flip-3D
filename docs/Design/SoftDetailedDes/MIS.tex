@@ -23,7 +23,7 @@
 \hypersetup{
 bookmarks=true,     % show bookmarks bar?
 colorlinks=true,       % false: boxed links; true: colored links
-linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
 citecolor=blue,      % color of links to bibliography
 filecolor=magenta,  % color of file links
 urlcolor=cyan          % color of external links
@@ -80,7 +80,7 @@ See MG document at \url{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs
 
 UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with ”light” and ”dark” sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
 
-Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found at \url{https://github.com/simon-0215/UNO-Flip-3D/tree/main}. 
+Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found in \href{https://github.com/simon-0215/UNO-Flip-3D/tree/main}{here}. 
 
 
 \section{Notation}
@@ -90,7 +90,7 @@ Complementary documents include the System Requirement Specifications and Module
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
 with the addition that template modules have been adapted from
 \cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-\citet{HoffmanAndStrooper1995}. Template used from the SFWRENG 4G06 GitHub at \url{https://github.com/smiths/capTemplate/tree/main/docs/Design/SoftDetailedDes} 
+\citet{HoffmanAndStrooper1995}. Template used from the SFWRENG 4G06 GitHub in \href{https://github.com/smiths/capTemplate/tree/main/docs/Design/SoftDetailedDes}{here}. 
 
 The following table summarizes the primitive data types used by \progname{UnoFlip3D}. 
 
@@ -140,31 +140,32 @@ The following description is taken directly from the Module Guide document for t
 \subsection{Hardwire-Hiding Modules}
 
 \begin{itemize}
-\item \textbf{Backend/Server Module:} Serves as a virtual hardware used by the rest of the system. This module provides the interface between the hardware and the software, allowing the system to display
+\item \hyperref[BSM]{\textbf{Backend/Server Module:}} Serves as a virtual hardware used by the rest of the system. This module provides the interface between the hardware and the software, allowing the system to display
 outputs or accept inputs.
 \end{itemize}
 
 \subsection{Behaviour-Hiding Modules:} 
 
 \begin{itemize}
-\item \textbf{Card Effect Module:} Executes the effects of special cards and updates the game state accordingly
-\item \textbf{Turn Management Module:} Manages the order of player turns, including handling special conditions like ”Reverse” or ”Skip” cards.
-\item \textbf{User Interface Module:} Displays the game state to the user and accepts user inputs through various interactive elements.
-\item \textbf{Save/Load Module:} Allows saving the current game state and loading it at a later time.
-\item \textbf{Animation Module:} Provides animations for card movements, flips, and game interactions.
-\item \textbf{Output Module:} Provides visual or textual outputs to the user based on the game state
+\item \hyperref[CEM]{\textbf{Card Effect Module:}} Executes the effects of special cards and updates the game state accordingly
+\item \hyperref[TMM]{\textbf{Turn Management Module:}} Manages the order of player turns, including handling special conditions like ”Reverse” or ”Skip” cards.
+\item \hyperref[UIM]{\textbf{User Interface Module:}} Displays the game state to the user and accepts user inputs through various interactive elements.
+\item \hyperref[SLM]{\textbf{Save/Load Module:}} Allows saving the current game state and loading it at a later time.
+\item \hyperref[AM]{\textbf{Animation Module:}} Provides animations for card movements, flips, and game interactions.
+\item \hyperref[OM]{\textbf{Output Module:}} Provides visual or textual outputs to the user based on the game state
 \end{itemize}
 
 \subsection{Software Decision Modules}
 
 \begin{itemize}
-\item \textbf{Multiplayer Networking Module:} Handles communication between players, including matchmaking, game state synchronization, and latency management.
-\item \textbf{Verification Output Module:} Validates the final output of the game, ensuring compliance with rules and expected results.
-\item \textbf{Input Module:} Converts the input data into the data structure used by other modules, such as the game logic or UI modules.
+\item \hyperref[MNM]{\textbf{Multiplayer Networking Module:}} Handles communication between players, including matchmaking, game state synchronization, and latency management.
+\item \hyperref[VOM]{\textbf{Verification Output Module:}} Validates the final output of the game, ensuring compliance with rules and expected results.
+\item \hyperref[IM]{\textbf{Input Module:}} Converts the input data into the data structure used by other modules, such as the game logic or UI modules.
 \end{itemize}
 
 
 \section{MIS of Backend/Server Module} 
+\label{BSM}
 
 \subsection{Module}
 \hspace{1.5em}Backend/Server
@@ -249,6 +250,7 @@ outputs or accept inputs.
 
 
 \section{MIS of Card Effect Module} 
+\label{CEM}
 
 \subsection{Module}
 \hspace{1.5em}Card Effect
@@ -326,6 +328,7 @@ outputs or accept inputs.
 
 
 \section{MIS of Turn Management Module} 
+\label{TMM}
 
 \subsection{Module}
 \hspace{1.5em}Turn Management
@@ -397,6 +400,7 @@ outputs or accept inputs.
 
 
 \section{MIS of User Interface Module} 
+\label{UIM}
 
 \subsection{Module}
 \hspace{1.5em}User Interface
@@ -511,6 +515,7 @@ outputs or accept inputs.
 
 
 \section{MIS of Save/Load Module} 
+\label{SLM}
 
 \subsection{Module}
 \hspace{1.5em}Save/Load
@@ -572,14 +577,11 @@ outputs or accept inputs.
 \end{itemize}
 
 
-%Section 7
 
-
-
-%Section 8
 
 
 \section{MIS of Animation Module} 
+\label{AM}
 
 \subsection{Module}
 \hspace{1.5em}Animation
@@ -647,13 +649,10 @@ outputs or accept inputs.
 \textbf{Description:} Apply the visual effect to the user screen based on the id provided and update local state variables
 \end{itemize}
 
-%Section 9
 
-
-
-%Section 10
 
 \section{MIS of Output Module} 
+\label{OM}
 
 \subsection{Module}
 \hspace{1.5em}Output
@@ -706,6 +705,7 @@ $\rightarrow$ void\\
 
 
 \section{MIS of Multiplayer Networking Module} 
+\label{MNM}
 
 \subsection{Module}
 \hspace{1.5em}Multiplayer Networking
@@ -771,7 +771,8 @@ $\rightarrow$ void\\
 \end{itemize}
 
 
-\section{MIS of Verification Output Module} 
+\section{MIS of Verification Output Module}
+\label{VOM}
 
 \subsection{Module}
 \hspace{1.5em}Verification Output
@@ -836,9 +837,10 @@ $\rightarrow$ void\\
 
 
 
-%Section 11
+
 
 \section{MIS of Input Module} 
+\label{IM}
 
 \subsection{Module}
 \hspace{1.5em}Input
