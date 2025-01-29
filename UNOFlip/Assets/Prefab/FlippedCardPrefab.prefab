@@ -453,7 +453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2462554415184165966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 4547009979144703469}
   - component: {fileID: 5388560539626874575}
   - component: {fileID: 577305675708000267}
+  - component: {fileID: 3301733379828276415}
   m_Layer: 0
   m_Name: FlippedCardPrefab
   m_TagString: Untagged
@@ -819,6 +820,61 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3301733379828276415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676902678337388510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62884033cb5b54c82bbfb9f6e0d17540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  red:
+    serializedVersion: 2
+    rgba: 5439703
+  blue:
+    serializedVersion: 2
+    rgba: 4922456
+  green:
+    serializedVersion: 2
+    rgba: 8160768
+  yellow:
+    serializedVersion: 2
+    rgba: 2458098
+  black:
+    serializedVersion: 2
+    rgba: 0
+  reverse: {fileID: 0}
+  skip: {fileID: 0}
+  plusTwo: {fileID: 0}
+  plusFour: {fileID: 0}
+  baseCardColour: {fileID: 0}
+  imageCenter: {fileID: 0}
+  valueImageCenter: {fileID: 0}
+  valueTextCenter: {fileID: 0}
+  wildImageCenter: {fileID: 0}
+  topLeftCenter: {fileID: 0}
+  bottomLeftCenter: {fileID: 0}
+  topRightCenter: {fileID: 0}
+  bottomRightCenter: {fileID: 0}
+  valueImageTL: {fileID: 0}
+  valueTextTL: {fileID: 0}
+  wildImageTL: {fileID: 0}
+  topLeftTL: {fileID: 0}
+  bottomLeftTL: {fileID: 0}
+  topRightTL: {fileID: 0}
+  bottomRightTL: {fileID: 0}
+  valueImageBR: {fileID: 0}
+  valueTextBR: {fileID: 0}
+  wildImageBR: {fileID: 0}
+  topLeftBR: {fileID: 0}
+  bottomLeftBR: {fileID: 0}
+  topRightBR: {fileID: 0}
+  bottomRightBR: {fileID: 0}
+  cardBack: {fileID: 0}
 --- !u!1 &3795815836113147187
 GameObject:
   m_ObjectHideFlags: 0
