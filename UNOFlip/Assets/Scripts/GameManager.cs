@@ -199,7 +199,16 @@ public class GameManager : MonoBehaviour
         //ADD THE CARD BACK TO USED CARDS DECK
         deck.AddUsedCard(cardToPlay);
         // SWITCH PLAYER
-        SwitchPlayer(); //NOT SUPPOSED TO BE HERE?
+        if (cardToPlay.cardValue != CardValue.SKIP)
+        {
+            SwitchPlayer();
+        }
+        else
+        {
+            SkipPlayer();
+        }
+        
+        //NOT SUPPOSED TO BE HERE?
     }
 
     //FIND CARDISPLAY
@@ -241,19 +250,19 @@ public class GameManager : MonoBehaviour
 
         ApplyCardEffects(playedCard);
         //DO ALL EFFECTS NEEDED
-        if(playedCard.cardValue != CardValue.SKIP)
-        {
-            return;
-            //SwitchPlayer();
-        }
-        if(playedCard.cardColour == CardColour.NONE && players[currentPlayer].IsHuman)
-        {
-            return;
-        }
-        if(players[currentPlayer].IsHuman)
-        {
-            SwitchPlayer();
-        }
+        // if(playedCard.cardValue != CardValue.SKIP)
+        // {
+        //     return;
+        //     //SwitchPlayer();
+        // }
+        // if(playedCard.cardColour == CardColour.NONE && players[currentPlayer].IsHuman)
+        // {
+        //     return;
+        // }
+        // if(players[currentPlayer].IsHuman)
+        // {
+        //     SkipPlayer();
+        // }
     }
 
     public void DrawCardFromDeck()
@@ -303,7 +312,7 @@ public class GameManager : MonoBehaviour
             {
                 DrawCardFromDeck();
             }
-            SkipPlayer();
+            SwitchPlayer();
             return;
         }
         //CHECK WIN CONDITION
@@ -316,7 +325,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(players[currentPlayer].playerName + " WINS");
             return;
         }
-
+        
         if(skipTurn)
         {
             currentPlayer = (currentPlayer + 2 * playDirection + numberOfPlayer) % numberOfPlayer;
@@ -362,7 +371,7 @@ public class GameManager : MonoBehaviour
     }
 
     //APPLY SPECIAL CARD EFFECTS
-    void ApplyCardEffects(Card playedCard)
+    void ApplyCardEffects(Card playedCard, bool skipTurn = false)
     {
         switch (playedCard.cardValue)
         {
@@ -374,7 +383,7 @@ public class GameManager : MonoBehaviour
                 MakeNextPlayerDrawCards(4);
                 break;
             case CardValue.SKIP:
-                SkipPlayer();
+                // SkipPlayer();
                 break;
             case CardValue.REVERSE:
                 ReversePlayOrder();
@@ -476,7 +485,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
     }
 
     public (Color32 red, Color32 blue, Color32 green, Color32 yellow, Color32 black) GetColours()
@@ -590,7 +599,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SwitchPlayerDelayed()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         SwitchPlayer();
     }
 }
