@@ -303,6 +303,7 @@ public class GameManager : MonoBehaviour
             {
                 DrawCardFromDeck();
             }
+            SkipPlayer();
             return;
         }
         //CHECK WIN CONDITION
@@ -453,18 +454,29 @@ public class GameManager : MonoBehaviour
     }
 
     //CHOSE NEXT COLOUR
+    IEnumerator ChooseNewColourCoroutine()
+    {
+        UpdateMessageBox("CHOOSE NEW COLOUR");
+        wildPanel.SetActive(true);
+        yield return StartCoroutine(Delay()); // Now it properly delays
+    }
+
     void ChooseNewColour()
     {
-        if(players[currentPlayer].IsHuman)
+        if (players[currentPlayer].IsHuman)
         {
-            UpdateMessageBox("CHOOSE NEW COLOUR");
-            wildPanel.SetActive(true);
+            StartCoroutine(ChooseNewColourCoroutine()); // Start coroutine instead
             return;
         }
         else
         {
-            //AI PLAYER
+            // AI PLAYER logic
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(5f);
     }
 
     public (Color32 red, Color32 blue, Color32 green, Color32 yellow, Color32 black) GetColours()
@@ -548,7 +560,7 @@ public class GameManager : MonoBehaviour
         unoCalled = true;
     }
 
-    void UpdatePlayerHighlights()
+    public void UpdatePlayerHighlights()
     {
         for (int i = 0; i < players.Count; i++)
         {

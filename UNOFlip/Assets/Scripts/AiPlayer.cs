@@ -38,6 +38,7 @@ public class AiPlayer : Player
             GameManager.instance.UpdateMessageBox(playerName + "HAS NO PLAYABLE CARD - SWITCH");
             //GameManager.instance.SwitchPlayer();
             GameManager.instance.AiSwitchPlayer();
+            GameManager.instance.UpdatePlayerHighlights();
         }
         else
         {
@@ -61,7 +62,7 @@ public class AiPlayer : Player
             }
             //ELSE
             //GameManager.instance.SwitchPlayer();
-            GameManager.instance.AiSwitchPlayer();
+            //GameManager.instance.AiSwitchPlayer();
         }
     }
 
