@@ -5,8 +5,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     public static GameManager instance;
 
@@ -18,7 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject cardPrefab;
     [SerializeField] int numberOfAiPlayers = 3;
     [SerializeField] int startingHandSize = 7;
-    int currentPlayer = 0;
+    //int currentPlayer = 0;
+    [SyncVar] private int currentPlayer = 0;
     int playDirection = 1; //1 //-1
     [Header("Game Play")]
     [SerializeField] Transform discardPileTransform;
@@ -89,6 +91,19 @@ public class GameManager : MonoBehaviour
             players.Add(new AiPlayer("AI" + (i+1)));
         }
     }
+    public void OnStartServer()
+    {
+        base.OnStartServer();
+        players.Clear();
+
+        foreach (var player in FindObjectsByType<Player>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+)
+        {
+            players.Add(player);
+        }
+
+        StartCoroutine(DealStartingCards());
+    }
 
     void DealCards()
     {
@@ -105,6 +120,14 @@ public class GameManager : MonoBehaviour
 
         //DISPLAY AI HAND  
     }
+    [ClientRpc]
+    void RpcMoveCardToPile(Card card)
+    {
+        GameObject newCard = Instantiate(cardPrefab, discardPileTransform);
+        CardDisplay display = newCard.GetComponentInChildren<CardDisplay>();
+        display.SetCard(card, null);
+    }
+
 
     IEnumerator DealStartingCards()
     {
@@ -164,6 +187,17 @@ public class GameManager : MonoBehaviour
         CardColour[] colours = (CardColour[])System.Enum.GetValues(typeof(CardColour));
         int randomIndex = UnityEngine.Random.Range(0, colours.Length - 1);
         return colours[randomIndex];
+    }
+    [Command]
+    public void CmdPlayCard(Player player, Card card)
+    {
+        if (players[currentPlayer] == player && IsPlayable(card))
+        {
+            RpcMoveCardToPile(card);
+            deck.AddUsedCard(card);
+            OnCardPlayed(card);
+            SwitchPlayer();
+        }
     }
 
     public void PlayCard(CardDisplay cardDisplay = null, Card card = null)
@@ -265,91 +299,66 @@ public class GameManager : MonoBehaviour
         // }
     }
 
-    public void DrawCardFromDeck()
+    public Card DrawCardFromDeck()
     {
-        Card drawnCard = deck.DrawCard();
+        Card drawnCard = deck.DrawCard(); // 服务器从牌堆抽卡
         Player player = players[currentPlayer];
 
-        if (drawnCard!=null)
+        if (drawnCard != null)
         {
             player.DrawCard(drawnCard);
 
-            //VISUALISE CARDS
-            Transform hand = player.IsHuman ? playerHandTransform : aiHandTransform[players.IndexOf(player)-1];
+            // 显示卡片
+            Transform hand = player.IsHuman ? playerHandTransform : aiHandTransform[players.IndexOf(player) - 1];
             GameObject card = Instantiate(cardPrefab, hand, false);
 
-            //DRAW CARDS
-            CardDisplay cardDisplay =  card.GetComponentInChildren<CardDisplay>();
-            cardDisplay.SetCard(drawnCard, player); //ONLY FOR HUMAN
+            // 设置卡片信息
+            CardDisplay cardDisplay = card.GetComponentInChildren<CardDisplay>();
+            cardDisplay.SetCard(drawnCard, player);
 
-            //FOR AI PLAYERS
+            // AI 处理
             if (player.IsHuman)
             {
-                //SHOW BACK OF CARD
                 cardDisplay.ShowCard();
             }
-            //SEE IF WE HAVE A PLAYABLE CARD - IF NOT SWITCH PLAYER
-            if(!CanPlayAnyCard() && player.IsHuman)
+
+            // 检查是否可以出牌，如果不能出牌，换下一个玩家
+            if (!CanPlayAnyCard() && player.IsHuman)
             {
                 Debug.Log("No Playable Card, Go next player");
                 SwitchPlayer();
-                //MESSAGE TO PLAYER
             }
         }
+
+        return drawnCard; // ✅ 返回抽到的卡
     }
 
-    public void SwitchPlayer(bool skipTurn = false)
+
+      // Ensures turn sync across all clients
+
+    [Server] // Ensures this function is only executed on the server
+    void SwitchPlayer()
     {
-        humanHasTurn = false;
-        int numberOfPlayer = players.Count;
+        // Determine the next player in order
+        currentPlayer = (currentPlayer + playDirection + players.Count) % players.Count;
 
-        if(players[currentPlayer].playerHand.Count == 1 && !unoCalled)
-        {
-            //LET PLAYER KNOW FORGOT TO CALL UNO
-            UpdateMessageBox("YOU FORGOT TO CALL UNO, DRAW 2 CARDS");
-            //DRAW 2 CARDS
-            for (int i = 0; i < 2; i++)
-            {
-                DrawCardFromDeck();
-            }
-            SwitchPlayer();
-            return;
-        }
-        //CHECK WIN CONDITION
-        if(CheckWinCondition())
-        {
-            winPanel.SetActive(true);
-            winningText.text = players[currentPlayer].playerName + " WINS";
-            UpdateMessageBox(players[currentPlayer].playerName + " WINS");
-            //END GAME
-            Debug.Log(players[currentPlayer].playerName + " WINS");
-            return;
-        }
-        
-        if(skipTurn)
-        {
-            currentPlayer = (currentPlayer + 2 * playDirection + numberOfPlayer) % numberOfPlayer;
-        }
-        else
-        {
-            currentPlayer = (currentPlayer + playDirection + numberOfPlayer) % numberOfPlayer;
-        }
-        //UPDATE CARD AMOUNT AND HIGHLIGHT PLAYER
-        UpdatePlayerHighlights();
+        // Notify all clients about the player turn change
+        RpcUpdateCurrentPlayer(currentPlayer);
 
-        //RESET UNO CALLED
-        unoCalled = false;
-        if (players[currentPlayer].IsHuman)
+        // If the next player is an AI, make the AI take its turn
+        if (!players[currentPlayer].IsHuman)
         {
-            UpdateMessageBox(players[currentPlayer].playerName + " TURN");
-            humanHasTurn = true;
-        }
-        else //AI PLAYER
-        {
-            Debug.Log(players[currentPlayer].playerName + " AI TURN");
             StartCoroutine(HandleAiTurn());
         }
     }
+
+    // This updates all clients with the new currentPlayer value
+    [ClientRpc]
+    void RpcUpdateCurrentPlayer(int newPlayerIndex)
+    {
+        currentPlayer = newPlayerIndex;
+    }
+
 
     public bool CanPlayAnyCard()
     {
@@ -411,7 +420,7 @@ public class GameManager : MonoBehaviour
     //SKIP NEXT PLAYER
     void SkipPlayer()
     {
-        SwitchPlayer(true); //SKIP TURN
+        SwitchPlayer(); //SKIP TURN
         //FEEDBACK TO HUMAN PLAYER
 
 

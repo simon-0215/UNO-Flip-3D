@@ -1,15 +1,9 @@
-using System.Collections;
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-[System.Serializable]
-public class Player
+public class Player : NetworkBehaviour
 {
-    public string playerName;
-    public List<Card> playerHand;
-    public bool IsHuman { get; private set; }
-
     public Player(string name, bool isHuman)
     {
         playerName = name;
@@ -17,10 +11,39 @@ public class Player
         IsHuman = isHuman;
     }
 
+    [SyncVar] public string playerName;
+    public List<Card> playerHand = new List<Card>();
+
+    public bool IsHuman { get; private set; }
+
     public void DrawCard(Card card)
     {
         playerHand.Add(card);
     }
+
+
+    public override void OnStartClient()
+    {
+        if (isLocalPlayer)
+        {
+            playerName = "Player " + connectionToClient.connectionId;
+        }
+    }
+
+    [Command]
+    void CmdDrawCard()
+    {
+        if (!isServer) return; // ֻ�з�����ִ��
+
+        Card drawnCard = GameManager.instance.DrawCardFromDeck();
+        if (drawnCard == null) return;
+
+        RpcDrawCard(drawnCard); // �����пͻ���ͬ������
+    }
+
+
+
+
 
     public void PlayCard(Card card)
     {
@@ -29,6 +52,16 @@ public class Player
 
     public virtual void TakeTurn(Card topCard, CardColour topColour)
     {
-        //HUMAN PLAYER
+        // ��������ʵ��
     }
+    [ClientRpc]
+    public void RpcDrawCard(Card card)
+    {
+        if (!isClient) return; // ȷ��ֻ�ڿͻ���ִ��
+
+        playerHand.Add(card);
+    }
+
+
+
 }

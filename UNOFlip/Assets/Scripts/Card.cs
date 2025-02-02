@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+
 public enum CardColour
     {
         RED,
@@ -10,6 +11,9 @@ public enum CardColour
         YELLOW,
         NONE
     }
+    
+
+
 
     public enum CardValue
     {
@@ -33,9 +37,11 @@ public enum CardColour
 [System.Serializable]
 public class Card
 {
-    
     public CardColour cardColour;
-    public CardValue cardValue;    
+    public CardValue cardValue;
+
+    
+    public Card() { }
 
     public Card(CardColour colour, CardValue value)
     {
