@@ -31,7 +31,7 @@ public class CardInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             //PLAY THE CARD
             LiftCard(false);
-            GameManager.instance.PlayCard(cardDisplay);
+            GameManager.instance.PlayCardWithDisplay(cardDisplay);
             Debug.Log("clicked a: " + cardDisplay.MyCard.cardColour.ToString() + cardDisplay.MyCard.cardValue.ToString());
         }
         

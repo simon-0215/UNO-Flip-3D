@@ -16,6 +16,7 @@ public class Player : NetworkBehaviour
 
     public bool IsHuman { get; private set; }
 
+    [Command]
     public void DrawCard(Card card)
     {
         playerHand.Add(card);
@@ -41,10 +42,7 @@ public class Player : NetworkBehaviour
         RpcDrawCard(drawnCard); // �����пͻ���ͬ������
     }
 
-
-
-
-
+    
     public void PlayCard(Card card)
     {
         playerHand.Remove(card);

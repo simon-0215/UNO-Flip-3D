@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : NetworkBehaviour
 {
     Color32 red;
     Color32 blue;
@@ -205,10 +206,13 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
+    [ClientRpc]
     public void ShowCard()
     {
         cardBack.SetActive(false);
     }
+
+    [ClientRpc]
     public void HideCard()
     {
         cardBack.SetActive(true);

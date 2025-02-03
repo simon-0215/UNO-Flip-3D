@@ -12,12 +12,13 @@ public class GameManager : NetworkBehaviour
     public static GameManager instance;
 
     public List<Player> players = new List<Player>();
+    
     [SerializeField] Deck deck;
 
     [SerializeField] Transform playerHandTransform; //HOLDS PLAYER HAND
     [SerializeField] List<Transform> aiHandTransform = new List<Transform>(); //HOLDS AI HANDS
     [SerializeField] GameObject cardPrefab;
-    [SerializeField] int numberOfAiPlayers = 3;
+    [SerializeField] int numberOfAiPlayers = 2;
     [SerializeField] int startingHandSize = 7;
     //int currentPlayer = 0;
     [SyncVar] private int currentPlayer = 0;
@@ -85,6 +86,7 @@ public class GameManager : NetworkBehaviour
     {
         players.Clear();
         players.Add(new Player("Player",true));
+        players.Add(new Player("Player 2",true));
 
         for (int i = 0; i < numberOfAiPlayers; i++)
         {
@@ -120,13 +122,13 @@ public class GameManager : NetworkBehaviour
 
         //DISPLAY AI HAND  
     }
-    [ClientRpc]
-    void RpcMoveCardToPile(Card card)
-    {
-        GameObject newCard = Instantiate(cardPrefab, discardPileTransform);
-        CardDisplay display = newCard.GetComponentInChildren<CardDisplay>();
-        display.SetCard(card, null);
-    }
+    // [ClientRpc]
+    // void RpcMoveCardToPile(Card card)
+    // {
+    //     GameObject newCard = Instantiate(cardPrefab, discardPileTransform);
+    //     CardDisplay display = newCard.GetComponentInChildren<CardDisplay>();
+    //     display.SetCard(card, null);
+    // }
 
 
     IEnumerator DealStartingCards()
@@ -188,52 +190,71 @@ public class GameManager : NetworkBehaviour
         int randomIndex = UnityEngine.Random.Range(0, colours.Length - 1);
         return colours[randomIndex];
     }
+    
+    // public void CmdPlayCard(Player player, Card card)
+    // {
+    //     if (players[currentPlayer] == player && IsPlayable(card))
+    //     {
+    //         RpcMoveCardToPile(card);
+    //         deck.AddUsedCard(card);
+    //         OnCardPlayed(card);
+    //         SwitchPlayer();
+    //     }
+    // }
+
     [Command]
-    public void CmdPlayCard(Player player, Card card)
+    public void PlayCardWithDisplay(CardDisplay cardDisplay)
     {
-        if (players[currentPlayer] == player && IsPlayable(card))
-        {
-            RpcMoveCardToPile(card);
-            deck.AddUsedCard(card);
-            OnCardPlayed(card);
-            SwitchPlayer();
-        }
+        PlayCardInternal(cardDisplay, cardDisplay.MyCard);
     }
 
-    public void PlayCard(CardDisplay cardDisplay = null, Card card = null)
+    [Command]
+    public void PlayCardWithCard(Card card)
     {
-        Card cardToPlay = cardDisplay?.MyCard ?? card;
+        CardDisplay cardDisplay = FindCardDisplayForCard(card);
+        PlayCardInternal(cardDisplay, card);
+    }
 
-        if(cardDisplay == null && card != null)
+    private void PlayCardInternal(CardDisplay cardDisplay, Card card)
+    {
+        if (cardDisplay == null || card == null)
         {
-            cardDisplay = FindCardDisplayForCard(card);
+            Debug.Log("Invalid card or card display.");
+            return;
         }
-        //CHECK IF CARD CAN BE PLAYED
-        if (!IsPlayable(cardDisplay.MyCard))
+
+        // CHECK IF CARD CAN BE PLAYED
+        if (!IsPlayable(card))
         {
             Debug.Log("Card cannot be played");
             return;
         }
-        //REMOVE CARD FROM PLAYER HAND
-        players[currentPlayer].PlayCard(cardToPlay);
-        //UNHIDE THE CARD IF AI PLAYER
 
-        //MOVE THE CARD TO DISCARD PILE
+        // REMOVE CARD FROM PLAYER HAND
+        players[currentPlayer].PlayCard(card);
+
+        // MOVE THE CARD TO DISCARD PILE
         MoveCardToPile(cardDisplay.transform.parent.gameObject);
-        //UPDATE TOP CARD
+
+        // UPDATE TOP CARD
         topCard = cardDisplay;
-        topColour = cardToPlay.cardColour;
+        topColour = card.cardColour;
         TintArrow();
-        //IMPLEMENT WHAT SHOULD HAPPEN WHEN CARD PLAYED
-        OnCardPlayed(topCard.MyCard);
-        //UNHIDE CARD
+
+        // IMPLEMENT WHAT SHOULD HAPPEN WHEN CARD IS PLAYED
+        OnCardPlayed(card);
+
+        // UNHIDE CARD
         cardDisplay.ShowCard();
-        //DEACTIVATE CARD INTERACTION
+
+        // DEACTIVATE CARD INTERACTION
         cardDisplay.GetComponentInChildren<CardInteraction>().enabled = false;
-        //ADD THE CARD BACK TO USED CARDS DECK
-        deck.AddUsedCard(cardToPlay);
-        // SWITCH PLAYER
-        if (cardToPlay.cardValue != CardValue.SKIP)
+
+        // ADD THE CARD BACK TO USED CARDS DECK
+        deck.AddUsedCard(card);
+
+        // SWITCH PLAYER OR SKIP
+        if (card.cardValue != CardValue.SKIP)
         {
             SwitchPlayer();
         }
@@ -241,8 +262,6 @@ public class GameManager : NetworkBehaviour
         {
             SkipPlayer();
         }
-        
-        //NOT SUPPOSED TO BE HERE?
     }
 
     //FIND CARDISPLAY
@@ -261,6 +280,7 @@ public class GameManager : NetworkBehaviour
         return null;
     }
 
+    [Command]
     void MoveCardToPile(GameObject currentCard)
     {
         currentCard.transform.SetParent(discardPileTransform);
@@ -337,19 +357,59 @@ public class GameManager : NetworkBehaviour
       // Ensures turn sync across all clients
 
     [Server] // Ensures this function is only executed on the server
-    void SwitchPlayer()
+    public void SwitchPlayer(bool skipTurn = false)
     {
-        // Determine the next player in order
-        currentPlayer = (currentPlayer + playDirection + players.Count) % players.Count;
+        // if
+        // humanHasTurn = false;
+        int numberOfPlayer = players.Count;
 
-        // Notify all clients about the player turn change
-        RpcUpdateCurrentPlayer(currentPlayer);
-
-        // If the next player is an AI, make the AI take its turn
-        if (!players[currentPlayer].IsHuman)
+        if(players[currentPlayer].playerHand.Count == 1 && !unoCalled)
         {
+            //LET PLAYER KNOW FORGOT TO CALL UNO
+            UpdateMessageBox("YOU FORGOT TO CALL UNO, DRAW 2 CARDS");
+            //DRAW 2 CARDS
+            for (int i = 0; i < 2; i++)
+            {
+                DrawCardFromDeck();
+            }
+            SwitchPlayer();
+            return;
+        }
+        //CHECK WIN CONDITION
+        if(CheckWinCondition())
+        {
+            winPanel.SetActive(true);
+            winningText.text = players[currentPlayer].playerName + " WINS";
+            UpdateMessageBox(players[currentPlayer].playerName + " WINS");
+            //END GAME
+            Debug.Log(players[currentPlayer].playerName + " WINS");
+            return;
+        }
+        
+        if(skipTurn)
+        {
+            currentPlayer = (currentPlayer + 2 * playDirection + numberOfPlayer) % numberOfPlayer;
+        }
+        else
+        {
+            currentPlayer = (currentPlayer + playDirection + numberOfPlayer) % numberOfPlayer;
+        }
+        //UPDATE CARD AMOUNT AND HIGHLIGHT PLAYER
+        UpdatePlayerHighlights();
+
+        //RESET UNO CALLED
+        unoCalled = false;
+        if (players[currentPlayer].IsHuman)
+        {
+            UpdateMessageBox(players[currentPlayer].playerName + " TURN");
+            humanHasTurn = true;
+        }
+        else //AI PLAYER
+        {
+            Debug.Log(players[currentPlayer].playerName + " AI TURN");
             StartCoroutine(HandleAiTurn());
         }
+        RpcUpdateCurrentPlayer(currentPlayer);
     }
 
     // This updates all clients with the new currentPlayer value
@@ -420,10 +480,7 @@ public class GameManager : NetworkBehaviour
     //SKIP NEXT PLAYER
     void SkipPlayer()
     {
-        SwitchPlayer(); //SKIP TURN
-        //FEEDBACK TO HUMAN PLAYER
-
-
+        SwitchPlayer(); 
     }
 
     //REVERSE PLAY ORDER
@@ -438,6 +495,7 @@ public class GameManager : NetworkBehaviour
     }
 
     //MAKE NEXT PLAYER DRAW 2/DRAW 4/DRAW 1 CARDS
+    [ClientRpc]
     void MakeNextPlayerDrawCards(int cardAmount)
     {
         int numberOfPlayer = players.Count;
@@ -503,6 +561,7 @@ public class GameManager : NetworkBehaviour
     }
 
     //UPDATE ARROW COLOUR
+    [ClientRpc]
     void TintArrow()
     {
         switch (topColour)
@@ -578,6 +637,7 @@ public class GameManager : NetworkBehaviour
         unoCalled = true;
     }
 
+    [ClientRpc]
     public void UpdatePlayerHighlights()
     {
         for (int i = 0; i < players.Count; i++)
@@ -596,6 +656,7 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+    [ClientRpc]
     public void UpdateMessageBox(string message)
     {
         messageText.text = message;

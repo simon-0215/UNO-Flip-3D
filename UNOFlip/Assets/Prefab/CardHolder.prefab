@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7073532175029759955}
   - component: {fileID: 4785244763983853970}
   - component: {fileID: 4861506050999744820}
+  - component: {fileID: 4215201304529884913}
   m_Layer: 5
   m_Name: CardHolder
   m_TagString: Untagged
@@ -76,6 +77,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4215201304529884913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554943232517828450}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2504238267
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1001 &7596279877635625787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,10 +193,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5614964581527612207, guid: c9d5a9f86c402b742bdc8dff657c4588, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3937465855485915575}
   m_SourcePrefab: {fileID: 100100000, guid: c9d5a9f86c402b742bdc8dff657c4588, type: 3}
 --- !u!224 &63284706972764974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7605380573988182037, guid: c9d5a9f86c402b742bdc8dff657c4588, type: 3}
   m_PrefabInstance: {fileID: 7596279877635625787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2632130527207962644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5614964581527612207, guid: c9d5a9f86c402b742bdc8dff657c4588, type: 3}
+  m_PrefabInstance: {fileID: 7596279877635625787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3937465855485915575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632130527207962644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2504238267
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0

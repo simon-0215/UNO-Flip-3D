@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class AiPlayer : Player
 {
@@ -10,7 +11,7 @@ public class AiPlayer : Player
 
     }
 
-    //AI LOGIC
+    // AI LOGIC
     public override void TakeTurn(Card topCard, CardColour topColour)
     {
         Card cardToPlay = null;
@@ -24,9 +25,10 @@ public class AiPlayer : Player
         }
         else
         {
+            // Draw a card and check again
             GameManager.instance.DrawCardFromDeck();
             playableCards = GetPlayableCards(topCard, topColour);
-            if(playableCards.Count > 0)
+            if (playableCards.Count > 0)
             {
                 cardToPlay = ChooseBestCard(playableCards);
             }
@@ -34,36 +36,76 @@ public class AiPlayer : Player
 
         if (cardToPlay == null)
         {
+            // No playable card, switch players
             Debug.Log(playerName + "HAS NO PLAYABLE CARD - SWITCH");
             GameManager.instance.UpdateMessageBox(playerName + "HAS NO PLAYABLE CARD - SWITCH");
-            //GameManager.instance.SwitchPlayer();
-            GameManager.instance.AiSwitchPlayer();
-            GameManager.instance.UpdatePlayerHighlights();
+            DrawCardAndSwitchPlayer();
         }
         else
         {
-            if(playerHand.Count == 2)
+            // Play the card
+            if (playerHand.Count == 2)
             {
                 GameManager.instance.SetUnoByAi();
-                //MESSAGE FOR PLAYER
                 Debug.Log(playerName + "HAS CALLED UNO");
             }
-            GameManager.instance.PlayCard(null, cardToPlay);
-            //IF WILDCARD CHOOSE BEST COLOUR
-            if(cardToPlay.cardColour == CardColour.NONE)
-            {
-                GameManager.instance.ChosenColour(SelectBestColour());
-            }
-            //SWITCH PLAYER
-            Debug.Log(playerName + "HAS PLAYED - " + cardToPlay.cardColour + cardToPlay.cardValue);
-            if(cardToPlay.cardValue == CardValue.SKIP)
-            {
-                return;
-            }
-            //ELSE
-            //GameManager.instance.SwitchPlayer();
-            //GameManager.instance.AiSwitchPlayer();
+            PlayCardOnServer(cardToPlay);
         }
+    }
+
+    [Server]
+    private void PlayCardOnServer(Card card)
+    {
+        // Server-side logic to play the card
+        GameManager.instance.PlayCardWithCard(card);
+
+        // Notify clients about the card played
+        RpcNotifyCardPlayed(card);
+
+        // Handle wildcard color selection
+        if (card.cardColour == CardColour.NONE)
+        {
+            CardColour chosenColour = SelectBestColour();
+            RpcNotifyChosenColour(chosenColour);
+        }
+
+        // Switch players if necessary
+        if (card.cardValue != CardValue.SKIP)
+        {
+            DrawCardAndSwitchPlayer();
+        }
+    }
+
+    [ClientRpc]
+    private void RpcNotifyCardPlayed(Card card)
+    {
+        // Update clients about the card played
+        Debug.Log($"{playerName} played {card.cardColour} {card.cardValue}");
+    }
+
+    [ClientRpc]
+    private void RpcNotifyChosenColour(CardColour colour)
+    {
+        // Update clients about the chosen color for wildcards
+        Debug.Log($"{playerName} chose {colour}");
+    }
+
+    [Server]
+    private void DrawCardAndSwitchPlayer()
+    {
+        // Server-side logic to switch players
+        GameManager.instance.AiSwitchPlayer();
+        GameManager.instance.UpdatePlayerHighlights();
+
+        // Notify clients about the player switch
+        RpcNotifyPlayerSwitch();
+    }
+
+    [ClientRpc]
+    private void RpcNotifyPlayerSwitch()
+    {
+        // Update clients about the player switch
+        Debug.Log("Player switched");
     }
 
     List<Card> GetPlayableCards(Card topCard, CardColour topColour)
@@ -72,7 +114,7 @@ public class AiPlayer : Player
 
         foreach (Card card in playerHand)
         {
-            if (card.cardColour == topColour|| card.cardValue == topCard.cardValue || card.cardColour == CardColour.NONE)
+            if (card.cardColour == topColour || card.cardValue == topCard.cardValue || card.cardColour == CardColour.NONE)
             {
                 playableCards.Add(card);
             }
@@ -87,18 +129,17 @@ public class AiPlayer : Player
         Card bestRegularCard = null;
         Card bestWildCard = null;
         int nextPlayerHandSize = GameManager.instance.GetNextPlayerHandSize();
-    
-    //BEST ACTION CARDS
-    foreach (Card card in playableCards)
-    {
-        if (card.cardValue == CardValue.PLUS_FOUR)
-        {
-            if(nextPlayerHandSize <= 2 || bestActionCard == null)
-            {
-                bestActionCard = card;
-            }
 
-        }
+        // BEST ACTION CARDS
+        foreach (Card card in playableCards)
+        {
+            if (card.cardValue == CardValue.PLUS_FOUR)
+            {
+                if (nextPlayerHandSize <= 2 || bestActionCard == null)
+                {
+                    bestActionCard = card;
+                }
+            }
             else if (card.cardValue == CardValue.PLUS_TWO)
             {
                 if (nextPlayerHandSize <= 2 || bestActionCard == null)
@@ -129,7 +170,7 @@ public class AiPlayer : Player
             }
         }
 
-        //REGULAR CARDS
+        // REGULAR CARDS
         foreach (Card card in playableCards)
         {
             if (bestRegularCard == null || card.cardValue > bestRegularCard.cardValue)
@@ -137,13 +178,9 @@ public class AiPlayer : Player
                 bestRegularCard = card;
             }
         }
-        //NO ACTION CARDS
-        if (bestActionCard == null && bestWildCard == null)
-        {
-            bestActionCard = bestWildCard;
-        }
-        //MAKE DECISION
-        if(bestActionCard != null)
+
+        // MAKE DECISION
+        if (bestActionCard != null)
         {
             return bestActionCard;
         }
@@ -152,7 +189,8 @@ public class AiPlayer : Player
         {
             return bestRegularCard;
         }
-        //DEFAULT
+
+        // DEFAULT
         return playableCards[0];
     }
 
@@ -176,7 +214,7 @@ public class AiPlayer : Player
 
         CardColour bestColour = CardColour.RED;
         int maxCount = 0;
-        foreach(var colour in colourCount)
+        foreach (var colour in colourCount)
         {
             if (colour.Value > maxCount)
             {

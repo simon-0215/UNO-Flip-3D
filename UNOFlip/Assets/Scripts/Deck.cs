@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Mirror;
 
 public class Deck : MonoBehaviour, IPointerClickHandler
 {
@@ -51,6 +52,7 @@ public class Deck : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    [Server]
     public Card DrawCard()
     {
         if (cardDeck.Count == 0)
@@ -82,6 +84,7 @@ public class Deck : MonoBehaviour, IPointerClickHandler
     }
 
     //ADD USED CARDS TO USED DECK
+    [Server]
     public void AddUsedCard(Card card)
     {
         usedCardDeck.Add(card);

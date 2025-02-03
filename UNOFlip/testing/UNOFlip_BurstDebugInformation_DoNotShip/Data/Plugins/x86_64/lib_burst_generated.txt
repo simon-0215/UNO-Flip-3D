@@ -1,4 +1,4 @@
-Library: C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-16
 --target=X64_SSE2
@@ -9,10 +9,10 @@ Library: C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Te
 --target-framework=NetFramework
 --linker-options=PdbAltPath="UNOFlip_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Temp\Burst
+--temp-folder=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Library\Burst
---output=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Library\Burst
+--output=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
@@ -69,10 +69,10 @@ Library: C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Te
 --target-framework=NetFramework
 --linker-options=PdbAltPath="UNOFlip_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Temp\Burst
+--temp-folder=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Library\Burst
---output=C:\Users\simon\Desktop\4G06\UNO-FLIP-MULTIPLAYER\UNO-Flip-3D\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--decode-folder=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Library\Burst
+--output=C:\Users\zgara\Downloads\UNO-Flip-3D-4\UNOFlip\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
