@@ -12,43 +12,46 @@
 }
 \usepackage[round]{natbib}
 
-\input{../Comments}
-\input{../Common}
-
 \begin{document}
 
-\title{Verification and Validation Report: \progname} 
-\author{\authname}
+\title{Verification and Validation Report: UNO Flip}
+\author{Mingyang Xu\\ Kevin Ishak\\ Zain-Alabedeen Garada\\ Jianhao Wei\\}
+
 \date{\today}
-	
+
 \maketitle
 
 \pagenumbering{roman}
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Author}& {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Feb. 28, 2025 & 1.0 & Jianhao Wei & Create LaTeX file template \\
+March 6, 2025 & 1.1 & Mingyang Xu & Added Functional and Non-functional Requirements\\
+March 7, 2025 & 1.2 & Jianhao Wei & Add section 5, 6 and 8\\
+
 \bottomrule
 \end{tabularx}
 
-~\newpage
+\newpage
 
 \section{Symbols, Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{l l} 
   \toprule		
-  \textbf{symbol} & \textbf{description}\\
+  \textbf{Symbol} & \textbf{Description}\\
   \midrule 
-  T & Test\\
+  UNO & A card game with specific rules and card actions\\
+  AI & Artificial Intelligence\\
+  ML & Machine Learning\\
+  RL & Reinforcement Learning\\
+  CI/CD & Continuous Integration / Continuous Deployment\\
+  GDPR & General Data Protection Regulation\\
   \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations or acronyms -- you can reference the SRS tables if needed}
+\end{tabular}\
 
 \newpage
 
@@ -62,36 +65,197 @@ Date 2 & 1.1 & Notes\\
 
 \pagenumbering{arabic}
 
-This document ...
-
 \section{Functional Requirements Evaluation}
+
+\subsection{Authentication}
+\begin{itemize}
+    \item Players must log in or create an account to access multiplayer modes.
+    \item User profiles will store game statistics and preferences.
+\end{itemize}
+
+\subsection{Game Setup}
+\begin{itemize}
+    \item Players can create game rooms and invite others or join existing rooms.
+    \item Options for choosing game rules and difficulty settings.
+\end{itemize}
+
+\subsection{Turn Management}
+\begin{itemize}
+    \item The system will manage player turns, ensuring synchronization across devices.
+    \item Notifications will alert players when it is their turn.
+\end{itemize}
+
+\subsection{Chat Functionality}
+\begin{itemize}
+    \item Real-time chat within the game room for players to communicate.
+    \item Chat can be enabled or disabled based on player preferences.
+\end{itemize}
+
+\subsection{Scoring System}
+\begin{itemize}
+    \item A detailed scoring mechanism to track and display player scores at the end of each game.
+    \item The system will keep a record of player stats, including wins, losses, and average score.
+\end{itemize}
+
+\subsection{Multiplayer Synchronization}
+\begin{itemize}
+    \item A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions.
+    \item The system will manage latency and update the game state in real-time.
+\end{itemize}
+
+\newpage
 
 \section{Nonfunctional Requirements Evaluation}
 
-\subsection{Usability}
-		
-\subsection{Performance}
+\subsection{Usability and Humanity Requirements}
 
-\subsection{etc.}
-	
-\section{Comparison to Existing Implementation}	
+\subsubsection{Ease of Use Requirements}
+\begin{itemize}
+    \item \textbf{EOUR1} - New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials.
+    \item \textbf{EOUR2} - The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms.
+    \item \textbf{EOUR3} - Drag-and-drop actions for playing cards should be intuitive and highly responsive.
+\end{itemize}
 
-This section will not be appropriate for every project.
+\subsubsection{Personalization and Internationalization Requirements}
+\begin{itemize}
+    \item \textbf{PALR1} - The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish).
+    \item \textbf{PALR2} - Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience.
+\end{itemize}
+
+\subsubsection{Learning Requirements}
+\begin{itemize}
+    \item \textbf{LR1} - The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards.
+    \item \textbf{LR2} - AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance.
+\end{itemize}
+
+\subsubsection{Understandability and Politeness Requirements}
+\begin{itemize}
+    \item \textbf{UAFR1} - All system notifications and error messages should use concise, friendly language without technical jargon.
+    \item \textbf{UAFR2} - Detailed game help and rule explanations should be available for players to consult at any time.
+\end{itemize}
+
+\subsection{Performance Requirements}
+
+\subsubsection{Speed and Latency Requirements}
+\begin{itemize}
+    \item \textbf{SALR1} - The average response time for the game should be within 50 milliseconds to ensure smooth interaction.
+    \item \textbf{SALR2} - Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state.
+\end{itemize}
+
+\subsubsection{Safety-Critical Requirements}
+\begin{itemize}
+    \item \textbf{SCR1} - Changes in the card and game state must be synchronized in real-time to ensure all players see the same status.
+    \item \textbf{SCR2} - Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure.
+\end{itemize}
+
+\subsubsection{Precision or Accuracy Requirements}
+\begin{itemize}
+    \item \textbf{POAR1} - When calculating scores and game state, the system should ensure high precision to avoid incorrect scorekeeping or errors in the game logic.
+\end{itemize}
+
+\subsubsection{Robustness or Fault-Tolerance Requirements}
+\begin{itemize}
+    \item \textbf{ROFR1} - The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption without losing game progress.
+    \item \textbf{ROFR2} - The server should handle a surge in user logins without crashing.
+\end{itemize}
+
+\subsubsection{Capacity Requirements}
+\begin{itemize}
+    \item \textbf{CP1} - The system should support at least 1,000 concurrent users, with each game room running independently.
+    \item \textbf{CP2} - Each game room should support up to 4 to 8 players.
+\end{itemize}
+
+\subsubsection{Scalability or Extensibility Requirements}
+\begin{itemize}
+    \item \textbf{SOER1} - The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels.
+    \item \textbf{SOER2} - As the player base grows, the server should be able to scale dynamically to handle more concurrent users.
+\end{itemize}
+
+\subsubsection{Longevity Requirements}
+\begin{itemize}
+    \item \textbf{LR1} - The game’s code should be maintainable for long-term use, supporting future updates, performance optimizations, and feature expansions.
+\end{itemize}
+
+\subsection{Security Requirements}
+
+\subsubsection{Access Requirements}
+\begin{itemize}
+    \item \textbf{AR1} - Players must securely log in to the game, with support for two-factor authentication (2FA) for added security.
+    \item \textbf{AR2} - The game should have a password recovery mechanism to allow users to recover their passwords in case they forget them.
+\end{itemize}
+
+\subsubsection{Integrity Requirements}
+\begin{itemize}
+    \item \textbf{IR1} - All player data (such as game progress and personal stats) should be encrypted to prevent unauthorized modification.
+    \item \textbf{IR2} - The game should not allow weak passwords (e.g., passwords composed only of numbers or letters) for login credentials.
+\end{itemize}
+
+\subsubsection{Privacy Requirements}
+\begin{itemize}
+    \item \textbf{PR1} - Player data (such as personal information and game records) should comply with privacy policies to prevent data breaches.
+    \item \textbf{PR2} - The game should notify users that they should not share their personal information with others in the game room.
+    \item \textbf{PR3} - The game should automatically log users out after a certain period of inactivity to prevent unauthorized access.
+\end{itemize}
+
+\subsubsection{Audit Requirements}
+\begin{itemize}
+    \item \textbf{AR1} - The system should log all critical operations in the backend to allow for auditing and troubleshooting.
+    \item \textbf{AR2} - In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent).
+\end{itemize}
+
+\subsubsection{Immunity Requirements}
+\begin{itemize}
+    \item \textbf{IR1} - The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay.
+    \item \textbf{IR2} - The system should be resilient to network issues, such as fluctuations in connection speed.
+\end{itemize}
+
+
+\subsection{Maintainability and Support Requirements}
+
+\subsubsection{Maintenance Requirements}
+\begin{itemize}
+    \item \textbf{MR1} - The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions.
+    \item \textbf{MR2} - The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience.
+    \item \textbf{MR3} - Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay.
+\end{itemize}
+
+\subsubsection{Supportability Requirements}
+\begin{itemize}
+    \item \textbf{SR1} - The system should offer online technical support, and players should be able to report issues in-game or via the website.
+    \item \textbf{SR2} - The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection.
+\end{itemize}
+
+\subsubsection{Adaptability Requirements}
+\begin{itemize}
+    \item \textbf{AR1} - The system must ensure 24/7 availability for users worldwide, with planned downtime limited to maintenance windows of no more than 2 hours per month.
+    \item \textbf{AR2} - Maintenance and updates must be rolled out during off-peak hours to minimize disruption to users.
+    \item \textbf{AR3} - The game must include an offline maintenance mode where players can still practice against AI when the server is unavailable.
+\end{itemize}
+
+
+
+
+\section{Comparison to Existing Implementation}
+Existing Implementation: \href{https://unoonline.io/}{UNO Online Website}
+\begin{itemize}
+    \item \textbf{Flipped Feature:}
+    In addition to the ordinary UNO Flip game, we also added the flip feature to let every card show different sides with complete new new number and colour to make the game more challenging and fun to play.
+    \item \textbf{Message Box:} In the traditional game, the game only shows the user what is the next step to take by showing them the appropriate animations. This might make some users confused about game instructions. Therefore, We introduce the message box feature to inform the user what is the next step to take with more clarity since language is usually more effective than animations.
+    \item \textbf{Game Instructions:} We made a dedicated interface that can be accessed from the main interface to show the game instruction in details to the users. In this way, users do not have to spend extra time to search on the Internet or blindly playing games to know how the game works.
+    \item \textbf{Design and Aesthetics:} Our software features a more simplified version of graphical user interface with no complicated graphics and animations. This reduce the probability that the user gets confused and make the overall experience more clean and easy to follow.
+    \item \textbf{Accessibility:} Our software have a improved colour contrast to let user easily identify different features. We also added the arrow feature in multiplayer to tell user the current game playing direction so that the user can calculate the chance of winning. 
+\end{itemize}
 
 \section{Unit Testing}
-
+Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. In our software, when our team members finished writing the code, we usually test each individual functions or code components manually by inserting normal, abnormal and edge cases in order to make sure each individual components perform as expected. For integration testing, we do implement the appropriate CI in our GitHub. Please refer to section 8 for more details.
 \section{Changes Due to Testing}
 
-\wss{This section should highlight how feedback from the users and from 
-the supervisor (when one exists) shaped the final product.  In particular 
-the feedback from the Rev 0 demo to the supervisor (or to potential users) 
-should be highlighted.}
-
 \section{Automated Testing}
-		
+For the automated testing, we implemented the CodeQL Advanced in our GitHub actions that scan newly integrated code to ensure our code base is free of vulnerability and fits with each other. We had used the original script for our testings. Overall, all testing has been successful since the implementation of this CI action. However, since there are still some functionalities in our software needed to be consummated, we need to find a better CI actions which check our Unity code with more specialty or change our existing script to better suite the nature of our code. This will make our integration more smoothly and reduce the time for us to debug our code and will be one of our next main focus of the development.
+
 \section{Trace to Requirements}
-		
-\section{Trace to Modules}		
+
+\section{Trace to Modules}
 
 \section{Code Coverage Metrics}
 
@@ -101,25 +265,11 @@ should be highlighted.}
 \newpage{}
 \section*{Appendix --- Reflection}
 
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Reflection.
-
-\input{../Reflection.tex}
-
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item Which parts of this document stemmed from speaking to your client(s) or
-  a proxy (e.g. your peers)? Which ones were not, and why?
-  \item In what ways was the Verification and Validation (VnV) Plan different
-  from the activities that were actually conducted for VnV?  If there were
-  differences, what changes required the modification in the plan?  Why did
-  these changes occur?  Would you be able to anticipate these changes in future
-  projects?  If there weren't any differences, how was your team able to clearly
-  predict a feasible amount of effort and the right tasks needed to build the
-  evidence that demonstrates the required quality?  (It is expected that most
-  teams will have had to deviate from their original VnV Plan.)
+  \item What went well while writing this deliverable?
+  \item What pain points did you experience during this deliverable, and how did you resolve them?
+  \item Which parts of this document stemmed from speaking to your client(s) or a proxy (e.g. your peers)?
+  \item In what ways was the Verification and Validation (VnV) Plan different from the activities that were actually conducted for VnV?
 \end{enumerate}
 
 \end{document}
