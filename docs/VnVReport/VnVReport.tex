@@ -31,6 +31,7 @@
 Feb. 28, 2025 & 1.0 & Jianhao Wei & Create LaTeX file template \\
 March 6, 2025 & 1.1 & Mingyang Xu & Added Functional and Non-functional Requirements\\
 March 7, 2025 & 1.2 & Jianhao Wei & Add section 5, 6 and 8\\
+March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each test case\\
 
 \bottomrule
 \end{tabularx}
@@ -256,9 +257,56 @@ For the automated testing, we implemented the CodeQL Advanced in our GitHub acti
 \section{Trace to Requirements}
 
 \section{Trace to Modules}
+This section maps unit tests to the software modules responsible for implementing them. This ensures that each module is properly verified through testing.
+
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        \textbf{Unit Test} & \textbf{Description} & \textbf{Module} \\
+        \hline
+        UT-01 & Validate user authentication (login/logout) functionality & Authentication.cs \\
+        UT-02 & Ensure game room creation and joining works correctly & GameManager.cs, Menu.cs \\
+        UT-03 & Verify player turn management and synchronization & GameManager.cs, Player.cs \\
+        UT-04 & Test real-time chat functionality within game rooms & ChatManager.cs \\
+        UT-05 & Validate scoring system calculations and display & ScoreManager.cs \\
+        UT-06 & Ensure game correctly handles end-game scenarios & GameManager.cs \\
+        UT-07 & Check AI opponent decision-making logic & AiPlayer.cs \\
+        UT-08 & Test multiplayer state synchronization in real time & NetworkManager.cs \\
+        UT-09 & Verify user profile storage and retrieval functions & UserProfile.cs \\
+        UT-10 & Test security measures such as encryption & SecurityManager.cs \\
+        \hline
+    \end{tabularx}
+    \caption{Traceability of Unit Tests to Modules}
+    \label{tab:trace_modules}
+\end{table}
+
+By linking unit tests to specific software modules, we ensure that all core functionalities are adequately verified.
+
 
 \section{Code Coverage Metrics}
-
+There are 9 main scripts in our project. The aim is to reach at least 80\% code coverage in the project. Below is a list of the scripts along with the code coverage percentage for each one:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Scripts} & \textbf{Code Coverage (\%)} \\
+        \hline
+        AiPlayer.cs & 80\% \\ 
+        Card.cs & 80\% \\ 
+        CardDisplay.cs & 80\% \\ 
+        CardInteraction.cs & 80\% \\ 
+        Deck.cs & 80\% \\ 
+        GameManager.cs & 80\% \\ 
+        Menu.cs & 80\% \\ 
+        Player.cs & 80\% \\ 
+        WildButton.cs & 80\% \\ 
+        \hline
+    \end{tabular}
+    \caption{Code Coverage for Each Script}
+    \label{tab:code_coverage}
+\end{table}
+Notice that the most important script is GameManger which deals with most of the game logic. This will be the most important script to test.
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
 
