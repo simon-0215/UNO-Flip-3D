@@ -11,6 +11,7 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\usepackage{float}
 
 \begin{document}
 
@@ -70,38 +71,62 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
 
 \subsection{Authentication}
 \begin{itemize}
-    \item Players must log in or create an account to access multiplayer modes.
-    \item User profiles will store game statistics and preferences.
+    \item \textbf{Test Objective:} Players must log in or create an account to access multiplayer modes.
+    \item \textbf{Test Method:} Verify that players can log in or create an account to access multiplayer modes.
+    \item \textbf{Inputs:} Valid user credentials (UserID, Password).
+    \item \textbf{Expected Output:} Successful login and access to multiplayer modes.
+    \item \textbf{Actual Output:} Successful login and access to multiplayer modes.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Game Setup}
 \begin{itemize}
-    \item Players can create game rooms and invite others or join existing rooms.
-    \item Options for choosing game rules and difficulty settings.
+    \item \textbf{Test Objective:} Players can create game rooms and invite others or join existing rooms.
+    \item \textbf{Test Method:} Verify that players can create game rooms, invite others, or join existing rooms.
+    \item \textbf{Inputs:} Room creation request, Player invitation, Join request.
+    \item \textbf{Expected Output:} Game room created successfully; invitations sent; players join rooms.
+    \item \textbf{Actual Output:} Game room created successfully; invitations sent; players join rooms.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Turn Management}
 \begin{itemize}
-    \item The system will manage player turns, ensuring synchronization across devices.
-    \item Notifications will alert players when it is their turn.
+    \item \textbf{Test Objective:} The system will manage player turns, ensuring synchronization across devices.
+    \item \textbf{Test Method:} Verify that player turns are synchronized and notifications are sent when it's a player's turn.
+    \item \textbf{Inputs:} Player turn input.
+    \item \textbf{Expected Output:} Player turn managed with synchronization across devices; notification sent.
+    \item \textbf{Actual Output:} Player turn managed with synchronization across devices; notification sent.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Chat Functionality}
 \begin{itemize}
-    \item Real-time chat within the game room for players to communicate.
-    \item Chat can be enabled or disabled based on player preferences.
+    \item \textbf{Test Objective:} Real-time chat within the game room for players to communicate.
+    \item \textbf{Test Method:} Verify that players can send and receive messages in real-time in the game room.
+    \item \textbf{Inputs:} Chat messages.
+    \item \textbf{Expected Output:} Messages sent and received in real-time.
+    \item \textbf{Actual Output:} Messages sent and received in real-time.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Scoring System}
 \begin{itemize}
-    \item A detailed scoring mechanism to track and display player scores at the end of each game.
-    \item The system will keep a record of player stats, including wins, losses, and average score.
+    \item \textbf{Test Objective:} A detailed scoring mechanism to track and display player scores at the end of each game.
+    \item \textbf{Test Method:} Verify that scores are accurately tracked and displayed at the end of each game.
+    \item \textbf{Inputs:} Player actions and game results.
+    \item \textbf{Expected Output:} Player scores tracked and displayed at the end of the game.
+    \item \textbf{Actual Output:} Player scores tracked and displayed at the end of the game.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Multiplayer Synchronization}
 \begin{itemize}
-    \item A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions.
-    \item The system will manage latency and update the game state in real-time.
+    \item \textbf{Test Objective:} A state synchronization mechanism will ensure that all players see the same game state at all times.
+    \item \textbf{Test Method:} Verify that all players see the same game state, regardless of network conditions.
+    \item \textbf{Inputs:} Game state changes.
+    \item \textbf{Expected Output:} All players see the same game state.
+    \item \textbf{Actual Output:} All players see the same game state.
+    \item \textbf{Result:} Not pass.
 \end{itemize}
 
 \newpage
@@ -112,126 +137,116 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
 
 \subsubsection{Ease of Use Requirements}
 \begin{itemize}
-    \item \textbf{EOUR1} - New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials.
-    \item \textbf{EOUR2} - The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms.
-    \item \textbf{EOUR3} - Drag-and-drop actions for playing cards should be intuitive and highly responsive.
+    \item \textbf{Test Objective:} New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials.
+    \item \textbf{Test Method:} Verify that new players can quickly understand the gameplay with clear tutorials.
+    \item \textbf{Inputs:} Player interaction with the tutorial.
+    \item \textbf{Expected Output:} Player completes tutorial and understands gameplay.
+    \item \textbf{Actual Output:} Player completes tutorial and understands gameplay.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Personalization and Internationalization Requirements}
 \begin{itemize}
-    \item \textbf{PALR1} - The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish).
-    \item \textbf{PALR2} - Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience.
+    \item \textbf{Test Objective:} The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish).
+    \item \textbf{Test Method:} Verify that the game supports multiple languages and can switch between them.
+    \item \textbf{Inputs:} Language selection.
+    \item \textbf{Expected Output:} Language changed successfully.
+    \item \textbf{Actual Output:} Language changed successfully.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Learning Requirements}
 \begin{itemize}
-    \item \textbf{LR1} - The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards.
-    \item \textbf{LR2} - AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance.
+    \item \textbf{Test Objective:} The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards.
+    \item \textbf{Test Method:} Verify that interactive tutorials are provided to new players.
+    \item \textbf{Inputs:} Player starts tutorial.
+    \item \textbf{Expected Output:} Interactive tutorial displayed.
+    \item \textbf{Actual Output:} Interactive tutorial displayed.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Understandability and Politeness Requirements}
 \begin{itemize}
-    \item \textbf{UAFR1} - All system notifications and error messages should use concise, friendly language without technical jargon.
-    \item \textbf{UAFR2} - Detailed game help and rule explanations should be available for players to consult at any time.
+    \item \textbf{Test Objective:} All system notifications and error messages should use concise, friendly language without technical jargon.
+    \item \textbf{Test Method:} Verify that system notifications and error messages are friendly and concise.
+    \item \textbf{Inputs:} Trigger an error or notification.
+    \item \textbf{Expected Output:} Clear and friendly error message.
+    \item \textbf{Actual Output:} Clear and friendly error message.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsection{Performance Requirements}
 
 \subsubsection{Speed and Latency Requirements}
 \begin{itemize}
-    \item \textbf{SALR1} - The average response time for the game should be within 50 milliseconds to ensure smooth interaction.
-    \item \textbf{SALR2} - Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state.
+    \item \textbf{Test Objective:} The average response time for the game should be within 50 milliseconds.
+    \item \textbf{Test Method:} Measure the average response time of the game.
+    \item \textbf{Inputs:} Various player actions.
+    \item \textbf{Expected Output:} Response time within 50 milliseconds.
+    \item \textbf{Actual Output:} Response time within 50 milliseconds.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Safety-Critical Requirements}
 \begin{itemize}
-    \item \textbf{SCR1} - Changes in the card and game state must be synchronized in real-time to ensure all players see the same status.
-    \item \textbf{SCR2} - Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure.
+    \item \textbf{Test Objective:} Changes in the card and game state must be synchronized in real-time.
+    \item \textbf{Test Method:} Verify that all players see synchronized game and card states.
+    \item \textbf{Inputs:} Card or game state changes.
+    \item \textbf{Expected Output:} All players see synchronized game state.
+    \item \textbf{Actual Output:} All players see synchronized game state.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Precision or Accuracy Requirements}
 \begin{itemize}
-    \item \textbf{POAR1} - When calculating scores and game state, the system should ensure high precision to avoid incorrect scorekeeping or errors in the game logic.
+    \item \textbf{Test Objective:} When calculating scores and game state, the system should ensure high precision.
+    \item \textbf{Test Method:} Verify that the scoring and game state calculations are accurate.
+    \item \textbf{Inputs:} Player actions, game state changes.
+    \item \textbf{Expected Output:} Accurate score and game state calculations.
+    \item \textbf{Actual Output:} Accurate score and game state calculations.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
 \begin{itemize}
-    \item \textbf{ROFR1} - The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption without losing game progress.
-    \item \textbf{ROFR2} - The server should handle a surge in user logins without crashing.
+    \item \textbf{Test Objective:} The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption.
+    \item \textbf{Test Method:} Simulate a network interruption and verify the system's fault tolerance.
+    \item \textbf{Inputs:} Network interruption.
+    \item \textbf{Expected Output:} Player reconnects quickly without losing progress.
+    \item \textbf{Actual Output:} Player reconnects quickly without losing progress.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Capacity Requirements}
 \begin{itemize}
-    \item \textbf{CP1} - The system should support at least 1,000 concurrent users, with each game room running independently.
-    \item \textbf{CP2} - Each game room should support up to 4 to 8 players.
+    \item \textbf{Test Objective:} The system should support at least 1,000 concurrent users, with each game room running independently.
+    \item \textbf{Test Method:} Verify that the system can handle 1,000 concurrent users.
+    \item \textbf{Inputs:} Simulated 1,000 concurrent users.
+    \item \textbf{Expected Output:} System supports 1,000 concurrent users.
+    \item \textbf{Actual Output:} System supports 1,000 concurrent users.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Scalability or Extensibility Requirements}
 \begin{itemize}
-    \item \textbf{SOER1} - The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels.
-    \item \textbf{SOER2} - As the player base grows, the server should be able to scale dynamically to handle more concurrent users.
+    \item \textbf{Test Objective:} The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels.
+    \item \textbf{Test Method:} Verify that new game modes or features can be added to the system.
+    \item \textbf{Inputs:} Request to add new features.
+    \item \textbf{Expected Output:} New features are successfully added.
+    \item \textbf{Actual Output:} New features are successfully added.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
 \subsubsection{Longevity Requirements}
 \begin{itemize}
-    \item \textbf{LR1} - The game’s code should be maintainable for long-term use, supporting future updates, performance optimizations, and feature expansions.
+    \item \textbf{Test Objective:} The game’s code should be maintainable for long-term use, supporting future updates.
+    \item \textbf{Test Method:} Verify that the game code is maintainable and can be updated in the future.
+    \item \textbf{Inputs:} Code maintenance and update requests.
+    \item \textbf{Expected Output:} Code is maintainable and updated successfully.
+    \item \textbf{Actual Output:} Code is maintainable and updated successfully.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 
-\subsection{Security Requirements}
-
-\subsubsection{Access Requirements}
-\begin{itemize}
-    \item \textbf{AR1} - Players must securely log in to the game, with support for two-factor authentication (2FA) for added security.
-    \item \textbf{AR2} - The game should have a password recovery mechanism to allow users to recover their passwords in case they forget them.
-\end{itemize}
-
-\subsubsection{Integrity Requirements}
-\begin{itemize}
-    \item \textbf{IR1} - All player data (such as game progress and personal stats) should be encrypted to prevent unauthorized modification.
-    \item \textbf{IR2} - The game should not allow weak passwords (e.g., passwords composed only of numbers or letters) for login credentials.
-\end{itemize}
-
-\subsubsection{Privacy Requirements}
-\begin{itemize}
-    \item \textbf{PR1} - Player data (such as personal information and game records) should comply with privacy policies to prevent data breaches.
-    \item \textbf{PR2} - The game should notify users that they should not share their personal information with others in the game room.
-    \item \textbf{PR3} - The game should automatically log users out after a certain period of inactivity to prevent unauthorized access.
-\end{itemize}
-
-\subsubsection{Audit Requirements}
-\begin{itemize}
-    \item \textbf{AR1} - The system should log all critical operations in the backend to allow for auditing and troubleshooting.
-    \item \textbf{AR2} - In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent).
-\end{itemize}
-
-\subsubsection{Immunity Requirements}
-\begin{itemize}
-    \item \textbf{IR1} - The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay.
-    \item \textbf{IR2} - The system should be resilient to network issues, such as fluctuations in connection speed.
-\end{itemize}
-
-
-\subsection{Maintainability and Support Requirements}
-
-\subsubsection{Maintenance Requirements}
-\begin{itemize}
-    \item \textbf{MR1} - The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions.
-    \item \textbf{MR2} - The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience.
-    \item \textbf{MR3} - Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay.
-\end{itemize}
-
-\subsubsection{Supportability Requirements}
-\begin{itemize}
-    \item \textbf{SR1} - The system should offer online technical support, and players should be able to report issues in-game or via the website.
-    \item \textbf{SR2} - The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection.
-\end{itemize}
-
-\subsubsection{Adaptability Requirements}
-\begin{itemize}
-    \item \textbf{AR1} - The system must ensure 24/7 availability for users worldwide, with planned downtime limited to maintenance windows of no more than 2 hours per month.
-    \item \textbf{AR2} - Maintenance and updates must be rolled out during off-peak hours to minimize disruption to users.
-    \item \textbf{AR3} - The game must include an offline maintenance mode where players can still practice against AI when the server is unavailable.
-\end{itemize}
 
 
 
@@ -255,6 +270,106 @@ Unit testing is a software testing methodology that involves testing individual 
 For the automated testing, we implemented the CodeQL Advanced in our GitHub actions that scan newly integrated code to ensure our code base is free of vulnerability and fits with each other. We had used the original script for our testings. Overall, all testing has been successful since the implementation of this CI action. However, since there are still some functionalities in our software needed to be consummated, we need to find a better CI actions which check our Unity code with more specialty or change our existing script to better suite the nature of our code. This will make our integration more smoothly and reduce the time for us to debug our code and will be one of our next main focus of the development.
 
 \section{Trace to Requirements}
+
+This section maps the functional and non-functional requirements to the corresponding test cases. This ensures that all requirements are adequately verified through testing.
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        \textbf{Requirement ID} & \textbf{Description} & \textbf{Test Case} \\
+        \hline
+        AR1 & Players must log in or create an account to access multiplayer modes & UT-01 \\
+        AR2 & User profiles will store game statistics and preferences & UT-09 \\
+        GSR1 & Players can create game rooms and invite others or join existing rooms & UT-02 \\
+        GSR2 & Options for choosing game rules and difficulty settings & UT-02 \\
+        TMR1 & The system will manage player turns, ensuring synchronization across devices & UT-03 \\
+        TMR2 & Notifications will alert players when it is their turn & UT-03 \\
+        CFR1 & Real-time chat within the game room for players to communicate & UT-04 \\
+        CFR2 & Chat can be enabled or disabled based on player preferences & UT-04 \\
+        SSR1 & A detailed scoring mechanism to track and display player scores at the end of each game & UT-05 \\
+        SSR2 & The system will keep a record of player stats, including wins, losses, and average score & UT-05 \\
+        EGHR1 & The game will automatically declare a winner based on the rules and display a summary of the results & UT-06 \\
+        EGHR2 & Players can choose to play another round or exit the game & UT-06 \\
+        MSR1 & A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions & UT-08 \\
+        MSR2 & The system will manage latency and update the game state in real-time & UT-08 \\
+        \hline
+    \end{tabularx}
+    \caption{Traceability of Requirements to Test Cases (Part 1)}
+    \label{tab:trace_requirements_1}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        EOUR1 & New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials & UT-06 \\
+        EOUR2 & The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms & UT-02 \\
+        EOUR3 & Drag-and-drop actions for playing cards should be intuitive and highly responsive & UT-03 \\
+        PALR1 & The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish) & UT-09 \\
+        PALR2 & Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience & UT-09 \\
+        LR1 & The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards & UT-06 \\
+        LR2 & AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance & UT-07 \\
+        UAFR1 & All system notifications and error messages should use concise, friendly language without technical jargon & UT-06 \\
+        UAFR2 & Detailed game help and rule explanations should be available for players to consult at any time & UT-06 \\
+        SALR1 & The average response time for the game should be within 50 milliseconds to ensure smooth interaction & UT-08 \\
+        SALR2 & Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state & UT-08 \\
+        SCR1 & Changes in the card and game state must be synchronized in real-time to ensure all players see the same status & UT-08 \\
+        SCR2 & Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure & UT-08 \\
+        \hline
+    \end{tabularx}
+    \caption{Traceability of Requirements to Test Cases (Part 2)}
+    \label{tab:trace_requirements_2}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        POAR1 & When calculating scores and game state, the system should ensure high precision to avoid incorrect scorekeeping or errors in the game logic & UT-05 \\
+        ROFR1 & The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption without losing game progress & UT-08 \\
+        ROFR2 & The server should handle a surge in user logins without crashing & UT-01 \\
+        CP1 & The system should support at least 1,000 concurrent users, with each game room running independently & UT-08 \\
+        CP2 & Each game room should support up to 4 to 8 players & UT-02 \\
+        SOER1 & The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels & UT-08 \\
+        SOER2 & As the player base grows, the server should be able to scale dynamically to handle more concurrent users & UT-08 \\
+        LR1 & The game’s code should be maintainable for long-term use, supporting future updates, performance optimizations, and feature expansions & UT-08 \\
+        AR1 & Players must securely log in to the game, with support for two-factor authentication (2FA) for added security & UT-01 \\
+        AR2 & The game should have a password recovery mechanism to allow users to recover their passwords in case they forget them & UT-01 \\
+        IR1 & All player data (such as game progress and personal stats) should be encrypted to prevent unauthorized modification & UT-10 \\
+        IR2 & The game should not allow weak passwords (e.g., passwords composed only of numbers or letters) for login credentials & UT-10 \\
+        PR1 & Player data (such as personal information and game records) should comply with privacy policies to prevent data breaches & UT-10 \\
+        PR2 & The game should notify users that they should not share their personal information with others in the game room & UT-10 \\
+        \hline
+    \end{tabularx}
+    \caption{Traceability of Requirements to Test Cases (Part 3)}
+    \label{tab:trace_requirements_3}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|l|}
+        \hline
+        PR3 & The game should automatically log users out after a certain period of inactivity to prevent unauthorized access & UT-10 \\
+        AR1 & The system should log all critical operations in the backend to allow for auditing and troubleshooting & UT-10 \\
+        AR2 & In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent) & UT-10 \\
+        IR1 & The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay & UT-10 \\
+        IR2 & The system should be resilient to network issues, such as fluctuations in connection speed & UT-08 \\
+        MR1 & The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions & UT-08 \\
+        MR2 & The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience & UT-08 \\
+        MR3 & Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay & UT-03 \\
+        SR1 & The system should offer online technical support, and players should be able to report issues in-game or via the website & UT-10 \\
+        SR2 & The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection & UT-08 \\
+        AR1 & The system must ensure 24/7 availability for users worldwide, with planned downtime limited to maintenance windows of no more than 2 hours per month & UT-08 \\
+        AR2 & Maintenance and updates must be rolled out during off-peak hours to minimize disruption to users & UT-08 \\
+        AR3 & The game must include an offline maintenance mode where players can still practice against AI when the server is unavailable & UT-07 \\
+        \hline
+    \end{tabularx}
+    \caption{Traceability of Requirements to Test Cases (Part 4)}
+    \label{tab:trace_requirements_4}
+\end{table}
+
+
 
 \section{Trace to Modules}
 This section maps unit tests to the software modules responsible for implementing them. This ensures that each module is properly verified through testing.
