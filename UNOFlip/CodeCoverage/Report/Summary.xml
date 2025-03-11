@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageReport scope="Summary">
+  <Summary>
+    <Generatedon>2025-03-10 - 8:26:38 PM</Generatedon>
+    <Parser>MultiReportParser (59x OpenCoverParser)</Parser>
+    <Assemblies>2</Assemblies>
+    <Classes>17</Classes>
+    <Files>17</Files>
+    <Coveredlines>1483</Coveredlines>
+    <Uncoveredlines>577</Uncoveredlines>
+    <Coverablelines>2060</Coverablelines>
+    <Totallines>3502</Totallines>
+    <Linecoverage>71.9</Linecoverage>
+    <Coveredbranches>0</Coveredbranches>
+    <Totalbranches>0</Totalbranches>
+    <Coveredmethods>128</Coveredmethods>
+    <Totalmethods>171</Totalmethods>
+    <Methodcoverage>74.8</Methodcoverage>
+  </Summary>
+  <Coverage>
+    <Assembly name="Scripts" classes="9" coverage="43.6" coveredlines="322" coverablelines="738" totallines="1280" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="35" totalmethods="74" methodcoverage="47.2">
+      <Class name="AiPlayer" coverage="65.6" coveredlines="90" coverablelines="137" totallines="182" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="5" methodcoverage="80" />
+      <Class name="Card" coverage="100" coveredlines="5" coverablelines="5" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
+      <Class name="CardDisplay" coverage="83" coveredlines="103" coverablelines="124" totallines="217" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="7" methodcoverage="85.7" />
+      <Class name="CardInteraction" coverage="57.1" coveredlines="16" coverablelines="28" totallines="52" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="6" methodcoverage="66.6" />
+      <Class name="Deck" coverage="87.7" coveredlines="50" coverablelines="57" totallines="95" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="6" totalmethods="7" methodcoverage="85.7" />
+      <Class name="GameManager" coverage="11.1" coveredlines="39" coverablelines="351" totallines="605" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="36" methodcoverage="22.2" />
+      <Class name="Menu" coverage="40" coveredlines="6" coverablelines="15" totallines="32" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="4" methodcoverage="25" />
+      <Class name="Player" coverage="86.6" coveredlines="13" coverablelines="15" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="6" methodcoverage="83.3" />
+      <Class name="WildButton" coverage="0" coveredlines="0" coverablelines="6" totallines="18" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="2" methodcoverage="0" />
+    </Assembly>
+    <Assembly name="Tests" classes="8" coverage="87.8" coveredlines="1161" coverablelines="1322" totallines="2222" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="93" totalmethods="97" methodcoverage="95.8">
+      <Class name="AiPlayerTests" coverage="62.1" coveredlines="204" coverablelines="328" totallines="568" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="18" totalmethods="19" methodcoverage="94.7" />
+      <Class name="CardDisplayTests" coverage="95" coveredlines="232" coverablelines="244" totallines="406" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="10" totalmethods="12" methodcoverage="83.3" />
+      <Class name="CardInteractionTests" coverage="94.5" coveredlines="191" coverablelines="202" totallines="333" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="10" totalmethods="10" methodcoverage="100" />
+      <Class name="CardTests" coverage="100" coveredlines="74" coverablelines="74" totallines="111" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="8" totalmethods="8" methodcoverage="100" />
+      <Class name="DeckTests" coverage="99.1" coveredlines="116" coverablelines="117" totallines="190" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="9" totalmethods="9" methodcoverage="100" />
+      <Class name="GameManagerTests" coverage="94.1" coveredlines="208" coverablelines="221" totallines="352" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="13" totalmethods="14" methodcoverage="92.8" />
+      <Class name="MenuTests" coverage="100" coveredlines="46" coverablelines="46" totallines="102" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="14" totalmethods="14" methodcoverage="100" />
+      <Class name="PlayerTests" coverage="100" coveredlines="90" coverablelines="90" totallines="160" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="11" totalmethods="11" methodcoverage="100" />
+    </Assembly>
+  </Coverage>
+</CoverageReport>

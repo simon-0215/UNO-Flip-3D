@@ -36,7 +36,6 @@ public class AiPlayer : Player
         {
             Debug.Log(playerName + "HAS NO PLAYABLE CARD - SWITCH");
             GameManager.instance.UpdateMessageBox(playerName + "HAS NO PLAYABLE CARD - SWITCH");
-            //GameManager.instance.SwitchPlayer();
             GameManager.instance.AiSwitchPlayer();
             GameManager.instance.UpdatePlayerHighlights();
         }
@@ -45,28 +44,22 @@ public class AiPlayer : Player
             if(playerHand.Count == 2)
             {
                 GameManager.instance.SetUnoByAi();
-                //MESSAGE FOR PLAYER
                 Debug.Log(playerName + "HAS CALLED UNO");
             }
             GameManager.instance.PlayCard(null, cardToPlay);
-            //IF WILDCARD CHOOSE BEST COLOUR
             if(cardToPlay.cardColour == CardColour.NONE)
             {
-                GameManager.instance.ChosenColour(SelectBestColour());
+                GameManager.instance.ChosenColour(SelectBestColor());
             }
-            //SWITCH PLAYER
             Debug.Log(playerName + "HAS PLAYED - " + cardToPlay.cardColour + cardToPlay.cardValue);
             if(cardToPlay.cardValue == CardValue.SKIP)
             {
                 return;
             }
-            //ELSE
-            //GameManager.instance.SwitchPlayer();
-            //GameManager.instance.AiSwitchPlayer();
         }
     }
 
-    List<Card> GetPlayableCards(Card topCard, CardColour topColour)
+    public List<Card> GetPlayableCards(Card topCard, CardColour topColour)
     {
         List<Card> playableCards = new List<Card>();
 
@@ -81,24 +74,23 @@ public class AiPlayer : Player
         return playableCards;
     }
 
-    Card ChooseBestCard(List<Card> playableCards)
+    public Card ChooseBestCard(List<Card> playableCards)
     {
         Card bestActionCard = null;
         Card bestRegularCard = null;
         Card bestWildCard = null;
         int nextPlayerHandSize = GameManager.instance.GetNextPlayerHandSize();
     
-    //BEST ACTION CARDS
-    foreach (Card card in playableCards)
-    {
-        if (card.cardValue == CardValue.PLUS_FOUR)
+        //BEST ACTION CARDS
+        foreach (Card card in playableCards)
         {
-            if(nextPlayerHandSize <= 2 || bestActionCard == null)
+            if (card.cardValue == CardValue.PLUS_FOUR)
             {
-                bestActionCard = card;
+                if(nextPlayerHandSize <= 2 || bestActionCard == null)
+                {
+                    bestActionCard = card;
+                }
             }
-
-        }
             else if (card.cardValue == CardValue.PLUS_TWO)
             {
                 if (nextPlayerHandSize <= 2 || bestActionCard == null)
@@ -156,7 +148,7 @@ public class AiPlayer : Player
         return playableCards[0];
     }
 
-    CardColour SelectBestColour()
+    public CardColour SelectBestColor()
     {
         Dictionary<CardColour, int> colourCount = new Dictionary<CardColour, int>
         {

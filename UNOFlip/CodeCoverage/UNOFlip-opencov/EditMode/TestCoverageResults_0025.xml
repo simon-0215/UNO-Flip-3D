@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="0.0.0.0">
+  <Summary numSequencePoints="17" visitedSequencePoints="17" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0.0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="2" numClasses="3" visitedMethods="2" numMethods="2" />
+  <Modules>
+    <Module>
+      <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0.0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
+      <ModuleName>Scripts</ModuleName>
+      <Files>
+        <File uid="1" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/AiPlayer.cs" />
+        <File uid="2" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/Card.cs" />
+        <File uid="3" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/CardDisplay.cs" />
+        <File uid="4" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/CardInteraction.cs" />
+        <File uid="5" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/Deck.cs" />
+        <File uid="6" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/GameManager.cs" />
+        <File uid="7" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/Menu.cs" />
+        <File uid="8" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/Player.cs" />
+        <File uid="9" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Scripts/WildButton.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0.0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+          <FullName>Card</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="100.0" branchCoverage="0" crapScore="0" isConstructor="true" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken>100663302</MetadataToken>
+              <Name>Card::Card(CardColour, CardValue)</Name>
+              <FileRef uid="2" />
+              <SequencePoints>
+                <SequencePoint vc="5" uspid="58338" ordinal="0" offset="0" sl="40" sc="5" el="40" ec="5" bec="0" bev="0" fileid="2">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="0" vc="5" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="5" uspid="58339" ordinal="0" offset="7" sl="41" sc="5" el="41" ec="5" bec="0" bev="0" fileid="2">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="0" vc="5" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="5" uspid="58340" ordinal="0" offset="8" sl="42" sc="9" el="42" ec="9" bec="0" bev="0" fileid="2">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="0" vc="5" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="5" uspid="58341" ordinal="0" offset="15" sl="43" sc="9" el="43" ec="9" bec="0" bev="0" fileid="2">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="0" vc="5" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="5" uspid="58342" ordinal="0" offset="22" sl="44" sc="5" el="44" ec="5" bec="0" bev="0" fileid="2">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="0" vc="5" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+              </SequencePoints>
+              <BranchPoints />
+            </Method>
+          </Methods>
+        </Class>
+      </Classes>
+      <TrackedMethods>
+        <TrackedMethod uid="0" token="100663347" name="System.Void CardTests::Test_Card_AllActionValues()" strategy="Test" />
+      </TrackedMethods>
+    </Module>
+    <Module>
+      <Summary numSequencePoints="12" visitedSequencePoints="12" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0.0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="1" numClasses="2" visitedMethods="1" numMethods="1" />
+      <ModuleTime>0001-01-01T00:00:00</ModuleTime>
+      <ModuleName>Tests</ModuleName>
+      <Files>
+        <File uid="10" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/AiPlayerTests.cs" />
+        <File uid="11" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/CardDisplayTests.cs" />
+        <File uid="12" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/CardInteractionTests.cs" />
+        <File uid="13" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/CardTests.cs" />
+        <File uid="14" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/DeckTests.cs" />
+        <File uid="15" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/GameManagerTests.cs" />
+        <File uid="16" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/MenuTests.cs" />
+        <File uid="17" fullPath="C:/Users/kevin/OneDrive/Desktop/UNO/UNO-Flip-3D/UNOFlip/Assets/Tests/PlayerTests.cs" />
+      </Files>
+      <Classes>
+        <Class>
+          <Summary numSequencePoints="12" visitedSequencePoints="12" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0.0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+          <FullName>CardTests</FullName>
+          <Methods>
+            <Method visited="true" cyclomaticComplexity="0" nPathComplexity="0" sequenceCoverage="100.0" branchCoverage="0" crapScore="0" isConstructor="false" isStatic="false" isGetter="false" isSetter="false">
+              <Summary numSequencePoints="12" visitedSequencePoints="12" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100.0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+              <MetadataToken>100663347</MetadataToken>
+              <Name>System.Void CardTests::Test_Card_AllActionValues()</Name>
+              <FileRef uid="13" />
+              <SequencePoints>
+                <SequencePoint vc="1" uspid="59751" ordinal="0" offset="0" sl="98" sc="5" el="98" ec="5" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59752" ordinal="0" offset="1" sl="99" sc="9" el="99" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59753" ordinal="0" offset="10" sl="100" sc="9" el="100" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59754" ordinal="0" offset="19" sl="101" sc="9" el="101" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59755" ordinal="0" offset="28" sl="102" sc="9" el="102" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59756" ordinal="0" offset="37" sl="103" sc="9" el="103" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59757" ordinal="0" offset="47" sl="105" sc="9" el="105" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59758" ordinal="0" offset="71" sl="106" sc="9" el="106" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59759" ordinal="0" offset="95" sl="107" sc="9" el="107" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59760" ordinal="0" offset="119" sl="108" sc="9" el="108" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59761" ordinal="0" offset="143" sl="109" sc="9" el="109" ec="9" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+                <SequencePoint vc="1" uspid="59762" ordinal="0" offset="168" sl="110" sc="5" el="110" ec="5" bec="0" bev="0" fileid="13">
+                  <TrackedMethodRefs>
+                    <TrackedMethodRef uid="1" vc="1" />
+                  </TrackedMethodRefs>
+                </SequencePoint>
+              </SequencePoints>
+              <BranchPoints />
+            </Method>
+          </Methods>
+        </Class>
+        <Class>
+          <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" maxCrapScore="0" minCrapScore="0" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="0" />
+          <FullName>GameManagerTests</FullName>
+          <Methods />
+        </Class>
+      </Classes>
+      <TrackedMethods>
+        <TrackedMethod uid="1" token="100663347" name="System.Void CardTests::Test_Card_AllActionValues()" strategy="Test" />
+      </TrackedMethods>
+    </Module>
+  </Modules>
+</CoverageSession>
