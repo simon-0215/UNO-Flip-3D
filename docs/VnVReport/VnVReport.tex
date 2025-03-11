@@ -17,7 +17,7 @@
 \begin{document}
 
 \title{Verification and Validation Report: UNO Flip}
-\author{Mingyang Xu\\ Kevin Ishak\\ Zain-Alabedeen Garada\\ Jianhao Wei\\}
+\author{Mingyang Xu\\ Kevin Ishak\\ Zain-Alabedeen Garada\\ Jianhao Wei\\ Team 24}
 
 \date{\today}
 
@@ -35,8 +35,9 @@ March 6, 2025 & 1.1 & Mingyang Xu & Added Functional and Non-functional Requirem
 March 7, 2025 & 1.2 & Jianhao Wei & Add section 5, 6 and 8\\
 March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each test case\\
 March 8, 2025 & 1.4 & Kevin Ishak & Added Section 10 and 11\\
-March 10, 2025 & 1.5 & Kevin Ishak & Completed all unit tests, retrieved code coverage report\\
-March 10, 2025 & 1.6 & Jianhao Wei & Add detailed descriptions for our unit tests in section 6\\
+March 10, 2025 & 1.5 & Kevin Ishak & Implemented all unit tests, retrieved code coverage report\\
+March 10, 2025 & 1.6 & Zain-Alabedeen Garada & Implemented Section 7 and 9\\
+March 10, 2025 & 1.7 & Jianhao Wei, Kevin Ishak & Add detailed descriptions for our unit tests in section 6\\
 
 \bottomrule
 \end{tabularx}
@@ -73,66 +74,133 @@ March 10, 2025 & 1.6 & Jianhao Wei & Add detailed descriptions for our unit test
 
 \section{Functional Requirements Evaluation}
 
-\subsection{Authentication}
+\subsection{Area of Testing: Multiplayer Synchronization}
 \begin{itemize}
-    \item \textbf{Test Objective:} Players must log in or create an account to access multiplayer modes.
-    \item \textbf{Test Method:} Verify that players can log in or create an account to access multiplayer modes.
-    \item \textbf{Inputs:} Valid user credentials (UserID, Password).
-    \item \textbf{Expected Output:} Successful login and access to multiplayer modes.
-    \item \textbf{Actual Output:} Successful login and access to multiplayer modes.
-    \item \textbf{Result:} NOT Pass.
-\end{itemize}
-
-\subsection{Game Setup}
-\begin{itemize}
-    \item \textbf{Test Objective:} Players can create game rooms and invite others or join existing rooms.
-    \item \textbf{Test Method:} Verify that players can create game rooms, invite others, or join existing rooms.
-    \item \textbf{Inputs:} Room creation request, Player invitation, Join request.
-    \item \textbf{Expected Output:} Game room created successfully; invitations sent; players join rooms.
-    \item \textbf{Actual Output:} Game room created successfully; invitations sent; players join rooms.
-    \item \textbf{Result:}Pass.
-\end{itemize}
-
-\subsection{Turn Management}
-\begin{itemize}
-    \item \textbf{Test Objective:} The system will manage player turns, ensuring synchronization across devices.
-    \item \textbf{Test Method:} Verify that player turns are synchronized and notifications are sent when it's a player's turn.
-    \item \textbf{Inputs:} Player turn input.
-    \item \textbf{Expected Output:} Player turn managed with synchronization across devices; notification sent.
-    \item \textbf{Actual Output:} Player turn managed with synchronization across devices; notification sent.
-    \item \textbf{Result:} Pass.
-\end{itemize}
-
-\subsection{Chat Functionality}
-\begin{itemize}
-    \item \textbf{Test Objective:} Real-time chat within the game room for players to communicate.
-    \item \textbf{Test Method:} Verify that players can send and receive messages in real-time in the game room.
-    \item \textbf{Inputs:} Chat messages.
-    \item \textbf{Expected Output:} Messages sent and received in real-time.
-    \item \textbf{Actual Output:} Messages can‘t sent and received in real-time.
+    \item \textbf{Test Objective:} Ensure synchronization across all players.
+    \item \textbf{Test Method:} Check game state consistency among players.
+    \item \textbf{Inputs:} Game state changes during multiplayer gameplay.
+    \item \textbf{Expected Output:} Identical game state for all players.
+    \item \textbf{Actual Output:} Game states differ among players.
     \item \textbf{Result:} Not Pass.
 \end{itemize}
 
-\subsection{Scoring System}
+\subsection{Area of Testing: Authentication}
+
+\textbf{Test ID: AR1-Test01}
 \begin{itemize}
-    \item \textbf{Test Objective:} A detailed scoring mechanism to track and display player scores at the end of each game.
-    \item \textbf{Test Method:} Verify that scores are accurately tracked and displayed at the end of each game.
-    \item \textbf{Inputs:} Player actions and game results.
-    \item \textbf{Expected Output:} Player scores tracked and displayed at the end of the game.
-    \item \textbf{Actual Output:} Player scores tracked and displayed at the end of the game.
+    \item \textbf{Test Objective:} Verify successful login for valid credentials.
+    \item \textbf{Test Method:} Manual verification by entering valid credentials.
+    \item \textbf{Inputs:} Valid user credentials.
+    \item \textbf{Expected Output:} User logs in successfully.
+    \item \textbf{Actual Output:} User successfully logs in and accesses multiplayer mode.
     \item \textbf{Result:} Pass.
 \end{itemize}
 
-\subsection{Multiplayer Synchronization}
+\textbf{Test ID: AR1-Test02}
 \begin{itemize}
-    \item \textbf{Test Objective:} A state synchronization mechanism will ensure that all players see the same game state at all times.
-    \item \textbf{Test Method:} Verify that all players see the same game state, regardless of network conditions.
-    \item \textbf{Inputs:} Game state changes.
-    \item \textbf{Expected Output:} All players see the same game state.
-    \item \textbf{Actual Output:} Not all players see the same game state.
-
-        \item \textbf{Result:} Not pass.
+    \item \textbf{Test Objective:} Verify profile page information accuracy.
+    \item \textbf{Test Method:} Access user profile and verify statistics.
+    \item \textbf{Expected Output:} Display correct user statistics and preferences.
+    \item \textbf{Actual Output:} User sees correct statistics and preferences.
+    \item \textbf{Result:} Pass.
 \end{itemize}
+
+\subsection{Area of Testing: Game Setup}
+
+\textbf{Test ID: GS1-Test01}
+\begin{itemize}
+    \item \textbf{Test Objective:} Verify correct game room creation and invitation functionality.
+    \item \textbf{Test Method:} Create a new game room and invite players.
+    \item \textbf{Inputs:} User clicks "Create Room".
+    \item \textbf{Expected Output:} Game room created with invitation options.
+    \item \textbf{Actual Output:} Game room created and invitations function as expected.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\subsection{Area of Testing: Turn Management}
+
+\textbf{Test ID: TM1-Test01}
+\begin{itemize}
+    \item \textbf{Test Objective:} Ensure sequential turn synchronization.
+    \item \textbf{Test Method:} Monitor sequential turn management.
+    \item \textbf{Expected Output:} Turns synchronized across devices.
+    \item \textbf{Actual Output:} Turns correctly synchronized.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\textbf{Test ID: TMR1-Test02}
+\begin{itemize}
+    \item \textbf{Test Objective:} Verify "Skip" card functionality.
+    \item \textbf{Test Method:} Play a "Skip" card.
+    \item \textbf{Expected Output:} Next player's turn skipped.
+    \item \textbf{Actual Output:} Next player's turn is skipped correctly.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\textbf{Test ID: TMR1-Test03}
+\begin{itemize}
+    \item \textbf{Test Objective:} Verify "Reverse" card functionality.
+    \item \textbf{Test Method:} Check reverse card effect.
+    \item \textbf{Expected Output:} Turn order reversed.
+    \item \textbf{Actual Output:} Turn order reverses correctly.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\subsection{Area of Testing: Card Effects}
+
+\textbf{Test ID: CE1-Test01 (Draw Two Card)}
+\begin{itemize}
+    \item \textbf{Test Objective:} Verify the "Draw Two" card functionality.
+    \item \textbf{Expected Output:} Next player draws two cards.
+    \item \textbf{Actual Output:} Next player draws two cards.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\textbf{Test ID: CE1-Test02 (Draw Four Wild Card)}
+\begin{itemize}
+    \item \textbf{Test Objective:} Ensure correct behavior of Draw Four card.
+    \item \textbf{Test Method:} Automated gameplay simulation.
+    \item \textbf{Expected Output:} Next player draws four cards; color selection changes.
+    \item \textbf{Actual Output:} Next player drew four cards; color change executed correctly.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\textbf{Test ID: CE1-Test03 (Wild Card)}
+\begin{itemize}
+    \item \textbf{Test Objective:} Verify color selection functionality.
+    \item \textbf{Test Method:} Play Wild card and select color.
+    \item \textbf{Expected Output:} Color changes as selected.
+    \item \textbf{Actual Output:} Color change functionality operates correctly.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\subsection{Area of Testing: Game Over Conditions}
+
+\textbf{Test ID: GOC1-Test01}
+\begin{itemize}
+    \item \textbf{Test Objective:} Confirm game ends upon victory.
+    \item \textbf{Test Method:} Player exhausts cards.
+    \item \textbf{Expected Output:} Game identifies winner and ends.
+    \item \textbf{Actual Output:} Player victory detected; game ends correctly.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+\textbf{Test ID: GOC1-Test02}
+\begin{itemize}
+    \item \textbf{Test Objective:} Validate behavior when players disconnect.
+    \item \textbf{Test Method:} Disconnect all but one player.
+    \item \textbf{Expected Output:} Game ends, declaring remaining player winner.
+    \item \textbf{Actual Output:} Correctly identifies remaining player as winner.
+    \item \textbf{Result:} Pass.
+\end{itemize}
+
+
+
+
+
+
+\noindent\textbf{Additional Notes:}  
+At this stage, the multiplayer synchronization feature is still under active development. The discrepancy observed in the test results indicates issues with the current synchronization logic, particularly in state broadcasting and event handling between clients. The root cause is likely related to network latency handling or missing synchronization logic. Further debugging and implementation of synchronization protocols are required. We plan to retest once these aspects have been addressed and implemented fully.
 
 \newpage
 
@@ -156,8 +224,8 @@ We designed a questionnaire using Google Forms and distributed it among our frie
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{image.png}
-    \caption{}
+    \includegraphics[width=0.8\textwidth]{image3.png}
+    \caption{Usability Survey Result 1}
     \label{fig:labelname}
 \end{figure}
 
@@ -180,7 +248,7 @@ We designed a questionnaire using Google Forms and distributed it among our frie
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{image1.png}
-    \caption{}
+    \caption{Usability Survey Result 2}
     \label{fig:labelname}
 \end{figure}
 
@@ -199,7 +267,7 @@ We designed a questionnaire using Google Forms and distributed it among our frie
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{image2.png}
-    \caption{}
+    \caption{Usability Survey Result 3}
     \label{fig:labelname}
 \end{figure}
 
@@ -229,7 +297,7 @@ We designed a questionnaire using Google Forms and distributed it among our frie
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{image3.png}
-    \caption{}
+    \caption{Usability Survey Result 4}
     \label{fig:labelname}
 \end{figure}
 
@@ -255,7 +323,7 @@ We designed a questionnaire using Google Forms and distributed it among our frie
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{image4.png}
-    \caption{}
+    \caption{Usability Survey Result 5}
     \label{fig:labelname}
 \end{figure}
 
@@ -265,13 +333,13 @@ We designed a questionnaire using Google Forms and distributed it among our frie
     \item \textbf{Test Method:} Simulate a network interruption and verify the system's fault tolerance.
     \item \textbf{Inputs:} Network interruption.
     \item \textbf{Expected Output:} Player reconnects quickly without losing progress.
-    \item \textbf{Actual Output:} Player reconnects quickly with losing progress.
-    \item \textbf{Result:} Not Pass.
+    \item \textbf{Actual Output:} Player reconnects quickly without losing progress.
+    \item \textbf{Result:} Pass.
 \end{itemize}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{image5.png}
-    \caption{}
+    \caption{Usability Survey Result 6}
     \label{fig:labelname}
 \end{figure}
 
@@ -321,68 +389,117 @@ Existing Implementation: \href{https://unoonline.io/}{UNO Online Website}
 \end{itemize}
 
 \section{Unit Testing}
-Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. Here are the unit testing summaries for each of our scripts describing its path in our repository, brief description, and its result:
-\subsection{AiPlayer Script - UT1}
+Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. Here are the unit testing summaries for each of our scripts. The detailed information can be accessed at \textbf{report.pdf} in the same folder as this file.
+
+\subsection{AiPlayer.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/AiPlayerTests.cs
-    \item \textbf{Description:} This is the unit tests for the AiPlayer class in a Unity-based UNO game, testing various functionalities such as card drawing, playing, and selection of the best color and card.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT1: Test\_AiPlayer\_Creation} -- Ensures AI player is created correctly.
+    \item \textbf{UT2: Test\_AiPlayer\_IsNotHuman} -- Confirms AI player is not human.
+    \item \textbf{UT3: Test\_AiPlayer\_StartsWithEmptyHand} -- AI player starts with an empty hand.
+    \item \textbf{UT4: Test\_AiPlayer\_CanDrawCard} -- AI player can successfully draw a card.
+    \item \textbf{UT5: Test\_AiPlayer\_CanPlayCard} -- AI player can play a card from their hand.
+    \item \textbf{UT6: Test\_AiPlayer\_SelectsBestColor} -- AI player selects the best color based on their hand.
+    \item \textbf{UT7: Test\_AiPlayer\_GetPlayableCards\_MatchingColor} -- AI finds playable cards that match color.
+    \item \textbf{UT8: Test\_AiPlayer\_GetPlayableCards\_NoMatches} -- AI correctly identifies no playable cards.
+    \item \textbf{UT9: Test\_AiPlayer\_ChooseBestCard\_PreferActionCards} -- AI prioritizes action cards.
+    \item \textbf{UT10: Test\_AiPlayer\_SelectBestColor\_EqualDistribution} -- AI selects any valid color when all are equally distributed.
+    \item \textbf{UT11: Test\_AiPlayer\_SelectBestColor\_WithWildCards} -- AI selects a color despite wild cards in hand.
+    \item \textbf{UT12: Test\_AiPlayer\_GetPlayableCards\_WildCardsAlwaysPlayable} -- AI recognizes that wild cards are always playable.
+    \item \textbf{UT13: Test\_AiPlayer\_ChooseBestCard\_WithTwoCards} -- AI selects the best card when it has two left.
+    \item \textbf{UT14: Test\_AiPlayer\_SelectsColorForWildCard} -- AI chooses the most frequent color when playing a wild card.
+    \item \textbf{UT15: Test\_AiPlayer\_ChooseBestCard\_BasedOnOpponentHandSize} -- AI adjusts its choice based on opponent hand size.
+    \item \textbf{UT16: Test\_AiPlayer\_ChooseBestCard\_PreferMatchingColor} -- AI prefers cards matching the current color.
 \end{itemize}
 
-\subsection{Card Script - UT2}
+\subsection{Card.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardTests.cs
-    \item \textbf{Description:} This is the unit tests for the Card class in a UNO game, using NUnit to verify the creation and properties of various card types and their functionalities.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT17: Test\_Card\_Creation} -- Ensures a card is correctly created with a color and value.
+    \item \textbf{UT18: Test\_Card\_WildCard\_Creation} -- Verifies creation of a Wild card.
+    \item \textbf{UT19: Test\_Card\_PlusFourCard\_Creation} -- Verifies creation of a +4 Wild card.
+    \item \textbf{UT20: Test\_Card\_ActionCard\_Creation} -- Verifies creation of an Action card.
+    \item \textbf{UT21: Test\_Card\_Equality} -- Ensures two identical cards are equal.
+    \item \textbf{UT22: Test\_Card\_NumberCard\_Values} -- Ensures number cards contain correct values.
+    \item \textbf{UT23: Test\_Card\_AllColors} -- Ensures cards can have all four colors.
+    \item \textbf{UT24: Test\_Card\_AllActionValues} -- Ensures all action values are correctly assigned.
 \end{itemize}
 
-\subsection{CardDisplay Script - UT3}
+\subsection{CardDisplay.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardDisplayTests.cs
-    \item \textbf{Description:} This is a set of unit tests for the CardDisplay class in a Unity project, verifying the correct behavior and appearance of different types of cards in the game.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT25: Test\_CardDisplay\_SetCard\_NumberCard} -- Ensures number card is displayed correctly.
+    \item \textbf{UT26: Test\_CardDisplay\_SetCard\_SkipCard} -- Ensures Skip card is displayed correctly.
+    \item \textbf{UT27: Test\_CardDisplay\_SetCard\_ReverseCard} -- Ensures Reverse card is displayed correctly.
+    \item \textbf{UT28: Test\_CardDisplay\_SetCard\_PlusTwoCard} -- Ensures +2 card is displayed correctly.
+    \item \textbf{UT29: Test\_CardDisplay\_SetCard\_WildCard} -- Ensures Wild card is displayed correctly.
 \end{itemize}
 
-\subsection{CardInteraction Script - UT4}
+\subsection{CardInteraction.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardDisplayTests.cs
-    \item \textbf{Description:} This is the unit tests for the CardInteraction class in a Unity-based UNO game, verifying visual effects and gameplay interactions such as hover effects and playing a card.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT30: Test\_CardInteraction\_HoverEffect} -- Verifies hover effect lifts card.
+    \item \textbf{UT31: Test\_CardInteraction\_ClickToPlayCard} -- Ensures clicking on a card plays it.
 \end{itemize}
 
-\subsection{Deck Script - UT5}
+\subsection{Deck.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/DeckTests.cs
-    \item \textbf{Description:} This is a series of unit test cases for the Deck class in a Unity project, validating the deck's initialization, card drawing, shuffling, and card distribution functionalities 
-    \item \textbf{Result:} Pass
+    \item \textbf{UT32: Test\_Deck\_InitializeDeck} -- Ensures deck initializes with the correct number of cards.
+    \item \textbf{UT33: Test\_Deck\_DrawCard} -- Ensures drawing a card reduces deck count.
+    \item \textbf{UT34: Test\_Deck\_DrawAllCards} -- Ensures drawing all cards empties the deck.
+    \item \textbf{UT35: Test\_Deck\_AddUsedCard} -- Ensures used cards are stored properly.
+    \item \textbf{UT36: Test\_Deck\_VerifyCardDistribution} -- Checks correct distribution of card types.
+    \item \textbf{UT37: Test\_Deck\_ShuffleChangesOrder} -- Ensures shuffling changes deck order.
+    \item \textbf{UT38: Test\_Deck\_ResetsWhenEmpty} -- Ensures deck refills when emptied.
 \end{itemize}
 
-\subsection{GameManager Script - UT6}
+\subsection{GameManager.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/GameManagerTests.cs
-    \item \textbf{Description:} These are the unit tests for the GameManager class in a Unity game, utilizing NUnit and Unity's testing framework to verify the initialization and functionality of the game manager and related components. 
-    \item \textbf{Result:} Pass
+    \item \textbf{UT39: Test\_GameManager\_SetupGame} -- Ensures the game initializes correctly.
+    \item \textbf{UT40: Test\_GameManager\_StartTurn} -- Ensures player turn starts properly.
+    \item \textbf{UT41: Test\_GameManager\_EndTurn} -- Ensures turn ends correctly.
+    \item \textbf{UT42: Test\_GameManager\_PlayerDrawsCard} -- Ensures drawing a card works.
+    \item \textbf{UT43: Test\_GameManager\_PlayerPlaysCard} -- Ensures playing a valid card works.
 \end{itemize}
 
-\subsection{Menu Script - UT7}
+\subsection{Menu.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/MenuTests.cs
-    \item \textbf{Description:} This is the NUnit tests for the Menu class in Unity, verifying the functionality of how to play panel activation, level loading, game restarting, and game exiting.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT44: Test\_Menu\_HowToPlayPanel\_Activation} -- Ensures "How to Play" panel activates.
+    \item \textbf{UT45: Test\_Menu\_HowToPlayPanel\_NullHandling} -- Ensures handling of a missing panel.
+    \item \textbf{UT46: Test\_Menu\_LoadLevel} -- Ensures levels can be loaded.
+    \item \textbf{UT47: Test\_Menu\_RestartGame} -- Ensures game restarts correctly.
+    \item \textbf{UT48: Test\_Menu\_ExitGame} -- Ensures exiting the game works.
+    \item \textbf{UT49: Test\_Menu\_PauseGame} -- Ensures game pauses correctly.
+    \item \textbf{UT50: Test\_Menu\_ResumeGame} -- Ensures game resumes correctly after pausing.
 \end{itemize}
 
-\subsection{Player Script - UT8}
+\subsection{Player.cs}
 \begin{itemize}
-    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/PlayerTests.cs
-    \item \textbf{Description:} This is the unit tests for the Player class in a UNO game, verifying player creation, card drawing, card playing, and hand management functionalities using NUnit.
-    \item \textbf{Result:} Pass
+    \item \textbf{UT51: Test\_Player\_Creation} -- Ensures players are created correctly.
+    \item \textbf{UT52: Test\_Player\_DrawCard} -- Ensures players can draw cards.
+    \item \textbf{UT53: Test\_Player\_PlayCard} -- Ensures players can play valid cards.
+    \item \textbf{UT54: Test\_Player\_PlayInvalidCard} -- Ensures players cannot play invalid cards.
+    \item \textbf{UT55: Test\_Player\_DrawMultipleCards} -- Ensures players can draw multiple cards.
+    \item \textbf{UT56: Test\_Player\_HandManagement} -- Ensures proper hand management.
+    \item \textbf{UT57: Test\_Player\_DrawNullCard} -- Ensures drawing a null card does not cause errors.
+    \item \textbf{UT58: Test\_Player\_PlayNullCard} -- Ensures playing a null card does not cause errors.
 \end{itemize}
 
 
 \section{Changes Due to Testing}
+During the testing phase, we achieved 71.9\%\ code coverage, with all currently implemented test cases passing successfully. The existing test cases verified core game functionalities, including turn management, scoring system, card interactions, and AI behavior, ensuring that these components function as expected. However, some features, such as chat functionality, settings, and multiplayer, are not yet implemented and were therefore not included in the current test coverage. Multiplayer has been implemented to a certain degree but is not fully operational. For Revision 1, we plan to implement these missing features and expand our test cases to cover them thoroughly. This will involve creating new test cases to validate real-time chat functionality, user-configurable settings, and improved multiplayer synchronization. While our existing tests confirm the correctness of currently implemented features, further testing will be necessary to ensure the stability of these upcoming enhancements. See section 11 for more details about the code coverage. Below are images showing we passed all the tests we have so far:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{passedTests1.png}
+    \caption{Test Results 1}
+    \label{fig:test_results_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{passedTests2.png}
+    \caption{Test Results 2}
+    \label{fig:test_results_2}
+\end{figure}
 
 \section{Automated Testing}
-For the automated testing, we implemented the CodeQL Advanced in our GitHub actions that scan newly integrated code to ensure our code base is free of vulnerability and fits with each other. We had used the original script for our testings. Overall, all testing has been successful since the implementation of this CI action. However, since there are still some functionalities in our software needed to be consummated, we need to find a better CI actions which check our Unity code with more specialty or change our existing script to better suite the nature of our code. This will make our integration more smoothly and reduce the time for us to debug our code and will be one of our next main focus of the development.
+For the automated testing, we implemented the CodeQL Advanced in our GitHub actions that scan newly integrated code to ensure our code base is free of vulnerability and fits with each other. We had used the original script for our testings. Overall, all testing has been successful since the implementation of this CI action. However, since there are still some functionalities in our software needed to be completed, we need to find a better CI actions which check our Unity code with more specialty or change our existing script to better suit the nature of our code. This will make our integration smoother and reduce the time for us to debug our code and will be one of our next main focus of the development.
 
 \section{Trace to Requirements}
 
@@ -395,17 +512,17 @@ This section maps the functional and non-functional requirements to the correspo
         \textbf{Requirement ID} & \textbf{Description} & \textbf{Test Case} \\
         \hline
         AR1 & Players must log in or create an account to access multiplayer modes & UT-01 \\
-        AR2 & User profiles will store game statistics and preferences & UT-09 \\
+        AR2 & User profiles will store game statistics and preferences &  \\
         GSR1 & Players can create game rooms and invite others or join existing rooms & UT-02 \\
         GSR2 & Options for choosing game rules and difficulty settings & UT-02 \\
         TMR1 & The system will manage player turns, ensuring synchronization across devices & UT-03 \\
         TMR2 & Notifications will alert players when it is their turn & UT-03 \\
         CFR1 & Real-time chat within the game room for players to communicate & UT-04 \\
-        CFR2 & Chat can be enabled or disabled based on player preferences & UT-04 \\
+        CFR2 & Chat can be enabled or disabled based on player preferences &  \\
         SSR1 & A detailed scoring mechanism to track and display player scores at the end of each game & UT-05 \\
         SSR2 & The system will keep a record of player stats, including wins, losses, and average score & UT-05 \\
-        EGHR1 & The game will automatically declare a winner based on the rules and display a summary of the results & UT-06 \\
-        EGHR2 & Players can choose to play another round or exit the game & UT-06 \\
+        EGHR1 & The game will automatically declare a winner based on the rules and display a summary of the results &  \\
+        EGHR2 & Players can choose to play another round or exit the game &  \\
         MSR1 & A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions & UT-08 \\
         MSR2 & The system will manage latency and update the game state in real-time & UT-08 \\
         \hline
@@ -422,15 +539,15 @@ This section maps the functional and non-functional requirements to the correspo
         EOUR2 & The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms & UT-02 \\
         EOUR3 & Drag-and-drop actions for playing cards should be intuitive and highly responsive & UT-03 \\
         PALR1 & The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish) & UT-09 \\
-        PALR2 & Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience & UT-09 \\
+        PALR2 & Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience &  \\
         LR1 & The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards & UT-06 \\
         LR2 & AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance & UT-07 \\
         UAFR1 & All system notifications and error messages should use concise, friendly language without technical jargon & UT-06 \\
-        UAFR2 & Detailed game help and rule explanations should be available for players to consult at any time & UT-06 \\
+        UAFR2 & Detailed game help and rule explanations should be available for players to consult at any time &  \\
         SALR1 & The average response time for the game should be within 50 milliseconds to ensure smooth interaction & UT-08 \\
         SALR2 & Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state & UT-08 \\
         SCR1 & Changes in the card and game state must be synchronized in real-time to ensure all players see the same status & UT-08 \\
-        SCR2 & Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure & UT-08 \\
+        SCR2 & Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure &  \\
         \hline
     \end{tabularx}
     \caption{Traceability of Requirements to Test Cases (Part 2)}
@@ -466,18 +583,15 @@ This section maps the functional and non-functional requirements to the correspo
     \begin{tabularx}{\textwidth}{|l|X|l|}
         \hline
         PR3 & The game should automatically log users out after a certain period of inactivity to prevent unauthorized access & UT-10 \\
-        AR1 & The system should log all critical operations in the backend to allow for auditing and troubleshooting & UT-10 \\
-        AR2 & In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent) & UT-10 \\
-        IR1 & The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay & UT-10 \\
-        IR2 & The system should be resilient to network issues, such as fluctuations in connection speed & UT-08 \\
+        AR3 & The system should log all critical operations in the backend to allow for auditing and troubleshooting & UT-10 \\
+        AR4 & In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent) & UT-10 \\
+        IR3 & The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay & UT-10 \\
+        IR4 & The system should be resilient to network issues, such as fluctuations in connection speed & UT-08 \\
         MR1 & The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions & UT-08 \\
         MR2 & The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience & UT-08 \\
         MR3 & Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay & UT-03 \\
         SR1 & The system should offer online technical support, and players should be able to report issues in-game or via the website & UT-10 \\
         SR2 & The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection & UT-08 \\
-        AR1 & The system must ensure 24/7 availability for users worldwide, with planned downtime limited to maintenance windows of no more than 2 hours per month & UT-08 \\
-        AR2 & Maintenance and updates must be rolled out during off-peak hours to minimize disruption to users & UT-08 \\
-        AR3 & The game must include an offline maintenance mode where players can still practice against AI when the server is unavailable & UT-07 \\
         \hline
     \end{tabularx}
     \caption{Traceability of Requirements to Test Cases (Part 4)}
@@ -486,47 +600,58 @@ This section maps the functional and non-functional requirements to the correspo
 
 
 
+
+
 \section{Trace to Modules}
 This section maps unit tests to the software modules responsible for implementing them. This ensures that each module is properly verified through testing.
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{|l|X|}
+    \begin{tabularx}{\textwidth}{|l|X|l|}
         \hline
-        \textbf{Unit Test File} & \textbf{Module(s) Tested} \\
+        \textbf{Unit Test File} & \textbf{Module(s) Tested} & \textbf{Unit Test \#} \\
         \hline
-        AiPlayerTests.cs & Turn Management Module, Verification Output Module \\
+        AiPlayerTests.cs & Turn Management Module, Verification Output Module & UT1 - UT16 \\
         \hline
-        CardTests.cs & Card Effect Module \\
+        CardTests.cs & Card Effect Module & UT17 - UT24 \\
         \hline
-        CardDisplayTests.cs & User Interface Module, Output Module \\
+        CardDisplayTests.cs & User Interface Module, Output Module & UT25 - UT29 \\
         \hline
-        CardInteractionTests.cs & Input Module, User Interface Module \\
+        CardInteractionTests.cs & Input Module, User Interface Module & UT30 - UT31 \\
         \hline
-        DeckTests.cs & Save/Load Module \\
+        DeckTests.cs & Save/Load Module & UT32 - UT38 \\
         \hline
-        GameManagerTests.cs & Turn Management Module, Verification Output Module, Multiplayer Networking Module \\
+        GameManagerTests.cs & Turn Management Module, Verification Output Module, Multiplayer Networking Module & UT39 - UT43 \\
         \hline
-        MenuTests.cs & User Interface Module, Input Module \\
+        MenuTests.cs & User Interface Module, Input Module & UT44 - UT50 \\
         \hline
-        PlayerTests.cs & Turn Management Module, Verification Output Module \\
+        PlayerTests.cs & Turn Management Module, Verification Output Module & UT51 - UT58 \\
         \hline
     \end{tabularx}
     \caption{Traceability of Unit Tests to Modules}
     \label{tab:trace_unit_tests}
 \end{table}
 
-By linking unit tests to specific software modules, we ensure that all core functionalities are adequately verified. We noticed that there are 2 modules mentioned in the MIS design document that are not covered in these unit tests. Those modules include:
-
+By linking unit tests to specific software modules, we ensure that all core functionalities are adequately verified. We noticed that there are 2 modules mentioned in the MIS design document that are not covered in these unit tests, with an explanation on what type of tests we will implement. Those modules include:
+\begin{itemize}
+    \item \textbf{Backend/Server Module:} Write integration tests that check server-client communication.
+    \item \textbf{Animation Module:} Use Unity Test Framework’s Play Mode tests. As of right now, we only focused on implementing tests in Edit Mode.
+\end{itemize}
 
 \section{Code Coverage Metrics}
 Our project consists of 9 core scripts, each contributing to the overall functionality of the game. Our goal is to achieve at least 80\% code coverage across the project to ensure the reliability and robustness of our codebase.
 
 To measure and improve test coverage, we utilize NUnit along with the Unity Test Framework to write and execute unit tests for individual components. NUnit provides a structured testing framework, enabling us to validate expected behaviors, handle edge cases, and detect regressions efficiently. The Unity Test Framework allows us to run these tests seamlessly within the Unity environment, supporting both Edit Mode and Play Mode testing.
 
-Additionally, we use Unity's Code Coverage tool to generate detailed reports on test coverage. This tool helps us analyze which portions of our scripts are covered by tests and identify areas that require additional test cases. The code coverage report will be included in this section to provide a visual representation of our progress.
+Additionally, we use Unity's Code Coverage tool to generate detailed reports on test coverage. This tool helps us analyze which portions of our scripts are covered by tests and identify areas that require additional test cases. The code coverage report will be included in this section to provide a visual representation of our progress. Here is a screenshot showing how after running each test a report saved as "index.htm" is saved so we have full transparency on the unit testing:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{saveReport.png}  % Change file name if needed
+    \caption{Code coverage report saving}
+    \label{fig:coverage}
+\end{figure}
 
-We will continue to refine and expand our test cases to meet or exceed our 80\% code coverage goal, ensuring a high level of confidence in our game's stability and functionality.
+We will continue to refine and expand our test cases to meet or exceed our 80\% code coverage goal, ensuring a high level of confidence in our game's stability and functionality. You may notice that GameManager has a decent amount of uncovered lines, so the next step would be to focus on that script to bring us to our 80\% goal.
 As of now, below is a breakdown of the code coverage percentage for each script in the project:
 \begin{figure}[h]
     \centering
@@ -553,16 +678,16 @@ As of now, below is a breakdown of the code coverage percentage for each script 
 \bibliography{../../refs/References}
 
 
-\section*{Appendix --- Reflection}
+\section{Appendix --- Reflection}
 
 \begin{enumerate}
-  \item What went well while writing this deliverable?\\
-  The writing process of functional requirement evaluation and nonfunctional requirements evaluation section went well because we had already performed all the testing before and the result is relatively straight forward. We also has a lot of reference back to our VnVPlan document and check if the test cases are still eligible. If we think the test case is still eligible, we went forward and test the planned test case. The section 9 and 10 also went well since we just directly refer back to our SRS documents
-  \item What pain points did you experience during this deliverable, and how did you resolve them?\\
-  The units tests. When we are writing our code, we mostly just test everything manually and did not write unit tests for our code. Therefore, we have to write formal unit tests for each of our scripts and perform the test and writing the result to our document. This took a lot of time especially during midterm season. Next time, we will read the instructions carefully and make sure we do not miss any required stuff.
-  \item Which parts of this document stemmed from speaking to your client(s) or a proxy (e.g. your peers)?\\
-  We communicate with other teams about what structure we should use for each section of this document since we are not quite sure about the structure required. After the communication, we followed the guideline of other teams, but modified some of them to better suit the nature of our project. Since one of our extras is the usability testing, we presented our software to several other friends and classmates so they can finish our survey. Most of them think we did pretty well on our game, but the quality should be impro
-  \item In what ways was the Verification and Validation (VnV) Plan different from the activities that were actually conducted for VnV?
+  \item What went well while writing this deliverable? The writing process of functional requirement evaluation and nonfunctional requirements evaluation section went well because we had already performed all the tests before and the result is relatively straightforward. We also had a lot of references back to our VnV Plan document and checked if the test cases were still valid. If we think the test case is still eligible, we proceeded to test the planned test case. Sections 9 and 10 also went well since we directly referred back to our SRS document
+  \item What pain points did you experience during this deliverable, and how did you resolve them?\\\\
+  The units tests. When we were writing our code, we mostly tested everything manually and did not write unit tests. Therefore, we have to write formal unit tests for each of our scripts and perform the test and writing the result to our document. This took a lot of time, especially during midterm season. Next time, we will read the instructions carefully and ensure we do not miss any required elements.
+  \item Which parts of this document stemmed from speaking to your client(s) or a proxy (e.g. your peers)?\\\\
+  We communicate with other teams about what structure we should use for each section of this document since we are not quite sure about the structure required. After the communication, we followed the guideline of other teams, but modified some of them to better suit the nature of our project. Since one of our extras is the usability testing, we presented our software to several other friends and classmates so they can finish our survey. Most of them think we did pretty well on our game, but the quality of the user interface should be improved to maximize the user experience.
+  \item In what ways was the Verification and Validation (VnV) Plan different from the activities that were actually conducted for VnV?\\\\
+  The VnV plan only planning about what should we do for the testing of our software. Some of them are more abstract and may not be easily implements in the actual testing. Some of them may be meaningful when we make the plans, but could be useless when we actually perform the test. There are some requirements in our SRS document that are not covered in the VnV Plan, but we rediscover these when we actually perform the test. In general, the VnV plan is more abstract, and the content in VnV report in here is more substantial and better suited for the nature of our project.
 \end{enumerate}
 
 \end{document}
