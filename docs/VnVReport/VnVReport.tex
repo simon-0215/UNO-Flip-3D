@@ -1,6 +1,7 @@
 \documentclass[12pt, titlepage]{article}
 
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{hyperref}
 \hypersetup{
@@ -125,35 +126,62 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Test Method:} Verify that all players see the same game state, regardless of network conditions.
     \item \textbf{Inputs:} Game state changes.
     \item \textbf{Expected Output:} All players see the same game state.
-    \item \textbf{Actual Output:} All players see the same game state.
-    \item \textbf{Result:} Not pass.
+    \item \textbf{Actual Output:} Not all players see the same game state.
+
+        \item \textbf{Result:} Not pass.
 \end{itemize}
 
 \newpage
 
 \section{Nonfunctional Requirements Evaluation}
 
+We designed a questionnaire using Google Forms and distributed it among our friends to evaluate the usability and user satisfaction of our product. The following screenshots illustrate the collected results from this questionnaire, providing insights into participants' specific feedback.
+
 \subsection{Usability and Humanity Requirements}
 
 \subsubsection{Ease of Use Requirements}
+
 \begin{itemize}
     \item \textbf{Test Objective:} New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials.
     \item \textbf{Test Method:} Verify that new players can quickly understand the gameplay with clear tutorials.
-    \item \textbf{Inputs:} Player interaction with the tutorial.
+
+        \item \textbf{Inputs:} Player interaction with the tutorial.
     \item \textbf{Expected Output:} Player completes tutorial and understands gameplay.
     \item \textbf{Actual Output:} Player completes tutorial and understands gameplay.
     \item \textbf{Result:} Pass.
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
+
+
+
+
+
+
 \subsubsection{Personalization and Internationalization Requirements}
 \begin{itemize}
-    \item \textbf{Test Objective:} The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish).
+
+        \item \textbf{Test Objective:} The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish).
     \item \textbf{Test Method:} Verify that the game supports multiple languages and can switch between them.
     \item \textbf{Inputs:} Language selection.
     \item \textbf{Expected Output:} Language changed successfully.
     \item \textbf{Actual Output:} Language changed successfully.
     \item \textbf{Result:} Pass.
 \end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image1.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
+
+
 
 \subsubsection{Learning Requirements}
 \begin{itemize}
@@ -164,6 +192,14 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Actual Output:} Interactive tutorial displayed.
     \item \textbf{Result:} Pass.
 \end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image2.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
+
 
 \subsubsection{Understandability and Politeness Requirements}
 \begin{itemize}
@@ -187,6 +223,13 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Result:} Pass.
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image3.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
+
 \subsubsection{Safety-Critical Requirements}
 \begin{itemize}
     \item \textbf{Test Objective:} Changes in the card and game state must be synchronized in real-time.
@@ -206,6 +249,12 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Actual Output:} Accurate score and game state calculations.
     \item \textbf{Result:} Pass.
 \end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image4.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
 \begin{itemize}
@@ -213,9 +262,15 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Test Method:} Simulate a network interruption and verify the system's fault tolerance.
     \item \textbf{Inputs:} Network interruption.
     \item \textbf{Expected Output:} Player reconnects quickly without losing progress.
-    \item \textbf{Actual Output:} Player reconnects quickly without losing progress.
-    \item \textbf{Result:} Pass.
+    \item \textbf{Actual Output:} Player reconnects quickly with losing progress.
+    \item \textbf{Result:} Not Pass.
 \end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image5.png}
+    \caption{}
+    \label{fig:labelname}
+\end{figure}
 
 \subsubsection{Capacity Requirements}
 \begin{itemize}
@@ -263,7 +318,89 @@ Existing Implementation: \href{https://unoonline.io/}{UNO Online Website}
 \end{itemize}
 
 \section{Unit Testing}
-Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. In our software, when our team members finished writing the code, we usually test each individual functions or code components manually by inserting normal, abnormal and edge cases in order to make sure each individual components perform as expected. For integration testing, we do implement the appropriate CI in our GitHub. Please refer to section 8 for more details.
+Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. Here is a detailed unit testing summary for each of our scripts:
+\subsection{AiPlayer Script}
+\begin{itemize}
+    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/AiPlayer.cs
+    \item \textbf{Description:} Check AI opponent decision-
+making logic
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{Card Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} 
+    \item \textbf{Result:}
+\end{itemize}
+
+\subsection{CardDisplay Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} 
+    \item \textbf{Result:}
+\end{itemize}
+
+\subsection{CardInteraction Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} 
+    \item \textbf{Result:}
+\end{itemize}
+
+\subsection{Deck Script}
+\begin{itemize}
+    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/Deck.cs
+    \item \textbf{Description:} Testing all 
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{FlippedCard Script}
+\begin{itemize}
+    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/FlippedCard.cs
+    \item \textbf{Description:} 
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{FlippedCardDisplay Script}
+\begin{itemize}
+    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/AiPlayer.cs
+    \item \textbf{Description:} 
+    \item \textbf{Result:}
+\end{itemize}
+
+\subsection{GameManager Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} Ensure game correctly handles
+end-game scenarios 
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{Menu Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} Ensure game room creation
+and joining works correctly
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{Player Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} Verify player turn manage-
+ment and synchronization 
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{WildButton Script}
+\begin{itemize}
+    \item \textbf{Path:} 
+    \item \textbf{Description:} 
+    \item \textbf{Result:}
+\end{itemize}
+
+
 \section{Changes Due to Testing}
 
 \section{Automated Testing}
@@ -400,7 +537,7 @@ By linking unit tests to specific software modules, we ensure that all core func
 
 
 \section{Code Coverage Metrics}
-There are 9 main scripts in our project. The aim is to reach at least 80\% code coverage in the project. Below is a list of the scripts along with the code coverage percentage for each one:
+There are 9 main scripts in our project. The aim is to reach at least 80\% code coverage in the project. Through the Below is a list of the scripts along with the code coverage percentage for each one at this point in time:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|c|}
@@ -429,9 +566,12 @@ Notice that the most important script is GameManger which deals with most of the
 \section*{Appendix --- Reflection}
 
 \begin{enumerate}
-  \item What went well while writing this deliverable?
-  \item What pain points did you experience during this deliverable, and how did you resolve them?
-  \item Which parts of this document stemmed from speaking to your client(s) or a proxy (e.g. your peers)?
+  \item What went well while writing this deliverable?\\
+  The writing process of functional requirement evaluation and nonfunctional requirements evaluation section went well because we had already performed all the testing before and the result is relatively straight forward. We also has a lot of reference back to our VnVPlan document and check if the test cases are still eligible. If we think the test case is still eligible, we went forward and test the planned test case. The section 9 and 10 also went well since we just directly refer back to our SRS documents
+  \item What pain points did you experience during this deliverable, and how did you resolve them?\\
+  The units tests. When we are writing our code, we mostly just test everything manually and did not write unit tests for our code. Therefore, we have to write formal unit tests for each of our scripts and perform the test and writing the result to our document. This took a lot of time especially during midterm season. Next time, we will read the instructions carefully and make sure we do not miss any required stuff.
+  \item Which parts of this document stemmed from speaking to your client(s) or a proxy (e.g. your peers)?\\
+  We communicate with other teams about what structure we should use for each section of this document since we are not quite sure about the structure required. After the communication, we followed the guideline of other teams, but modified some of them to better suit the nature of our project. Since one of our extras is the usability testing, we presented our software to several other friends and classmates so they can finish our survey. Most of them think we did pretty well on our game, but the quality should be impro
   \item In what ways was the Verification and Validation (VnV) Plan different from the activities that were actually conducted for VnV?
 \end{enumerate}
 
