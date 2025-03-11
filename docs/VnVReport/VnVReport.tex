@@ -511,20 +511,20 @@ This section maps the functional and non-functional requirements to the correspo
         \hline
         \textbf{Requirement ID} & \textbf{Description} & \textbf{Test Case} \\
         \hline
-        AR1 & Players must log in or create an account to access multiplayer modes & UT-01 \\
+        AR1 & Players must log in or create an account to access multiplayer modes &\\
         AR2 & User profiles will store game statistics and preferences &  \\
-        GSR1 & Players can create game rooms and invite others or join existing rooms & UT-02 \\
-        GSR2 & Options for choosing game rules and difficulty settings & UT-02 \\
-        TMR1 & The system will manage player turns, ensuring synchronization across devices & UT-03 \\
-        TMR2 & Notifications will alert players when it is their turn & UT-03 \\
-        CFR1 & Real-time chat within the game room for players to communicate & UT-04 \\
+        GSR1 & Players can create game rooms and invite others or join existing rooms & UT39 \\
+        GSR2 & Options for choosing game rules and difficulty settings &  \\
+        TMR1 & The system will manage player turns, ensuring synchronization across devices & UT40, UT41 \\
+        TMR2 & Notifications will alert players when it is their turn & UT-40 \\
+        CFR1 & Real-time chat within the game room for players to communicate &  \\
         CFR2 & Chat can be enabled or disabled based on player preferences &  \\
-        SSR1 & A detailed scoring mechanism to track and display player scores at the end of each game & UT-05 \\
-        SSR2 & The system will keep a record of player stats, including wins, losses, and average score & UT-05 \\
-        EGHR1 & The game will automatically declare a winner based on the rules and display a summary of the results &  \\
-        EGHR2 & Players can choose to play another round or exit the game &  \\
-        MSR1 & A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions & UT-08 \\
-        MSR2 & The system will manage latency and update the game state in real-time & UT-08 \\
+        SSR1 & A detailed scoring mechanism to track and display player scores at the end of each game &  \\
+        SSR2 & The system will keep a record of player stats, including wins, losses, and average score &  \\
+        EGHR1 & The game will automatically declare a winner based on the rules and display a summary of the results & UT38 \\
+        EGHR2 & Players can choose to play another round or exit the game & UT47,UT48 \\
+        MSR1 & A state synchronization mechanism will ensure that all players see the same game state at all times, regardless of network conditions &  \\
+        MSR2 & The system will manage latency and update the game state in real-time &  \\
         \hline
     \end{tabularx}
     \caption{Traceability of Requirements to Test Cases (Part 1)}
@@ -535,18 +535,18 @@ This section maps the functional and non-functional requirements to the correspo
     \centering
     \begin{tabularx}{\textwidth}{|l|X|l|}
         \hline
-        EOUR1 & New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials & UT-06 \\
-        EOUR2 & The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms & UT-02 \\
-        EOUR3 & Drag-and-drop actions for playing cards should be intuitive and highly responsive & UT-03 \\
-        PALR1 & The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish) & UT-09 \\
+        EOUR1 & New players should be able to quickly grasp the gameplay, with the system providing simple and clear tutorials & UT44 \\
+        EOUR2 & The game menu and control buttons should be easy to navigate, allowing players to easily create or join rooms & UT44-UT50 \\
+        EOUR3 & Drag-and-drop actions for playing cards should be intuitive and highly responsive & UT43 \\
+        PALR1 & The game should support language localization, offering options for multiple languages (e.g., English, French, Spanish) & \\
         PALR2 & Players can customize personal settings, such as sound effects, background music, and interface themes, for a personalized experience &  \\
-        LR1 & The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards & UT-06 \\
-        LR2 & AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance & UT-07 \\
-        UAFR1 & All system notifications and error messages should use concise, friendly language without technical jargon & UT-06 \\
+        LR1 & The system will offer interactive tutorials for new players to understand the rules of UNO Flip and the effects of special cards & UT44 \\
+        LR2 & AI will guide players to familiarize themselves with advanced strategies and dynamically adjust difficulty based on player performance &  \\
+        UAFR1 & All system notifications and error messages should use concise, friendly language without technical jargon & UT40,UT41 \\
         UAFR2 & Detailed game help and rule explanations should be available for players to consult at any time &  \\
-        SALR1 & The average response time for the game should be within 50 milliseconds to ensure smooth interaction & UT-08 \\
-        SALR2 & Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state & UT-08 \\
-        SCR1 & Changes in the card and game state must be synchronized in real-time to ensure all players see the same status & UT-08 \\
+        SALR1 & The average response time for the game should be within 50 milliseconds to ensure smooth interaction &  \\
+        SALR2 & Network latency in multiplayer mode should be kept under 200 milliseconds to avoid inconsistencies in the game state &  \\
+        SCR1 & Changes in the card and game state must be synchronized in real-time to ensure all players see the same status &  \\
         SCR2 & Disaster recovery mechanisms should be in place to save game progress and resume play in case of server failure &  \\
         \hline
     \end{tabularx}
@@ -558,20 +558,20 @@ This section maps the functional and non-functional requirements to the correspo
     \centering
     \begin{tabularx}{\textwidth}{|l|X|l|}
         \hline
-        POAR1 & When calculating scores and game state, the system should ensure high precision to avoid incorrect scorekeeping or errors in the game logic & UT-05 \\
-        ROFR1 & The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption without losing game progress & UT-08 \\
-        ROFR2 & The server should handle a surge in user logins without crashing & UT-01 \\
-        CP1 & The system should support at least 1,000 concurrent users, with each game room running independently & UT-08 \\
-        CP2 & Each game room should support up to 4 to 8 players & UT-02 \\
-        SOER1 & The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels & UT-08 \\
-        SOER2 & As the player base grows, the server should be able to scale dynamically to handle more concurrent users & UT-08 \\
-        LR1 & The game’s code should be maintainable for long-term use, supporting future updates, performance optimizations, and feature expansions & UT-08 \\
-        AR1 & Players must securely log in to the game, with support for two-factor authentication (2FA) for added security & UT-01 \\
-        AR2 & The game should have a password recovery mechanism to allow users to recover their passwords in case they forget them & UT-01 \\
-        IR1 & All player data (such as game progress and personal stats) should be encrypted to prevent unauthorized modification & UT-10 \\
-        IR2 & The game should not allow weak passwords (e.g., passwords composed only of numbers or letters) for login credentials & UT-10 \\
-        PR1 & Player data (such as personal information and game records) should comply with privacy policies to prevent data breaches & UT-10 \\
-        PR2 & The game should notify users that they should not share their personal information with others in the game room & UT-10 \\
+        POAR1 & When calculating scores and game state, the system should ensure high precision to avoid incorrect scorekeeping or errors in the game logic & UT43 \\
+        ROFR1 & The system should be fault-tolerant, allowing players to reconnect quickly after a network interruption without losing game progress &  \\
+        ROFR2 & The server should handle a surge in user logins without crashing &  \\
+        CP1 & The system should support at least 1,000 concurrent users, with each game room running independently &  \\
+        CP2 & Each game room should support up to 4 to 8 players &  \\
+        SOER1 & The system should be scalable, allowing for future additions of new game modes, features, or AI difficulty levels &  \\
+        SOER2 & As the player base grows, the server should be able to scale dynamically to handle more concurrent users &  \\
+        LR1 & The game’s code should be maintainable for long-term use, supporting future updates, performance optimizations, and feature expansions &  \\
+        AR1 & Players must securely log in to the game, with support for two-factor authentication (2FA) for added security &  \\
+        AR2 & The game should have a password recovery mechanism to allow users to recover their passwords in case they forget them &  \\
+        IR1 & All player data (such as game progress and personal stats) should be encrypted to prevent unauthorized modification &  \\
+        IR2 & The game should not allow weak passwords (e.g., passwords composed only of numbers or letters) for login credentials &  \\
+        PR1 & Player data (such as personal information and game records) should comply with privacy policies to prevent data breaches &  \\
+        PR2 & The game should notify users that they should not share their personal information with others in the game room &  \\
         \hline
     \end{tabularx}
     \caption{Traceability of Requirements to Test Cases (Part 3)}
@@ -582,16 +582,16 @@ This section maps the functional and non-functional requirements to the correspo
     \centering
     \begin{tabularx}{\textwidth}{|l|X|l|}
         \hline
-        PR3 & The game should automatically log users out after a certain period of inactivity to prevent unauthorized access & UT-10 \\
-        AR3 & The system should log all critical operations in the backend to allow for auditing and troubleshooting & UT-10 \\
-        AR4 & In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent) & UT-10 \\
-        IR3 & The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay & UT-10 \\
-        IR4 & The system should be resilient to network issues, such as fluctuations in connection speed & UT-08 \\
-        MR1 & The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions & UT-08 \\
-        MR2 & The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience & UT-08 \\
-        MR3 & Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay & UT-03 \\
-        SR1 & The system should offer online technical support, and players should be able to report issues in-game or via the website & UT-10 \\
-        SR2 & The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection & UT-08 \\
+        PR3 & The game should automatically log users out after a certain period of inactivity to prevent unauthorized access &  \\
+        AR3 & The system should log all critical operations in the backend to allow for auditing and troubleshooting &  \\
+        AR4 & In case of frontend crashes, the game should provide crash information to the backend for future improvements (with user consent) &  \\
+        IR3 & The system should be immune to common network attacks (e.g., DDoS, SQL injection) to ensure the safety of player data and gameplay &  \\
+        IR4 & The system should be resilient to network issues, such as fluctuations in connection speed &  \\
+        MR1 & The game must maintain a frame rate of at least 30 FPS across all supported platforms, ensuring smooth animations and interactions &  \\
+        MR2 & The system must support up to 1,000 concurrent users in multiplayer mode without significant degradation in performance or user experience &  \\
+        MR3 & Actions taken by players, such as playing or drawing a card, must occur in under 500 milliseconds to avoid noticeable delays in gameplay &  \\
+        SR1 & The system should offer online technical support, and players should be able to report issues in-game or via the website &  \\
+        SR2 & The system must detect and recover from unexpected disconnections, allowing players to resume gameplay within 10 seconds of a reconnection &  \\
         \hline
     \end{tabularx}
     \caption{Traceability of Requirements to Test Cases (Part 4)}
