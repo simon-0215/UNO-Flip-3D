@@ -27,13 +27,16 @@
 
 \section{Revision History}
 
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}p{2cm}X}
+\begin{tabularx}{\textwidth}{p{3cm}p{1cm}p{3cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Author}& {\bf Notes}\\
 \midrule
 Feb. 28, 2025 & 1.0 & Jianhao Wei & Create LaTeX file template \\
 March 6, 2025 & 1.1 & Mingyang Xu & Added Functional and Non-functional Requirements\\
 March 7, 2025 & 1.2 & Jianhao Wei & Add section 5, 6 and 8\\
 March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each test case\\
+March 8, 2025 & 1.4 & Kevin Ishak & Added Section 10 and 11\\
+March 10, 2025 & 1.5 & Kevin Ishak & Completed all unit tests, retrieved code coverage report\\
+March 10, 2025 & 1.6 & Jianhao Wei & Add detailed descriptions for our unit tests in section 6\\
 
 \bottomrule
 \end{tabularx}
@@ -77,7 +80,7 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Inputs:} Valid user credentials (UserID, Password).
     \item \textbf{Expected Output:} Successful login and access to multiplayer modes.
     \item \textbf{Actual Output:} Successful login and access to multiplayer modes.
-    \item \textbf{Result:} Pass.
+    \item \textbf{Result:} NOT Pass.
 \end{itemize}
 
 \subsection{Game Setup}
@@ -87,7 +90,7 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Inputs:} Room creation request, Player invitation, Join request.
     \item \textbf{Expected Output:} Game room created successfully; invitations sent; players join rooms.
     \item \textbf{Actual Output:} Game room created successfully; invitations sent; players join rooms.
-    \item \textbf{Result:} Pass.
+    \item \textbf{Result:}Pass.
 \end{itemize}
 
 \subsection{Turn Management}
@@ -106,8 +109,8 @@ March 7, 2025 & 1.3 & Mingyang Xu & Add input, output and test result for each t
     \item \textbf{Test Method:} Verify that players can send and receive messages in real-time in the game room.
     \item \textbf{Inputs:} Chat messages.
     \item \textbf{Expected Output:} Messages sent and received in real-time.
-    \item \textbf{Actual Output:} Messages sent and received in real-time.
-    \item \textbf{Result:} Pass.
+    \item \textbf{Actual Output:} Messages can‘t sent and received in real-time.
+    \item \textbf{Result:} Not Pass.
 \end{itemize}
 
 \subsection{Scoring System}
@@ -318,86 +321,61 @@ Existing Implementation: \href{https://unoonline.io/}{UNO Online Website}
 \end{itemize}
 
 \section{Unit Testing}
-Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. Here is a detailed unit testing summary for each of our scripts:
-\subsection{AiPlayer Script}
+Unit testing is a software testing methodology that involves testing individual components of a program in isolation to ensure they work as expected. It is typically automated and performed at the early stages of development or the merging process to detect and fix bugs before they propagate to later stages or affecting other software components. Here are the unit testing summaries for each of our scripts describing its path in our repository, brief description, and its result:
+\subsection{AiPlayer Script - UT1}
 \begin{itemize}
-    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/AiPlayer.cs
-    \item \textbf{Description:} Check AI opponent decision-
-making logic
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/AiPlayerTests.cs
+    \item \textbf{Description:} This is the unit tests for the AiPlayer class in a Unity-based UNO game, testing various functionalities such as card drawing, playing, and selection of the best color and card.
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{Card Script}
+\subsection{Card Script - UT2}
 \begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} 
-    \item \textbf{Result:}
-\end{itemize}
-
-\subsection{CardDisplay Script}
-\begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} 
-    \item \textbf{Result:}
-\end{itemize}
-
-\subsection{CardInteraction Script}
-\begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} 
-    \item \textbf{Result:}
-\end{itemize}
-
-\subsection{Deck Script}
-\begin{itemize}
-    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/Deck.cs
-    \item \textbf{Description:} Testing all 
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardTests.cs
+    \item \textbf{Description:} This is the unit tests for the Card class in a UNO game, using NUnit to verify the creation and properties of various card types and their functionalities.
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{FlippedCard Script}
+\subsection{CardDisplay Script - UT3}
 \begin{itemize}
-    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/FlippedCard.cs
-    \item \textbf{Description:} 
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardDisplayTests.cs
+    \item \textbf{Description:} This is a set of unit tests for the CardDisplay class in a Unity project, verifying the correct behavior and appearance of different types of cards in the game.
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{FlippedCardDisplay Script}
+\subsection{CardInteraction Script - UT4}
 \begin{itemize}
-    \item \textbf{Path:} UNO-Flip-3D/UNOFlip/Assets/Scripts/AiPlayer.cs
-    \item \textbf{Description:} 
-    \item \textbf{Result:}
-\end{itemize}
-
-\subsection{GameManager Script}
-\begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} Ensure game correctly handles
-end-game scenarios 
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/CardDisplayTests.cs
+    \item \textbf{Description:} This is the unit tests for the CardInteraction class in a Unity-based UNO game, verifying visual effects and gameplay interactions such as hover effects and playing a card.
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{Menu Script}
+\subsection{Deck Script - UT5}
 \begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} Ensure game room creation
-and joining works correctly
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/DeckTests.cs
+    \item \textbf{Description:} This is a series of unit test cases for the Deck class in a Unity project, validating the deck's initialization, card drawing, shuffling, and card distribution functionalities 
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{Player Script}
+\subsection{GameManager Script - UT6}
 \begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} Verify player turn manage-
-ment and synchronization 
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/GameManagerTests.cs
+    \item \textbf{Description:} These are the unit tests for the GameManager class in a Unity game, utilizing NUnit and Unity's testing framework to verify the initialization and functionality of the game manager and related components. 
     \item \textbf{Result:} Pass
 \end{itemize}
 
-\subsection{WildButton Script}
+\subsection{Menu Script - UT7}
 \begin{itemize}
-    \item \textbf{Path:} 
-    \item \textbf{Description:} 
-    \item \textbf{Result:}
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/MenuTests.cs
+    \item \textbf{Description:} This is the NUnit tests for the Menu class in Unity, verifying the functionality of how to play panel activation, level loading, game restarting, and game exiting.
+    \item \textbf{Result:} Pass
+\end{itemize}
+
+\subsection{Player Script - UT8}
+\begin{itemize}
+    \item \textbf{Path:} (In branch Add-script-for-flipped-card) \\ UNO-Flip-3D/UNOFlip/Assets/Tests/PlayerTests.cs
+    \item \textbf{Description:} This is the unit tests for the Player class in a UNO game, verifying player creation, card drawing, card playing, and hand management functionalities using NUnit.
+    \item \textbf{Result:} Pass
 \end{itemize}
 
 
@@ -511,58 +489,70 @@ This section maps the functional and non-functional requirements to the correspo
 \section{Trace to Modules}
 This section maps unit tests to the software modules responsible for implementing them. This ensures that each module is properly verified through testing.
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{|l|X|l|}
+    \begin{tabularx}{\textwidth}{|l|X|}
         \hline
-        \textbf{Unit Test} & \textbf{Description} & \textbf{Module} \\
+        \textbf{Unit Test File} & \textbf{Module(s) Tested} \\
         \hline
-        UT-01 & Validate user authentication (login/logout) functionality & Authentication.cs \\
-        UT-02 & Ensure game room creation and joining works correctly & GameManager.cs, Menu.cs \\
-        UT-03 & Verify player turn management and synchronization & GameManager.cs, Player.cs \\
-        UT-04 & Test real-time chat functionality within game rooms & ChatManager.cs \\
-        UT-05 & Validate scoring system calculations and display & ScoreManager.cs \\
-        UT-06 & Ensure game correctly handles end-game scenarios & GameManager.cs \\
-        UT-07 & Check AI opponent decision-making logic & AiPlayer.cs \\
-        UT-08 & Test multiplayer state synchronization in real time & NetworkManager.cs \\
-        UT-09 & Verify user profile storage and retrieval functions & UserProfile.cs \\
-        UT-10 & Test security measures such as encryption & SecurityManager.cs \\
+        AiPlayerTests.cs & Turn Management Module, Verification Output Module \\
+        \hline
+        CardTests.cs & Card Effect Module \\
+        \hline
+        CardDisplayTests.cs & User Interface Module, Output Module \\
+        \hline
+        CardInteractionTests.cs & Input Module, User Interface Module \\
+        \hline
+        DeckTests.cs & Save/Load Module \\
+        \hline
+        GameManagerTests.cs & Turn Management Module, Verification Output Module, Multiplayer Networking Module \\
+        \hline
+        MenuTests.cs & User Interface Module, Input Module \\
+        \hline
+        PlayerTests.cs & Turn Management Module, Verification Output Module \\
         \hline
     \end{tabularx}
     \caption{Traceability of Unit Tests to Modules}
-    \label{tab:trace_modules}
+    \label{tab:trace_unit_tests}
 \end{table}
 
-By linking unit tests to specific software modules, we ensure that all core functionalities are adequately verified.
+By linking unit tests to specific software modules, we ensure that all core functionalities are adequately verified. We noticed that there are 2 modules mentioned in the MIS design document that are not covered in these unit tests. Those modules include:
 
 
 \section{Code Coverage Metrics}
-There are 9 main scripts in our project. The aim is to reach at least 80\% code coverage in the project. Through the Below is a list of the scripts along with the code coverage percentage for each one at this point in time:
-\begin{table}[h]
+Our project consists of 9 core scripts, each contributing to the overall functionality of the game. Our goal is to achieve at least 80\% code coverage across the project to ensure the reliability and robustness of our codebase.
+
+To measure and improve test coverage, we utilize NUnit along with the Unity Test Framework to write and execute unit tests for individual components. NUnit provides a structured testing framework, enabling us to validate expected behaviors, handle edge cases, and detect regressions efficiently. The Unity Test Framework allows us to run these tests seamlessly within the Unity environment, supporting both Edit Mode and Play Mode testing.
+
+Additionally, we use Unity's Code Coverage tool to generate detailed reports on test coverage. This tool helps us analyze which portions of our scripts are covered by tests and identify areas that require additional test cases. The code coverage report will be included in this section to provide a visual representation of our progress.
+
+We will continue to refine and expand our test cases to meet or exceed our 80\% code coverage goal, ensuring a high level of confidence in our game's stability and functionality.
+As of now, below is a breakdown of the code coverage percentage for each script in the project:
+\begin{figure}[h]
     \centering
-    \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Scripts} & \textbf{Code Coverage (\%)} \\
-        \hline
-        AiPlayer.cs & 80\% \\ 
-        Card.cs & 80\% \\ 
-        CardDisplay.cs & 80\% \\ 
-        CardInteraction.cs & 80\% \\ 
-        Deck.cs & 80\% \\ 
-        GameManager.cs & 80\% \\ 
-        Menu.cs & 80\% \\ 
-        Player.cs & 80\% \\ 
-        WildButton.cs & 80\% \\ 
-        \hline
-    \end{tabular}
-    \caption{Code Coverage for Each Script}
-    \label{tab:code_coverage}
-\end{table}
-Notice that the most important script is GameManger which deals with most of the game logic. This will be the most important script to test.
+    \includegraphics[width=1.1\textwidth]{coverage1.png}  % Change file name if needed
+    \caption{Code Coverage Report Summary}
+    \label{fig:coverage}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{coverage2.png}  % Change file name if needed
+    \caption{Code Coverage Report History}
+    \label{fig:coverage}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{coverage3.png}  % Change file name if needed
+    \caption{Code Coverage Report}
+    \label{fig:coverage}
+\end{figure}
+
+\newpage{}
+
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
 
-\newpage{}
+
 \section*{Appendix --- Reflection}
 
 \begin{enumerate}
