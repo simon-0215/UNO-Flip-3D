@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField]  GameObject howToPlayPanel;
 
-    public void LoadLevel(string levelName)
+    public virtual void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
     }
@@ -20,12 +20,12 @@ public class Menu : MonoBehaviour
         }
     }
 
-    public void ExitGame()
+    public virtual void ExitGame()
     {
         Application.Quit();
     }
 
-    public void RestartGame()
+    public virtual void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

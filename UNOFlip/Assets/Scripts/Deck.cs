@@ -90,6 +90,12 @@ public class Deck : MonoBehaviour, IPointerClickHandler
         usedCardDeck.Add(card);
     }
 
+    // Get the number of cards remaining in the deck
+    public int GetRemainingCards()
+    {
+        return cardDeck.Count;
+    }
+}
     // Utility function to get a random dark side colour
     private DarkCardColour GetRandomDarkColour()
     {

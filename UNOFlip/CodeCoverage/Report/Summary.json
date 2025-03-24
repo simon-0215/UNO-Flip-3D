@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "generatedon": "2025-03-11T00:26:38Z",
+    "parser": "MultiReportParser (59x OpenCoverParser)",
+    "assemblies": 2,
+    "classes": 17,
+    "files": 17,
+    "coveredlines": 1483,
+    "uncoveredlines": 577,
+    "coverablelines": 2060,
+    "totallines": 3502,
+    "linecoverage": 71.9,
+    "coveredbranches": 0,
+    "totalbranches": 0,
+    "coveredmethods": 128,
+    "totalmethods": 171,
+    "methodcoverage": 74.8
+ },
+  "coverage": {
+    "assemblies": [
+      { "name": "Scripts", "classes": 9, "coverage": 43.6, "coveredlines": 322, "coverablelines": 738, "totallines": 1280, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 47.2, "coveredmethods": 35, "totalmethods": 74, "classesinassembly": [
+        { "name": "AiPlayer", "coverage": 65.6, "coveredlines": 90, "coverablelines": 137, "totallines": 182, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 80, "coveredmethods": 4, "totalmethods": 5 },
+        { "name": "Card", "coverage": 100, "coveredlines": 5, "coverablelines": 5, "totallines": 45, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 1, "totalmethods": 1 },
+        { "name": "CardDisplay", "coverage": 83, "coveredlines": 103, "coverablelines": 124, "totallines": 217, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 85.7, "coveredmethods": 6, "totalmethods": 7 },
+        { "name": "CardInteraction", "coverage": 57.1, "coveredlines": 16, "coverablelines": 28, "totallines": 52, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 66.6, "coveredmethods": 4, "totalmethods": 6 },
+        { "name": "Deck", "coverage": 87.7, "coveredlines": 50, "coverablelines": 57, "totallines": 95, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 85.7, "coveredmethods": 6, "totalmethods": 7 },
+        { "name": "GameManager", "coverage": 11.1, "coveredlines": 39, "coverablelines": 351, "totallines": 605, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 22.2, "coveredmethods": 8, "totalmethods": 36 },
+        { "name": "Menu", "coverage": 40, "coveredlines": 6, "coverablelines": 15, "totallines": 32, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 25, "coveredmethods": 1, "totalmethods": 4 },
+        { "name": "Player", "coverage": 86.6, "coveredlines": 13, "coverablelines": 15, "totallines": 34, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 83.3, "coveredmethods": 5, "totalmethods": 6 },
+        { "name": "WildButton", "coverage": 0, "coveredlines": 0, "coverablelines": 6, "totallines": 18, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 0, "coveredmethods": 0, "totalmethods": 2 } ] },
+      { "name": "Tests", "classes": 8, "coverage": 87.8, "coveredlines": 1161, "coverablelines": 1322, "totallines": 2222, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 95.8, "coveredmethods": 93, "totalmethods": 97, "classesinassembly": [
+        { "name": "AiPlayerTests", "coverage": 62.1, "coveredlines": 204, "coverablelines": 328, "totallines": 568, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 94.7, "coveredmethods": 18, "totalmethods": 19 },
+        { "name": "CardDisplayTests", "coverage": 95, "coveredlines": 232, "coverablelines": 244, "totallines": 406, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 83.3, "coveredmethods": 10, "totalmethods": 12 },
+        { "name": "CardInteractionTests", "coverage": 94.5, "coveredlines": 191, "coverablelines": 202, "totallines": 333, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 10, "totalmethods": 10 },
+        { "name": "CardTests", "coverage": 100, "coveredlines": 74, "coverablelines": 74, "totallines": 111, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 8, "totalmethods": 8 },
+        { "name": "DeckTests", "coverage": 99.1, "coveredlines": 116, "coverablelines": 117, "totallines": 190, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 9, "totalmethods": 9 },
+        { "name": "GameManagerTests", "coverage": 94.1, "coveredlines": 208, "coverablelines": 221, "totallines": 352, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 92.8, "coveredmethods": 13, "totalmethods": 14 },
+        { "name": "MenuTests", "coverage": 100, "coveredlines": 46, "coverablelines": 46, "totallines": 102, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 14, "totalmethods": 14 },
+        { "name": "PlayerTests", "coverage": 100, "coveredlines": 90, "coverablelines": 90, "totallines": 160, "branchcoverage": null, "coveredbranches": 0, "totalbranches": 0, "methodcoverage": 100, "coveredmethods": 11, "totalmethods": 11 } ] } ]
+  }
+}
