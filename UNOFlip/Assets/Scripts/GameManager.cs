@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject cardPrefab;
     [SerializeField] int numberOfAiPlayers = 3;
     [SerializeField] int startingHandSize = 7;
+    [SerializeField] bool isFlipped = false;
     int currentPlayer = 0;
     int playDirection = 1; //1 //-1
     [Header("Game Play")]
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] WildButton blueButton;
     [SerializeField] WildButton greenButton;
     [SerializeField] WildButton yellowButton;
-    CardColour topColour = CardColour.NONE;
+    LightCardColour topColour = LightCardColour.NONE;
 
     bool unoCalled;
 
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color32 green;
     [SerializeField] Color32 yellow;
     [SerializeField] Color32 black;
+    [SerializeField] Color32 orange;
+    [SerializeField] Color32 teal;
+    [SerializeField] Color32 pink;
+    [SerializeField] Color32 purple;
 
     [Header("UI Elements")]
     [SerializeField] TMP_Text winningText;
@@ -106,6 +111,8 @@ public class GameManager : MonoBehaviour
         //DISPLAY AI HAND  
     }
 
+    LightCardColour topLightColour;
+    DarkCardColour topDarkColour;
     IEnumerator DealStartingCards()
     {
         for (int i = 0; i < startingHandSize; i++)
@@ -144,13 +151,12 @@ public class GameManager : MonoBehaviour
         newCard.GetComponentInChildren<CardInteraction>().enabled = false;
         deck.AddUsedCard(pileCard);
         //SET TOP CARD
+        if (isFl)
         topCard = display;
-        topColour = pileCard.cardColour;
-        //PICK RANDOM COLOUR IF WE HAVE WILD CARD
-        if(topColour == CardColour.NONE)
-        {
-            topColour = PickRandomColour();
-        }
+        //TOP CARD NOW HANDLES BOTH TYPES
+        topLightColour = pileCard.lightCardColour;
+        topDarkColour = pileCard.darkCardColour;
+        
         TintArrow();
         //START GAME
         Debug.Log("Game Started");
@@ -159,9 +165,16 @@ public class GameManager : MonoBehaviour
         UpdatePlayerHighlights();
     }
 
-    CardColour PickRandomColour()
+    LightCardColour PickRandomLightColour()
     {
-        CardColour[] colours = (CardColour[])System.Enum.GetValues(typeof(CardColour));
+        LightCardColour[] colours = (LightCardColour[])System.Enum.GetValues(typeof(LightCardColour));
+        int randomIndex = UnityEngine.Random.Range(0, colours.Length - 1);
+        return colours[randomIndex];
+    }
+
+    DarkCardColour PickRandomDarkColour()
+    {
+        DarkCardColour[] colours = (DarkCardColour[])System.Enum.GetValues(typeof(DarkCardColour));
         int randomIndex = UnityEngine.Random.Range(0, colours.Length - 1);
         return colours[randomIndex];
     }
@@ -188,7 +201,8 @@ public class GameManager : MonoBehaviour
         MoveCardToPile(cardDisplay.transform.parent.gameObject);
         //UPDATE TOP CARD
         topCard = cardDisplay;
-        topColour = cardToPlay.cardColour;
+        topLightColour = cardToPlay.lightCardColour;
+        topDarkColour = cardToPlay.darkCardColour;
         TintArrow();
         //IMPLEMENT WHAT SHOULD HAPPEN WHEN CARD PLAYED
         OnCardPlayed(topCard.MyCard);
@@ -365,9 +379,22 @@ public class GameManager : MonoBehaviour
 
     bool IsPlayable(Card card)
     {
-        return card.cardColour == topColour ||
-                 card.cardValue == topCard.MyCard.cardValue ||
-                    card.cardColour == CardColour.NONE;
+        if (isFlipped)
+        {
+            // When the card is flipped, compare dark colors and values
+            bool colorMatch = card.darkCardColour == topDarkColour;
+            bool valueMatch = card.darkCardValue == topCard.MyCard.darkCardValue;
+            bool isWild = card.darkCardColour == DarkCardColour.NONE;
+            return colorMatch || valueMatch || isWild;
+        }
+        else
+        {
+            // When the card is not flipped, compare light colors and values
+            bool colorMatch = card.lightCardColour == topLightColour;
+            bool valueMatch = card.lightCardValue == topCard.MyCard.lightCardValue;
+            bool isWild = card.lightCardColour == LightCardColour.NONE;
+            return colorMatch || valueMatch || isWild;
+        }
     }
 
     //APPLY SPECIAL CARD EFFECTS
@@ -488,9 +515,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    public (Color32 red, Color32 blue, Color32 green, Color32 yellow, Color32 black) GetColours()
+    public (Color32 red, Color32 blue, Color32 green, Color32 yellow, Color32 black, Color32 pink, Color32 teal, Color32 orange, Color32 purple) GetColours()
     {
-        return (red, blue, green, yellow, black);
+        return (red, blue, green, yellow, black, pink, teal, orange, purple);
     }
 
     //UPDATE ARROW COLOUR

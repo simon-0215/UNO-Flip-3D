@@ -1,5 +1,6 @@
 # Test Report
 
-The folders and files for this folder are as follows:
-
-Describe ...
+FOR FINAL SUBMISSION PLEASE LOOK AT:
+VnvReport_FINAL.pdf
+VnvReport.tex
+Summary - Coverage Report.pdf
