@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\ByteArray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Framework\\ByteArray.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\MsgBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Framework\\MsgBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\CommonMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Protocol\\CommonMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\PingPongGameMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Protocol\\PingPongGameMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\BattleMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Protocol\\BattleMsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\TestTcpClientDemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TestTcpClientDemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ByteArray.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\ByteArray.cs",
+              "RelativeDocumentMoniker": "Framework\\ByteArray.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\ByteArray.cs",
+              "RelativeToolTip": "Framework\\ByteArray.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:52.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CommonMsg.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\CommonMsg.cs",
+              "RelativeDocumentMoniker": "Protocol\\CommonMsg.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\CommonMsg.cs",
+              "RelativeToolTip": "Protocol\\CommonMsg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:39.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PingPongGameMsg.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\PingPongGameMsg.cs",
+              "RelativeDocumentMoniker": "Protocol\\PingPongGameMsg.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\PingPongGameMsg.cs",
+              "RelativeToolTip": "Protocol\\PingPongGameMsg.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:28.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MsgBase.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\MsgBase.cs",
+              "RelativeDocumentMoniker": "Framework\\MsgBase.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Framework\\MsgBase.cs",
+              "RelativeToolTip": "Framework\\MsgBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:26.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BattleMsg.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\BattleMsg.cs",
+              "RelativeDocumentMoniker": "Protocol\\BattleMsg.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\Protocol\\BattleMsg.cs",
+              "RelativeToolTip": "Protocol\\BattleMsg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:22.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TestTcpClientDemo.cs",
+              "DocumentMoniker": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\TestTcpClientDemo.cs",
+              "RelativeDocumentMoniker": "TestTcpClientDemo.cs",
+              "ToolTip": "D:\\unity-projects\\assets_plugins\\00000\u5E38\u7528\u4EE3\u7801\\1_Scripts\\Common\\My Namespace\\TCPClient\\Scripts\\TestTcpClientDemo.cs",
+              "RelativeToolTip": "TestTcpClientDemo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T06:40:05.172Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

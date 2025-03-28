@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class WildButton : MonoBehaviour, IPointerClickHandler
+using QFramework;
+public class WildButton : MonoBehaviour, IPointerClickHandler, IController
 {
     public CardColour cardColour;
+
+    public IArchitecture GetArchitecture()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        GameManager.instance.ChosenColour(cardColour);
+        var model = this.GetModel<CardGameModel>();
+        model.currentCardColour = cardColour;
+        this.SendCommand<ChosenColourCommand>();
     }
 
     public void SetImageColour(Color32 colour)

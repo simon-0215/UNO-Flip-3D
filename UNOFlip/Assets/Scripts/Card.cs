@@ -2,57 +2,64 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-// Light Side Colors
-public enum LightCardColour 
-{
-    RED, BLUE, GREEN, YELLOW, NONE
-}
+public enum CardColour
+    {
+        RED,
+        BLUE,
+        GREEN,
+        YELLOW,
+        NONE
+    }
 
-// Dark Side Colors (NEW)
-public enum DarkCardColour
-{
-    PINK, TEAL, ORANGE, PURPLE, NONE
-}
+    public enum CardValue
+    {
+        ZERO,
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE, // 0µ½9
 
-// Light Side Actions
-public enum LightCardValue
-{
-    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE,
-    SKIP, REVERSE, PLUS_TWO, WILD, PLUS_FOUR
-}
-
-// Dark Side Actions (NEW)
-public enum DarkCardValue
-{
-    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE,
-    DRAW_FIVE, SKIP_EVERYONE, WILD_DRAW_COLOR
-}
+        SKIP,
+        REVERSE,
+        PLUS_TWO, //¼Ó2
+        WILD,
+        PLUS_FOUR //¼Ó4
+    }
 
 [System.Serializable]
 public class Card
 {
-    public LightCardColour lightCardColour;  // Light Side Colour
-    public LightCardValue lightCardValue;    // Light Side Value
-    public DarkCardColour darkCardColour;    // Dark Side Colour
-    public DarkCardValue darkCardValue;      // Dark Side Value
+    
+    public CardColour cardColour;
+    public CardValue cardValue;    
 
-    public Card(LightCardColour lightColour, LightCardValue lightValue, DarkCardColour darkColour, DarkCardValue darkValue)
+    public Card(CardColour colour, CardValue value)
     {
-        this.lightCardColour = lightColour;
-        this.lightCardValue = lightValue;
-        this.darkCardColour = darkColour;
-        this.darkCardValue = darkValue;
+        this.cardColour = colour;
+        this.cardValue = value;
     }
-
-    // Returns the correct colour based on game state
-    public object GetCurrentColour(bool isFlipped)
+    public ShortCard GetShort()
     {
-        return isFlipped ? darkCardColour : lightCardColour;
+        ShortCard s = new ShortCard();
+        s.c = cardColour;
+        s.v = cardValue;
+        return s;
     }
+}
 
-    // Returns the correct value based on game state
-    public object GetCurrentValue(bool isFlipped)
+[System.Serializable]
+public class ShortCard
+{
+    public CardColour c;
+    public CardValue v;
+
+    public Card GetCard()
     {
-        return isFlipped ? darkCardValue : lightCardValue;
+        return new Card(c, v);
     }
 }

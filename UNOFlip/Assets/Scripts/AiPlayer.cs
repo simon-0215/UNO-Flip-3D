@@ -1,3 +1,4 @@
+using QFramework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class AiPlayer : Player
     //AI LOGIC
     public override void TakeTurn(Card topCard, CardColour topColour)
     {
+        var model = this.GetModel<CardGameModel>();
+
         Card cardToPlay = null;
         Debug.Log(playerName + "AI TURN");
 
@@ -24,7 +27,7 @@ public class AiPlayer : Player
         }
         else
         {
-            GameManager.instance.DrawCardFromDeck();
+            this.SendCommand<DrawCardFromDeckCommand>();
             playableCards = GetPlayableCards(topCard, topColour);
             if(playableCards.Count > 0)
             {
@@ -35,31 +38,46 @@ public class AiPlayer : Player
         if (cardToPlay == null)
         {
             Debug.Log(playerName + "HAS NO PLAYABLE CARD - SWITCH");
-            GameManager.instance.UpdateMessageBox(playerName + "HAS NO PLAYABLE CARD - SWITCH");
-            GameManager.instance.AiSwitchPlayer();
-            GameManager.instance.UpdatePlayerHighlights();
+            model.currentMessage = playerName + "HAS NO PLAYABLE CARD - SWITCH";
+            this.SendCommand<UpdateMessageBoxCommand>();
+            //GameManager.instance.SwitchPlayer();
+            this.SendCommand<AiSwitchPlayerCommand>();
+            this.SendCommand<UpdatePlayerHighlightsCommand>();
         }
         else
         {
             if(playerHand.Count == 2)
             {
-                GameManager.instance.SetUnoByAi();
+                model.unoCalled = true;
+                model.currentMessage = model.players[model.currentPlayer].playerName + " HAS CALLED UNO";
+                this.SendCommand<UpdateMessageBoxCommand>();
+
+                //MESSAGE FOR PLAYER
                 Debug.Log(playerName + "HAS CALLED UNO");
             }
-            GameManager.instance.PlayCard(null, cardToPlay);
+            model.currentCardDisplay = null;
+            model.currentCard = cardToPlay;
+            this.SendCommand<PlayCardCommand>();
+            
+            //IF WILDCARD CHOOSE BEST COLOUR
             if(cardToPlay.cardColour == CardColour.NONE)
             {
-                GameManager.instance.ChosenColour(SelectBestColor());
+                model.currentCardColour = SelectBestColour();
+                this.SendCommand<ChosenColourCommand>();
             }
+            //SWITCH PLAYER
             Debug.Log(playerName + "HAS PLAYED - " + cardToPlay.cardColour + cardToPlay.cardValue);
             if(cardToPlay.cardValue == CardValue.SKIP)
             {
                 return;
             }
+            //ELSE
+            //GameManager.instance.SwitchPlayer();
+            //GameManager.instance.AiSwitchPlayer();
         }
     }
 
-    public List<Card> GetPlayableCards(Card topCard, CardColour topColour)
+    List<Card> GetPlayableCards(Card topCard, CardColour topColour)
     {
         List<Card> playableCards = new List<Card>();
 
@@ -74,23 +92,26 @@ public class AiPlayer : Player
         return playableCards;
     }
 
-    public Card ChooseBestCard(List<Card> playableCards)
+    Card ChooseBestCard(List<Card> playableCards)
     {
         Card bestActionCard = null;
         Card bestRegularCard = null;
         Card bestWildCard = null;
-        int nextPlayerHandSize = GameManager.instance.GetNextPlayerHandSize();
-    
-        //BEST ACTION CARDS
-        foreach (Card card in playableCards)
+
+        var model = this.GetModel<CardGameModel>();
+        int nextPlayerHandSize = model.NextPlayerHandSize;
+
+    //BEST ACTION CARDS
+    foreach (Card card in playableCards)
+    {
+        if (card.cardValue == CardValue.PLUS_FOUR)
         {
-            if (card.cardValue == CardValue.PLUS_FOUR)
+            if(nextPlayerHandSize <= 2 || bestActionCard == null)
             {
-                if(nextPlayerHandSize <= 2 || bestActionCard == null)
-                {
-                    bestActionCard = card;
-                }
+                bestActionCard = card;
             }
+
+        }
             else if (card.cardValue == CardValue.PLUS_TWO)
             {
                 if (nextPlayerHandSize <= 2 || bestActionCard == null)
@@ -148,7 +169,7 @@ public class AiPlayer : Player
         return playableCards[0];
     }
 
-    public CardColour SelectBestColor()
+    CardColour SelectBestColour()
     {
         Dictionary<CardColour, int> colourCount = new Dictionary<CardColour, int>
         {
