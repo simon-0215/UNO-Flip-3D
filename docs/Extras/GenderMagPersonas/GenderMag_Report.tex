@@ -1,0 +1,99 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+\usepackage{float}
+
+\begin{document}
+
+\title{UNO Flip Remix GenderMag Report}
+\author{Mingyang Xu\\ Kevin Ishak\\ Zain-Alabedeen Garada\\ Jianhao Wei\\ Team 24}
+
+\date{\today}
+
+\maketitle
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\listoftables %if appropriate
+
+\listoffigures %if appropriate
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Introduction}
+As part of our capstone project, we need to choose two extras beside the usual documentation and implementation of our software. Based on the nature and necessity of our project, we chose GenderMag as one of our extras. This report is intended to list all the details in the GenderMag process that we used to evaluate our software product, as well as the list of new requirements we devised as a result of our GenderMag analysis. This includes our customized personas, all the subgoal and action report forms we used in our analysis, as well as the new requirements we devised based on the GenderMag analysis.
+
+\section{Our Customized Personas}
+\subsection{Abi (Abigail/Abishek)}
+\subsubsection{Background and Skills}
+\begin{itemize}
+    \item 28 years old
+    \item Employed as Accountant
+    \item Casual Gamer who interested in UNO Flip
+    \item Lives in Mississauga, Ontario, Canada
+\end{itemize}
+Abi has always liked music. While traveling to work in the morning, Abi listens to music from a wide variety of styles. Some nights Abi exercises or stretches, and sometimes likes to play computer games like UNO, puzzles. Abi likes scanning all her emails first to get an overall picture before answering any of them.\\
+The technologies at Abi's new employer are new to her. Abi likes math and working with logic. She considers herself a numbers person. Abi works as an accountant and is comfortable with the technologies Abi uses regularly. Abi just moved to this employer 1 week ago, and their software systems are new to her. Abi writes and edits spreadsheet formulas for work. During free time, Abi also enjoys working with numbers and logic. Abi especially likes working out UNO and puzzle games, either on paper or on the computer. She doesn't like tinkering with unfamiliar things until she get the overall pictures or general rules.
+\subsubsection{Motivations and Attitudes}
+\begin{itemize}
+    \item \textbf{Motivations:} Abi uses technologies to accomplish her tasks. She learns new technologies if and when she needs to, but prefers to use methods she is already familiar and comfortable with, to keep her focus on the tasks she cares about.
+    \item \textbf{Computer Self-Efficacy:} Abi has lower self confidence than her peers about doing unfamiliar computing tasks. If problems arise with her technology, she often blames herself for these problems. This affects whether and how she will persevere with a task if technology problems have arisen.
+    \item \textbf{Attitude toward Risk:} Abi's life is a little complicated and she rarely has spare time. So she is risk averse about using unfamiliar technologies that might need her to spend extra time on them, even if the new features might be relevant. She instead performs tasks using familiar features, because they're more predictable about what she will get from them and how much time they will take.
+\end{itemize}
+\subsubsection{Attitude to Technology}
+\begin{itemize}
+    \item \textbf{Information Processing Style:} Abi tends towards a comprehensive information processing style when she needs to gather more information. So,instead of acting upon the first option that seems promising, she gathers information comprehensively to try to form a complete understanding of the problem before trying to solve it. Thus, her style is "burst-y"; first she reads a lot, then she acts on it in a batch of activity.
+    \item \textbf{Learning: by Process versus by Tinkering:} When learning new technology, Abi leans toward process-oriented learning, e.g., tutorials, step-by-step processes, wizards, online how-to videos, etc. She doesn't particularly like learning by tinkering with software (i.e., just trying out new features or commands to see what they do), but when she does tinker, it has positive effects on her understanding of the software.
+\end{itemize}
+
+\subsection{Tim (Timothy/Timara)}
+\subsubsection{Background and Skills}
+\begin{itemize}
+    \item 25 years old
+    \item Employed as an Web Developer
+    \item Casual Gamer who interested in UNO Flip
+    \item Lives in Waterloo, Ontario, Canada
+\end{itemize}
+Tim loves public transportation. Tim knows several routes to get to work from home and always exploring ways to optimize trips into the office. Some nights Tim plays computer games with some online friends. He loves playing Minecraft and UNO. Tim starts work with answering emails one by one. Sometimes this backfires, if there is a second related message he hasn't read yet, but he doesn't mind sending a follow-up email.\\
+The technologies at Tim's new employer are new to him. Tim likes math and working with logic. he considers himself a numbers person. Tim works as a web developer and is comfortable with any technologies whether familiar or new. Tim moved to this employer 1 year ago, and their software systems are new to him. Tim writes and edits code for work. During free time, Tim also enjoys working with numbers and logic. Tim especially likes playing video games, whether it is 2D or 3D.
+\subsubsection{Motivations and Attitudes}
+\begin{itemize}
+    \item \textbf{Motivations:} Tim likes learning all the available functionality on all of his devices and computer systems he uses, even when it may not be necessary to help his achieve his tasks. he sometimes finds himself exploring functions of one of his gadgets for so long that he loses sight of what he wanted to do with it to begin with.
+    \item \textbf{Computer Self-Efficacy:} Tim has high confidence in his abilities with technology, and thinks he's better than the average person at learning about new features. If he can't fix the problem, he blames it on the software vendor. It's not his fault if he can't get it to work.
+    \item \textbf{Attitude toward Risk:} Tim doesn't mind talking risks using features of technology. that haven't been proven to work. When he is presented with challenges because he has tried a new way that doesn't work, it doesn't changes his attitudes toward technology.
+\end{itemize}
+
+\subsubsection{Attitude to Technology}
+\begin{itemize}
+    \item \textbf{Information Processing Style:} Tim leans towards a selective information processing style or "depth first" approach. That is, he usually delves into the first promising option, pursues it, and if it doesn't work out he backs out and gathers a bit more information until he sees another option to try. Thus, his style is very incremental.
+    \item \textbf{Learning: by Process versus by Tinkering:} Whenever Tim uses new technology, he tries to construct his own understanding of how the software works internally. He likes tinkering and exploring the menu items and functions of the software in order to build that understanding. Sometimes he plays with features too much, losing focus on what he set out to do originally, but this helps him gain better understanding of the software.
+\end{itemize}
+
+\section{Method Used}
+Our team followed the exact method outlined in our GenderMag tutorial slides. Here is the stpes we used for our GenderMag analysis:
+\begin{enumerate}
+    \item We generalize two use cases for our analysis.
+    \item We customized our personas listed in the previous section.
+    \item we set aside 45 minutes for meeting and debrief.
+    \item We fill out everything we discussed into the subgoal and action report form.
+    \item We fill out all the forms with appropriate facets.
+    \item We then identify all the new requirement that emerged from the analysis.
+    \item We implement these new requirements into our project.
+\end{enumerate}
+
+\end{document}
