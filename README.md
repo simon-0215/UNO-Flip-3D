@@ -1,17 +1,50 @@
-# Uno-Flip-Remix
+# Uno Flip Remix
 
-Developer Names: Kevin Ishak, Zain Garada, Minyang Xu, Jianhao Wei
+**Team Members:**  
+Kevin Ishak, Zain-Alabedeen Garada, Mingyang Xu, Jianhao Wei  
+**Project Duration:** September 8, 2024 – April 2, 2025  
 
-Date of project start:September 8, 2024
+---
 
-This project involves developing a digital version of the UNO Flip card game. The software aims to replicate the game mechanics of UNO Flip, including the unique flip side of the cards, special actions, and multiplayer functionality. The project will involve designing the game logic, implementing user interactions, and ensuring a smooth user experience. The primary goal is to create an engaging digital game that adheres to the official UNO Flip rules while providing additional features like scoring, multiplayer options, and animations.
+## Project Overview
 
-The folders and files for this project are as follows:
+Uno Flip Remix is a digital adaptation of the official **UNO Flip®** card game. This game introduces a twist on the classic UNO format by including **two-sided cards** (light and dark sides), **flip mechanics**, and **new action cards** that dramatically change gameplay.
 
-- docs - Documentation for the project, including requirements, design specifications, and user manuals.
-- refs - Reference materials used for the project, such as official UNO Flip game rules, research on card game mechanics, and design inspirations.
-- ====================== **NOTICE** ====================
-- UNOFlip FOLDER - Source code for the project, including the core game logic, user interface components AND testing files.
-- Network UNO Card Game TCP Server FOLDER - Multiplayer modules and handles connection.
+Our goal was to design and implement a **real-time, multiplayer-ready** digital game that replicates the physical gameplay experience while enhancing it through:
+- Automated rule enforcement
+- Animated visuals
+- Multiplayer over TCP
+- Score tracking
+- Game state synchronization
 
-Date of project end: April 2, 2025
+---
+
+## 📁 Repository Structure
+
+```text
+UNO-Flip-3D/
+├── docs/
+│   ├── SRS-Volere/                # Software Requirements Specification (SRS)
+│   ├── Design/
+│   │   ├── SoftArchitecture/      # Module Guide (MG) and UML diagrams
+│   │   ├── SoftDetailedDes/       # Module Interface Specification (MIS)
+│   ├── VnVPlan/                   # Verification & Validation Plan
+|   ├── VnVReport/                 # Verification & Validation Report
+│   ├── HazardAnalysis/           # Game safety and failure modes documentation
+│   ├── DevelopmentPlan/          # Gantt chart, schedule, and team roles
+│   ├── ProblemStatementAndGoals/    # Problem Statement and Goal of the project
+│   ├── Presentation/             # Final project expo poster and demo presentations
+│
+├── refs/                         # Reference material (e.g., UNO Flip rules, research)
+│
+├── UNOFlip/                      # Game source code
+│   ├── Assets/                   # Unity assets (sprites, UI elements, etc.)
+│   ├── Scripts/                  # Core game logic and components
+│   ├── Scenes/                   # Unity scenes for game states
+│   └── Testing/                  # Unity test scripts and test scenes
+│
+├── Network UNO Card Game TCP Server/
+│   ├── Server.py                 # TCP server to manage multiplayer games
+│   └── utils.py                  # Helper scripts for managing sessions, rooms, etc.
+│
+└── README.md                     # You're here!
