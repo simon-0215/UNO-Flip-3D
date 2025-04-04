@@ -2,4 +2,5 @@
 
 The folders and files for this folder are as follows:
 
-Describe ...
+VnVPlan.pdf - Final submission for VnV Plan.
+VnVPlan.tex - Final submission for VnV Plan.
