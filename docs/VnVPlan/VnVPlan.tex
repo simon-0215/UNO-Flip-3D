@@ -1,529 +1,1237 @@
-\documentclass[12pt, titlepage]{article}
+% UNO Flip Remix - VnV Plan
+\documentclass[12pt]{article}
 
-\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{longtable}
 \usepackage{tabularx}
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks,
-    citecolor=blue,
-    filecolor=black,
-    linkcolor=red,
-    urlcolor=blue
-}
-\usepackage[round]{natbib}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} 
+\usepackage{url}            
+\usepackage[hidelinks]{hyperref}
+\sloppy
 
-\input{../Comments}
-\input{../Common}
+% Red strikethrough command
+\newcommand{\removed}[1]{\textcolor{red}{\sout{#1}}}
+% Green addition command
+\newcommand{\added}[1]{\textcolor{green}{#1}}
+
+\title{System Verification and Validation Plan for Uno-Flip Remix}
+\author{Team 24 \\ Mingyang Xu \\ Kevin Ishak \\ Zain-Alabedeen Garada \\ Jianhao Wei \\ \removed{Andy Liang}}
+\date{April 2, 2025}
 
 \begin{document}
 
-\title{System Verification and Validation Plan for \progname{}} 
-\author{\authname}
-\date{\today}
-	
 \maketitle
 
-\pagenumbering{roman}
-
-\section*{Revision History}
-
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
-\end{tabularx}
-
-~\\
-\wss{The intention of the VnV plan is to increase confidence in the software.
-However, this does not mean listing every verification and validation technique
-that has ever been devised.  The VnV plan should also be a \textbf{feasible}
-plan. Execution of the plan should be possible with the time and team available.
-If the full plan cannot be completed during the time available, it can either be
-modified to ``fake it'', or a better solution is to add a section describing
-what work has been completed and what work is still planned for the future.}
-
-\wss{The VnV plan is typically started after the requirements stage, but before
-the design stage.  This means that the sections related to unit testing cannot
-initially be completed.  The sections will be filled in after the design stage
-is complete.  the final version of the VnV plan should have all sections filled
-in.}
-
+\tableofcontents
+\listoftables
 \newpage
 
-\tableofcontents
-
-\listoftables
-\wss{Remove this section if it isn't needed}
-
-\listoffigures
-\wss{Remove this section if it isn't needed}
+\section*{Revision History}
+\begin{longtable}{|p{3cm}|p{2cm}|p{9cm}|}
+\hline
+\textbf{Date} & \textbf{Version} & \textbf{Notes} \\
+\hline
+2024-10-29 & 1.0 & Created shared file \\
+\hline
+2024-10-30 & 1.1 & Wrote Sections 1--2 \\
+\hline
+2024-10-31 & 1.2 & Wrote Section 3 and modified Sections 1 and 2 \\
+\hline
+2024-11-01 & 1.3 & Added Section 4 and Reflection \\
+\hline
+\added{2025-03-26} & \added{2.0} & \added{Kevin Ishak - Revised document to align with course standards. Improved formatting, added references to Hazard Analysis, removed JavaScript/Java tool mentions, and clarified ambiguities.} \\
+\hline
+\end{longtable}
 
 \newpage
 
 \section{Symbols, Abbreviations, and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  T & Test\\
-  \bottomrule
-\end{tabular}\\
-
-\wss{symbols, abbreviations, or acronyms --- you can simply reference the SRS
-  \citep{SRS} tables, if appropriate}
-
-\wss{Remove this section if it isn't needed}
-
-\newpage
-
-\pagenumbering{arabic}
-
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+\begin{table}[H]
+\centering
+\caption{Symbols, Abbreviations, and Acronyms}
+\begin{tabular}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Term} & \textbf{Definition} \\
+\hline
+SRS & Software Requirements Specification \\
+\hline
+PSAG & Problem Statement and Goals \\
+\hline
+V\&V & Verification and Validation \\
+\hline
+FR & Functional Requirement \\
+\hline
+NFR & Non-Functional Requirement \\
+\hline
+UI & User Interface \\
+\hline
+AI & Artificial Intelligence (used in opponent behavior) \\
+\hline
+SUT & System Under Test \\
+\hline
+ID & Identifier used to label specific test cases \\
+\hline
+Rev 0 & Initial version of the game build used for early demonstration \\
+\hline
+Unity & Game engine used to implement UNO Flip Remix \\
+\hline
+\end{tabular}
+\end{table}
 
 \section{General Information}
 
 \subsection{Summary}
-
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+The software being tested is an UNO Flip game application, developed to provide an engaging, digital version of the popular card game with additional features for enhanced user experience. The game includes functionalities such as switching between two sides of the cards (light and dark), maintaining score, tracking player moves, and handling various card effects. This software aims to capture the essence of the physical game while offering interactive elements that make it enjoyable on a digital platform.
 
 \subsection{Objectives}
+The primary objective of the Verification and Validation (V\&V) plan is to build confidence in the correctness and stability of the game software, ensuring a smooth user experience with minimal bugs. Key objectives include:
 
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
+\begin{itemize}
+    \item \textbf{Verifying functionality}: Testing to ensure that core game mechanics, such as card flipping, turn-taking, and scoring, work as expected.
+    \item \textbf{Ensuring performance}: Assessing the software’s responsiveness and ensuring minimal lag or delay in gameplay.
+    \item \textbf{Evaluating user experience}: Conducting usability tests to confirm that the interface is intuitive and enhances engagement.
+\end{itemize}
 
-\wss{You should also list the objectives that are out of scope.  You don't have 
-the resources to do everything, so what will you be leaving out.  For instance, 
-if you are not going to verify the quality of usability, state this.  It is also 
-worthwhile to justify why the objectives are left out.}
+Out of scope:
 
-\wss{The objectives are important because they highlight that you are aware of 
-limitations in your resources for verification and validation.  You can't do everything, 
-so what are you going to prioritize?  As an example, if your system depends on an 
-external library, you can explicitly state that you will assume that external library 
-has already been verified by its implementation team.}
+\begin{itemize}
+    \item \textbf{Accessibility testing}: Due to limited resources, we are not performing detailed accessibility testing. Our focus is on verifying core gameplay features.
+    \item \textbf{Advanced AI opponent testing}: Since the game primarily targets player-vs-player mode, sophisticated AI functionality is not within our current scope.
+\end{itemize}
 
 \subsection{Challenge Level and Extras}
+The challenge level for this project is classified as \textbf{general}, as agreed with the course instructor. This level reflects the game’s moderate complexity, focusing on implementing and testing the main gameplay mechanics without advanced AI or complex networking features.
 
-\wss{State the challenge level (advanced, general, basic) for your project.
-Your challenge level should exactly match what is included in your problem
-statement.  This should be the challenge level agreed on between you and the
-course instructor.  You can use a pull request to update your challenge level
-(in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
-VnV planning exercise.}
-
-\wss{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.
-You can use a pull request to update your extras (in TeamComposition.csv or
-Repos.csv) if your plan changes as a result of the VnV planning exercise.}
+\textbf{The two extras selected for grading are:}
+\begin{itemize}
+    \item \textbf{Usability Testing}: Ensures that the game interface is intuitive and accessible to users with varying levels of gaming experience. This is especially relevant in a multiplayer setting, where ease of interaction directly affects player enjoyment.
+    \item \textbf{GenderMag Analysis}: Used during the design phase to evaluate how different cognitive styles (especially across gender dimensions) interact with the interface. This helps reduce potential biases in design and increases inclusivity, aligning well with our project's user-centric goals.
+\end{itemize}
 
 \subsection{Relevant Documentation}
-
-\wss{Reference relevant documentation.  This will definitely include your SRS
-  and your other project documents (design documents, like MG, MIS, etc).  You
-  can include these even before they are written, since by the time the project
-  is done, they will be written.  You can create BibTeX entries for your
-  documents and within those entries include a hyperlink to the documents.}
-
-\citet{SRS}
-
-\wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+\begin{itemize}
+    \item \textbf{SRS}: This document outlines the game's functional and non-functional requirements, providing the foundation for the test cases designed in this V\&V plan. Available at: \url{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/SRS-Volere/SRS.pdf}
+    \item \textbf{PSAG}: Defines our problem statement and goals. Available at: \url{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/ProblemStatementAndGoals/ProblemStatement.pdf}
+\end{itemize}
 
 \section{Plan}
-
-\wss{Introduce this section.  You can provide a roadmap of the sections to
-  come.}
+This section provides an overview of the planned verification and validation (V\&V) activities for our project. The plan outlines the roles and responsibilities of the team members, strategies for verifying the SRS, design, and implementation, as well as the testing approaches for both functional and non-functional requirements. \added{Additionally, this plan traces back to hazards identified in the Hazard Analysis document to ensure critical risks are verified and mitigated during testing.} By following this plan, we aim to ensure that our software meets all specified requirements and maintains high reliability, usability, and performance standards.
 
 \subsection{Verification and Validation Team}
 
-\wss{Your teammates.  Maybe your supervisor.
-  You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize this information.}
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Team Member} & \textbf{Role} & \textbf{Responsibilities} \\ \hline
+Mingyang Xu & Lead Validator & Oversees the V\&V process, ensures adherence to the plan, and coordinates team efforts. \\ \hline
+Jianhao Wei & SRS and Design Reviewer & Reviews the SRS and design documents, providing feedback on requirement clarity and feasibility. \\ \hline
+\removed{Zheng Bang Liang} \added{Kevin Ishak} & Code Verification Specialist & Implements unit and integration tests using C\# and Unity Test Framework; conducts code inspections and static analysis. \\ \hline
+Zain-Alabedeen Garada & System Test Engineer & Designs and executes system tests, covering functional and non-functional requirements, and reports outcomes. \\ \hline
+Kevin Ishak & System Test Engineer & Assists in designing and executing system tests, and reporting on test coverage and outcomes. \\ \hline
+\end{tabularx}
+\caption{Team member responsibilities}
+\end{table}
+
+\FloatBarrier
 
 \subsection{SRS Verification Plan}
-
-\wss{List any approaches you intend to use for SRS verification.  This may
-  include ad hoc feedback from reviewers, like your classmates (like your
-  primary reviewer), or you may plan for something more rigorous/systematic.}
-
-\wss{If you have a supervisor for the project, you shouldn't just say they will
-read over the SRS.  You should explain your structured approach to the review.
-Will you have a meeting?  What will you present?  What questions will you ask?
-Will you give them instructions for a task-based inspection?  Will you use your
-issue tracker?}
-
-\wss{Maybe create an SRS checklist?}
+\begin{enumerate}
+    \item \textbf{Review Process}: Formal peer review led by Jianhao Wei with supervisor support. Evaluates clarity, completeness, and feasibility.
+    \item \textbf{Meeting with Supervisor}: Review SRS in detail; clarify requirement intent and gather improvement suggestions.
+    \item \textbf{SRS Checklist}: Ensure requirements meet SMART criteria and are traceable to tests.
+    \item \textbf{Use of Issue Tracker}: Log all issues on GitHub for transparency and revision tracking.
+    \item \textbf{Task-Based Inspection}: Each team member validates a section aligned with their test domain.
+    \item \textbf{Ad Hoc Feedback}: Peer review by classmates experienced in game or Unity projects.
+\end{enumerate}
 
 \subsection{Design Verification Plan}
+\begin{enumerate}
+    \item \textbf{Peer Reviews}: Examine consistency, modularity, feasibility of Unity architecture.
+    \item \textbf{Checklist-Based Verification}: Ensure modularity, maintainability, Unity best practices.
+    \item \textbf{Review Meeting with Supervisor}: Present high-level Unity scene and component layout.
+    \item \textbf{Issue Tracker}: Track issues/improvements via GitHub.
+\end{enumerate}
 
-\wss{Plans for design verification}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
-
-\subsection{Verification and Validation Plan Verification Plan}
-
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Create a checklists?}
+\subsection{V\&V Plan Verification}
+\begin{enumerate}
+    \item \textbf{Peer Review and Checklist}: Review clarity and coverage.
+    \item \textbf{Mutation Testing}: Validate the strength of test cases using Unity-based mutation strategies.
+    \item \textbf{Classmate Feedback}: Additional external feedback for clarity.
+    \item \textbf{Supervisor Review}: Confirm thoroughness and feasibility.
+    \item \textbf{Checklist Creation}: Verify test coverage and traceability.
+\end{enumerate}
 
 \subsection{Implementation Verification Plan}
-
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
-
-\wss{In this section you would also give any details of any plans for static
-  verification of the implementation.  Potential techniques include code
-  walkthroughs, code inspection, static analyzers, etc.}
-
-\wss{The final class presentation in CAS 741 could be used as a code
-walkthrough.  There is also a possibility of using the final presentation (in
-CAS741) for a partial usability survey.}
+\begin{enumerate}
+    \item \textbf{Unit Testing}: Use NUnit with Unity Test Framework to validate scripts.
+    \item \textbf{Static Code Analysis}: Use Visual Studio’s built-in static code analysis.
+    \item \textbf{Code Walkthroughs and Inspections}: Regular code reviews to catch logical errors.
+    \item \textbf{Final Class Presentation}: Showcase core test cases and inspection walkthroughs.
+\end{enumerate}
 
 \subsection{Automated Testing and Verification Tools}
-
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-  Python.}
-
-\wss{If you have already done this in the development plan, you can point to
-that document.}
-
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
+\begin{itemize}
+    \item \textbf{NUnit with Unity Test Framework}: \added{Used to write and automate unit and integration tests for C\# scripts in Unity.}
+    \item \textbf{Unity Profiler}: \added{Monitors frame rate, memory usage, and performance bottlenecks.}
+    \item \textbf{Code Coverage Tools}: \added{Use Unity’s Code Coverage package to identify untested parts of the codebase.}
+    \item \textbf{GitHub Actions for CI}: \added{Runs tests on pull requests to catch regressions.}
+    \item \textbf{Visual Studio Analyzer}: \added{Performs static checks for style and bug patterns.}
+    \item \removed{JavaScript and Jest} \removed{tools have been removed to reflect Unity/C\# usage.}
+\end{itemize}
 
 \subsection{Software Validation Plan}
-
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
-
-\wss{You might want to use review sessions with the stakeholder to check that
-the requirements document captures the right requirements.  Maybe task based
-inspection?}
-
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
-be used as an opportunity to validate the requirements.  You should plan on 
-demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
-The feedback from your supervisor will be very useful for improving your project.}
-
-\wss{For teams without an external supervisor, user testing can serve the same purpose 
-as a Rev 0 demo for the supervisor.}
-
-\wss{This section might reference back to the SRS verification section.}
+\begin{enumerate}
+    \item \textbf{User Review Sessions}: Gather informal feedback from players during playtests.
+    \item \textbf{Rev 0 Demo for Supervisor}: Walkthrough of gameplay and key functionality.
+    \item \textbf{User Testing}: Validate gameplay flow, difficulty balance, and satisfaction.
+    \item \textbf{Task-Based Inspection}: Match user stories to requirement fulfillment.
+    \item \textbf{Reference to Hazard Analysis}: \added{Validation activities will be cross-referenced with the Hazard Analysis document to ensure that identified risks are adequately mitigated. This helps confirm that safety and reliability concerns are addressed during the testing process.}
+\end{enumerate}
 
 \section{System Tests}
 
-\wss{There should be text between all headings, even if it is just a roadmap of
-the contents of the subsections.}
+This section outlines the testing procedures designed to verify that the system meets its functional and non-functional requirements. The tests will cover various areas to ensure comprehensive validation of the system’s functionality, performance, and usability. Each area will address specific requirements and reference the Software Requirements Specification (SRS) for detailed test criteria. 
+
+\added{This section has been revised to address TA feedback by ensuring consistent formatting across all test cases and clarifying ambiguous test elements such as "Input" vs. "State." Additionally, each test case now includes detailed, step-by-step procedures to eliminate surface-level descriptions and improve traceability.}
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+\subsubsection{Area of Testing: Game Initialization}
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
-
-\subsubsection{Area of Testing1}
-
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+These tests ensure that the game session begins correctly when players enter the lobby and start a new game. The tests verify that player names are correctly registered, the lobby displays connected players, and cards are dealt when the session starts.
 
 \begin{enumerate}
+    \item \textbf{Test ID: GI1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Application has been launched.}
+        \item \textbf{Input:} \added{User selects “Start Game” and enters a valid player name.}
+        \item \textbf{Output:} Player enters lobby with their name displayed on screen.
+        \item \textbf{Test Case Derivation:} Verifies player name selection and lobby registration.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch the UNO Flip Remix application.
+            \item Click “Start Game.”
+            \item Enter a player name (e.g., “Player1”).
+            \item Observe the lobby screen.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that the entered name is displayed and the player is visible in the lobby.
+    \end{itemize}
 
-\item{test-id1\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+    \item \textbf{Test ID: GI1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Two players are connected to the session.}
+        \item \textbf{Input:} \added{N/A (automatic transition)}
+        \item \textbf{Output:} Game screen is displayed and cards are dealt to the players.
+        \item \textbf{Test Case Derivation:} Verifies automatic game session start upon establishing a multiplayer connection.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Player 1 launches the game and enters a name.
+            \item Player 2 launches the game and enters a name.
+            \item Wait for the multiplayer session to establish.
+            \item Observe transition to game screen.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that both players are transitioned into a game session and each receives a hand of 7 cards.
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Area of Testing: Game Setup}
 
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.  Not all projects will
-  necessarily have nonfunctional requirements related to accuracy.}
-
-\wss{For some nonfunctional tests, you won't be setting a target threshold for
-passing the test, but rather describing the experiment you will do to measure
-the quality for different inputs.  For instance, you could measure speed versus
-the problem size.  The output of the test isn't pass/fail, but rather a summary
-table or graph.}
-
-\wss{Tests related to usability could include conducting a usability test and
-  survey.  The survey will be in the Appendix.}
-
-\wss{Static tests, review, inspections, and walkthroughs, will not follow the
-format for the tests given below.}
-
-\wss{If you introduce static tests in your plan, you need to provide details.
-How will they be done?  In cases like code (or document) walkthroughs, who will
-be involved? Be specific.}
-
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+The Game Setup area is essential for validating the creation and configuration of game rooms, as it directly impacts the player experience. Tests in this area verify that game rooms can be created with the specified rules, difficulty levels, and invite options. Reference to the SRS is made to ensure alignment with the functional requirements related to room creation, rule selection, and multiplayer setup.
 
 \begin{enumerate}
-
-\item{test-id1\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
+    \item \textbf{Test ID: GSR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Application is launched and main screen is visible.}
+        \item \textbf{Input:} \added{User clicks the “Play Game” button.}
+        \item \textbf{Output:} A new game room is created, and the player can see options to invite others.
+        \item \textbf{Test Case Derivation:} Verifies that the game correctly initiates a room creation process from the main menu.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Launch the UNO Flip Remix application.
+            \item Wait for the main screen to load.
+            \item Click the “Match Opponent” button.
+            \item Observe the resulting interface.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that a new room is instantiated, and the player can press the "Play Game" button to begin the game.
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Area of Testing: Turn Management}
 
-...
+The Turn Management tests verify the correct sequencing of player turns and handling of turn-based actions such as the effects of special cards. This is crucial for ensuring fair gameplay and adherence to game rules as specified in the SRS.
 
-\subsection{Traceability Between Test Cases and Requirements}
+\begin{enumerate}
+    \item \textbf{Test ID: TMR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Multiplayer game is in progress with two or more players.}
+        \item \textbf{Input:} \added{A player completes their turn.}
+        \item \textbf{Output:} The next player’s turn begins and is reflected across all devices.
+        \item \textbf{Test Case Derivation:} Ensures real-time synchronization of turn order across connected clients.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Start a multiplayer session with at least two players.
+            \item Player 1 plays a card and ends their turn.
+            \item Observe Player 2’s device.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that Player 2 sees it is now their turn and can proceed with gameplay.
+    \end{itemize}
 
-\wss{Provide a table that shows which test cases are supporting which
-  requirements.}
+    \item \textbf{Test ID: TMR1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Player A has played a “Skip” card.}
+        \item \textbf{Input:} \added{System recognizes the Skip card effect.}
+        \item \textbf{Output:} Player B’s turn is skipped; turn moves to Player C.
+        \item \textbf{Test Case Derivation:} Validates Skip card functionality and impact on turn sequencing.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Player A plays a Skip card.
+            \item Observe whether Player B is bypassed and Player C becomes active.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that Player B's turn is skipped and the turn indicator moves to Player C.
+    \end{itemize}
+
+    \item \textbf{Test ID: TMR1-Test03}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Player A has played a “Reverse” card.}
+        \item \textbf{Input:} \added{System processes the Reverse card action.}
+        \item \textbf{Output:} Turn order changes direction (e.g., clockwise to counter-clockwise).
+        \item \textbf{Test Case Derivation:} Verifies correct change of turn order when a Reverse card is used.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Start a game with at least three players.
+            \item Player A plays a Reverse card.
+            \item Observe the direction of turns before and after the card is played.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that subsequent turns proceed in the opposite direction from before the Reverse card was played.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Area of Testing: Card Effects (4.1.4)}
+
+The Card Effects tests verify that the special effects of various cards (such as Draw, Skip, and Reverse) work as expected within the game rules. These tests ensure that each card’s effect is correctly applied to the game state and impacts player actions as intended.
+
+\begin{enumerate}
+    \item \textbf{Test ID: CE1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Game is in progress with at least two players.}
+        \item \textbf{Input:} \added{Player 1 plays a "Draw Two" card.}
+        \item \textbf{Output:} Player 2 is required to draw two cards; turn proceeds to the next player.
+        \item \textbf{Test Case Derivation:} Verifies correct application of the "Draw Two" card effect.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Player 1 plays a "Draw Two" card.
+            \item Observe Player 2's hand and turn state.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that Player 2 draws two cards and the game advances to the next player's turn.
+    \end{itemize}
+
+    \item \textbf{Test ID: CE1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Game is in progress with multiple players.}
+        \item \textbf{Input:} \added{Player 1 plays a "Draw Four" Wild card and selects a new color.}
+        \item \textbf{Output:} Player 2 draws four cards, and the play color changes to the selected color.
+        \item \textbf{Test Case Derivation:} Verifies the "Draw Four" effect and color selection behavior.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Player 1 plays a "Draw Four" Wild card.
+            \item Player 1 selects a new color.
+            \item Observe Player 2’s hand and game state.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that Player 2 draws four cards and the play color is updated correctly.
+    \end{itemize}
+
+    \item \textbf{Test ID: CE1-Test03}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Game is in progress.}
+        \item \textbf{Input:} \added{Player plays a "Wild" card and selects a new color.}
+        \item \textbf{Output:} Play color changes to the one selected.
+        \item \textbf{Test Case Derivation:} Verifies that the "Wild" card allows color selection.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Player plays a "Wild" card.
+            \item Player selects a new color.
+            \item Observe the updated play color.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that the new color is applied and the game proceeds with that color.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Area of Testing: Game Over Conditions (4.1.5)}
+
+The Game Over Condition tests verify that the game correctly identifies when a player has won or when the game ends under specific conditions. These tests ensure proper detection of a winning condition and proper handling of game termination.
+
+\begin{enumerate}
+    \item \textbf{Test ID: GOC1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Game is in progress with at least two players. Player 1 has only one card left.}
+        \item \textbf{Input:} \added{Player 1 presses the UNO button and plays their final card.}
+        \item \textbf{Output:} The game identifies Player 1 as the winner and ends the session.
+        \item \textbf{Test Case Derivation:} Verifies that the system enforces correct win conditions, including pressing the UNO button before the last card is played.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Player 1 reduces their hand to one card.
+            \item Player 1 presses the on-screen UNO button.
+            \item Player 1 plays their final card.
+            \item Observe whether the win condition is triggered.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that the game ends, displays a victory screen, and announces Player 1 as the winner. If the UNO button is not pressed before playing the final card, verify that the player is prevented from winning.
+    \end{itemize}
+
+    \item \textbf{Test ID: GOC1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{State:} \added{Multiplayer game is active with more than one player.}
+        \item \textbf{Input:} \added{All players except one disconnect or exit the game.}
+        \item \textbf{Output:} The remaining player is automatically declared the winner.
+        \item \textbf{Test Case Derivation:} Verifies that the game handles unexpected player exits by properly ending the session.
+        \item \textbf{Test Steps:}
+        \begin{itemize}
+            \item Start a multiplayer game with 3 or more players.
+            \item Have all players except one exit or disconnect.
+            \item Observe the game’s behavior.
+        \end{itemize}
+        \item \textbf{Validation:} Confirm that the game ends automatically and the remaining player is shown a winning message.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Area of Testing: Scoring System (4.1.6)}
+
+The Scoring System tests ensure that points are calculated and awarded correctly based on the cards remaining in each player’s hand when the game ends. This area includes tests for verifying score calculation accuracy and ranking players based on their scores.
+
+\begin{enumerate}
+    \item \textbf{Test ID: SS1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \textbf{Initial State:} Game has just ended.
+        \item \textbf{Input:} The system calculates the final scores based on remaining cards.
+        \item \textbf{Output:} Players are ranked according to their scores, with points accurately reflecting card values.
+        \item \textbf{Test Case Derivation:} Ensures that the scoring system accurately calculates points and ranks players accordingly.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item End a game with various cards remaining in each player’s hand.
+            \item Verify that the system calculates points for each player based on the values of the remaining cards.
+            \item Confirm that players are ranked in descending order of scores.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that the scoring is accurate and players are ranked correctly based on their scores.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Area of Testing: Multiplayer Synchronization (4.1.7)}
+
+The Multiplayer Synchronization tests verify that all players in a game room experience real-time updates and that actions taken by one player are correctly reflected for all other players. This is critical for ensuring a consistent multiplayer experience.
+
+\begin{enumerate}
+    \item \textbf{Test ID: MS1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \added{\textbf{State:} Multiplayer game session is active with at least two players connected.}
+        \item \added{\textbf{Input:} Player 1 plays a valid card.}
+        \item \textbf{Output:} The card is displayed immediately on all players’ screens.
+        \item \textbf{Test Case Derivation:} Ensures that actions performed by one player are reflected on all clients in real time.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Player 1 plays a green "3" card.
+            \item Observe other players’ screens to see if the green "3" card is on top of the discard pile.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that the card appears simultaneously across all connected devices with minimal delay.
+    \end{itemize}
+
+    \item \textbf{Test ID: MS1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automatic
+        \item \added{\textbf{State:} Multiplayer game session is active with at least two players connected.}
+        \item \added{\textbf{Input:} Player 1 disconnects from the session (intentionally or due to network loss).}
+        \item \textbf{Output:} Remaining players receive a disconnection notice, and the game updates its state accordingly.
+        \item \textbf{Test Case Derivation:} Verifies proper handling and communication of player disconnection events.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Start a multiplayer game with multiple players.
+            \item Disconnect Player 1.
+            \item Observe whether a notification appears for remaining players.
+            \item Confirm game state (pause, continue, or default behavior).
+        \end{enumerate}
+        \item \textbf{Validation:} Ensure the game handles the disconnection without crashing and notifies all active players appropriately.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tests for Nonfunctional Requirements (4.2)}
+
+The tests for nonfunctional requirements ensure that the game meets standards for performance, usability, and appearance as specified in the SRS. These tests do not focus on specific functional behavior but rather on the overall quality of the system’s user experience and performance metrics.
+
+\subsubsection{Area of Testing: Appearance Requirements (4.2.1)}
+
+\begin{enumerate}
+    \item \textbf{Test ID: AR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Game interface has loaded on a desktop or laptop device.}
+        \item \textbf{Input:} \added{User navigates through the application UI, including the main menu, lobby, and in-game screen.}
+        \item \textbf{Output:} All UI elements are consistently styled, readable, and follow a unified visual design.
+        \item \textbf{Test Case Derivation:} Ensures the UI adheres to modern design standards and provides a visually cohesive experience.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch the UNO Flip Remix application.
+            \item Navigate through the main menu, lobby, and in-game screen.
+            \item Observe layout consistency, font readability, button styling, and color themes.
+        \end{enumerate}
+        \item \textbf{Validation:} \added{Tester confirms that no UI elements are misaligned, cut off, or styled inconsistently. Visual hierarchy and contrast must align with the criteria defined in the SRS.}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Area of Testing: Speed and Latency Requirements (4.2.2)}
+
+\begin{enumerate}
+    \item \textbf{Test ID: SALR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual with timing tool
+        \item \textbf{State:} \added{Game is active in multiplayer mode with at least two connected players.}
+        \item \textbf{Input:} \added{A player performs an action such as playing a card or drawing from the deck.}
+        \item \textbf{Output:} The system reflects the action within 50 milliseconds on all connected players’ screens.
+        \item \textbf{Test Case Derivation:} Verifies that in-game interactions produce minimal delay, ensuring responsive gameplay.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Start a multiplayer session with two players.
+            \item Player 1 plays a card.
+            \item Use a response time measurement tool to record the time taken for the action to appear on Player 2’s screen.
+        \end{enumerate}
+        \item \textbf{Validation:} \added{Tester confirms that the delay is less than 50ms and no lag or jitter occurs during card play interactions.}
+    \end{itemize}
+
+    \item \textbf{Test ID: SALR1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated network load simulation
+        \item \textbf{State:} \added{ Game is running with the maximum number (4) of players supported.}
+        \item \textbf{Input:} \added{Players perform simultaneous in-game actions under simulated high network traffic.}
+        \item \textbf{Output:} The system maintains less than 100ms response time despite the load.
+        \item \textbf{Test Case Derivation:} Ensures robustness of the networking system under stress.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Simulate network congestion using a tool like Clumsy or a throttled Wi-Fi environment.
+            \item All players perform actions like playing cards or drawing cards.
+            \item Measure the delay experienced for action propagation between clients.
+        \end{enumerate}
+        \item \textbf{Validation:} \added{Tester validates that actions are still reflected in under 100ms, with no game desync or player timeout.}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Usability Requirements (4.2.3)}
+
+These tests confirm that the user interface is intuitive and easy to navigate, ensuring a positive experience for players.
+
+\begin{enumerate}
+    \item \textbf{Test ID: UR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{User has launched the game and is viewing the main menu.}
+        \item \textbf{Input:} \added{New user attempts to navigate the menu and start a game without external guidance.}
+        \item \textbf{Output:} User is able to start a game without assistance or confusion.
+        \item \textbf{Test Case Derivation:} Ensures that the main menu and navigation are intuitive for first-time users.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Ask a new user to open the game application.
+            \item Observe the user as they attempt to reach the lobby or start screen.
+            \item Note if any instructions or assistance are required.
+        \end{enumerate}
+        \item \textbf{Validation:} Tester records any difficulty or confusion and confirms whether the user can begin a game without guidance.
+    \end{itemize}
+
+    \item \textbf{Test ID: UR1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{User is in an active game session with cards in hand.}
+        \item \textbf{Input:} \added{User interacts with game elements such as drawing and playing cards, and using the pause menu.}
+        \item \textbf{Output:} User performs actions smoothly, indicating ease of control interaction.
+        \item \textbf{Test Case Derivation:} Ensures that in-game interactions are accessible and understandable to all users.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Observe the user as they draw and play cards during a live game.
+            \item Ask them to pause and resume the game.
+            \item Record their reaction and ease of completing these tasks.
+        \end{enumerate}
+        \item \textbf{Validation:} Tester assesses if user actions are intuitive and whether any hesitation or confusion occurs.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Reliability Requirements (4.2.4)}
+
+These tests confirm the stability and reliability of the game, ensuring that it can handle prolonged usage without crashes or data loss.
+
+\begin{enumerate}
+    \item \textbf{Test ID: RR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Game has been continuously running for an extended session (e.g., 2 hours).}
+        \item \textbf{Input:} \added{Observe game performance and interactions during and after extended runtime.}
+        \item \textbf{Output:} Game remains stable without crashes, freezes, or memory-related issues.
+        \item \textbf{Test Case Derivation:} Ensures the system maintains consistent behavior and performance over time.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch the game and enter a session.
+            \item Allow the game to remain active for 2 hours with periodic interaction.
+            \item Attempt standard in-game actions such as drawing, playing, and flipping cards.
+        \end{enumerate}
+        \item \textbf{Validation:} Tester confirms that no crashes, major performance drops, or data corruption occur during or after prolonged use.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Availability Requirements (4.2.5)}
+
+These tests verify that the game is available for access as required, particularly in multiplayer mode, ensuring minimal downtime.
+
+\begin{enumerate}
+    \item \textbf{Test ID: AV1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{Game server is deployed and running continuously over a 24-hour observation window.}
+        \item \textbf{Input:} \added{Automated script attempts to access the server at regular intervals (e.g., every 5 minutes).}
+        \item \textbf{Output:} Game is accessible with no more than 5 minutes of downtime in a 24-hour period.
+        \item \textbf{Test Case Derivation:} Ensures the game meets availability targets defined in the SRS for minimal service interruption.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Deploy the game server and monitor it over 24 hours.
+            \item Run an automated script that pings the server every 5 minutes.
+            \item Log and analyze any failed connection attempts.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that downtime does not exceed 5 minutes total during the 24-hour period.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Security Requirements (4.2.6)}
+
+These tests ensure that user data is secure and that unauthorized access is prevented.
+
+\begin{enumerate}
+    \item \textbf{Test ID: SR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{User is in an active game session with a valid player name.}
+        \item \textbf{Input:} \added{Attempt to trigger unauthorized access to another player’s screen or in-game data using in-game interactions or console commands.}
+        \item \textbf{Output:} Access is denied, and no data is leaked or manipulated.
+        \item \textbf{Test Case Derivation:} Ensures that the multiplayer environment protects each player’s game state and restricts unauthorized access.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch two instances of the game and enter different player names.
+            \item Attempt to read or manipulate another player’s card hand or turn data using unauthorized means.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that all unauthorized attempts are blocked and no external player data is accessible or visible.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Maintainability Requirements (4.2.7)}
+
+These tests verify that the code is maintainable and can be updated or debugged with ease.
+
+\begin{enumerate}
+    \item \textbf{Test ID: MR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual (Code Review)
+        \item \textbf{State:} \added{Codebase is accessible in the team’s GitHub repository with full source and documentation.}
+        \item \textbf{Input:} \added{Conduct a review focusing on modularity, naming conventions, documentation quality, and adherence to Unity C\# best practices.}
+        \item \textbf{Output:} Code is well-documented, modular, and follows consistent conventions, supporting ease of future maintenance and debugging.
+        \item \textbf{Test Case Derivation:} Ensures that future contributors or developers can easily understand, modify, and extend the codebase.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Open the Unity project and inspect folder structure and scripts.
+            \item Verify that each script handles a single responsibility (e.g., PlayerManager.cs, CardEffectHandler.cs).
+            \item Review presence and clarity of inline comments and function headers.
+            \item Evaluate use of consistent naming, spacing, and formatting across files.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that code meets defined maintainability criteria with no major violations or undocumented sections.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Portability Requirements (4.2.8)}
+
+These tests ensure that the game operates correctly across different platforms and devices.
+
+\begin{enumerate}
+    \item \textbf{Test ID: PR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{The final build is available for Windows and macOS platforms.}
+        \item \textbf{Input:} \added{Launch and play the game on both Windows and macOS to observe platform behavior.}
+        \item \textbf{Output:} Game runs smoothly and consistently on all supported platforms without platform-specific issues.
+        \item \textbf{Test Case Derivation:} Ensures the game delivers a consistent experience across different operating systems, as outlined in the SRS portability requirement.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Download and install the game on Windows and macOS devices.
+            \item Launch the game on each device.
+            \item Play through a full match on each platform.
+            \item Observe UI rendering, performance, and responsiveness.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that gameplay, visuals, and performance are consistent and error-free on all tested platforms.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Scalability Requirements (4.2.9)}
+
+These tests confirm that the game can handle increasing numbers of players without performance degradation.
+
+\begin{enumerate}
+    \item \textbf{Test ID: SCR1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{The game server is running with a baseline load.}
+        \item \textbf{Input:} \added{Simulate increasing numbers of players joining and playing in real-time.}
+        \item \textbf{Output:} Server maintains performance as player count increases up to the maximum supported level.
+        \item \textbf{Test Case Derivation:} Ensures the game maintains responsiveness and functionality as concurrent users increase, aligning with the scalability requirement in the SRS.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch game server.
+            \item Use a simulation tool to incrementally add player sessions (e.g., from 2 to 20).
+            \item Monitor CPU usage, memory usage, and response time after each increment.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that the game handles the increased load without degradation in response time, game state synchronization, or connection stability.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Performance Requirements (4.2.10)}
+
+These tests assess the game’s performance under typical and peak conditions, ensuring that response times remain within acceptable limits.
+
+\begin{enumerate}
+    \item \textbf{Test ID: PRF1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Game is launched and in progress with standard gameplay conditions.}
+        \item \textbf{Input:} \added{Measure gameplay response time and frame rate over the course of a full match.}
+        \item \textbf{Output:} Response time is below 100ms, and frame rate is consistent (at least 30 FPS).
+        \item \textbf{Test Case Derivation:} Ensures that the game maintains performance under normal operating conditions, as specified in the SRS.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Start a multiplayer game session.
+            \item Perform normal actions (play cards, draw cards, flip sides).
+            \item Use a profiler or performance monitor to log response delays and FPS.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that average input latency stays under 100ms and the frame rate remains stable during gameplay.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Accessibility Requirements (4.2.11)}
+
+These tests verify that the game is accessible to users with disabilities and adheres to relevant accessibility standards.
+
+\begin{enumerate}
+    \item \textbf{Test ID: ACC1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{Game interface is fully loaded with accessibility features enabled.}
+        \item \textbf{Input:} \added{Navigate the UI using screen reader software and keyboard-only inputs.}
+        \item \textbf{Output:} Interface is fully navigable using accessibility tools, and key actions are accessible without a mouse.
+        \item \textbf{Test Case Derivation:} Ensures compliance with accessibility best practices to support users with visual or motor impairments.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Launch the game.
+            \item Enable a screen reader (e.g., NVDA or VoiceOver).
+            \item Navigate the main menu, start a game, and attempt to play using only the keyboard.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that all elements are readable and operable through the accessibility tools without hindrance.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Compatibility Requirements (4.2.12)}
+
+These tests ensure that the game is compatible with a variety of operating systems, browsers, and hardware configurations.
+
+\begin{enumerate}
+    \item \textbf{Test ID: COMP1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Manual
+        \item \textbf{State:} \added{The game has been built and exported for different platforms.}
+        \item \textbf{Input:} \added{Run the game on Windows, macOS, and different browser engines (if applicable).}
+        \item \textbf{Output:} Game functions as expected across all supported configurations without graphical or functional issues.
+        \item \textbf{Test Case Derivation:} Ensures platform consistency and browser compatibility where applicable, as outlined in the compatibility requirement in the SRS.
+        \item \textbf{Test Steps:}
+        \begin{enumerate}
+            \item Install and run the game on Windows and macOS.
+            \item (If applicable) Load the game on Chrome, Firefox, or Safari.
+            \item Interact with the full game cycle on each platform.
+        \end{enumerate}
+        \item \textbf{Validation:} Confirm that gameplay, graphics, input handling, and performance remain consistent across tested platforms and browsers.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Traceability Between Test Cases and Requirements (4.3)}
+
+The following tables illustrate the traceability between test cases and the requirements specified in the Software Requirements Specification (SRS). This mapping ensures that all requirements have been addressed by at least one test case, providing comprehensive coverage and validating that the system meets all specified needs. \added{The tables are split into 4 tables for better visibility in the document, consider it 1 big table.}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Requirement ID} & \textbf{Requirement Description} & \textbf{Test Case ID(s)} \\ \hline
+FR1: Game Initialization & The game must initialize a session with player name input and enter a game lobby when started. & GI1-Test01, GI1-Test02 \\ \hline
+FR2: Game Room Setup & The game must allow creation and setup of a multiplayer session with invited players. & GSR1-Test01 \\ \hline
+FR3: Turn Management & The game must manage player turns and correctly process skip/reverse actions. & TMR1-Test01, TMR1-Test02, TMR1-Test03 \\ \hline
+FR4: Card Effects & Card effects like Draw Two, Draw Four, Wild, Skip, and Reverse must perform correctly. & CE1-Test01, CE1-Test02, CE1-Test03 \\ \hline
+FR5: Game Over Conditions & The game must detect when a player wins by playing their last card and pressing UNO. & GOC1-Test01, GOC1-Test02 \\ \hline
+\end{tabularx}
+\caption{Traceability Table between Functional Requirements and Test Cases (Part 1)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Requirement ID} & \textbf{Requirement Description} & \textbf{Test Case ID(s)} \\ \hline
+FR6: Multiplayer Synchronization & All actions must be synchronized across players in real time, including disconnections. & MS1-Test01, MS1-Test02 \\ \hline
+NFR1: Appearance & The user interface must follow modern design principles and be visually appealing. & AR1-Test01 \\ \hline
+NFR2: Speed and Latency & Game response time must remain below 50-100ms in standard and high-traffic conditions. & SALR1-Test01, SALR1-Test02 \\ \hline
+NFR3: Usability & The interface must be intuitive for new users and support smooth control interactions. & UR1-Test01, UR1-Test02 \\ \hline
+NFR4: Reliability & The game must remain stable under prolonged use without crashing or performance drops. & RR1-Test01 \\ \hline
+\end{tabularx}
+\caption{Traceability Table between Requirements and Test Cases (Part 2)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Requirement ID} & \textbf{Requirement Description} & \textbf{Test Case ID(s)} \\ \hline
+NFR5: Availability & The game server should have uptime of at least 99.65\%, with <5 minutes of downtime per day. & AV1-Test01 \\ \hline
+NFR6: Security & The system must prevent unauthorized access to other players’ data or gameplay. & SR1-Test01 \\ \hline
+NFR7: Maintainability & The code should be modular, documented, and follow Unity/C\# standards. & MR1-Test01 \\ \hline
+NFR8: Portability & The game must function correctly on Windows and macOS builds. & PR1-Test01 \\ \hline
+NFR9: Scalability & The game must support increasing player load up to a maximum threshold without lag. & SCR1-Test01 \\ \hline
+\end{tabularx}
+\caption{Traceability Table between Requirements and Test Cases (Part 3)}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{Requirement ID} & \textbf{Requirement Description} & \textbf{Test Case ID(s)} \\ \hline
+NFR10: Performance & The game must maintain response times under 100ms and stable FPS during play. & PRF1-Test01 \\ \hline
+NFR11: Accessibility & Game UI should be operable using screen readers and keyboard-only navigation. & ACC1-Test01 \\ \hline
+NFR12: Compatibility & The game must run correctly across Windows/macOS platforms and compatible browsers (if applicable). & COMP1-Test01 \\ \hline
+\end{tabularx}
+\caption{Traceability Table between Requirements and Test Cases (Part 4)}
+\end{table}
 
 \section{Unit Test Description}
 
-\wss{This section should not be filled in until after the MIS (detailed design
-  document) has been completed.}
-
-\wss{Reference your MIS (detailed design document) and explain your overall
-philosophy for test case selection.}  
-
-\wss{To save space and time, it may be an option to provide less detail in this section.  
-For the unit tests you can potentially layout your testing strategy here.  That is, you 
-can explain how tests will be selected for each module.  For instance, your test building 
-approach could be test cases for each access program, including one test for normal behaviour 
-and as many tests as needed for edge cases.  Rather than create the details of the input 
-and output here, you could point to the unit testing code.  For this to work, you code 
-needs to be well-documented, with meaningful names for all of the tests.}
+This section describes the scope of unit testing for the UNO Flip Remix project, including the modules under test, their key responsibilities, and the specific test cases used to validate them. It also outlines traceability between unit test cases and the system modules defined in the Module Interface Specification (MIS). \added{This whole section has been edited but for ease of readability, the text will remain in black.}
 
 \subsection{Unit Testing Scope}
 
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
+Unit testing in this project is designed to validate the correctness of individual components within the Unity C\# codebase. The primary focus is on testing modules that handle game logic, player interactions, and state transitions. Tests are implemented using the NUnit framework and are executed regularly during development. Each test is designed to:
+
+\begin{itemize}
+    \item Verify the correctness of the module logic.
+    \item Ensure each function behaves as expected under normal and edge case conditions.
+    \item Catch regressions introduced by future changes.
+\end{itemize}
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
+This section describes unit tests for the system's functional modules. Each test targets the internal logic of a specific class or function and ensures correctness of behavior under typical and edge-case conditions. These tests were implemented using the NUnit testing framework in Unity and aim to cover gameplay logic, deck and card operations, AI decisions, player actions, and menu flow. \added{Below the test names match the names of the unit tests implemented in our project.}
 
-\subsubsection{Module 1}
-
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
+\subsubsection{AIPlayer Module}
 
 \begin{enumerate}
+    \item \textbf{Test ID: AI1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} AI player has a valid hand of cards
+        \item \textbf{Input:} Request AI to draw a card
+        \item \textbf{Output:} AI hand size increases by 1
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_AIPlayer\_CanDrawCard}
+        \item \textbf{Validation:} Confirm that AI's hand has one more card after the draw
+    \end{itemize}
 
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
+    \item \textbf{Test ID: AI1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} AI player has at least one playable card
+        \item \textbf{Input:} Request AI to select the best card
+        \item \textbf{Output:} AI selects a valid card based on heuristics
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_AIPlayer\_ChooseBestCard\_PreferActionCards}
+        \item \textbf{Validation:} Confirm that selected card is an action card if available
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Module 2}
+\subsubsection{Player Module}
 
-...
+\begin{enumerate}
+    \item \textbf{Test ID: PL1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} New player instance is created
+        \item \textbf{Input:} Instantiate Player class
+        \item \textbf{Output:} Player has empty hand and correct attributes
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Player\_Creation}
+        \item \textbf{Validation:} Confirm player's hand is initialized empty and name is assigned
+    \end{itemize}
+
+    \item \textbf{Test ID: PL1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} Player has a card that matches the top card
+        \item \textbf{Input:} Request player to play a card
+        \item \textbf{Output:} Card is removed from hand and placed on pile
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Player\_PlayCard}
+        \item \textbf{Validation:} Confirm correct card is played and game state updates
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Deck Module}
+
+\begin{enumerate}
+    \item \textbf{Test ID: DK1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} Deck is initialized
+        \item \textbf{Input:} Call shuffle method
+        \item \textbf{Output:} Deck order is randomized
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Deck\_ShuffleChangesOrder}
+        \item \textbf{Validation:} Confirm deck order is different after shuffling
+    \end{itemize}
+
+    \item \textbf{Test ID: DK1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} Deck is empty
+        \item \textbf{Input:} Draw card request is made
+        \item \textbf{Output:} Deck is reset from used pile
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Deck\_ResetsWhenEmpty}
+        \item \textbf{Validation:} Confirm deck is refilled and draw proceeds successfully
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Card Module}
+
+\begin{enumerate}
+    \item \textbf{Test ID: CD1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} New card object created
+        \item \textbf{Input:} Create ActionCard with color RED and action SKIP
+        \item \textbf{Output:} Card stores correct type and metadata
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Card\_ActionCard\_Creation}
+        \item \textbf{Validation:} Confirm card properties match initialization values
+    \end{itemize}
+
+    \item \textbf{Test ID: CD1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} Two cards with same color and value are compared
+        \item \textbf{Input:} Compare cards using equality method
+        \item \textbf{Output:} Cards are confirmed equal
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_Card\_Equality}
+        \item \textbf{Validation:} Assert that equality operator returns true
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{GameManager Module}
+
+\begin{enumerate}
+    \item \textbf{Test ID: GM1-Test01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} GameManager has been initialized
+        \item \textbf{Input:} Run setup with player list
+        \item \textbf{Output:} Player objects and game state are initialized
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_GameManager\_InitializePlayers}
+        \item \textbf{Validation:} Confirm each player is initialized and dealt cards
+    \end{itemize}
+
+    \item \textbf{Test ID: GM1-Test02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} A win condition has been triggered
+        \item \textbf{Input:} Player finishes last card and clicks UNO
+        \item \textbf{Output:} Win screen is triggered
+        \item \textbf{Test Case Derivation:} From method: \texttt{Test\_GameManager\_WinCondition}
+        \item \textbf{Validation:} Confirm game ends with proper winner message displayed
+    \end{itemize}
+\end{enumerate}
+
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
+This section provides detailed unit tests for verifying nonfunctional requirements such as usability, maintainability, and correctness of internal module behavior. Each test aligns with specific modules and ensures software quality, robustness, and code consistency. \added{Below the test names match the names of the unit tests implemented in our project.}
 
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
+\subsubsection{Module 3: PlayerManager.cs}
 
-\subsubsection{Module ?}
-		
+This module manages player identity, hand status, and in-game actions related to player behavior. It is essential for maintaining correct player state across game sessions.
+
 \begin{enumerate}
+    \item \textbf{Test ID: UT-PM01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{PlayerManager object is initialized with a given player name.}
+        \item \textbf{Input:} \added{Call \texttt{GetPlayerName()}.}
+        \item \textbf{Output:} The correct player name string is returned.
+        \item \textbf{Test Case Derivation:} Verifies proper assignment and retrieval of player name during initialization.
+        \item \textbf{Validation:} \texttt{Assert.AreEqual("Player1", GetPlayerName())}
+        \item \textbf{Associated Test:} \texttt{Test\_Player\_Creation}
+    \end{itemize}
 
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
+    \item \textbf{Test ID: UT-PM02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{Player hand is initialized with 7 cards.}
+        \item \textbf{Input:} \added{Player plays one card via \texttt{PlayCard()}.}
+        \item \textbf{Output:} Hand size decreases by one.
+        \item \textbf{Test Case Derivation:} Ensures card is removed from internal hand list after a valid play.
+        \item \textbf{Validation:} \texttt{Assert.AreEqual(6, player.Hand.Count)}
+        \item \textbf{Associated Test:} \texttt{Test\_Player\_PlayCard}
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Module ?}
+\subsubsection{Module 4: Card.cs}
 
-...
+The Card module defines attributes and equality logic for UNO Flip cards. It ensures that all card properties—color, type, and value—are valid and support comparisons and game logic.
+
+\begin{enumerate}
+    \item \textbf{Test ID: UT-CARD01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{A card is created using constructor parameters for color and type.}
+        \item \textbf{Input:} \added{Invoke \texttt{ToString()} or inspect color/type fields.}
+        \item \textbf{Output:} The card reflects expected attributes (e.g., Red Draw Two).
+        \item \textbf{Test Case Derivation:} Ensures the constructor stores the correct card metadata.
+        \item \textbf{Validation:} \texttt{Assert.AreEqual(CardType.DrawTwo, newCard.Type)}
+        \item \textbf{Associated Test:} \texttt{Test\_Card\_DrawFourCard\_Creation}
+    \end{itemize}
+
+    \item \textbf{Test ID: UT-CARD02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{Two cards are instantiated with matching values.}
+        \item \textbf{Input:} \added{Invoke \texttt{card1.Equals(card2)}.}
+        \item \textbf{Output:} Returns \texttt{true} if the cards match in all attributes.
+        \item \textbf{Test Case Derivation:} Ensures equality checks are implemented correctly for game logic.
+        \item \textbf{Validation:} \texttt{Assert.IsTrue(card1.Equals(card2))}
+        \item \textbf{Associated Test:} \texttt{Test\_Card\_Equality}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Module 5: MenuManager.cs}
+
+This module handles the game’s menu UI including navigation and screen transitions.
+
+\begin{enumerate}
+    \item \textbf{Test ID: UT-MM01}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{MenuManager is loaded and the main menu is active.}
+        \item \textbf{Input:} \added{Call \texttt{ExitGame()} method.}
+        \item \textbf{Output:} Application quits or exits to desktop (in runtime or simulated test environment).
+        \item \textbf{Test Case Derivation:} Confirms correct response to user pressing "Exit" in menu.
+        \item \textbf{Validation:} \texttt{Assert.True(Application.isQuitting)} (or test mock behavior)
+        \item \textbf{Associated Test:} \texttt{Test\_Menu\_ExitGame}
+    \end{itemize}
+
+    \item \textbf{Test ID: UT-MM02}
+    \begin{itemize}
+        \item \textbf{Control:} Automated
+        \item \textbf{State:} \added{How-To-Play panel component is present but inactive.}
+        \item \textbf{Input:} \added{Call \texttt{ToggleHowToPlayPanel()}.}
+        \item \textbf{Output:} Panel becomes visible and interactive.
+        \item \textbf{Test Case Derivation:} Verifies help/instruction UI elements can be toggled as designed.
+        \item \textbf{Validation:} \texttt{Assert.IsTrue(panel.activeSelf)}
+        \item \textbf{Associated Test:} \texttt{Test\_Menu\_HowToPlayPanel\_Activation}
+    \end{itemize}
+\end{enumerate}
 
 \subsection{Traceability Between Test Cases and Modules}
 
-\wss{Provide evidence that all of the modules have been considered.}
-				
-\bibliographystyle{plainnat}
+This section provides a traceability matrix that maps unit test cases to the corresponding software modules they verify. This mapping ensures complete coverage of both functional and nonfunctional aspects of the UNO Flip Remix game implementation.
 
-\bibliography{../../refs/References}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|p{5cm}|p{7.2cm}|}
+\hline
+\textbf{Module} & \textbf{Requirement Description} & \textbf{Unit Test Case(s)} \\ \hline
 
-\newpage
+\texttt{GameManager.cs} & Handles overall game logic, including player initialization, direction, and win condition tracking. & 
+UT-GM01, UT-GM02 \\ \hline
 
-\section{Appendix}
+\texttt{DeckManager.cs} & Manages deck setup, shuffling, drawing, and recycling of used cards. & 
+UT-DM01, UT-DM02 \\ \hline
 
-This is where you can place additional information.
+\texttt{CardDisplay.cs} & Handles visual representation of cards based on type and properties. & 
+UT-CD01, UT-CD02 \\ \hline
+
+\texttt{CardInteraction.cs} & Handles mouse hover effects and interaction visuals. & 
+UT-CI01 \\ \hline
+
+\texttt{PlayerManager.cs} & Tracks player identity, hand size, and in-game actions. & 
+UT-PM01, UT-PM02 \\ \hline
+
+\texttt{Card.cs} & Models UNO Flip cards, including types, colors, and equality checks. & 
+UT-CARD01, UT-CARD02 \\ \hline
+
+\texttt{MenuManager.cs} & Controls main menu behavior, UI transitions, and help screens. & 
+UT-MM01, UT-MM02 \\ \hline
+
+\end{tabular}
+\caption{Traceability Table between Unit Test Cases and Modules}
+\end{table}
+
+\section{References}
+\begin{enumerate}
+    \item Uno Flip Online Game, ``Play Uno Flip Online,'' [Online]. Available: 
+    \url{https://unoonlinegame.io/uno-flip-online}. Accessed: Nov. 1, 2024.
+
+    \item Software Testing Help, ``Test Plan Sample – Software Testing and Quality Assurance Templates,'' [Online]. Available: 
+    \url{https://www.softwaretestinghelp.com/test-plan-sample-softwaretesting-and-quality-assurance-templates/}. Accessed: Nov. 1, 2024.
+
+    \item McMaster University, ``Integrated Stroke Test Plan,'' GitLab, [Online]. Available: 
+    \url{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/SamplesOfStudentWork/VnVPlan/IntegratedStrokeTestPlan.pdf}. Accessed: Nov. 1, 2024.
+\end{enumerate}
+
 
 \subsection{Symbolic Parameters}
 
-The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
-Their values are defined in this section for easy maintenance.
+\subsection{Usability Survey Questions}
 
-\subsection{Usability Survey Questions?}
-
-\wss{This is a section that would be appropriate for some projects.}
-
-\newpage{}
-\section*{Appendix --- Reflection}
-
-\wss{This section is not required for CAS 741}
-
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Lifelong Learning.
-
-\input{../Reflection.tex}
+The following usability survey was distributed to evaluate the overall user experience of the UNO Flip Remix game. Questions focused on interface clarity, controls, responsiveness, accessibility, and enjoyment. The survey was administered through Google Forms.
 
 \begin{enumerate}
-  \item What went well while writing this deliverable? 
-  \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-  \item What knowledge and skills will the team collectively need to acquire to
-  successfully complete the verification and validation of your project?
-  Examples of possible knowledge and skills include dynamic testing knowledge,
-  static testing knowledge, specific tool usage, Valgrind etc.  You should look to
-  identify at least one item for each team member.
-  \item For each of the knowledge areas and skills identified in the previous
-  question, what are at least two approaches to acquiring the knowledge or
-  mastering the skill?  Of the identified approaches, which will each team
-  member pursue, and why did they make this choice?
+    \item What is your age group?
+    \begin{itemize}
+        \item Under 18
+        \item 18–24
+        \item 25–34
+        \item 45 or older
+    \end{itemize}
+
+    \item Have you played UNO Flip before?
+    \begin{itemize}
+        \item Yes
+        \item No
+    \end{itemize}
+
+    \item How would you rate the game interface design? (1 = Very Poor, 5 = Excellent)
+    \begin{itemize}
+        \item 1, 2, 3, 4, 5
+    \end{itemize}
+
+    \item Are the text and icons clear and easy to read?
+    \begin{itemize}
+        \item Very clear
+        \item Somewhat clear
+        \item A little blurry
+        \item Very difficult to read
+    \end{itemize}
+
+    \item Do the colors and visual effects feel comfortable to you?
+    \begin{itemize}
+        \item Yes, very comfortable
+        \item Neutral
+        \item No, the colors feel messy
+        \item No, the colors are too harsh on the eyes
+    \end{itemize}
+
+    \item What aspects of the game interface do you like the most? (Select all that apply)
+    \begin{itemize}
+        \item Color scheme
+        \item Card design
+        \item Button layout
+        \item Fonts and text arrangement
+    \end{itemize}
+
+    \item Do you find the game controls intuitive and easy to understand?
+    \begin{itemize}
+        \item Very intuitive, I learned quickly
+        \item Fairly intuitive, but took some time to get used to
+        \item A bit complicated, not easy to pick up
+        \item Very confusing, poor user experience
+    \end{itemize}
+
+    \item Are the drag/click actions for playing cards smooth and responsive?
+    \begin{itemize}
+        \item Yes, very smooth
+        \item Mostly smooth, but sometimes laggy
+        \item Somewhat laggy, needs improvement
+        \item Very laggy, affects gameplay
+    \end{itemize}
+
+    \item Is the Flip mechanism easy to understand and use?
+    \begin{itemize}
+        \item Yes, very clear
+        \item Takes a little time to get used to
+        \item Quite difficult to understand, needs better guidance
+        \item Completely unclear
+    \end{itemize}
+
+    \item Did you encounter any of the following issues while playing? (Select all that apply)
+    \begin{itemize}
+        \item Game freezes or crashes
+        \item Unresponsive controls or delayed responses
+        \item Unclear rules or lack of guidance
+        \item Confusing interface or hard-to-find buttons
+    \end{itemize}
+
+    \item Did you find playing UNO Flip enjoyable?
+    \begin{itemize}
+        \item Very fun, I loved it
+        \item Pretty good, but not outstanding
+        \item Average, a little boring
+        \item Not enjoyable, I wouldn’t play again
+    \end{itemize}
+
+    \item How would you rate the difficulty level?
+    \begin{itemize}
+        \item Too easy, not challenging enough
+        \item Just right, enjoyable to play
+        \item Too difficult, a bit frustrating
+    \end{itemize}
 \end{enumerate}
+
+
+\section*{Appendix --- Reflection}
+
+The following reflections evaluate the team's engagement during the creation of this VnV Plan.
+
+\begin{enumerate}
+    \item \textbf{What went well while writing this deliverable?}
+    \begin{itemize}
+        \item Mingyang: We used a shared document platform for real-time collaboration. This allowed us to continuously review and build on each other’s work, ensuring consistent formatting and avoiding duplicated efforts.
+        \item Kevin: Everyone contributed evenly and on time, which made the writing process more manageable and less stressful.
+    \end{itemize}
+
+    \item \textbf{What pain points did you experience during this deliverable, and how did you resolve them?}
+    \begin{itemize}
+        \item Mingyang: Distinguishing between functional and non-functional requirements was initially confusing. We resolved this by revisiting course resources and applying detailed feedback from the TAs.
+        \item Zain: Understanding how to properly format test cases in LaTeX took some trial and error, but collaborating with teammates and referencing examples helped fix the issues.
+    \end{itemize}
+
+    \item \textbf{What knowledge and skills will the team collectively need to acquire to successfully complete the verification and validation of your project?}
+    \begin{itemize}
+        \item Jianhao: We need to improve in static testing for requirements traceability and dynamic testing for performance and multiplayer features. Familiarity with Unity's built-in testing tools is essential.
+        \item Kevin: We should get better at writing testable code from the beginning to reduce debugging later in the development process.
+    \end{itemize}
+
+    \item \textbf{For each of the knowledge areas and skills identified, what are at least two approaches to acquiring the knowledge or mastering the skill?}
+    \begin{itemize}
+        \item Jianhao: We plan to review documentation for Unity Test Framework and watch tutorials on performance profiling. Additionally, we’ll do peer learning sessions to share experience with test case writing and automated test setup.
+        \item Zain: I will explore Unity Learn tutorials and ask teammates to walk through their test cases with me so I can learn the structure and logic behind them.
+    \end{itemize}
+\end{enumerate}
+
+
 
 \end{document}
