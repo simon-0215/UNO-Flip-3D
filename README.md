@@ -1,6 +1,6 @@
-# Uno-Flip-3D
+# Uno-Flip-Remix
 
-Developer Names:
+Developer Names: Kevin Ishak, Zain Garada, Minyang Xu, Jianhao Wei
 
 Date of project start:September 8, 2024
 
@@ -10,5 +10,7 @@ The folders and files for this project are as follows:
 
 docs - Documentation for the project, including requirements, design specifications, and user manuals.
 refs - Reference materials used for the project, such as official UNO Flip game rules, research on card game mechanics, and design inspirations.
-src - Source code for the project, including the core game logic, user interface components, and multiplayer modules.
-test - Test cases to validate the game mechanics, user interactions, and edge cases (e.g., special card actions and game end conditions).
+NOTICE:
+UnoFlip FOLDER - Source code for the project, including the core game logic, user interface components, multiplayer modules AND testing files.
+
+Date of project end: April 2, 2025
