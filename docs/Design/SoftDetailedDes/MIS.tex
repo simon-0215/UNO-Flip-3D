@@ -1,7 +1,6 @@
 \documentclass[12pt, titlepage]{article}
 
 \usepackage{amsmath, mathtools}
-
 \usepackage[round]{natbib}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -19,29 +18,36 @@
 \usepackage[section]{placeins}
 \usepackage{caption}
 \usepackage{fullpage}
+\usepackage{array}
+
+\newcommand{\progname}[1]{\textit{#1}}
+
+
+% Change tracking macros
+\usepackage[normalem]{ulem} % allows \sout
+\usepackage{xcolor}
+\newcommand{\removed}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand{\added}[1]{\textcolor{green}{#1}}
 
 \hypersetup{
-bookmarks=true,     % show bookmarks bar?
-colorlinks=true,       % false: boxed links; true: colored links
-linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
-citecolor=blue,      % color of links to bibliography
-filecolor=magenta,  % color of file links
-urlcolor=cyan          % color of external links
+    bookmarks=true,
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan
 }
-
-\usepackage{array}
 
 \externaldocument{../../SRS/SRS}
 
-
-
 \begin{document}
 
-\title{Module Interface Specification for \progname{UnoFlip3D}}
+\title{Module Interface Specification for \progname{Uno Flip Remix}}
 
-\author{\authname Team 24 \\ \\ Mingyang Xu \\ Kevin Ishak \\ Jianhao Wei \\ Zain-Alabedeen Garada \\ Zheng Beng Liang}
 
-\date{January 17, 2025}
+\author{\authname Team 24 \\ \\ Mingyang Xu \\ Kevin Ishak \\ Jianhao Wei \\ Zain-Alabedeen Garada \\ \removed{Zheng Beng Liang}}
+
+\date{April 2, 2025}
 
 \maketitle
 
@@ -59,15 +65,34 @@ January 17th, 2025 & Zheng Bang Liang & Added all modules for Behavior Hiding Mo
 January 17th, 2025 & Jianhao Wei, Kevin Ishak, Zain-Alabedeen Garada & Modify behavior hiding modules that Zheng added and add the rest of the MIS modules \\
 January 17th, 2025 & Jianhao Wei & Modify section 3 and wrote section 4, 5, 16. Communicate with other members and wrote section 17\\
 January 28th, 2025 & Jianhao Wei & Make changes based on peer feedbacks. Please see commits and issue trackers for detail\\
+\added{April 1st, 2025} & \added{Kevin Ishak} & \added{Edits based on TA feedback for the final report revision}\\
 \bottomrule
 \end{tabularx}
 
-~\newpage
+\newpage
 
 \section{Symbols, Abbreviations and Acronyms}
 
-See MG document in \href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}{here}.
+\added{The following table summarizes the symbols and abbreviations used throughout this document. These definitions are consistent with those listed in the Module Guide (MG). For the complete reference, see the full MG at \href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}{this link}.}
 
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{p{0.25\textwidth} p{0.65\textwidth}}
+\toprule
+\textbf{Symbol / Abbreviation} & \textbf{Definition} \\
+\midrule
+AC & Anticipated Change \\
+UC & Unlikely Change \\
+MG & Module Guide \\
+MIS & Module Interface Specification \\
+SRS & Software Requirements Specification \\
+UI & User Interface \\
+UDP & User Datagram Protocol \\
+TCP & Transmission Control Protocol \\
+DAG & Directed Acyclic Graph \\
+HUD & Heads-Up Display \\
+UNO Flip & A variant of the classic UNO game featuring a two-sided deck \\
+\bottomrule
+\end{longtable}
 
 \newpage
 
@@ -79,176 +104,196 @@ See MG document in \href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/doc
 
 \section{Introduction}
 
-UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with ”light” and ”dark” sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
+UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with “light” and “dark” sides. Players must adapt their strategy dynamically as the game flips between these two sides, creating unpredictable and engaging game play.
 
-Complementary documents include the System Requirement Specifications and Module Guide. The full documentation and implementation can be found in \href{https://github.com/simon-0215/UNO-Flip-3D/tree/main}{here}. 
+The goal of this project is to develop a digital version of UNO Flip that faithfully replicates the physical game play experience while introducing improvements such as rule automation, multiplayer networking, real-time animations, and a modern user interface.
 
+This Module Interface Specification (MIS) provides detailed interface specifications for each software module described in the Module Guide (MG). It serves as a design reference for implementation and testing.
+
+\added{Complementary documents include:}
+\begin{itemize}
+    \item \added{\href{https://github.com/simon-0215/UNO-Flip-3D/tree/main/docs/SRS-Volere}{The Software Requirements Specification (SRS)}, which defines functional and non-functional system requirements.}
+    \item \added{\href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}{The Module Guide (MG)}, which outlines the modular decomposition and design philosophy.}
+\end{itemize}
 
 \section{Notation}
 
+The structure of the MIS for modules follows the documentation standards described in Hoffman and Strooper \cite{HoffmanAndStrooper1995}, with adaptations based on Ghezzi et al. \cite{GhezziEtAl2003}. The mathematical notation follows conventions from Chapter 3 of Hoffman and Strooper (1995). This MIS also builds on the SFWRENG 4G06 GitHub template, available at \href{https://github.com/smiths/capTemplate/tree/main/docs/Design/SoftDetailedDes}{this link}.
 
 
-The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
-with the addition that template modules have been adapted from
-\cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-\citet{HoffmanAndStrooper1995}. Template used from the SFWRENG 4G06 GitHub in \href{https://github.com/smiths/capTemplate/tree/main/docs/Design/SoftDetailedDes}{here}. 
+\added{The following tables summarize the primitive, object, and domain-specific data types used by the UNO Flip 3D software. These types form the basis for module specifications throughout this document.}
 
-The following table summarizes the primitive data types used by \progname{UnoFlip3D}. 
+\vspace{0.5em}
+\noindent
+\textbf{Primitive Data Types}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.2}
-\noindent 
-\begin{tabular}{l l p{7.5cm}} 
+\begin{tabular}{l l p{8cm}} 
 \toprule 
 \textbf{Data Type} & \textbf{Notation} & \textbf{Description}\\ 
 \midrule
-Boolean & boolean & A variable that represent true or false on a statement \\
-Integer number & int & A number without fractional part with the range between $[-2^{63}, 2^{63}-1]$\\
-Decimal number & float & A number with fractional part represented by 32-bit single-precision float point\\
-Data Stream & serializedData & A stream of binary data for inter-module or inter-device transmissions\\
+Boolean & boolean & Logical value representing \texttt{true} or \texttt{false}. \\
+Integer & int & Whole numbers in the range $[-2^{63}, 2^{63}-1]$.\\
+Floating Point & float & Real numbers with fractional components using IEEE 754 32-bit representation.\\
+Serialized Data Stream & serializedData & Binary-encoded data used for inter-module or inter-device communication.\\
 \bottomrule
 \end{tabular} 
 \end{center}
 
-The following table summarizes the derived object data types used by \progname{UnoFlip3D}
+\vspace{1em}
+\noindent 
+\newpage
+\textbf{Derived Object Data Types}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.2}
-\noindent 
-\begin{tabular}{l l p{7.5cm}} 
+\begin{tabular}{l l p{8cm}} 
 \toprule 
 \textbf{Object Type} & \textbf{Notation} & \textbf{Description}\\ 
 \midrule
-String Object & String & an object with a sequence of unicode characters that represent word or sentences\\
-Generic Array Object & Array[Type] & A object represented by a set of certain type of variable \\
-Dictionary Object & dictionary & A collection of two arrays with each variable in one array correspond to a specific element in another array\\
-Graphics Description Object & GraphicObject & A object contain all the details that the user interface needed for display the game properly\\
+String & String & A sequence of Unicode characters.\\
+Generic Array & Array[Type] & A collection of elements of the specified type.\\
+Dictionary & dictionary & Key-value mapping where each key corresponds to a specific element.\\
+Graphics Object & GraphicObject & Object describing visual representation, used by the UI module.\\
 \bottomrule
 \end{tabular} 
 \end{center}
 
-
-
+\vspace{1em}
 \noindent
-\progname{UnoFlip3D} uses functions, which
-are defined by the data types of their inputs and outputs. Local functions are
-described by giving their type signature followed by their specification.
+\textbf{\added{Domain-Specific Data Types}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l l p{8cm}} 
+\toprule 
+\textbf{Custom Type} & \textbf{Notation} & \textbf{Description}\\ 
+\midrule
+Card & Card & Represents an individual card with color, number, and action attributes.\\
+Deck & Deck & A stack of \texttt{Card} objects supporting draw and shuffle operations.\\
+Player & Player & Entity with a hand of cards, name, and status.\\
+Game State & GameState & Tracks all gameplay data: turn order, decks, hands, discard piles, etc.\\
+Move & Move & Encodes a player's chosen card and action.\\
+Turn Direction & TurnDirection & Enum representing clockwise or counterclockwise direction.\\
+Action Type & ActionType & Enum for card actions: \texttt{Draw2}, \texttt{Skip}, \texttt{Flip}, etc.\\
+Color & Color & Enum for card colors: \texttt{Red}, \texttt{Blue}, \texttt{Green}, \texttt{Yellow}, \texttt{Wild}.\\
+\bottomrule
+\end{tabular} 
+\end{center}
+
+\vspace{0.5em}
+\noindent
+UNO Flip 3D uses functions, which are defined by the data types of their inputs and outputs. Local functions are described by giving their type signature followed by their specification.
 
 \section{Module Decomposition}
 
-The following description is taken directly from the Module Guide document for this project. The modules are divided into 3 main categories: Hardware-Hiding, Behaviour-Hiding and Software Decision. Below is a detailed description about how each modules is categorized:
+\added{This section outlines the modular decomposition of the UNO Flip Remix system, categorized into three types: Hardware-Hiding, Behaviour-Hiding, and Software Decision modules. These categories follow the modular design principles established in the Module Guide (MG). Each module listed below is a leaf module from the MG hierarchy and is associated with an interface specification in this document.}
 
-\subsection{Hardwire-Hiding Modules}
+\subsection{Hardware-Hiding Modules}
 
 \begin{itemize}
-\item \hyperref[BSM]{\textbf{Backend/Server Module:}} Serves as a virtual hardware used by the rest of the system. This module provides the interface between the hardware and the software, allowing the system to display
-outputs or accept inputs.
+\item \hyperref[BSM]{\textbf{Backend/Server Module:}} Serves as a virtual hardware abstraction layer between Unity clients and the network server. It is responsible for input/output processing and enabling communication across clients in a multiplayer environment.
 \end{itemize}
 
-\subsection{Behaviour-Hiding Modules:} 
+\subsection{Behaviour-Hiding Modules}
 
 \begin{itemize}
-\item \hyperref[CEM]{\textbf{Card Effect Module:}} Executes the effects of special cards and updates the game state accordingly
-\item \hyperref[TMM]{\textbf{Turn Management Module:}} Manages the order of player turns, including handling special conditions like ”Reverse” or ”Skip” cards.
-\item \hyperref[UIM]{\textbf{User Interface Module:}} Displays the game state to the user and accepts user inputs through various interactive elements.
-\item \hyperref[SLM]{\textbf{Save/Load Module:}} Allows saving the current game state and loading it at a later time.
-\item \hyperref[AM]{\textbf{Animation Module:}} Provides animations for card movements, flips, and game interactions.
-\item \hyperref[OM]{\textbf{Output Module:}} Provides visual or textual outputs to the user based on the game state
+\item \hyperref[CEM]{\textbf{Card Effect Module:}} Executes the effects of special cards and updates the game state accordingly.
+\item \hyperref[TMM]{\textbf{Turn Management Module:}} Manages the order of player turns, including handling special conditions like “Reverse” or “Skip” cards.
+\item \hyperref[UIM]{\textbf{User Interface Module:}} Displays the game state to the user and accepts user inputs through interactive UI elements.
+\item \hyperref[SLM]{\textbf{Save/Load Module:}} Allows saving and restoring the game state from persistent storage.
+\item \hyperref[AM]{\textbf{Animation Module:}} Provides animations for card movements, flips, and visual effects that enhance gameplay.
+\item \hyperref[OM]{\textbf{Output Module:}} Renders visual and textual game outputs, including scoreboards and notifications.
 \end{itemize}
 
 \subsection{Software Decision Modules}
 
 \begin{itemize}
-\item \hyperref[MNM]{\textbf{Multiplayer Networking Module:}} Handles communication between players, including matchmaking, game state synchronization, and latency management.
-\item \hyperref[VOM]{\textbf{Verification Output Module:}} Validates the final output of the game, ensuring compliance with rules and expected results.
-\item \hyperref[IM]{\textbf{Input Module:}} Converts the input data into the data structure used by other modules, such as the game logic or UI modules.
+\item \hyperref[MNM]{\textbf{Multiplayer Networking Module:}} Handles matchmaking, game state synchronization, and reliable communication between clients using Unity and a TCP-based server.
+\item \hyperref[VOM]{\textbf{Verification Output Module:}} Validates game logic and output correctness, ensuring rule compliance before and after each turn.
+\item \hyperref[IM]{\textbf{Input Module:}} Converts raw user inputs into standardized data structures usable by the game logic and UI.
+\item \hyperref[CLM]{\textbf{Control Logic Module:}} Manages the overall game control flow, including transitions between states, coordination between modules, and input/output sequencing.
 \end{itemize}
 
+\newpage
 
-\section{MIS of Backend/Server Module} 
+\section{MIS of Backend Server Module}
 \label{BSM}
 
 \subsection{Module}
-\hspace{1.5em}Backend/Server
+\hspace{1.5em}BackendServer
 
 \subsection{Uses}
-\hspace{1.5em}None
+\hspace{1.5em}InputModule, OutputModule, MultiplayerNetworkingModule
 
 \subsection{Syntax}
 
 \subsubsection{Exported Constants}
 \begin{itemize}
-\item SUPPORTED\_DEVICES: Enumerates the supported hardware devices
-
-\item DEFAULT\_RESOLUTION: Specifies the default screen resolution for the game.
+    \item MAX\_CLIENTS: \texttt{int} — Maximum number of clients supported by the server.
+    \item DEFAULT\_PORT: \texttt{int} — Default port used for incoming socket connections.
 \end{itemize}
 
 \subsubsection{Exported Access Programs}
-
 \begin{itemize}
-\item initializeHardware()
-\item captureInput()
-\item renderOutput(graphicsData: GraphicsObject)
-\item detectHardware()
+    \item startServer(port: int) $\rightarrow$ boolean
+    \item acceptConnection() $\rightarrow$ Connection
+    \item broadcastMessage(msg: String) $\rightarrow$ void
+    \item shutdownServer() $\rightarrow$ void
 \end{itemize}
 
 \subsection{Semantics}
 
 \subsubsection{State Variables}
 \begin{itemize}
-\item connectedDevices: Tracks the list of currently connected input/output devices.
-\item currentResolution: Stores the current screen resolution of the application.
+    \item serverSocket: Stores the active server socket instance.
+    \item clients: A list of active client connections.
+    \item gameSessions: Stores game session state mapped to connected players.
 \end{itemize}
 
 \subsubsection{Environment Variables}
 \begin{itemize}
-\item hardwareDrivers: Represents the drivers required to interface with the supported hardware.
-\item platform: Indicates the operating system or platform the game is running on 
-
+    \item OSNetworkStack: The operating system’s network protocol stack (e.g., TCP/IP).
+    \item UnityEngine.Platform: Unity’s internal networking environment used to interface with the server.
 \end{itemize}
 
 \subsubsection{Assumptions}
 \begin{itemize}
-\item All required hardware drivers are installed and operational.
-\item The platform supports Unity's hardware abstraction layer.
+    \item The host machine allows socket binding on the specified port.
+    \item Unity clients conform to the expected messaging protocol.
 \end{itemize}
 
 \subsubsection{Access Routine Semantics}
 
 \begin{itemize}
-\item initializeHardware() $\rightarrow$ void\\
-\textbf{Transition:} Sets up the required hardware connections and initializes drivers.
+    \item startServer(port) $\rightarrow$ boolean\\
+    \textbf{Transition:} Binds a socket to the specified port and begins listening for incoming client connections.\\
+    \textbf{Output:} Returns \texttt{true} if the server starts successfully; otherwise, \texttt{false}.
 
-\item captureInput() $\rightarrow$ String\\
-\textbf{Output:} Returns a structured object representing raw input data from connected devices.
+    \item acceptConnection() $\rightarrow$ Connection\\
+    \textbf{Transition:} Accepts a new client connection request and appends it to the active client list.\\
+    \textbf{Output:} Returns a new \texttt{Connection} object representing the connected client.
 
+    \item broadcastMessage(msg) $\rightarrow$ void\\
+    \textbf{Transition:} Sends the message \texttt{msg} to all connected clients via TCP.
 
-\item renderOutput(graphicsData: GraphicsObject) $\rightarrow$ void\\
-\textbf{Transition:} Translates graphical data into visual outputs using the rendering hardware.
-
-\item detectHardware() $\rightarrow$ Array[String]\\
-\textbf{Output:} Returns a list of hardware devices detected and compatible with the game.
-
+    \item shutdownServer() $\rightarrow$ void\\
+    \textbf{Transition:} Closes all active client connections and releases the server socket.
 \end{itemize}
-
 
 \subsubsection{Local Functions}
+
 \begin{itemize}
-\item verifyDeviceSupport() $\rightarrow$ boolean\\
-\textbf{Description:} Checks if the provided device is supported by the game.
+    \item validateMessageFormat(msg: String) $\rightarrow$ boolean\\
+    \textbf{Description:} Checks if the incoming message string conforms to the expected JSON protocol.
 
-\item applyDriverSettings() $\rightarrow$ void\\
-\textbf{Description:} Configures hardware drivers based on the detected platform.
+    \item removeInactiveClients() $\rightarrow$ void\\
+    \textbf{Description:} Iterates over the client list and removes disconnected or timed-out clients.
 
-\item fallbackToDefault() $\rightarrow$ void\\
-\textbf{Description:} Reverts to default hardware settings if the required device is not detected or initialization fails.
+    \item logConnectionEvent(event: String) $\rightarrow$ void\\
+    \textbf{Description:} Appends server-side events to a log for debugging and traceability.
 \end{itemize}
-
-
-
-
-
-
 
 \section{MIS of Card Effect Module} 
 \label{CEM}
@@ -919,49 +964,20 @@ The exception handling is critical for our software since it directly impacts th
 By implementing these strategies, we can reduce the chance for exception happening and limit the need of the exception handling mechanisms.
 
 
-
-\bibliographystyle {plainnat}
-\bibliography {../../../refs/References}
-\begin{enumerate}
-    \item M. Xu, "UNO Flip 3D - SRS Volere Documentation," \textit{GitHub Repository}, 2023.
-    \item M. Xu, "UNO Flip 3D - Software Architecture Document," \textit{GitHub Repository}, 2023.
-\end{enumerate}
-
 \newpage
-\section{Appendix} \label{Appendix}
 
+\begin{thebibliography}{9}
 
+\bibitem{HoffmanAndStrooper1995}
+D. M. Hoffman and P. Strooper,
+\textit{Software Design: With C++ and Java},
+Addison-Wesley, 1995.
 
+\bibitem{GhezziEtAl2003}
+C. Ghezzi, M. Jazayeri, and D. Mandrioli,
+\textit{Fundamentals of Software Engineering}, 2nd ed.,
+Prentice Hall, 2003.
 
-
-\section*{Appendix --- Reflection}
-
-
-
-The information in this section will be used to evaluate the team members on the
-graduate attribute of Problem Analysis and Design.
-
-
-
-\begin{enumerate}
-  \item What went well while writing this deliverable? \\ \\
-  Our team is able to divide the task very fast, and everyone is working more collaboratively than before. We also started this deliverable earlier than before and be able to present the rough draft during the informal TA meeting. We get lots of feedback from our TA and we are confident that we can get a higher grade than before. In terms of documents, the module guide is relatively quick to do. We are able to gather information very fast and the communication went really well.
-  
-  \item What pain points did you experience during this deliverable, and how did you resolve them?\\ \\
-  The pain in this deliverable is the implementation of MIS document. The function and variables in every module are hard to visualize because the relationship between the module are very complex and everyone have their own opinion about how the implementation. We have to have extended meeting session to discuss about concept and resolve the conflict between different team members. We tried to absorb the advantages from the opinions from different team member and coming to an integrated idea. But this take a lot of time.
-  
-  \item Which of your design decisions stemmed from speaking to your client(s) or a proxy (e.g. your peers, stakeholders, potential users)? For those that were not, why, and where did they come from?\\ \\
-  The MIS are mainly coming from communicating with our peers and our supervisor. But for software architecture part of our decision, we simply reading the materials on the internet such as past project to get a better feeling about the most abstract part of our implementation.
-  
-  \item While creating the design doc, what parts of your other documents (e.g.requirements, hazard analysis, etc), it any, needed to be changed, and why?\\ \\
-  The document requirements need to be change because we discovered new idea while implementing our project. There are some requirement in the original document doesn't fit with the software architecture we chose. Some of the requirement are also too vague to be implemented properly, some of the requirement are too hard to implement in the actual software. We have to change our SRS document according to the software architecture and modules we implemented, and remove the unnecessary and vague requirement to make our documentation more consistent and integrate. 
-  
-  \item What are the limitations of your solution?  Put another way, given
-  unlimited resources, what could you do to make the project better? (LO\_ProbSolutions)\\ \\
-  The limitations of our solution is that we never implemented similar software before and this is our first time experience with this kind of project. Even though we have internet but our view is still limited. If the resource and time is unlimited, we would consult with professional people (such as professionals from game companies) to get a better understanding about how should this project be implemented and what is the more efficient way to build this kind of project and managment teams.
-  \item Give a brief overview of other design solutions you considered.  What are the benefits and tradeoffs of those other designs compared with the chosen design?  From all the potential options, why did you select the documented design? (LO\_Explores)\\ \\
-  We had considered about design the same game using AI powered opponent with a single player. The AI solution will more cool and this solution will become more convenient with people who are lonely and don't have the access of the internet. But, the AI solution is also much more challenging and the chance of failure is much greater. The single player might also be less popular than multiplayer game for the public since multiplayer game are more fun and engaging. We select our current solution because it achieve the trade-off between implementation difficulties and public popularity.
-\end{enumerate}
-
+\end{thebibliography}
 
 \end{document}
