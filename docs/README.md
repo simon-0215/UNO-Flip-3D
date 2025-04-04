@@ -29,4 +29,50 @@ the unnecessary folders and rename your folder to SRS.>
 
 The folders and files for this folder are as follows:
 
-Describe ...
+Design
+  - SoftArchitecture
+      - MG.pdf
+  - SoftDetailedDes
+      - MIS.pdf
+
+DevelopmentPlan
+- DevelopmentPlan.pdf
+
+Extras
+  - Usability Testing
+      - UsablityTesting.pdf
+  - GenderMAG Personas
+      - GenderMAG.pdf
+
+HazardAnalysis
+- HazardAnalysis.pdf
+
+Presentations
+    - D0_ProofOfConceptDemo
+        - Empty
+    - D1_Rev0Demo: Contains PowerPoint presentation used.
+        - Uno Flip.pptm
+    - D2_FinalPresentation - Contins Presentation and Script used.
+        - D2_FinalPresentation.pdf
+        - Script.pdf
+        - UNO-Flip-Remix-Revision-1-Demo.pptx
+    - D3_EXPO - Contains poster for EXPO.
+        - expo.pdf
+
+ProblemStatementAndGoals
+- ProblemStatement.pdf
+
+ReflectAndTrace
+- ReflectAndTrace.pdf
+
+SRS - Volere
+- SRS.pdf
+
+UserGuide
+- UserGuide.pdf
+
+VnVPlan
+- VnVPlan.pdf
+
+VnVReport
+- VnVReport.pdf
