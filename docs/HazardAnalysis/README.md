@@ -2,4 +2,5 @@
 
 The folders and files for this folder are as follows:
 
-Describe ...
+HazardAnalysis.pdf - Final submission of Hazard Analysis.
+HazardAnalysis.tex - Final submission of Hazard Analysis.
