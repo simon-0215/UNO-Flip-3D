@@ -3,32 +3,56 @@
   "WorkspaceRootPath": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipdataserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipdataserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipmsghandlerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipmsghandlerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipgamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipgamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipmsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipmsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\airolebehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\airolebehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipdatacommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unoflipcardgamev2\\unoflipdatacommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardmsghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardmsghandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\proto\\unocardgamemsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\proto\\unocardgamemsg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\net\\clientstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\net\\clientstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\clientmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\net\\clientstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\net\\clientstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\eventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\eventhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\unocardroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|f:\\unity projects\\demos\\network demo\\uno-flip card\\network uno card game tcp server\\network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07AF7418-5019-44BE-9C24-102556E1F073}|Network Game TCP Server\\Network Game TCP Server.csproj|solutionrelative:network game tcp server\\mynetworkgame.tcpserver\\logic\\unocardgame\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,100 +62,175 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UNOCardMsgHandler.cs",
-              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
-              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
-              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
-              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAQwEsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UnoFlipMsgHandlerV2.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsgHandlerV2.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsgHandlerV2.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsgHandlerV2.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsgHandlerV2.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAmwJsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T10:41:20.385Z",
+              "WhenOpened": "2025-03-27T17:29:36.585Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UNOCardGameMsg.cs",
-              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\proto\\UNOCardGameMsg.cs",
-              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\proto\\UNOCardGameMsg.cs",
-              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\proto\\UNOCardGameMsg.cs",
-              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\proto\\UNOCardGameMsg.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAUwFAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "UnoFlipMsg.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsg.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsg.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsg.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipMsg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T10:41:26.799Z",
+              "WhenOpened": "2025-03-27T16:46:20.765Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UnoFlipDataCommon.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataCommon.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataCommon.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataCommon.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataCommon.cs",
+              "ViewState": "AgIAANgAAAAAAAAAAADwv+8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T15:40:21.038Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnoFlipDataServer.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataServer.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataServer.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataServer.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipDataServer.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAAYwIcBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T15:37:28.931Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Card.cs",
-              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
-              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
-              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
-              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAIwEQAAAAFAAAAAAAAAA==",
+              "Title": "UnoFlipGameManager.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipGameManager.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipGameManager.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipGameManager.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\UnoFlipGameManager.cs",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAiwC4BAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T11:51:42.132Z",
+              "WhenOpened": "2025-03-27T17:01:25.778Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClientState.cs",
-              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
-              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
-              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
-              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T11:25:45.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UNOCardRoom.cs",
-              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
-              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
-              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
-              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADgvxMAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T10:41:36.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ClientManager.cs",
               "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\ClientManager.cs",
               "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\ClientManager.cs",
               "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\ClientManager.cs",
               "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\ClientManager.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAA0wCgAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T10:41:35.183Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T12:24:38.584Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "UNOCardMsgHandler.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardMsgHandler.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAASwCcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T11:45:27.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AIRoleBehavior.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\AIRoleBehavior.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\AIRoleBehavior.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\AIRoleBehavior.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOFlipCardGameV2\\AIRoleBehavior.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAuwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T10:56:15.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "EventHandler.cs",
               "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\EventHandler.cs",
               "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\EventHandler.cs",
               "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\EventHandler.cs",
               "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\EventHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T10:41:33.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T05:47:32.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Card.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\Card.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T05:35:34.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\PlayerManager.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\PlayerManager.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\PlayerManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T19:55:51.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UNOCardRoom.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\logic\\UNOCardGame\\UNOCardRoom.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T18:23:42.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ClientState.cs",
+              "DocumentMoniker": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
+              "RelativeDocumentMoniker": "Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
+              "ToolTip": "F:\\Unity Projects\\Demos\\network demo\\uno-flip card\\Network UNO Card Game TCP Server\\Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
+              "RelativeToolTip": "Network Game TCP Server\\MyNetworkGame.TCPServer\\net\\ClientState.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T17:25:38.738Z"
             }
           ]
         }

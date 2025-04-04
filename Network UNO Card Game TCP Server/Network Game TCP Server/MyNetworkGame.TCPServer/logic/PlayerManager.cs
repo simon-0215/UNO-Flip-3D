@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyNetworkGame.TCPServer
 {
+    /*
     public class PlayerManager
     {
         private static Dictionary<string, Player> players = new Dictionary<string, Player>();
@@ -31,5 +32,5 @@ namespace MyNetworkGame.TCPServer
         {
             players.Remove(id);
         }
-    }
+    }*/
 }

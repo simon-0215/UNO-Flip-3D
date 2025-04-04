@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MyNetworkGame.TCPServer.UnoFlipV2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+//using Player = MyNetworkGame.TCPServer.UnoFlipV2.Player;
 
 namespace MyNetworkGame.TCPServer
 {
@@ -22,8 +24,8 @@ namespace MyNetworkGame.TCPServer
 
         public long lastPingTime = 0;
 
-        //public Player? player = null;
         public string PlayerName = string.Empty;
+        public MyNetworkGame.TCPServer.UnoFlipV2.Player player;
 
         /// <summary>
         /// 匹配的对手

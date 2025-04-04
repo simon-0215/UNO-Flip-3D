@@ -64,7 +64,14 @@ namespace MyNetworkGame.TCPServer
             string ipAddress = GetLocalIPv4Address();
             Console.WriteLine($"本机ip地址:{ipAddress}");
             Console.WriteLine($"监听端口:{port}");
-            
+
+            MethodInfo? mi = typeof(EventHandler).GetMethod("OnAppStarted");
+            if (mi != null)
+            {
+                object[] ob = { };
+                mi.Invoke(null, ob);
+            }
+
             //循环
             while (true)
             {

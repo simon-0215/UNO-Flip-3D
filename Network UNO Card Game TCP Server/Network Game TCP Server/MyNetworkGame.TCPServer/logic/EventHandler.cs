@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyNetworkGame.TCPServer.UnoFlipV2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace MyNetworkGame.TCPServer
 
     public partial class EventHandler
     {
+        public static void OnAppStarted()
+        {
+            Debug.Log("On App Started..");
+            DeckData.InitSides();
+        }
+
         public static void OnConnect(ClientState client)
         {
             Console.WriteLine("OnConnect " + client.socket.RemoteEndPoint);

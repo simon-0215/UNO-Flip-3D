@@ -1,4 +1,6 @@
-﻿namespace MyNetworkGame.TCPServer
+﻿using MyNetworkGame.TCPServer.UnoFlipV2;
+
+namespace MyNetworkGame.TCPServer
 {
     public partial class MsgHandler
     {
@@ -30,7 +32,16 @@
             {
                 NetManager.Send(client, msgBase);
                 NetManager.Send(client.Opponent, msgBase);
+
+                DelayExcute(client);
             }
+        }
+
+        static async void DelayExcute(ClientState client)
+        {
+            // 等待 N 毫秒（非阻塞）
+            await Task.Delay(3000);
+            client.room.gameData = new UnoFlipGameData(client.room.client1, client.room.client2);//初始化本局游戏数据
         }
 
         /*
@@ -70,6 +81,15 @@
             NetManager.Send(client.Opponent, msgBase);
         }
         public static void MsgSwitchPlayer(ClientState client, MsgBase msgBase)
+        {
+            NetManager.Send(client.Opponent, msgBase);
+        }
+
+        public static void MsgUnoButtonClick(ClientState client, MsgBase msgBase)
+        {
+            NetManager.Send(client.Opponent, msgBase);
+        }
+        public static void MsgDrawCardFromDeck(ClientState client, MsgBase msgBase)
         {
             NetManager.Send(client.Opponent, msgBase);
         }

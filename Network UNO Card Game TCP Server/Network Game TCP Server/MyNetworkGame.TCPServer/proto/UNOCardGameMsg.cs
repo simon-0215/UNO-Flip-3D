@@ -56,8 +56,8 @@
     public class MsgGetFirstPileCard : MsgBase
     {
         public MsgGetFirstPileCard() { protoName = "MsgGetFirstPileCard"; }
-        public Card pileCard;
-        public CardColour topColour;
+        //public Card pileCard;
+        //public CardColour topColour;
     }
 
     /// <summary>
@@ -68,7 +68,7 @@
         public MsgPlayCard() { protoName = "MsgPlayCard"; }
 
         public int playerIdx;
-        public Card card;
+        //public Card card;
     }
 
     /// <summary>
@@ -84,5 +84,14 @@
         public MsgSwitchPlayer() { protoName = "MsgSwitchPlayer"; }
 
         public int playerIdx;
+    }
+
+    public class MsgUnoButtonClick : MsgBase
+    {
+        public MsgUnoButtonClick() { protoName = "MsgUnoButtonClick"; }
+    }
+    public class MsgDrawCardFromDeck : MsgBase
+    {
+        public MsgDrawCardFromDeck() { protoName = "MsgDrawCardFromDeck"; }
     }
 }

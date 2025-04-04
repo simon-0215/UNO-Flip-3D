@@ -36,13 +36,13 @@ namespace MyNetworkGame.TCPServer
     }
 
     [System.Serializable]
-    public class Card
+    public class CardV1
     {
 
         public CardColour cardColour;
         public CardValue cardValue;
 
-        public Card(CardColour colour, CardValue value)
+        public CardV1(CardColour colour, CardValue value)
         {
             this.cardColour = colour;
             this.cardValue = value;
@@ -62,9 +62,9 @@ namespace MyNetworkGame.TCPServer
         public CardColour c;
         public CardValue v;
 
-        public Card GetCard()
+        public CardV1 GetCard()
         {
-            return new Card(c, v);
+            return new CardV1(c, v);
         }
     }
 }

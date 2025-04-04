@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyNetworkGame.TCPServer.UnoFlipV2;
 
 namespace MyNetworkGame.TCPServer
 {
@@ -15,9 +11,13 @@ namespace MyNetworkGame.TCPServer
 
             c1.room = this;
             c2.room = this;
+
+            //gameData = new UnoFlipGameData(c1, c2);//初始化本局游戏数据
         }
 
         public ClientState client1;
         public ClientState client2;
+
+        public UnoFlipGameData gameData;
     }
 }
