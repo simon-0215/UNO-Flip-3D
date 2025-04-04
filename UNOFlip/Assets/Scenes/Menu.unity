@@ -1902,6 +1902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918510670}
   - component: {fileID: 918510671}
+  - component: {fileID: 918510672}
   m_Layer: 0
   m_Name: NetManager
   m_TagString: Untagged
@@ -1933,18 +1934,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 918510669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f0789eca8054d4db75a29e97ae46a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e8473bc69e532a4b86e1103198f9595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serverIP: 127.0.0.1
   serverPort: 8888
-  gameState: 0
-  isClientHost: 0
-  myName: 
-  opponentName: 
-  countDownText: {fileID: 0}
-  PauseResumeButton: {fileID: 0}
-  pauseResumeTxt: {fileID: 0}
   connectedCallback:
     m_PersistentCalls:
       m_Calls:
@@ -1981,12 +1975,18 @@ MonoBehaviour:
   winCallback:
     m_PersistentCalls:
       m_Calls: []
-  failCallback:
-    m_PersistentCalls:
-      m_Calls: []
-  againCallback:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &918510672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918510669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71db164dc2d74b9449750b271df9aa81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &921849316
 GameObject:
   m_ObjectHideFlags: 0
