@@ -89,6 +89,15 @@ namespace MyTcpClient
 
         public int playerIdx;
     }
+
+    public class MsgUnoButtonClick: MsgBase
+    {
+        public MsgUnoButtonClick() { protoName = "MsgUnoButtonClick"; }
+    }
+    public class MsgDrawCardFromDeck: MsgBase
+    {
+        public MsgDrawCardFromDeck() { protoName = "MsgDrawCardFromDeck"; }
+    }
 }
 /*
 Á¬½Óserver

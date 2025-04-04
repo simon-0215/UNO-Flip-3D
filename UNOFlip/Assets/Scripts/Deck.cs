@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnoFlipV2;
 
 public class Deck : MonoBehaviour, IPointerClickHandler, IController
 {
@@ -22,7 +23,7 @@ public class Deck : MonoBehaviour, IPointerClickHandler, IController
     CardGameModel model;
     private void Start()
     {
-        model = this.GetModel<CardGameModel>();
+        //model = this.GetModel<CardGameModel>();
     }
     public void InitializeDeck()
     {
@@ -89,10 +90,7 @@ public class Deck : MonoBehaviour, IPointerClickHandler, IController
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(model.myTurn && ! model.CanPlayAnyCard )
-        {
-            this.SendCommand<DrawCardFromDeckCommand>();
-        }
+        this.SendCommand<DeckClickedCommand>();
     }
 
     //ADD USED CARDS TO USED DECK
@@ -103,6 +101,6 @@ public class Deck : MonoBehaviour, IPointerClickHandler, IController
 
     public IArchitecture GetArchitecture()
     {
-        return CardGameApp.Interface;
+        return UnoFlipAppV2.Interface;
     }
 }

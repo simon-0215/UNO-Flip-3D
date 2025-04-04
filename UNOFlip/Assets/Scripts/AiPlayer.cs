@@ -101,17 +101,17 @@ public class AiPlayer : Player
         var model = this.GetModel<CardGameModel>();
         int nextPlayerHandSize = model.NextPlayerHandSize;
 
-    //BEST ACTION CARDS
-    foreach (Card card in playableCards)
-    {
-        if (card.cardValue == CardValue.PLUS_FOUR)
+        //BEST ACTION CARDS
+        foreach (Card card in playableCards)
         {
-            if(nextPlayerHandSize <= 2 || bestActionCard == null)
+            if (card.cardValue == CardValue.PLUS_FOUR)
             {
-                bestActionCard = card;
-            }
+                if(nextPlayerHandSize <= 2 || bestActionCard == null)
+                {
+                    bestActionCard = card;
+                }
 
-        }
+            }
             else if (card.cardValue == CardValue.PLUS_TWO)
             {
                 if (nextPlayerHandSize <= 2 || bestActionCard == null)

@@ -38,19 +38,12 @@ public class CardInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExit
             Debug.Log("clicked a: " + cardDisplay.MyCard.cardColour.ToString() + cardDisplay.MyCard.cardValue.ToString());
             LiftCard(false);
 
-            if (model.isHost)
+            //if (model.isHost)
             {
                 model.currentCardDisplay = cardDisplay;
                 model.currentCard = null;
                 this.SendCommand<PlayCardCommand>();
-            }
-            else //玩家B的点击出牌，也发消息给房主，统一从房主那里处理并发起同步
-            {
-                MsgPlayCard msg = new MsgPlayCard();
-                msg.card = cardDisplay.MyCard;
-                msg.playerIdx = model.currentPlayer;
-                NetManager.Send(msg);
-            }            
+            }         
         }
         
     }

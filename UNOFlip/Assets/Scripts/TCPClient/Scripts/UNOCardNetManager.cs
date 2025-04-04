@@ -1,11 +1,8 @@
 using MyTcpClient;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using QFramework;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using System;
 
 public enum NetCardGameState
@@ -32,20 +29,17 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
     [SerializeField]
     private int serverPort = 8888;
 
-    //public RoomState roomState = RoomState.countDown;
-    public NetCardGameState gameState = NetCardGameState.disconnect;
-    public bool isClientHost = false;
     [HideInInspector] public string myName = string.Empty;
     [HideInInspector] public string opponentName = string.Empty;
 
-    [SerializeField]
-    private TMP_Text countDownText;
+    //[SerializeField]
+    //private TMP_Text countDownText;
 
-    [SerializeField]
-    private Button PauseResumeButton;
-    private TMP_Text pauseResumeBtnTxt;
-    [SerializeField]
-    private TMP_Text pauseResumeTxt;
+    //[SerializeField]
+    //private Button PauseResumeButton;
+    //private TMP_Text pauseResumeBtnTxt;
+    //[SerializeField]
+    //private TMP_Text pauseResumeTxt;
 
     CardGameModel model;
     void Start()
@@ -56,8 +50,7 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
         NetManager.AddEventListener(NetManager.NetEvent.ConnectSucc, (string info) =>
         {
             print("OnConnect succ ： 已连接服务端");
-            gameState = NetCardGameState.connected;
-
+            
             EnqueueUIUpdate(() =>
             {
                 print("in enqueue ui update ");
@@ -98,14 +91,14 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
         //NetManager.AddMsgListener("MsgBallSync", OnMsgBallSync);//同步球的位置、速度等
 
         //NetManager.AddMsgListener("MsgScore", OnMsgScore);//得分
-        NetManager.AddMsgListener("MsgWin", OnMsgWin);//我方胜利
-        NetManager.AddMsgListener("MsgFail", OnMsgFail);//我方失败
-        NetManager.AddMsgListener("MsgDisMatched", OnMsgDisMatched);//对方离开房间
-        NetManager.AddMsgListener("MsgAgain", OnMsgAgain);//双方都选择【再来一次】
+        //NetManager.AddMsgListener("MsgWin", OnMsgWin);//我方胜利
+        //NetManager.AddMsgListener("MsgFail", OnMsgFail);//我方失败
+        //NetManager.AddMsgListener("MsgDisMatched", OnMsgDisMatched);//对方离开房间
+        //NetManager.AddMsgListener("MsgAgain", OnMsgAgain);//双方都选择【再来一次】
 
-        NetManager.AddMsgListener("MsgPause", OnMsgPause);
-        NetManager.AddMsgListener("MsgResumeRequest", OnMsgResumeRequest);
-        NetManager.AddMsgListener("MsgResume", OnMsgResume);
+        //NetManager.AddMsgListener("MsgPause", OnMsgPause);
+        //NetManager.AddMsgListener("MsgResumeRequest", OnMsgResumeRequest);
+        //NetManager.AddMsgListener("MsgResume", OnMsgResume);
 
         NetManager.AddMsgListener("MsgReady", OnMsgReady);
 
@@ -120,6 +113,8 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
         NetManager.AddMsgListener("MsgPlayCard", OnMsgPlayCard);
         NetManager.AddMsgListener("MsgPlayerBSyncPlayCardDone", OnMsgPlayerBSyncPlayCardDone);
         NetManager.AddMsgListener("MsgSwitchPlayer", OnMsgSwitchPlayer);
+        NetManager.AddMsgListener("MsgUnoButtonClick", OnMsgUnoButtonClick);
+        NetManager.AddMsgListener("MsgDrawCardFromDeck", OnMsgDrawCardFromDeck);
 
         this.RegisterEvent<NetOnMsgCommand>(e =>
         {
@@ -201,17 +196,22 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
     {
         SendOnMsgCommand(typeof(MsgSwitchPlayer), msgBase);
     }
+    void OnMsgUnoButtonClick(MsgBase msgBase)
+    {
+        SendOnMsgCommand(typeof(MsgUnoButtonClick), msgBase);
+    }
+    void OnMsgDrawCardFromDeck(MsgBase msgBase)
+    {
+        SendOnMsgCommand(typeof(MsgDrawCardFromDeck), msgBase);
+    }
 
     void OnMsgPlayerMatchRequest(MsgBase msgBase)
     {
         MsgPlayerMatchRequest msg = msgBase as MsgPlayerMatchRequest;
-        isClientHost = msg.isHost;
         opponentName = msg.otherPlayerName;
         myName = msg.currentPlayerName;
 
-        print($"OnMsgPlayerMatchRequest {isClientHost} {myName} {opponentName}");
-
-        gameState = NetCardGameState.matched;
+        print($"OnMsgPlayerMatchRequest {msg.isHost} {myName} {opponentName}");
 
         EnqueueUIUpdate(() =>
         {
@@ -227,50 +227,10 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
 
             if (matchedCallback != null)
             {
-                //if (isClientHost)
                 {
                     matchedCallback.Invoke();
                 }
             }
-        });
-    }
-
-    private void OnMsgPause(MsgBase msgBase)
-    {
-        EnqueueUIUpdate(() =>
-        {
-            MsgPause msg = (MsgPause)msgBase;
-            //ball.Sync(msg.x, msg.y, msg.direX, msg.direY);
-            //ball.transform.position = new Vector3(msg.x, msg.y, 0);
-
-            //roomState = RoomState.paused;
-            pauseResumeBtnTxt.text = "resume";
-            pauseResumeTxt.text = "paused";
-            pauseResumeTxt.transform.parent.gameObject.SetActive(true);
-        });
-    }
-
-    private void OnMsgResume(MsgBase msgBase)
-    {
-        EnqueueUIUpdate(() =>
-        {
-            MsgResume msg = (MsgResume)msgBase;
-            //ball.Sync(msg.x, msg.y, msg.direX, msg.direY);
-
-            //roomState = RoomState.playing;
-            pauseResumeBtnTxt.text = "暂停";
-            pauseResumeTxt.transform.parent.gameObject.SetActive(false);
-        });
-    }
-    private void OnMsgResumeRequest(MsgBase msgBase)
-    {
-        EnqueueUIUpdate(() =>
-        {
-            pauseResumeBtnTxt.text = "对方等待";
-            pauseResumeTxt.text = "对方请求恢复暂停";
-            pauseResumeTxt.transform.parent.gameObject.SetActive(true);
-
-            MsgResumeRequest msg = (MsgResumeRequest)msgBase;
         });
     }
 
@@ -353,11 +313,51 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
         NetManager.Send(new MsgAgain());
     }
 
+    /*
     private void OnMsgAgain(MsgBase msg)
     {
         EnqueueUIUpdate(() =>
         {
             againCallback.Invoke();
+        });
+    }
+
+    private void OnMsgPause(MsgBase msgBase)
+    {
+        EnqueueUIUpdate(() =>
+        {
+            MsgPause msg = (MsgPause)msgBase;
+            //ball.Sync(msg.x, msg.y, msg.direX, msg.direY);
+            //ball.transform.position = new Vector3(msg.x, msg.y, 0);
+
+            //roomState = RoomState.paused;
+            pauseResumeBtnTxt.text = "resume";
+            pauseResumeTxt.text = "paused";
+            pauseResumeTxt.transform.parent.gameObject.SetActive(true);
+        });
+    }
+
+    private void OnMsgResume(MsgBase msgBase)
+    {
+        EnqueueUIUpdate(() =>
+        {
+            MsgResume msg = (MsgResume)msgBase;
+            //ball.Sync(msg.x, msg.y, msg.direX, msg.direY);
+
+            //roomState = RoomState.playing;
+            pauseResumeBtnTxt.text = "暂停";
+            pauseResumeTxt.transform.parent.gameObject.SetActive(false);
+        });
+    }
+    private void OnMsgResumeRequest(MsgBase msgBase)
+    {
+        EnqueueUIUpdate(() =>
+        {
+            pauseResumeBtnTxt.text = "对方等待";
+            pauseResumeTxt.text = "对方请求恢复暂停";
+            pauseResumeTxt.transform.parent.gameObject.SetActive(true);
+
+            MsgResumeRequest msg = (MsgResumeRequest)msgBase;
         });
     }
 
@@ -380,7 +380,7 @@ public class UNOCardNetManager : TcpMonoBehaviour, IController
                 countDownText.text = Mathf.RoundToInt(msg.countDown / 1000f).ToString();
             }
         });
-    }
+    }*/
 
     public IArchitecture GetArchitecture()
     {

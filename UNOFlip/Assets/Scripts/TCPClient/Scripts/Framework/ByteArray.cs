@@ -5,7 +5,7 @@ namespace MyTcpClient
 {
     public class ByteArray
     {
-        const int DEFAULT_SIZE = 1024;//默认大小
+        const int DEFAULT_SIZE = 1024*8;//默认大小
         int initSize = 0;//初始大小
 
         public byte[] bytes;

@@ -97,6 +97,8 @@ public class GameManagerNet : MonoBehaviour, IController
         this.RegisterEvent<DrawCardFromDeckEvent>(e =>
         {
             DrawCardFromDeck();
+            if (model.myTurn)
+                NetManager.Send(new MsgDrawCardFromDeck());
         }).UnRegisterWhenGameObjectDestroyed(gameObject);
         
         this.RegisterEvent<AiSwitchPlayerEvent>(e =>
@@ -165,15 +167,23 @@ public class GameManagerNet : MonoBehaviour, IController
                     MsgSwitchPlayer switchPlayer = (MsgSwitchPlayer)e.msg;
 
                     model.currentPlayer = (2 + switchPlayer.playerIdx) % 4;
+                    model.myTurn = model.currentPlayer == 0;
+
                     UpdatePlayerHighlights();
                     UpdateMessageBox(model.players[model.currentPlayer].playerName + " TURN");
 
                     //RESET UNO CALLED
                     model.unoCalled = false;
-                    if (model.players[model.currentPlayer].IsHuman)
+                    //if (model.players[model.currentPlayer].IsHuman)
                     {
-                        model.myTurn = model.isHost == model.players[model.currentPlayer].IsHost;
+                        //model.myTurn = model.isHost == model.players[model.currentPlayer].IsHost;
                     }
+                    break;
+                case nameof(MsgUnoButtonClick):
+                    model.unoCalled = true;
+                    break;
+                case nameof(MsgDrawCardFromDeck):
+                    DrawCardFromDeck();
                     break;
             }
         });
@@ -398,6 +408,25 @@ public class GameManagerNet : MonoBehaviour, IController
     //玩家或AI打出一张牌
     public void PlayCard(CardDisplay cardDisplay = null, Card card = null)
     {
+        if(cardDisplay != null)//鼠标点击卡牌的方式出牌（区别于网络同步、AI逻辑的出牌方式）
+        {
+            //则判断是否玩家B
+            if(model.isHost == false)
+            {
+                //先判断能不能出牌
+                if (!IsPlayable(cardDisplay.MyCard))
+                {
+                    Debug.Log("Card cannot be played");
+                    UpdateMessageBox("Card cannot be played");
+                    return;
+                }
+                MsgPlayCard msg = new MsgPlayCard();
+                msg.card = cardDisplay.MyCard;
+                msg.playerIdx = model.currentPlayer;
+                NetManager.Send(msg);
+                return;
+            }
+        }
         StartCoroutine(PlayCardNetwork(model.currentPlayer, cardDisplay, card));
     }
     IEnumerator PlayCardNetwork(int playerIdx, CardDisplay cardDisplay = null, Card card = null)
@@ -413,6 +442,7 @@ public class GameManagerNet : MonoBehaviour, IController
         if (cardDisplay != null && !IsPlayable(cardDisplay.MyCard))
         {
             Debug.Log("Card cannot be played");
+            UpdateMessageBox("Card cannot be played");
             yield break;
         }
         //REMOVE CARD FROM PLAYER HAND
@@ -461,6 +491,24 @@ public class GameManagerNet : MonoBehaviour, IController
 
             MsgPlayerBSyncPlayCardDone msg = new MsgPlayerBSyncPlayCardDone();
             NetManager.Send(msg);
+
+            if(model.currentPlayer == 3)//上家打完牌，轮到我
+            {
+                model.myTurn = true;
+            }
+
+            //玩家手牌只有1张，如果不点Uno，则抽两张牌
+            Player p = model.players[model.currentPlayer];
+            if (p.IsHuman && p.playerHand.Count == 1 && !model.unoCalled)
+            {
+                //LET PLAYER KNOW FORGOT TO CALL UNO
+                UpdateMessageBox("YOU FORGOT TO CALL UNO, DRAW 2 CARDS");
+                //DRAW 2 CARDS
+                for (int i = 0; i < 2; i++)
+                {
+                    DrawCardFromDeck();
+                }
+            }
         }
     }
 
@@ -527,21 +575,20 @@ public class GameManagerNet : MonoBehaviour, IController
             player.DrawCard(drawnCard);
 
             //VISUALISE CARDS
-            Transform hand = player.IsHuman ? playerHandTransform : aiHandTransform[model.players.IndexOf(player) - 1];
+            Transform hand = player.IsHuman && player.IsHost == model.isHost ? playerHandTransform : aiHandTransform[model.players.IndexOf(player) - 1];
             GameObject card = Instantiate(cardPrefab, hand, false);
 
             //DRAW CARDS
             CardDisplay cardDisplay = card.GetComponentInChildren<CardDisplay>();
-            cardDisplay.SetCard(drawnCard, player); //ONLY FOR HUMAN
+            cardDisplay.SetCard(drawnCard, player);
 
-            //FOR AI PLAYERS
-            if (player.IsHuman)
+            if (player.IsHuman && player.IsHost == model.isHost)
             {
                 //SHOW BACK OF CARD
                 cardDisplay.ShowCard();
             }
             //SEE IF WE HAVE A PLAYABLE CARD - IF NOT SWITCH PLAYER
-            if (!CanPlayAnyCard() && player.IsHuman)
+            if (!CanPlayAnyCard() && player.IsHuman && model.isHost)
             {
                 Debug.Log("No Playable Card, Go next player");
                 SwitchPlayer();
@@ -730,7 +777,7 @@ public class GameManagerNet : MonoBehaviour, IController
 
     void ChooseNewColour()
     {
-        if (model.players[model.currentPlayer].IsHuman)
+        if (model.players[model.currentPlayer].IsHuman && model.myTurn)
         {
             StartCoroutine(ChooseNewColourCoroutine()); // Start coroutine instead
             return;
@@ -808,11 +855,13 @@ public class GameManagerNet : MonoBehaviour, IController
     //UNO BUTTON , 手牌为2的时候可以点击
     public void UnoButton()
     {
-        if (model.players[model.currentPlayer].playerHand.Count == 2) //Count == 1 && !unoCalled ?
+        if (model.myTurn && model.players[model.currentPlayer].playerHand.Count == 2) //Count == 1 && !unoCalled ?
         {
             model.unoCalled = true;
             //FEEDBACK TO PLAYER
             UpdateMessageBox("UNO BUTTON CLICKED");
+
+            NetManager.Send(new MsgUnoButtonClick());
         }
         else
         {

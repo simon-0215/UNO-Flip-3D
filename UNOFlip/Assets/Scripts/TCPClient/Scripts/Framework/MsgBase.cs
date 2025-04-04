@@ -15,7 +15,7 @@ namespace MyTcpClient
         {
             string str = JsonConvert.SerializeObject(msg);
 
-            Debug.Log($"Encode {str}");
+            //Debug.Log($"Encode {str}");
             return System.Text.Encoding.UTF8.GetBytes(str);
         }
 

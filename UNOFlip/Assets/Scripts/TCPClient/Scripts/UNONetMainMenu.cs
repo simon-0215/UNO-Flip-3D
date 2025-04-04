@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnoFlipV2;
 
 public class UNONetMainMenu : MonoBehaviour, IController
 {
@@ -28,7 +29,7 @@ public class UNONetMainMenu : MonoBehaviour, IController
     {
         buttonMatch.onClick.AddListener(MatchOnClick);
 
-        this.RegisterEvent<NetOnMsgEvent>(e =>
+        this.RegisterEvent<NetOnMsgEventV2>(e =>
         {
             if(e.type == typeof(MsgReady))
             {
@@ -54,7 +55,7 @@ public class UNONetMainMenu : MonoBehaviour, IController
     }
     void MatchOnClick()
     {
-        if(UNOCardNetManager.instance.gameState == NetCardGameState.disconnect)
+        if(NetManager.Connected == false)
         {
             showNotice("Not yet connected to the server.");
             return;
@@ -72,6 +73,7 @@ public class UNONetMainMenu : MonoBehaviour, IController
         msg.currentPlayerName = playerName;
         NetManager.Send(msg);
 
+        buttonMatch.interactable = false;
         showNotice("Searching for opponents...", false, Color.green);
     }
 
@@ -90,6 +92,6 @@ public class UNONetMainMenu : MonoBehaviour, IController
 
     public IArchitecture GetArchitecture()
     {
-        return CardGameApp.Interface;
+        return UnoFlipAppV2.Interface;
     }
 }

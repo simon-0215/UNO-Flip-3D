@@ -111,6 +111,12 @@ namespace MyTcpClient
         static bool isConnecting = false;
         static bool isClosing = false;
         static bool isClosed = false;
+
+        public static bool Connected
+        {
+            get { return isConnecting == false && isClosing == false && isClosed == false 
+                && socket != null && socket.Connected; }
+        }
         public static void Connect(string ip, int port)
         {
             if(socket != null && socket.Connected)
@@ -142,6 +148,8 @@ namespace MyTcpClient
                 isConnecting = false;
                 FireEvent(NetEvent.ConnectSucc, "");
                 
+
+
                 s.BeginReceive(readBuff.bytes, readBuff.writeIdx, readBuff.remain,
                     0, ReceiveCallback, s);
             }
