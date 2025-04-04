@@ -1,122 +1,145 @@
-\documentclass{article}
-
-\usepackage{booktabs}
-\usepackage{tabularx}
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{longtable}
 
-\hypersetup{
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-    citecolor=green,        % color of links to bibliography
-    filecolor=magenta,      % color of file links
-    urlcolor=cyan           % color of external links
-}
+% Change tracking macros
+\newcommand{\removed}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand{\added}[1]{\textcolor{green}{#1}}
 
-\title{Hazard Analysis\\\progname}
-
-\author{\authname}
-
-\date{}
-
-\input{../Comments}
-\input{../Common}
+\title{UNO Flip Remix - Hazard Analysis}
+\author{Team 24 \\ Zain-Alabedeen Garada \\ Kevin Ishak \\ Mingyang Xu \\ Jianhao Wei \\ \removed{Zheng Bang Liang}}
+\date{April 2, 2025}
 
 \begin{document}
 
 \maketitle
-\thispagestyle{empty}
 
-~\newpage
-
-\pagenumbering{roman}
-
-\begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-~\newpage
+\section*{Revision History Log}
+\renewcommand{\thetable}{}
+\begin{longtable}{|l|l|p{7cm}|}
+    \hline
+    \textbf{Date} & \textbf{Developer(s)} & \textbf{Change} \\
+    \hline
+    10/25/2024 & Mingyang Xu, Jiahao Wei, Kevin Ishak & Wrote sections 1--7 \\
+    10/25/2024 & Andy Liang & Wrote Appendix: Reflection for team and self \\
+    \added{03/26/2025} & \added{Kevin Ishak} & \added{Revised document according to feedback. Added proper attribution for Nancy Leveson, fixed roadmap section, added List of Tables, and removed page layout artifacts.} \\
+    \hline
+\end{longtable}
+\renewcommand{\thetable}{\arabic{table}}
 
 \tableofcontents
-
-~\newpage
-
-\pagenumbering{arabic}
-
-\wss{You are free to modify this template.}
+\listoftables
+\newpage
 
 \section{Introduction}
-
-\wss{You can include your definition of what a hazard is here.}
+\added{This document follows principles from system safety engineering, particularly the work of Nancy Leveson on hazard analysis.}\footnote{\textcolor{green}{Nancy G. Leveson, \textit{Engineering a Safer World: Systems Thinking Applied to Safety}, MIT Press, 2011.}} This document is the hazard analysis of the UNO Flip Remix game. It analyzes potential hazards within the digital game project. Hazards are identified and assessed to ensure safety, data integrity, and uninterrupted game play, particularly in a multiplayer online setting.
 
 \section{Scope and Purpose of Hazard Analysis}
-
-\wss{You should say what \textbf{loss} could be incurred because of the
-hazards.}
+The analysis focuses on identifying hazards related to user interaction, server reliability, AI behaviors, and multiplayer synchronization, and offers mitigation strategies to maintain game play integrity and security.
 
 \section{System Boundaries and Components}
-
-\wss{Dividing the system into components will help you brainstorm the hazards.
-You shouldn't do a full design of the components, just get a feel for the major
-ones.  For projects that involve hardware, the components will typically include
-each individual piece of hardware.  If your software will have a database, or an
-important library, these are also potential components.}
+The UNO Flip game project consists of several major software components:
+\begin{itemize}
+    \item \textbf{User Interface (UI)}: Handles player interaction, input validation, and displays the game state.
+    \item \textbf{Game Logic}: Controls game play mechanics, rule enforcement, and game state tracking.
+    \item \textbf{Networking Module}: Facilitates communication between players in multiplayer mode.
+    \item \textbf{Database or Game State Storage}: Manages saving of game progress, scores, and player data.
+    \item \textbf{Card Management System}: Manages cards' actions such as shuffling, drawing, and flipping.
+    \item \textbf{Server (if applicable)}: Manages player interactions and game sessions in an online environment.
+    \item \textbf{Audio/Visual Effects Module}: Enhances user experience with animations and sound cues.
+\end{itemize}
 
 \section{Critical Assumptions}
-
-\wss{These assumptions that are made about the software or system.  You should
-minimize the number of assumptions that remove potential hazards.  For instance,
-you could assume a part will never fail, but it is generally better to include
-this potential failure mode.}
+\begin{itemize}
+    \item \textbf{User Inputs}: Players are assumed to provide valid inputs; however, validation will prevent illegal moves.
+    \item \textbf{Network Stability}: Assumes stable network connections; error handling will address potential disconnections.
+    \item \textbf{System Resources}: Assumes sufficient memory and processing power.
+    \item \textbf{Server Reliability}: Server can handle multiple game sessions without performance degradation.
+    \item \textbf{Deck Management}: Assumes proper shuffling and flipping mechanisms.
+    \item \textbf{Game Logic Accuracy}: Assumes bug-free game logic.
+    \item \textbf{Audio/Visual Synchronization}: Assumes correct synchronization of game cues.
+\end{itemize}
 
 \section{Failure Mode and Effect Analysis}
-
-\wss{Include your FMEA table here. This is the most important part of this document.}
-\wss{The safety requirements in the table do not have to have the prefix SR.
-The most important thing is to show traceability to your SRS. You might trace to
-requirements you have already written, or you might need to add new
-requirements.}
-\wss{If no safety requirement can be devised, other mitigation strategies can be
-entered in the table, including strategies involving providing additional
-documentation, and/or test cases.}
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{4cm}|p{5cm}|}
+\hline
+\textbf{Failure Mode} & \textbf{Effect} & \textbf{Mitigation Strategy} \\
+\hline
+Server crash during multiplayer game & Game interruption and loss of data & Implement auto-save and allow for session recovery \\
+\hline
+Invalid card play due to client-side bug & Game logic inconsistency & Validate all actions server-side and reject illegal plays \\
+\hline
+AI makes invalid move & Unfair game play or crashes & Add server-side rule enforcement and fallback logic \\
+\hline
+Network latency causes turn desync & Players see inconsistent game states & Use rollback networking or lock-step turn control \\
+\hline
+\end{tabular}
+\caption{Sample Failure Modes and mitigation}
+\end{table}
 
 \section{Safety and Security Requirements}
+\subsection{Access Requirements}
+\begin{itemize}
+    \item AR1: Only server administrators can modify basic game features.
+    \item AR2: Only server administrators can modify user accounts, with user consent.
+\end{itemize}
 
-\wss{Newly discovered requirements.  These should also be added to the SRS.  (A
-rationale design process how and why to fake it.)}
+\subsection{Integrity Requirements}
+\begin{itemize}
+    \item IR1: The system should not unintentionally modify user information and game data.
+    \item IR2: The system should conduct regular authentication checks.
+    \item IR3: The app should store unsynced data locally and upload it when possible.
+\end{itemize}
+
+\subsection{Privacy Requirements}
+\begin{itemize}
+    \item PR1: The app should encrypt conversations and not save unencrypted chat data.
+    \item PR2: The app should not provide personal information to third parties.
+\end{itemize}
 
 \section{Roadmap}
+This section outlines key implementation activities and alignment of hazard-related mitigation:
+    \begin{itemize}
+        \item \removed{ Sept. 11, 2024: Team formation and initial brainstorming.}
+        \item \removed{ Sept. 23, 2024: Project approved and scope defined.}
+        \item \removed{Oct. 11, 2024: Drafted SRS document outlining early risks.}
+        \item \removed{Oct. 25, 2024: Initial hazard analysis drafted.}
+    \end{itemize}
 
-\wss{Which safety requirements will be implemented as part of the capstone timeline?
-Which requirements will be implemented in the future?}
+\added{
+\begin{itemize}
+    \item Finalized SRS and requirements document to define scope for hazard analysis and mitigation.
+    \item Hazard mitigation strategies were documented alongside failure modes for integration into the design.
+    \item Security requirements (such as encryption, server validation, and disconnection recovery) will be implemented during the core system development phase.
+    \item Post-implementation testing will validate that all critical safety requirements are functional.
+    \item Reflection and post-mortem review will evaluate effectiveness of implemented mitigation.
+\end{itemize}}
 
-\newpage{}
-
+\newpage
 \section*{Appendix --- Reflection}
+\begin{itemize}
+    \item \textbf{1. What went well while writing this deliverable?}\\
+    Team members collaborated effectively and identified hazards systematically, which allowed for a comprehensive hazard analysis.
 
-\wss{Not required for CAS 741}
+    \item \textbf{2. What pain points did you experience during this deliverable, and how did you resolve them?}\\
+    Challenges arose in defining system boundaries clearly and categorizing hazards accurately. The team discussed these issues and revised sections collaboratively to reach a clearer understanding.
 
-\input{../Reflection.tex}
+    \item \textbf{3. Which of your listed risks had your team thought of before this deliverable, and which did you think of while doing this deliverable?}\\
+    Prior risks included server stability and user data integrity. New risks discovered during this process included specific game play interruptions due to network issues and risks associated with card management errors.
 
-\begin{enumerate}
-    \item What went well while writing this deliverable? 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item Which of your listed risks had your team thought of before this
-    deliverable, and which did you think of while doing this deliverable? For
-    the latter ones (ones you thought of while doing the Hazard Analysis), how
-    did they come about?
-    \item Other than the risk of physical harm (some projects may not have any
-    appreciable risks of this form), list at least 2 other types of risk in
-    software products. Why are they important to consider?
-\end{enumerate}
+    \item \textbf{4. Other than the risk of physical harm, list at least two other types of risks in software products. Why are they important to consider?}\\
+    \begin{enumerate}
+        \item \textbf{Data Privacy Risk}: Ensuring user data is secure and only accessible by authorized individuals is crucial for user trust and regulatory compliance.
+        \item \textbf{System Reliability Risk}: Preventing unexpected crashes and ensuring smooth game play are essential for user satisfaction and retention.
+    \end{enumerate}
+\end{itemize}
 
 \end{document}
