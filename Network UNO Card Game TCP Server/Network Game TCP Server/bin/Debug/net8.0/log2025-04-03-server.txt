@@ -1,0 +1,2576 @@
+﻿------------------ 2025-04-03 18:49:39[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:56255
+OnConnect 127.0.0.1:56255
+Accept 127.0.0.1:56258
+OnConnect 127.0.0.1:56258
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Ping timeOut close 127.0.0.1:56258
+OnDisconnect
+Receive MsgPing
+Socket Close 127.0.0.1:56255
+OnDisconnect
+Accept 127.0.0.1:56360
+OnConnect 127.0.0.1:56360
+Ping timeOut close 127.0.0.1:56360
+OnDisconnect
+Accept 127.0.0.1:57893
+OnConnect 127.0.0.1:57893
+Socket Close 127.0.0.1:57893
+OnDisconnect
+Accept 127.0.0.1:57909
+OnConnect 127.0.0.1:57909
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Accept 127.0.0.1:57914
+OnConnect 127.0.0.1:57914
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 222
+match clients by 222
+MatchClient 127.0.0.1:57909 127.0.0.1:57914
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 222 222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 3,0,3,8,0,0,9,7,0,2,4,1,1,3,11,0,0,5,0,0,9,15,0,2,4,0,2,7,19,0,1,2,0,2,1,23,0,3,3,0,0,7,27,7,4,-1,0,3,0|4,0,2,8,4,4,-1,8,0,0,1,2,3,-1,12,0,2,9,0,2,2,16,0,3,9,0,0,6,20,0,0,9,0,0,1,24,0,2,2,7,4,-1,28,0,2,5,0,3,3|1,0,1,3,0,3,9,5,7,4,-1,3,3,5,9,0,3,6,0,2,5,13,7,4,-1,0,2,4,17,0,0,4,3,1,5,21,3,3,2,7,4,-1,25,7,4,-1,0,2,4|2,3,1,2,0,2,8,6,7,4,-1,0,1,1,10,1,0,1,0,0,6,14,0,0,8,7,4,-1,18,0,2,8,0,2,8,22,0,0,9,0,0,8,26,3,2,2,3,3,5
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Skip YELLOW 1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 2---
+--- ProcessOneAct：等待玩家行动
+--- switch state from dealingCards to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 6,Flip,NONE,-1,Number,BLUE,1 RED
+--- AI AI-2 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 24,Number,GREEN,2,Flip,NONE,-1 RED
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 10,Skip,RED,1,Number,RED,6 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 8,Number,RED,1,Reverse,YELLOW,-1 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 26,Draw,GREEN,2,Draw,YELLOW,5 NONE
+--- AI AI-2 行动一次 
+--- drawCardsContent 5 30,0,1,7,1,1,3,31,0,1,4,5,4,9,32,0,1,1,0,1,5,33,0,1,0,5,4,9,34,2,0,-1,0,3,8
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 4,Number,GREEN,8,Wild,NONE,-1 RED
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 2,Draw,BLUE,2,Number,GREEN,8 NONE
+--- AI AI-2 行动一次 
+--- drawCardsContent 2 35,0,2,6,0,1,5,36,0,3,1,7,4,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: drawCard 37,Number,YELLOW,4,Flip,NONE,-1 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Ping timeOut close 127.0.0.1:57909
+OnDisconnect
+Ping timeOut close 127.0.0.1:57914
+OnDisconnect
+Accept 127.0.0.1:59172
+OnConnect 127.0.0.1:59172
+Accept 127.0.0.1:59174
+OnConnect 127.0.0.1:59174
+Socket Close 127.0.0.1:59174
+OnDisconnect
+Accept 127.0.0.1:59177
+OnConnect 127.0.0.1:59177
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 222
+match clients by 222
+MatchClient 127.0.0.1:59172 127.0.0.1:59177
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 222 222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 61
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 65
+--- 初始手牌 130,3,1,2,0,2,8,134,7,4,-1,0,1,1,138,1,0,1,0,0,6,142,0,0,8,7,4,-1,146,0,2,8,0,2,8,150,0,0,9,0,0,8,154,3,2,2,3,3,5|131,0,3,8,0,0,9,135,0,2,4,1,1,3,139,0,0,5,0,0,9,143,0,2,4,0,2,7,147,0,1,2,0,2,1,151,0,3,3,0,0,7,155,7,4,-1,0,3,0|132,0,2,8,4,4,-1,136,0,0,1,2,3,-1,140,0,2,9,0,2,2,144,0,3,9,0,0,6,148,0,0,9,0,0,1,152,0,2,2,7,4,-1,156,0,2,5,0,3,3|129,0,1,3,0,3,9,133,7,4,-1,3,3,5,137,0,3,6,0,2,5,141,7,4,-1,0,2,4,145,0,0,4,3,1,5,149,3,3,2,7,4,-1,153,7,4,-1,0,2,4
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 68 Skip YELLOW 1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 3---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 149,Draw,YELLOW,2,Flip,NONE,-1 NONE
+--- AI AI-2 行动一次 
+--- drawCardsContent 2 158,0,1,7,1,1,3,159,0,1,4,5,4,9
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 2 160,0,1,1,0,1,5,161,0,1,0,5,4,9
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 155,Flip,NONE,-1,Number,YELLOW,0 BLUE
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 133,Flip,NONE,-1,Draw,YELLOW,5 RED
+--- AI AI-2 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 131,Number,YELLOW,8,Number,RED,9 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 137,Number,YELLOW,6,Number,GREEN,5 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 143,Number,GREEN,4,Number,GREEN,7 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 141,Flip,NONE,-1,Number,GREEN,4 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 147,Number,BLUE,2,Number,GREEN,1 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+--- AI AI-2 行动一次 
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 139,Number,RED,5,Number,RED,9 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: drawCard 164,Number,YELLOW,1,Flip,NONE,-1 BLUE
+--- AI AI-2 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 160,Number,BLUE,1,Number,BLUE,5 NONE
+--- AI AI-1 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleUno
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 162,Reverse,RED,-1,Number,YELLOW,8 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到抽牌请求
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+--- AI AI-1 行动一次 
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Ping timeOut close 127.0.0.1:59177
+OnDisconnect
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Socket Close 127.0.0.1:59172
+OnDisconnect
+Accept 127.0.0.1:59938
+OnConnect 127.0.0.1:59938
+Accept 127.0.0.1:59939
+OnConnect 127.0.0.1:59939
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 222
+match clients by 222
+MatchClient 127.0.0.1:59939 127.0.0.1:59938
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 222 222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 164
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 168
+--- 初始手牌 260,0,2,8,4,4,-1,264,0,0,1,2,3,-1,268,0,2,9,0,2,2,272,0,3,9,0,0,6,276,0,0,9,0,0,1,280,0,2,2,7,4,-1,284,0,2,5,0,3,3|257,0,1,3,0,3,9,261,7,4,-1,3,3,5,265,0,3,6,0,2,5,269,7,4,-1,0,2,4,273,0,0,4,3,1,5,277,3,3,2,7,4,-1,281,7,4,-1,0,2,4|258,3,1,2,0,2,8,262,7,4,-1,0,1,1,266,1,0,1,0,0,6,270,0,0,8,7,4,-1,274,0,2,8,0,2,8,278,0,0,9,0,0,8,282,3,2,2,3,3,5|259,0,3,8,0,0,9,263,0,2,4,1,1,3,267,0,0,5,0,0,9,271,0,2,4,0,2,7,275,0,1,2,0,2,1,279,0,3,3,0,0,7,283,7,4,-1,0,3,0
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 171 Skip YELLOW 1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 1---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 277,Draw,YELLOW,2,Flip,NONE,-1 NONE
+--- AI AI-1 行动一次 
+--- drawCardsContent 2 286,0,1,7,1,1,3,287,0,1,4,5,4,9
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 2 288,0,1,1,0,1,5,289,0,1,0,5,4,9
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 283,Flip,NONE,-1,Number,YELLOW,0 BLUE
+--- AI AI-2 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+--- AI AI-1 行动一次 
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 259,Number,YELLOW,8,Number,RED,9 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: drawCard 292,Number,YELLOW,1,Flip,NONE,-1 GREEN
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 2 294,0,1,2,0,3,2,295,0,1,4,0,3,7
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 263,Number,GREEN,4,Skip,BLUE,3 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 261,Flip,NONE,-1,Draw,YELLOW,5 RED
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 267,Number,RED,5,Number,RED,9 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 293,Number,YELLOW,4,Flip,NONE,-1 GREEN
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Ping timeOut close 127.0.0.1:59938
+OnDisconnect
+Ping timeOut close 127.0.0.1:59939
+OnDisconnect
+Accept 127.0.0.1:61019
+OnConnect 127.0.0.1:61019
+Accept 127.0.0.1:61025
+OnConnect 127.0.0.1:61025
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 222
+match clients by 222
+MatchClient 127.0.0.1:61025 127.0.0.1:61019
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 222 222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 231
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 235
+--- 初始手牌 388,0,2,8,4,4,-1,392,0,0,1,2,3,-1,396,0,2,9,0,2,2,400,0,3,9,0,0,6,404,0,0,9,0,0,1,408,0,2,2,7,4,-1,412,0,2,5,0,3,3|385,0,1,3,0,3,9,389,7,4,-1,3,3,5,393,0,3,6,0,2,5,397,7,4,-1,0,2,4,401,0,0,4,3,1,5,405,3,3,2,7,4,-1,409,7,4,-1,0,2,4|386,3,1,2,0,2,8,390,7,4,-1,0,1,1,394,1,0,1,0,0,6,398,0,0,8,7,4,-1,402,0,2,8,0,2,8,406,0,0,9,0,0,8,410,3,2,2,3,3,5|387,0,3,8,0,0,9,391,0,2,4,1,1,3,395,0,0,5,0,0,9,399,0,2,4,0,2,7,403,0,1,2,0,2,1,407,0,3,3,0,0,7,411,7,4,-1,0,3,0
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 238 Skip YELLOW 1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 1---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 405,Draw,YELLOW,2,Flip,NONE,-1 NONE
+--- AI AI-1 行动一次 
+--- drawCardsContent 2 414,0,1,7,1,1,3,415,0,1,4,5,4,9
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 2 416,0,1,1,0,1,5,417,0,1,0,5,4,9
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 411,Flip,NONE,-1,Number,YELLOW,0 BLUE
+--- AI AI-2 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+--- AI AI-1 行动一次 
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 387,Number,YELLOW,8,Number,RED,9 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: drawCard 420,Number,YELLOW,1,Flip,NONE,-1 GREEN
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 2 422,0,1,2,0,3,2,423,0,1,4,0,3,7
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 391,Number,GREEN,4,Skip,BLUE,3 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 389,Flip,NONE,-1,Draw,YELLOW,5 RED
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 395,Number,RED,5,Number,RED,9 NONE
+--- AI AI-2 行动一次 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPlayerAction
+*************** game state error: 在非waitPlayerAction状态收到玩家行动请求 waitRoleActionSyncOK ***************
+--- 收到出牌请求 
+------------------
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 421,Number,YELLOW,4,Flip,NONE,-1 GREEN
+--- AI AI-1 行动一次 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+Ping timeOut close 127.0.0.1:61019
+OnDisconnect
+Ping timeOut close 127.0.0.1:61025
+OnDisconnect
+------------------ 2025-04-03 21:30:21[App Exit] ------------------
+------------------ 2025-04-03 21:30:32[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+------------------ 2025-04-03 21:30:34[App Exit] ------------------
+------------------ 2025-04-03 21:38:16[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:62722
+OnConnect 127.0.0.1:62722
+Accept 127.0.0.1:62725
+OnConnect 127.0.0.1:62725
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 222
+match clients by 222
+MatchClient 127.0.0.1:62725 127.0.0.1:62722
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 222 222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 2,0,2,2,0,3,7,6,0,3,8,0,2,9,10,0,1,8,0,2,0,14,7,4,-1,7,4,-1,18,0,1,9,0,2,7,22,0,1,1,7,4,-1,26,0,0,6,0,0,0|3,0,0,3,1,1,3,7,7,4,-1,0,3,1,11,0,2,0,0,0,6,15,0,0,8,2,3,-1,19,7,4,-1,3,1,5,23,5,4,4,2,1,-1,27,0,0,8,1,3,3|4,7,4,-1,0,2,9,8,0,2,2,0,1,4,12,7,4,-1,0,1,3,16,5,4,4,7,4,-1,20,0,3,4,0,2,3,24,0,2,5,3,0,5,28,0,2,8,0,0,9|1,0,0,9,0,1,4,5,0,0,7,0,1,5,9,0,3,5,1,0,3,13,2,0,-1,0,0,8,17,7,4,-1,2,1,-1,21,3,2,2,7,4,-1,25,0,3,2,1,3,3
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Number RED 2
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 3---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 13,Reverse,RED,-1,Number,RED,8 NONE
+--- AI AI-2 行动一次 1 playCard 13 NONE 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:2,Number,GREEN,2,Number,YELLOW,7__6,Number,YELLOW,8,Number,GREEN,9__10,Number,BLUE,8,Number,GREEN,0__14,Flip,NONE,-1,Flip,NONE,-1__18,Number,BLUE,9,Number,GREEN,7__22,Number,BLUE,1,Flip,NONE,-1__26,Number,RED,6,Number,RED,0
+role AI-1 手牌:3,Number,RED,3,Skip,BLUE,3__7,Flip,NONE,-1,Number,YELLOW,1__11,Number,GREEN,0,Number,RED,6__15,Number,RED,8,Reverse,YELLOW,-1__19,Flip,NONE,-1,Draw,BLUE,5__23,WildDraw,NONE,4,Reverse,BLUE,-1__27,Number,RED,8,Skip,YELLOW,3
+role 222 手牌:4,Flip,NONE,-1,Number,GREEN,9__8,Number,GREEN,2,Number,BLUE,4__12,Flip,NONE,-1,Number,BLUE,3__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,YELLOW,4,Number,GREEN,3__24,Number,GREEN,5,Draw,RED,5__28,Number,GREEN,8,Number,RED,9
+role AI-2 手牌:1,Number,RED,9,Number,BLUE,4__5,Number,RED,7,Number,BLUE,5__9,Number,YELLOW,5,Skip,RED,3__17,Flip,NONE,-1,Reverse,BLUE,-1__21,Draw,GREEN,2,Flip,NONE,-1__25,Number,YELLOW,2,Skip,YELLOW,3
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+--- drawCardsContent 4 30,1,3,1,0,0,3,31,0,2,8,0,1,7,32,0,1,4,0,2,6,33,5,4,4,0,3,3
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 222 3 playCard 16 BLUE *****
+role 111 手牌:2,Number,GREEN,2,Number,YELLOW,7__6,Number,YELLOW,8,Number,GREEN,9__10,Number,BLUE,8,Number,GREEN,0__14,Flip,NONE,-1,Flip,NONE,-1__18,Number,BLUE,9,Number,GREEN,7__22,Number,BLUE,1,Flip,NONE,-1__26,Number,RED,6,Number,RED,0__30,Skip,YELLOW,1,Number,RED,3__31,Number,GREEN,8,Number,BLUE,7__32,Number,BLUE,4,Number,GREEN,6__33,WildDraw,NONE,4,Number,YELLOW,3
+role AI-1 手牌:3,Number,RED,3,Skip,BLUE,3__7,Flip,NONE,-1,Number,YELLOW,1__11,Number,GREEN,0,Number,RED,6__15,Number,RED,8,Reverse,YELLOW,-1__19,Flip,NONE,-1,Draw,BLUE,5__23,WildDraw,NONE,4,Reverse,BLUE,-1__27,Number,RED,8,Skip,YELLOW,3
+role 222 手牌:4,Flip,NONE,-1,Number,GREEN,9__8,Number,GREEN,2,Number,BLUE,4__12,Flip,NONE,-1,Number,BLUE,3__20,Number,YELLOW,4,Number,GREEN,3__24,Number,GREEN,5,Draw,RED,5__28,Number,GREEN,8,Number,RED,9
+role AI-2 手牌:1,Number,RED,9,Number,BLUE,4__5,Number,RED,7,Number,BLUE,5__9,Number,YELLOW,5,Skip,RED,3__17,Flip,NONE,-1,Reverse,BLUE,-1__21,Draw,GREEN,2,Flip,NONE,-1__25,Number,YELLOW,2,Skip,YELLOW,3
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+------------------ 2025-04-03 21:53:51[App Exit] ------------------
+------------------ 2025-04-03 21:54:08[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:63032
+OnConnect 127.0.0.1:63032
+Accept 127.0.0.1:63034
+OnConnect 127.0.0.1:63034
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 22
+match clients by 22
+MatchClient 127.0.0.1:63034 127.0.0.1:63032
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] 22 22
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 1,2,3,-1,0,2,2,5,2,1,-1,2,3,-1,9,0,0,6,0,2,5,13,7,4,-1,0,3,1,17,0,1,6,4,4,-1,21,0,2,3,0,0,6,25,0,3,8,3,3,5|2,1,1,1,7,4,-1,6,0,0,8,5,4,9,10,0,0,7,0,0,9,14,1,2,1,3,2,5,18,0,0,1,7,4,-1,22,1,2,1,7,4,-1,26,7,4,-1,0,1,8|3,7,4,-1,0,3,2,7,7,4,-1,0,0,4,11,0,2,2,0,1,3,15,0,3,1,0,0,3,19,0,2,6,0,0,4,23,7,4,-1,4,4,-1,27,1,1,1,0,3,9|4,0,1,5,0,3,4,8,0,1,5,0,3,7,12,0,3,3,2,2,-1,16,0,0,0,7,4,-1,20,0,1,8,0,2,4,24,7,4,-1,0,3,5,28,4,4,-1,0,1,9
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Number RED 4
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 0---
+--- ProcessOneAct：等待玩家行动
+--- switch state from dealingCards to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 2 playCard 9 YELLOW *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__13,Flip,NONE,-1,Number,YELLOW,1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__6,Number,RED,8,WildDraw,NONE,9__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1__26,Flip,NONE,-1,Number,BLUE,8
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__15,Number,YELLOW,1,Number,RED,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__16,Number,RED,0,Flip,NONE,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 26,Flip,NONE,-1,Number,BLUE,8 RED
+--- AI AI-1 行动一次 3 playCard 26 RED 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__13,Flip,NONE,-1,Number,YELLOW,1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__6,Number,RED,8,WildDraw,NONE,9__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__15,Number,YELLOW,1,Number,RED,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__16,Number,RED,0,Flip,NONE,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 22 5 playCard 15 YELLOW *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__13,Flip,NONE,-1,Number,YELLOW,1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__6,Number,RED,8,WildDraw,NONE,9__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__16,Number,RED,0,Flip,NONE,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 16,Number,RED,0,Flip,NONE,-1 YELLOW
+--- AI AI-2 行动一次 6 playCard 16 YELLOW 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__13,Flip,NONE,-1,Number,YELLOW,1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__6,Number,RED,8,WildDraw,NONE,9__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 8 playCard 13 BLUE *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__6,Number,RED,8,WildDraw,NONE,9__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 6,Number,RED,8,WildDraw,NONE,9 RED
+--- AI AI-1 行动一次 9 playCard 6 RED 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5__28,Wild,NONE,-1,Number,BLUE,9
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 28,Wild,NONE,-1,Number,BLUE,9 NONE
+--- AI AI-2 行动一次 10 playCard 28 NONE 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__17,Number,BLUE,6,Wild,NONE,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 12 playCard 17 RED *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:2,Skip,BLUE,1,Flip,NONE,-1__10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 2,Skip,BLUE,1,Flip,NONE,-1 RED
+--- AI AI-1 行动一次 13 playCard 2 RED 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__27,Skip,BLUE,1,Number,YELLOW,9__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 22 15 playCard 27 RED *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__5,Reverse,BLUE,-1,Reverse,YELLOW,-1__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 17 playCard 5 BLUE *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__24,Flip,NONE,-1,Number,YELLOW,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 24,Flip,NONE,-1,Number,YELLOW,5 BLUE
+--- AI AI-2 行动一次 18 playCard 24 BLUE 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__11,Number,GREEN,2,Number,BLUE,3__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 22 20 playCard 11 YELLOW *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__18,Number,RED,1,Flip,NONE,-1__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 18,Number,RED,1,Flip,NONE,-1 RED
+--- AI AI-1 行动一次 21 playCard 18 RED 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到抽牌请求
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 23 drawCard -1 NONE *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+--- AI AI-2 行动一次 24 drawCard -1 NONE 
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__23,Flip,NONE,-1,Wild,NONE,-1__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__35,Draw,GREEN,2,Number,RED,7__36,Number,RED,5,Number,YELLOW,8
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 22 26 playCard 23 GREEN *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__14,Skip,GREEN,1,Draw,GREEN,5__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__35,Draw,GREEN,2,Number,RED,7__36,Number,RED,5,Number,YELLOW,8
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 14,Skip,GREEN,1,Draw,GREEN,5 NONE
+--- AI AI-1 行动一次 27 playCard 14 NONE 
+--- drawCardsContent 5 37,0,0,1,0,0,9,38,5,4,4,7,4,-1,39,7,4,-1,0,2,7,40,0,1,2,0,0,0,41,0,2,4,0,0,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1__37,Number,RED,1,Number,RED,9__38,WildDraw,NONE,4,Flip,NONE,-1__39,Flip,NONE,-1,Number,GREEN,7__40,Number,BLUE,2,Number,RED,0__41,Number,GREEN,4,Number,RED,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__35,Draw,GREEN,2,Number,RED,7__36,Number,RED,5,Number,YELLOW,8
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+***** 同步玩家行动结果 111 29 playCard 38 RED *****
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1__37,Number,RED,1,Number,RED,9__39,Flip,NONE,-1,Number,GREEN,7__40,Number,BLUE,2,Number,RED,0__41,Number,GREEN,4,Number,RED,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__35,Draw,GREEN,2,Number,RED,7__36,Number,RED,5,Number,YELLOW,8
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 36,Number,RED,5,Number,YELLOW,8 NONE
+--- AI AI-2 行动一次 30 playCard 36 NONE 
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+role 111 手牌:1,Reverse,YELLOW,-1,Number,GREEN,2__21,Number,GREEN,3,Number,RED,6__25,Number,YELLOW,8,Draw,YELLOW,5__34,Flip,NONE,-1,Reverse,RED,-1__37,Number,RED,1,Number,RED,9__39,Flip,NONE,-1,Number,GREEN,7__40,Number,BLUE,2,Number,RED,0__41,Number,GREEN,4,Number,RED,5
+role AI-1 手牌:10,Number,RED,7,Number,RED,9__22,Skip,GREEN,1,Flip,NONE,-1
+role 22 手牌:3,Flip,NONE,-1,Number,YELLOW,2__7,Flip,NONE,-1,Number,RED,4__19,Number,GREEN,6,Number,RED,4__31,Number,GREEN,9,Flip,NONE,-1__32,Number,BLUE,6,Number,GREEN,5__33,Number,BLUE,7,Number,RED,2
+role AI-2 手牌:4,Number,BLUE,5,Number,YELLOW,4__8,Number,BLUE,5,Number,YELLOW,7__12,Number,YELLOW,3,Reverse,GREEN,-1__20,Number,BLUE,8,Number,GREEN,4__35,Draw,GREEN,2,Number,RED,7
+Ping timeOut close 127.0.0.1:63032
+OnDisconnect
+Ping timeOut close 127.0.0.1:63034
+OnDisconnect
+------------------ 2025-04-03 23:00:23[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:49247
+OnConnect 127.0.0.1:49247
+Accept 127.0.0.1:49254
+OnConnect 127.0.0.1:49254
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest 111
+add un matched client 111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest player222
+match clients by player222
+MatchClient 127.0.0.1:49254 127.0.0.1:49247
+Receive MsgReady
+Receive MsgReady
+roles[0] 111 111
+roles[1] AI-1 AI-1
+roles[2] player222 player222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 4,3,1,2,7,4,-1,8,1,3,1,0,2,8,12,7,4,-1,7,4,-1,16,7,4,-1,0,2,3,20,0,3,9,0,2,9,24,0,2,1,1,1,3,28,0,2,3,7,4,-1|1,0,3,4,0,2,2,5,0,2,6,1,2,3,9,0,2,2,7,4,-1,13,3,3,2,0,0,5,17,0,2,1,4,4,-1,21,7,4,-1,4,4,-1,25,0,1,6,3,0,5|2,0,1,4,0,3,7,6,0,1,0,0,1,9,10,0,2,2,0,1,7,14,0,3,8,5,4,9,18,0,1,7,0,1,4,22,0,1,9,0,3,0,26,0,3,3,0,2,1|3,0,0,1,0,1,6,7,4,4,-1,7,4,-1,11,2,0,-1,0,1,2,15,0,3,5,4,4,-1,19,0,3,9,5,4,9,23,0,1,2,0,0,2,27,5,4,4,2,2,-1
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Reverse GREEN -1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 1---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 21,Flip,NONE,-1,Wild,NONE,-1 GREEN
+------------------ ------------------
+--- AI AI-1 行动一次（前） 1 playCard 21 GREEN 
+role 111 手牌:4,Draw,BLUE,2,Flip,NONE,-1__8,Skip,YELLOW,1,Number,GREEN,8__12,Flip,NONE,-1,Flip,NONE,-1__16,Flip,NONE,-1,Number,GREEN,3__20,Number,YELLOW,9,Number,GREEN,9__24,Number,GREEN,1,Skip,BLUE,3__28,Number,GREEN,3,Flip,NONE,-1
+role AI-1 手牌:1,Number,YELLOW,4,Number,GREEN,2__5,Number,GREEN,6,Skip,GREEN,3__9,Number,GREEN,2,Flip,NONE,-1__13,Draw,YELLOW,2,Number,RED,5__17,Number,GREEN,1,Wild,NONE,-1__21,Flip,NONE,-1,Wild,NONE,-1__25,Number,BLUE,6,Draw,RED,5
+role player222 手牌:2,Number,BLUE,4,Number,YELLOW,7__6,Number,BLUE,0,Number,BLUE,9__10,Number,GREEN,2,Number,BLUE,7__14,Number,YELLOW,8,WildDraw,NONE,9__18,Number,BLUE,7,Number,BLUE,4__22,Number,BLUE,9,Number,YELLOW,0__26,Number,YELLOW,3,Number,GREEN,1
+role AI-2 手牌:3,Number,RED,1,Number,BLUE,6__7,Wild,NONE,-1,Flip,NONE,-1__11,Reverse,RED,-1,Number,BLUE,2__15,Number,YELLOW,5,Wild,NONE,-1__19,Number,YELLOW,9,WildDraw,NONE,9__23,Number,BLUE,2,Number,RED,2__27,WildDraw,NONE,4,Reverse,GREEN,-1
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player222 行动一次（后） 1 playCard 21 GREEN 
+role 111 手牌:4,Draw,BLUE,2,Flip,NONE,-1__8,Skip,YELLOW,1,Number,GREEN,8__12,Flip,NONE,-1,Flip,NONE,-1__16,Flip,NONE,-1,Number,GREEN,3__20,Number,YELLOW,9,Number,GREEN,9__24,Number,GREEN,1,Skip,BLUE,3__28,Number,GREEN,3,Flip,NONE,-1
+role AI-1 手牌:1,Number,YELLOW,4,Number,GREEN,2__5,Number,GREEN,6,Skip,GREEN,3__9,Number,GREEN,2,Flip,NONE,-1__13,Draw,YELLOW,2,Number,RED,5__17,Number,GREEN,1,Wild,NONE,-1__25,Number,BLUE,6,Draw,RED,5
+role player222 手牌:2,Number,BLUE,4,Number,YELLOW,7__6,Number,BLUE,0,Number,BLUE,9__10,Number,GREEN,2,Number,BLUE,7__14,Number,YELLOW,8,WildDraw,NONE,9__18,Number,BLUE,7,Number,BLUE,4__22,Number,BLUE,9,Number,YELLOW,0__26,Number,YELLOW,3,Number,GREEN,1
+role AI-2 手牌:3,Number,RED,1,Number,BLUE,6__7,Wild,NONE,-1,Flip,NONE,-1__11,Reverse,RED,-1,Number,BLUE,2__15,Number,YELLOW,5,Wild,NONE,-1__19,Number,YELLOW,9,WildDraw,NONE,9__23,Number,BLUE,2,Number,RED,2__27,WildDraw,NONE,4,Reverse,GREEN,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+------------------ 2025-04-03 23:07:57[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:49381
+OnConnect 127.0.0.1:49381
+Accept 127.0.0.1:49385
+OnConnect 127.0.0.1:49385
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest player111
+add un matched client player111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest p222
+match clients by p222
+MatchClient 127.0.0.1:49385 127.0.0.1:49381
+Receive MsgReady
+Receive MsgReady
+roles[0] player111 player111
+roles[1] AI-1 AI-1
+roles[2] p222 p222
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 4,0,2,7,7,4,-1,8,7,4,-1,0,0,9,12,0,2,4,0,0,5,16,0,3,3,3,0,5,20,0,3,7,2,1,-1,24,1,0,1,7,4,-1,28,2,1,-1,0,2,4|1,5,4,4,2,1,-1,5,0,1,6,7,4,-1,9,0,3,1,0,2,1,13,0,0,3,7,4,-1,17,0,0,4,7,4,-1,21,0,1,4,0,1,7,25,0,1,1,0,0,2|2,3,3,2,0,0,7,6,0,0,9,0,0,6,10,5,4,4,0,3,3,14,0,3,4,0,3,8,18,0,1,5,0,3,7,22,0,3,2,1,1,3,26,0,0,0,7,4,-1|3,0,0,1,7,4,-1,7,3,0,2,0,3,9,11,2,0,-1,0,0,8,15,0,1,1,0,0,5,19,3,2,2,7,4,-1,23,4,4,-1,1,2,3,27,0,2,8,3,1,5
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Reverse YELLOW -1
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 1---
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from dealingCards to waitAIAction
+--- AI GetNextAction: playCard 9,Number,YELLOW,1,Number,GREEN,1 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 1 playCard 9 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__9,Number,YELLOW,1,Number,GREEN,1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__14,Number,YELLOW,4,Number,YELLOW,8__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__23,Wild,NONE,-1,Skip,GREEN,3__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI p222 行动一次（后） 1 playCard 9 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__14,Number,YELLOW,4,Number,YELLOW,8__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__23,Wild,NONE,-1,Skip,GREEN,3__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:3 playCard 14 BLUE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__14,Number,YELLOW,4,Number,YELLOW,8__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__23,Wild,NONE,-1,Skip,GREEN,3__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p222 行动（后）:3 playCard 14 BLUE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__23,Wild,NONE,-1,Skip,GREEN,3__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 23,Wild,NONE,-1,Skip,GREEN,3 RED
+------------------ ------------------
+--- AI AI-2 行动一次（前） 4 playCard 23 RED 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__23,Wild,NONE,-1,Skip,GREEN,3__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player111 行动一次（后） 4 playCard 23 RED 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:6 playCard 24 BLUE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__24,Skip,RED,1,Flip,NONE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家player111 行动（后）:6 playCard 24 BLUE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:8 playCard 6 GREEN *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__6,Number,RED,9,Number,RED,6__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p222 行动（后）:8 playCard 6 GREEN *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 7,Draw,RED,2,Number,YELLOW,9 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 9 playCard 7 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__7,Draw,RED,2,Number,YELLOW,9__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+--- drawCardsContent 2 30,7,4,-1,0,2,6,31,0,3,8,7,4,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player111 行动一次（后） 9 playCard 7 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__30,Flip,NONE,-1,Number,GREEN,6__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:11 playCard 30 YELLOW *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__30,Flip,NONE,-1,Number,GREEN,6__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家player111 行动（后）:11 playCard 30 YELLOW *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 5,Number,BLUE,6,Flip,NONE,-1 BLUE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 12 playCard 5 BLUE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__5,Number,BLUE,6,Flip,NONE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI p222 行动一次（后） 12 playCard 5 BLUE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:14 playCard 18 RED *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__18,Number,BLUE,5,Number,YELLOW,7__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p222 行动（后）:14 playCard 18 RED *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 15,Number,BLUE,1,Number,RED,5 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 15 playCard 15 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__15,Number,BLUE,1,Number,RED,5__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player111 行动一次（后） 15 playCard 15 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:17 playCard 28 RED *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__28,Reverse,BLUE,-1,Number,GREEN,4__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家player111 行动（后）:17 playCard 28 RED *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 11,Reverse,RED,-1,Number,RED,8 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 18 playCard 11 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__11,Reverse,RED,-1,Number,RED,8__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player111 行动一次（后） 18 playCard 11 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:20 playCard 8 GREEN *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__8,Flip,NONE,-1,Number,RED,9__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+~~~~~~ SwitchSide Light to Dark
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家player111 行动（后）:20 playCard 8 GREEN *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgPing
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 13,Number,RED,3,Flip,NONE,-1 BLUE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 21 playCard 13 BLUE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__13,Number,RED,3,Flip,NONE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+~~~~~~ SwitchSide Dark to Light
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI p222 行动一次（后） 21 playCard 13 BLUE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到抽牌请求
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:23 drawCard -1 NONE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p222 行动（后）:23 drawCard -1 NONE *****
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1__32,Reverse,YELLOW,-1,Reverse,YELLOW,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+------------------ ------------------
+--- AI AI-2 行动一次（前） 24 drawCard -1 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1__32,Reverse,YELLOW,-1,Reverse,YELLOW,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5__33,Number,RED,5,Number,GREEN,4
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI player111 行动一次（后） 24 drawCard -1 NONE 
+role player111 手牌:4,Number,GREEN,7,Flip,NONE,-1__12,Number,GREEN,4,Number,RED,5__16,Number,YELLOW,3,Draw,RED,5__20,Number,YELLOW,7,Reverse,BLUE,-1__31,Number,YELLOW,8,Flip,NONE,-1
+role AI-1 手牌:1,WildDraw,NONE,4,Reverse,BLUE,-1__17,Number,RED,4,Flip,NONE,-1__21,Number,BLUE,4,Number,BLUE,7__25,Number,BLUE,1,Number,RED,2
+role p222 手牌:2,Draw,YELLOW,2,Number,RED,7__10,WildDraw,NONE,4,Number,YELLOW,3__22,Number,YELLOW,2,Skip,BLUE,3__26,Number,RED,0,Flip,NONE,-1__32,Reverse,YELLOW,-1,Reverse,YELLOW,-1
+role AI-2 手牌:3,Number,RED,1,Flip,NONE,-1__19,Draw,GREEN,2,Flip,NONE,-1__27,Number,GREEN,8,Draw,BLUE,5__33,Number,RED,5,Number,GREEN,4__34,Reverse,RED,-1,Number,YELLOW,2
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+------------------ 2025-04-03 23:22:01[App Exit] ------------------
+------------------ 2025-04-03 23:22:11[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-04-03-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+Accept 127.0.0.1:49884
+OnConnect 127.0.0.1:49884
+Accept 127.0.0.1:49888
+OnConnect 127.0.0.1:49888
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest p111
+add un matched client p111
+Receive MsgPlayerMatchRequest
+MsgPlayerMatchRequest MsgPlayerMatchRequest p22
+match clients by p22
+MatchClient 127.0.0.1:49888 127.0.0.1:49884
+Receive MsgReady
+Receive MsgReady
+roles[0] p111 p111
+roles[1] AI-1 AI-1
+roles[2] p22 p22
+roles[3] AI-2 AI-2
+--- 发送协议 MsgInitFlipGame 1
+Receive MsgInitFlipGame
+Receive MsgInitFlipGame
+--- 卡牌游戏 初始化完成 ---
+--- switch state from init to dealingCards
+--- 发送协议 MsgInitDealCards 5
+--- 初始手牌 3,0,0,2,0,1,8,7,0,2,9,0,0,1,11,2,1,-1,3,2,5,15,2,2,-1,7,4,-1,19,0,0,6,1,2,3,23,0,3,4,1,3,3,27,0,1,2,4,4,-1|4,0,1,1,0,1,4,8,0,1,5,0,2,5,12,0,3,8,7,4,-1,16,5,4,4,7,4,-1,20,0,2,6,0,0,4,24,0,2,2,0,0,9,28,0,0,3,0,3,0|1,2,2,-1,5,4,9,5,0,1,7,0,1,9,9,0,2,2,0,3,6,13,0,1,9,5,4,9,17,1,3,1,2,0,-1,21,0,2,1,0,0,7,25,3,3,2,0,0,8|2,0,2,4,0,1,5,6,0,2,5,0,0,4,10,0,2,8,0,0,7,14,0,0,7,0,1,1,18,0,0,5,0,3,5,22,4,4,-1,2,3,-1,26,0,3,3,3,0,5
+Receive MsgInitDealCards
+Receive MsgInitDealCards
+--- 初始发牌 完成 ---
+--- 发送协议 MsgFirstPileCard 8 Number GREEN 9
+Receive MsgFirstPileCard
+Receive MsgFirstPileCard
+--- 开始第一次出牌 currentRole 2---
+--- ProcessOneAct：等待玩家行动
+--- switch state from dealingCards to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+Receive MsgPlayerAction
+--- 收到出牌请求 
+
+1
+------------------ ------------------ p22
+***** 同步玩家行动结果 行动（前）:2 playCard 9 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__7,Number,GREEN,9,Number,RED,1__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__9,Number,GREEN,2,Number,YELLOW,6__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__22,Wild,NONE,-1,Reverse,YELLOW,-1__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:2 playCard 9 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__7,Number,GREEN,9,Number,RED,1__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__22,Wild,NONE,-1,Reverse,YELLOW,-1__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+2
+--- ProcessOneAct：执行AI出牌逻辑 ai2
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 22,Wild,NONE,-1,Reverse,YELLOW,-1 GREEN
+------------------ ------------------
+--- AI AI-2 行动一次（前） 3 playCard 22 GREEN 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__7,Number,GREEN,9,Number,RED,1__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__22,Wild,NONE,-1,Reverse,YELLOW,-1__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 3 playCard 22 GREEN 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__7,Number,GREEN,9,Number,RED,1__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPlayerAction
+
+
+
+3
+*************** game state error: 在非waitPlayerAction状态收到玩家行动请求 waitRoleActionSyncOK ***************
+--- 收到出牌请求 
+------------------ ------------------ p111
+***** 同步玩家行动结果 行动（前）:5 playCard 7 BLUE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__7,Number,GREEN,9,Number,RED,1__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:5 playCard 7 BLUE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+
+
+4
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 20,Number,GREEN,6,Number,RED,4 NONE
+------------------ ------------------ ai1 playCard 20
+--- AI AI-1 行动一次（前） 6 playCard 20 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__20,Number,GREEN,6,Number,RED,4__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 6 playCard 20 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPlayerAction
+
+
+
+5
+*************** game state error: 在非waitPlayerAction状态收到玩家行动请求 waitRoleActionSyncOK ***************
+--- 收到出牌请求 
+------------------ ------------------  p22 playCard 21
+***** 同步玩家行动结果 行动（前）:8 playCard 21 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__21,Number,GREEN,1,Number,RED,7__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:8 playCard 21 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+
+
+
+
+6
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 2,Number,GREEN,4,Number,BLUE,5 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 9 playCard 2 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:2,Number,GREEN,4,Number,BLUE,5__6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 9 playCard 2 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+
+
+
+7
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:11 playCard 23 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__23,Number,YELLOW,4,Skip,YELLOW,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:11 playCard 23 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+8
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 12,Number,YELLOW,8,Flip,NONE,-1 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 12 playCard 12 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__12,Number,YELLOW,8,Flip,NONE,-1__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 12 playCard 12 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+
+
+
+9
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:14 playCard 17 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__17,Skip,YELLOW,1,Reverse,RED,-1__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:14 playCard 17 YELLOW *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+Receive MsgPing
+
+
+10
+Receive MsgPlayerAction
+--- 收到抽牌请求
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:16 drawCard -1 NONE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:16 drawCard -1 NONE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+11
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 16,WildDraw,NONE,4,Flip,NONE,-1 BLUE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 17 playCard 16 BLUE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__16,WildDraw,NONE,4,Flip,NONE,-1__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+--- drawCardsContent 4 31,7,4,-1,7,4,-1,32,0,0,1,0,1,6,33,5,4,4,1,2,3,34,7,4,-1,2,2,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 17 playCard 16 BLUE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+12
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: cardId -1
+------------------ ------------------
+--- AI AI-2 行动一次（前） 18 drawCard -1 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 18 drawCard -1 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+--- ProcessOneAct：等待玩家行动
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+Receive MsgPing
+
+
+13
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:20 playCard 30 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1__30,Number,BLUE,1,Flip,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:20 playCard 30 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+
+
+14
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 4,Number,BLUE,1,Number,BLUE,4 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 21 playCard 4 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:4,Number,BLUE,1,Number,BLUE,4__8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 21 playCard 4 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+
+
+
+15
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:23 playCard 5 BLUE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__5,Number,BLUE,7,Number,BLUE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:23 playCard 5 BLUE *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+16
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 14,Number,RED,7,Number,BLUE,1 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 24 playCard 14 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__14,Number,RED,7,Number,BLUE,1__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 24 playCard 14 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+
+
+
+
+17
+Receive MsgPlayerAction
+*************** game state error: 在非waitPlayerAction状态收到玩家行动请求 waitRoleActionSyncOK ***************
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:26 playCard 19 GREEN *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__19,Number,RED,6,Skip,GREEN,3__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:26 playCard 19 GREEN *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+
+
+
+18
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 28,Number,RED,3,Number,YELLOW,0 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 27 playCard 28 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9__28,Number,RED,3,Number,YELLOW,0
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 27 playCard 28 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+
+
+
+19
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:29 playCard 32 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__32,Number,RED,1,Number,BLUE,6__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:29 playCard 32 RED *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+20
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 18,Number,RED,5,Number,YELLOW,5 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 30 playCard 18 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__18,Number,RED,5,Number,YELLOW,5__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 30 playCard 18 NONE 
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPing
+
+
+
+21
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:32 playCard 3 GREEN *****
+role p111 手牌:3,Number,RED,2,Number,BLUE,8__11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:32 playCard 3 GREEN *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+22
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 24,Number,GREEN,2,Number,RED,9 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 33 playCard 24 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__24,Number,GREEN,2,Number,RED,9
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 33 playCard 24 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+
+23
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:35 playCard 1 YELLOW *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5
+role p22 手牌:1,Reverse,GREEN,-1,WildDraw,NONE,9__13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:35 playCard 1 YELLOW *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__37,Reverse,YELLOW,-1,Number,GREEN,6__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+
+24
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 37,Reverse,YELLOW,-1,Number,GREEN,6 NONE
+------------------ ------------------
+--- AI AI-1 行动一次（前） 36 playCard 37 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__37,Reverse,YELLOW,-1,Number,GREEN,6__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-1 行动一次（后） 36 playCard 37 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+25
+Receive MsgPing
+Receive MsgPing
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:38 playCard 25 BLUE *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__25,Draw,YELLOW,2,Number,RED,8__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1
+--- drawCardsContent 2 39,2,3,-1,3,2,5,40,0,3,7,7,4,-1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:38 playCard 25 BLUE *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__39,Reverse,YELLOW,-1,Draw,GREEN,5__40,Number,YELLOW,7,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+26
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 39,Reverse,YELLOW,-1,Draw,GREEN,5 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 39 playCard 39 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__39,Reverse,YELLOW,-1,Draw,GREEN,5__40,Number,YELLOW,7,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 39 playCard 39 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+27
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到出牌请求 
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:41 playCard 33 RED *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__33,WildDraw,NONE,4,Skip,GREEN,3__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+--- drawCardsContent 4 41,3,1,2,1,0,3,42,7,4,-1,0,1,2,43,3,0,2,0,2,2,44,0,0,3,0,0,1
+------------------
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p22 行动（后）:41 playCard 33 RED *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5__41,Draw,BLUE,2,Skip,RED,3__42,Flip,NONE,-1,Number,BLUE,2__43,Draw,RED,2,Number,GREEN,2__44,Number,RED,3,Number,RED,1
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+Receive MsgPing
+Receive MsgPing
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+28
+--- ProcessOneAct：等待玩家行动
+--- switch state from waitRoleActionSyncOK to waitPlayerAction
+Receive MsgPlayerAction
+--- 收到抽牌请求
+------------------ ------------------
+***** 同步玩家行动结果 行动（前）:43 drawCard -1 NONE *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5__41,Draw,BLUE,2,Skip,RED,3__42,Flip,NONE,-1,Number,BLUE,2__43,Draw,RED,2,Number,GREEN,2__44,Number,RED,3,Number,RED,1
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+--- switch state from waitPlayerAction to waitRoleActionSyncOK
+------------------ ------------------
+***** 同步玩家行动结果 玩家p111 行动（后）:43 drawCard -1 NONE *****
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1__45,Number,GREEN,0,Skip,YELLOW,3
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5__41,Draw,BLUE,2,Skip,RED,3__42,Flip,NONE,-1,Number,BLUE,2__43,Draw,RED,2,Number,GREEN,2__44,Number,RED,3,Number,RED,1
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+Receive MsgRoleActionResult
+
+
+
+29
+--- ProcessOneAct：执行AI出牌逻辑
+--- switch state from waitRoleActionSyncOK to waitAIAction
+--- AI GetNextAction: playCard 36,Number,GREEN,4,Flip,NONE,-1 NONE
+------------------ ------------------
+--- AI AI-2 行动一次（前） 44 playCard 36 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1__45,Number,GREEN,0,Skip,YELLOW,3
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5__41,Draw,BLUE,2,Skip,RED,3__42,Flip,NONE,-1,Number,BLUE,2__43,Draw,RED,2,Number,GREEN,2__44,Number,RED,3,Number,RED,1
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__36,Number,GREEN,4,Flip,NONE,-1__40,Number,YELLOW,7,Flip,NONE,-1
+------------------
+--- switch state from waitAIAction to waitRoleActionSyncOK
+--- AI AI-2 行动一次（后） 44 playCard 36 NONE 
+role p111 手牌:11,Reverse,BLUE,-1,Draw,GREEN,5__15,Reverse,GREEN,-1,Flip,NONE,-1__27,Number,BLUE,2,Wild,NONE,-1__45,Number,GREEN,0,Skip,YELLOW,3
+role AI-1 手牌:8,Number,BLUE,5,Number,GREEN,5__38,Number,GREEN,1,Number,YELLOW,5__41,Draw,BLUE,2,Skip,RED,3__42,Flip,NONE,-1,Number,BLUE,2__43,Draw,RED,2,Number,GREEN,2__44,Number,RED,3,Number,RED,1
+role p22 手牌:13,Number,BLUE,9,WildDraw,NONE,9__31,Flip,NONE,-1,Flip,NONE,-1__34,Flip,NONE,-1,Reverse,GREEN,-1
+role AI-2 手牌:6,Number,GREEN,5,Number,RED,4__10,Number,GREEN,8,Number,RED,7__26,Number,YELLOW,3,Draw,RED,5__35,Number,GREEN,3,Number,RED,2__40,Number,YELLOW,7,Flip,NONE,-1
+Ping timeOut close 127.0.0.1:49884
+OnDisconnect
+Ping timeOut close 127.0.0.1:49888
+OnDisconnect

@@ -1,0 +1,32 @@
+﻿测试日志2025-03-31 13:41:22:所有日志同时输出到控制台和文件log2025-03-31-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+------------------ 2025-03-31 13:50:09 ------------------
+测试日志2025-03-31 13:50:09:所有日志同时输出到控制台和文件log2025-03-31-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+------------------ 2025-03-31 13:52:40 ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-03-31-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+------------------ 2025-03-31 13:57:33[App Start] ------------------
+测试日志:所有日志同时输出到控制台和文件log2025-03-31-server.txt
+UNO Card Game - TCP Server
+[服务器]启动成功
+本机ip地址:192.168.31.56
+监听端口:8888
+On App Started..
+Initialized CardSideData : light/dark side
+------------------ 2025-03-31 13:57:38[App Exit] ------------------
