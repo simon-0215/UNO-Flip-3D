@@ -1,0 +1,60 @@
+
+\begin{longtable}{|p{4cm}|p{11cm}|}
+\caption{Data Dictionary for UNO Flip Game} \label{tab:data-dictionary} \\
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Attribute} & \textbf{Description} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+
+\textbf{playerName} & String, the display name shown for each player in the game. \\
+\textbf{playerHand} & List of Card objects, the player's hand of cards. \\
+\textbf{IsHuman} & Boolean, true if the player is a human, false for AI. \\
+\textbf{playerHandTransform} & Unity Transform object for displaying a human player's cards. \\
+\textbf{aiHandTransform} & List of Unity Transforms used for displaying AI player hands. \\
+\textbf{startingHandSize} & Integer, the number of cards each player starts with. \\
+
+\textbf{players} & List of Player objects, representing all participants in the game. \\
+\textbf{deck} & Deck object containing all game cards. \\
+\textbf{numberOfAiPlayers} & Integer, how many AI players are in the current session. \\
+\textbf{currentPlayer} & Integer, index of the current player in the players list. \\
+\textbf{playDirection} & Integer, 1 for clockwise, -1 for counterclockwise. \\
+\textbf{discardPileTransform} & Unity Transform where discarded cards are placed. \\
+\textbf{topCard} & CardDisplay object showing the last played card. \\
+\textbf{topColour} & Enum, active color declared by the last Wild card played. \\
+\textbf{unoCalled} & Boolean, true if the current player has declared UNO. \\
+\textbf{wildPanel} & GameObject, UI panel allowing wild card color selection. \\
+\textbf{winPanel} & GameObject, UI panel showing game result. \\
+\textbf{winningText} & String, displays which player has won. \\
+\textbf{playerHighlights} & List of Image objects used to highlight the current player. \\
+\textbf{playerCardCount} & List of Text objects displaying card count for each player. \\
+\textbf{messageText} & Text element showing status messages to players. \\
+\textbf{humanHasTurn} & Boolean, true if the human player is active this turn. \\
+
+\textbf{CardID} & Integer, unique identifier for each card. \\
+\textbf{Color} & Enum, (Red, Yellow, Green, Blue, Black), the color of the card. \\
+\textbf{Value} & Enum, (0–9, Draw 1, Draw 2, Draw 5, Skip, Reverse, Flip, Wild), the action or number on the card. \\
+\textbf{IsFlipped} & Boolean, indicates whether the card is on its flipped side. \\
+\textbf{CardFront} & Struct, data representing the normal side of the card. \\
+\textbf{CardBack} & Struct, data representing the flipped side of the card. \\
+\textbf{CardState} & Enum, FRONT or BACK to determine which side is currently active. \\
+\textbf{IsPlayable} & Boolean, indicates if the card can legally be played this turn. \\
+
+\textbf{DeckID} & Integer, unique identifier for each deck used in a game. \\
+\textbf{Cards} & List of Card objects, includes all available cards. \\
+\textbf{Draw()} & Function, returns the top card from the deck. \\
+\textbf{Shuffle()} & Function, shuffles the cards in the deck. \\
+\textbf{InitializeDeck()} & Function, sets up the full set of playable cards. \\
+
+\textbf{SelectedWildColor} & Enum, (Red, Yellow, Green, Blue), player’s selection after a Wild card. \\
+\textbf{CurrentPlayerIndex} & Integer, position in player list whose turn it is. \\
+\textbf{PlayDirection} & Integer, 1 for clockwise, -1 for counterclockwise. \\
+\textbf{HumanHasTurn} & Boolean, true when it’s the human player’s move. \\
+\end{longtable}
