@@ -1,6 +1,5 @@
 \documentclass[12pt, titlepage]{article}
 
-
 \usepackage{fullpage}
 \usepackage[round]{natbib}
 \usepackage{multirow}
@@ -8,8 +7,16 @@
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % for strikethrough in \removed{}
 \usepackage{hyperref}
 
+% Define program name
+\newcommand{\progname}{UNO Flip Remix}
+
+% Change tracking macros
+\newcommand{\removed}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand{\added}[1]{\textcolor{green}{#1}}
 
 \hypersetup{
     colorlinks,
@@ -18,7 +25,6 @@
     linkcolor=blue,
     urlcolor=blue
 }
-
 
 \newcounter{acnum}
 \newcommand{\actheacnum}{AC\theacnum}
@@ -34,7 +40,7 @@
 
 \begin{document}
 
-\title{Module Guide for UNO-Flip\progname{}} 
+\title{Module Guide for \progname} 
 
 \author{
 \begin{tabular}{c}
@@ -44,7 +50,7 @@ Mingyang Xu \\
 Jiahao Wei \\
 Kevin Ishak \\
 Zain-Alabedeen Garada \\
-Zheng Bang Liang \\
+\removed{Zheng Bang Liang} \\
 \end{tabular}
 }
 
@@ -66,12 +72,12 @@ Zheng Bang Liang \\
 2025 Jan 14 & 1.1 & Start section 5-7 & Mingyang Xu\\
 2025 Jan 15 & 1.2 & Start section 7-11 & Mingyang Xu\\
 2025 Jan 17 & 1.3 & Fix small error based on TA's feedback & Mingyang Xu\\
+\added{2025 Mar 31} & \added{2.0} & \added{Comprehensive revision based on TA feedback for final report} & \added{Kevin Ishak} \\
 \bottomrule
 \end{tabularx}
 \caption{Revision History}
 \label{tab:revision_history}
 \end{table}
-
 
 \newpage
 
@@ -84,7 +90,7 @@ This section records information for easy reference.
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{l l} 
   \toprule		
-  \textbf{symbol} & \textbf{description}\\
+  \textbf{Symbol} & \textbf{Description}\\
   \midrule 
   AC & Anticipated Change\\
   DAG & Directed Acyclic Graph \\
@@ -94,13 +100,10 @@ This section records information for easy reference.
   R & Requirement\\
   SC & Scientific Computing \\
   SRS & Software Requirements Specification\\
-  \progname & Explanation of program name\\
   UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
+  etc. & ...\\
   \bottomrule
-\end{tabular}\\
-
-\newpage
+\end{tabular}
 
 \tableofcontents
 
@@ -111,23 +114,16 @@ This section records information for easy reference.
 \newpage
 
 \pagenumbering{arabic}
-% 添加标题
-
-
-% 简介
-
-
-
-
 
 \section{Introduction}
 
-Developing software through modular decomposition is a well-accepted practice in software engineering. A module is defined as a work assignment for a programmer or programming team 24. This approach allows the software system to be divided into manageable components, enhancing scalability, maintainability, and adaptability. In this project, we follow the principle of information hiding \href{https://stackoverflow.com/questions/24626/abstraction-vs-information-hiding-vs-encapsulation}{ POIH}, which is essential for accommodating changes during development and maintenance. Given the dynamic and interactive nature of the UNO Flip game, this principle is particularly relevant to ensure flexibility as new features or rules may be incorporated in the future.
+Developing software through modular decomposition is a well-accepted practice in software engineering. A module is defined as a work assignment for a programmer or programming team 24. This approach allows the software system to be divided into manageable components, enhancing scalability, maintainability, and adaptability. In this project, we follow the principle of information hiding \href{https://stackoverflow.com/questions/24626/abstraction-vs-information-hiding-vs-encapsulation}{POIH}, which is essential for accommodating changes during development and maintenance. Given the dynamic and interactive nature of the UNO Flip game, this principle is particularly relevant to ensure flexibility as new features or rules may be incorporated in the future.
 
-UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with "light" and "dark" sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations.
+UNO Flip is a modern twist on the traditional UNO card game, incorporating an innovative double-sided card deck with "light" and "dark" sides. Players are challenged to adapt their strategies dynamically as the game flips between these two modes. Our goal for this project is to design and develop a digital version of UNO Flip that emulates the physical gameplay experience while adding features like automated rule enforcement, multiplayer support, and interactive animations. 
+
+\added{Unlike traditional UNO, UNO Flip introduces additional complexity via the “Flip” card, which causes all players to switch their hands, draw piles, and discard piles to the opposite side (light to dark or vice versa). Each side contains different types of action cards — for example, the dark side includes more punishing cards such as Draw Five, Skip Everyone, and Wild Draw Color. These dynamic rule changes make the game unpredictable and require more advanced rule enforcement logic. Implementing this flipping mechanism digitally — especially while synchronizing state across multiple players in a real-time networked game — significantly increases design complexity.}
 
 To ensure a robust and maintainable design, we adhere to the modular design principles established by \href{https://cabibbo.dia.uniroma3.it/asw/altrui/parnas-1972.pdf}{David L. Parnas}
-
 
 \begin{itemize}
 \item System details that are likely to change independently, such as game rules or graphical user interface (GUI) elements, are encapsulated within separate modules.
@@ -136,7 +132,7 @@ To ensure a robust and maintainable design, we adhere to the modular design prin
 \end{itemize}
 
 After completing the initial design phase, including the Software Requirements Specification 
-\href{https://github.com/simon-0215/UNO-Flip-3D/tree/main/docs/SRS-Volere}{SRS Volere }, we created the Module Guide \href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}{ (MG)}. The MG outlines the modular structure of the system and serves as a comprehensive reference for all stakeholders. This document is aimed at the following audiences:
+\href{https://github.com/simon-0215/UNO-Flip-3D/tree/main/docs/SRS-Volere}{SRS Volere}, we created the Module Guide \href{https://github.com/simon-0215/UNO-Flip-3D/blob/main/docs/Design/SoftArchitecture/MG.pdf}{(MG)}. The MG outlines the modular structure of the system and serves as a comprehensive reference for all stakeholders. This document is aimed at the following audiences:
 
 \begin{itemize}
 \item \textbf{New project members:} The MG provides a clear overview of the system's modular structure, enabling new members to understand the architecture and locate relevant modules efficiently.
@@ -147,7 +143,6 @@ After completing the initial design phase, including the Software Requirements S
 The rest of this document is structured as follows. Section~\ref{SecChange} outlines the anticipated and unlikely changes in the software requirements, such as the introduction of new game rules or enhancements to the multiplayer functionality. Section~\ref{SecMH} describes the module decomposition strategy, constructed based on the principle of likely changes. Section~\ref{SecConnection} details the connections between the software requirements and the modules. Section~\ref{SecMD} provides a comprehensive description of each module, including its responsibilities and dependencies. Section~\ref{SecTM} includes traceability matrices to ensure the completeness of the design relative to the requirements and anticipated changes. Finally, Section~\ref{SecUse} discusses the use relationships between modules, highlighting their interactions and dependencies.
 
 This modular approach ensures that our UNO Flip software can be developed efficiently while maintaining the flexibility to adapt to future requirements and user feedback.
-
 
 \section{Anticipated and Unlikely Changes} \label{SecChange}
 
@@ -161,8 +156,7 @@ unlikely changes are listed in Section \ref{SecUchange}.
 Anticipated changes are the source of the information that is to be hidden
 inside the modules. Ideally, changing one of the anticipated changes will only
 require changing the one module that hides the associated decision. The approach
-adapted here is called design for
-change.
+adapted here is called design for change.
 
 \begin{description}
 \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
@@ -180,9 +174,8 @@ change.
   \textit{Explanation:} Switching from an existing protocol (e.g., UDP) to a more secure or efficient one (e.g., WebSockets) should only require modifications to the networking module.
 \end{description}
 
-\wss{Anticipated changes relate to changes that would be made in requirements,
-design or implementation choices.  They are not related to changes that are made
-at run-time, like the values of parameters.}
+% Note: Anticipated changes are design-level changes that are likely to occur over time.
+% They are not related to runtime parameters like gameplay inputs or player preferences.
 
 \subsection{Unlikely Changes} \label{SecUchange}
 
@@ -208,7 +201,6 @@ decisions will be changed.
   \textit{Explanation:} Although possible, replacing all assets would involve modifying Unity scenes, prefabs, and animations extensively, which is not a likely requirement.
 \end{description}
 
-
 \section{Module Hierarchy} \label{SecMH}
 
 This section provides an overview of the module design. Modules are summarized
@@ -217,49 +209,53 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module \\
-  \textit{Purpose:} This module isolates hardware-specific dependencies, such as rendering devices, input devices, and memory management. It allows the rest of the system to remain platform-independent by using Unity's built-in hardware abstraction.
-  
-\item [\refstepcounter{mnum} \mthemnum \label{mBH}:] Software Decision Module \\
-  \textit{Purpose:} Encapsulates the core gameplay logic, such as player actions, turn mechanics, and rule enforcement, ensuring that other modules can interact with game behavior through a unified interface.
+\item[\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module \\
+  \removed{\textit{Purpose:} This module isolates hardware-specific dependencies, such as rendering devices, input devices, and memory management. It allows the rest of the system to remain platform-independent by using Unity's built-in hardware abstraction.}
+  \textit{Purpose:} Isolates hardware-specific dependencies such as rendering devices, input/output handling, and system memory. Enables the rest of the system to remain platform-independent by leveraging Unity's hardware abstraction layer.
 
-\item [\refstepcounter{mnum} \mthemnum \label{mSD}:] Behaviour-Hiding Module \\
-  \textit{Purpose:} Handles system-wide decisions, including UI updates, multiplayer network protocols, and game state transitions. This module integrates decisions that impact user interaction and system-wide consistency.
+\item[\refstepcounter{mnum} \mthemnum \label{mBH}:] Behaviour-Hiding Module \\
+  \removed{\textit{Purpose:} Encapsulates the core gameplay logic, such as player actions, turn mechanics, and rule enforcement, ensuring that other modules can interact with game behavior through a unified interface.}
+  \textit{Purpose:} Encapsulates the system-wide logic that connects user interaction with game state, such as UI updates, animation transitions, turn sequencing, card effects, and score tracking. This layer maintains internal logic without exposing implementation details.
 
+\item[\refstepcounter{mnum} \mthemnum \label{mSD}:] Software Decision Module \\
+  \removed{\textit{Purpose:} Handles system-wide decisions, including UI updates, multiplayer network protocols, and game state transitions. This module integrates decisions that impact user interaction and system-wide consistency.}
+  \textit{Purpose:} Contains logic specific to internal implementation choices, such as communication protocols (e.g., TCP/WebSocket), save/load functionality, and architectural constraints that are not visible to the user. These decisions are not described in the SRS but are essential for system operation.
 \end{description}
 
+\newpage
 
-\begin{table}[h!]
+\added{The module hierarchy table has been updated to improve clarity and consistency with the module decomposition described throughout this document. All module names have been fully spelled out for readability, the Verification Module has been added to align with the SRS and MIS, and the Turn Management Module has been reclassified as an Abstract Object to better reflect its role in implementing logic rather than merely holding data. These revisions address prior inconsistencies and ensure the design more accurately reflects the implemented architecture.}
+
+
+\begin{table}[H]
 \centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{0.3\textwidth} p{0.65\textwidth}}
 \toprule
-\textbf{Level 1} & \textbf{Level 2}\\
+\textbf{Level 1} & \textbf{Level 2} \\
 \midrule
 
-{Hardware-Hiding Module} & \textit{Hardware Abstraction module: Isolate hardware-specific dependencies, such as rendering devices and input/output handling.}\\
+Hardware-Hiding Module & Hardware Abstraction Module: Isolates platform-specific rendering and input/output concerns. \\
 \midrule
 
-\multirow{5}{0.3\textwidth}{Behaviour-Hiding Module} 
-& Game Logic Module: Handles player actions, turn mechanics, and card rules enforcement.\\
-& Turn Management Module: Ensures correct sequencing of turns, including handling "Skip" or "Reverse" cards.\\
-& Card Effect Module: Implements special card effects such as "Flip" or "Draw Two."\\
-& Score Tracking Module: Manages player scores and determines game-winning conditions.\\
-& Animation Module: Handles animations for card movements, flips, and effects using Unity's animation system.\\
-
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module}
+& Game Logic Module: Manages turn flow, rule checking, and state updates during gameplay. \\
+& Turn Management Module: Sequences player turns and handles logic for "Skip", "Reverse", and "Draw" cards. (Abstract Object) \\
+& Card Effect Module: Executes effects of special cards like “Flip” and “Draw Five.” \\
+& Score Tracking Module: Calculates and updates scores in real time and at end-of-game. \\
+& UI Module: Manages interface elements such as player HUD, hand display, and animations. \\
+& Animation Module: Controls card transitions, flip animations, and victory/loss feedback. \\
+& Verification Module: Checks rule enforcement, illegal moves, and final game validity. \\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} 
-& UI Module: Manages user interface components, including menus, HUD, and accessibility options.\\
-& Multiplayer Networking Module: Handles online player interactions, matchmaking, and game state synchronization.\\
-& Save/Load Module: Provides functionality for saving and loading game progress.\\
-
+\multirow{2}{0.3\textwidth}{Software Decision Module}
+& Multiplayer Networking Module: Implements client-server communication, matchmaking, and state syncing. \\
+& Save/Load Module: Manages persistence of game state across sessions. \\
 \bottomrule
-
 \end{tabular}
 \caption{Module Hierarchy}
 \label{TblMH}
 \end{table}
-
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
@@ -267,94 +263,90 @@ The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
 between requirements and modules is listed in Table~\ref{TblRT}.
 
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-  requirements with a password.}
+\added{To improve traceability, we now refer to specific module identifiers using \texttt{\textbackslash mref\{\}} where appropriate. Additionally, details have been added to clarify the enforcement of UNO Flip's special rule logic.}
 
 \subsection{R1: Basic Game Interaction and Hardware Support}
 The system must provide basic interaction capabilities, including:
 \begin{itemize}
-    \item Managing player turns through a turn management system.
-    \item Handling user inputs from hardware devices and abstracting them into standard data formats.
-    \item Displaying the game state through a user interface.
-    \item Ensuring compatibility with hardware platforms via a hardware-hiding module.
+    \item Managing player turns through a turn management system \added{(\mref{mTM})}.
+    \item Handling user inputs from hardware devices and abstracting them into standard data formats \added{(\mref{mHH})}.
+    \item Displaying the game state through a user interface \added{(\mref{mUI})}.
+    \item Ensuring compatibility with hardware platforms via a hardware-hiding module \added{(\mref{mHH})}.
 \end{itemize}
 
 \subsection{R2: Input Processing and Special Card Effects}
 The system must process user inputs and execute card effects accurately, including:
 \begin{itemize}
-    \item Standardizing user inputs into a format usable by the game logic.
-    \item Implementing special card effects, such as "Flip," "Skip," and "Draw Two," to update the game state accordingly.
+    \item Standardizing user inputs into a format usable by the game logic \added{(\mref{mBH}, \mref{mSD})}.
+    \item Implementing special card effects, such as "Flip," "Skip," and "Draw Two," to update the game state accordingly \added{via the \mref{mCE} module and enforced by \mref{mTM} and \mref{mBH}}.
+    \item \added{Card effect validation ensures illegal plays are blocked, and effects are triggered using internal enums and state handlers.}
 \end{itemize}
 
 \subsection{R3: Verification and Score Tracking}
 The system must verify the correctness of game outcomes and track player scores, including:
 \begin{itemize}
-    \item Ensuring compliance with game rules and expected results.
-    \item Recording and updating player scores dynamically.
+    \item Ensuring compliance with game rules and expected results \added{(\mref{mVerification})}.
+    \item Recording and updating player scores dynamically \added{(\mref{mScore})}.
     \item Providing a summary of scores at the end of the game.
 \end{itemize}
 
 \subsection{R4: Output Rendering and Game Control}
 The system must render game outputs and manage overall control flow, including:
 \begin{itemize}
-    \item Displaying game outputs, such as scoreboards and game results.
-    \item Managing state transitions and ensuring synchronization between modules.
+    \item Displaying game outputs, such as scoreboards and game results \added{(\mref{mUI})}.
+    \item Managing state transitions and ensuring synchronization between modules \added{(\mref{mControl})}.
     \item Handling error states gracefully.
 \end{itemize}
 
 \subsection{R5: Animation and Special Card Interaction}
 The system must support animations and ensure proper handling of special card interactions, including:
 \begin{itemize}
-    \item Providing smooth animations for card movements and flips.
-    \item Ensuring special card effects are visually represented and correctly executed.
+    \item Providing smooth animations for card movements and flips \added{(\mref{mAM})}.
+    \item Ensuring special card effects are visually represented and correctly executed \added{by coupling card effect logic (\mref{mCE}) with animation triggers (\mref{mAM})}.
+    \item \added{Animations are context-aware — for example, the “Flip” animation is activated when a Flip card is played, and player hands are updated accordingly.}
 \end{itemize}
 
 \subsection{R6: Advanced Game Outputs and Interactions}
 The system must handle complex interactions and advanced output scenarios, including:
 \begin{itemize}
     \item Supporting additional game scenarios with detailed outputs.
-    \item Ensuring consistency in interactions across all modules.
+    \item Ensuring consistency in interactions across all modules \added{(\mref{mControl}, \mref{mUI}, \mref{mScore})}.
 \end{itemize}
 
 \subsection{R7: User Interface and Score Integration}
 The system must integrate user interface elements with score tracking, including:
 \begin{itemize}
-    \item Displaying dynamic score updates during gameplay.
+    \item Displaying dynamic score updates during gameplay \added{(\mref{mUI}, \mref{mScore})}.
     \item Providing interactive elements for players to review their scores.
 \end{itemize}
 
 \subsection{R8: Animation and User Interaction Synchronization}
 The system must synchronize animations with user interactions, including:
 \begin{itemize}
-    \item Ensuring animations are consistent with game logic.
+    \item Ensuring animations are consistent with game logic \added{(\mref{mAM}, \mref{mControl})}.
     \item Allowing user inputs to interrupt or modify animations as needed.
 \end{itemize}
 
 \subsection{R9: Save and Load Functionality}
 The system must provide save and load functionality, including:
 \begin{itemize}
-    \item Saving the current game state to a file or database.
+    \item Saving the current game state to a file or database \added{(\mref{mSL})}.
     \item Loading a saved game state and resuming gameplay seamlessly.
 \end{itemize}
 
 \subsection{R10: Output and Special Card Integration}
 The system must integrate output rendering with special card effects, including:
 \begin{itemize}
-    \item Displaying the outcomes of special card effects clearly.
-    \item Ensuring game outputs are consistent with the effects of special cards.
+    \item Displaying the outcomes of special card effects clearly \added{(\mref{mUI})}.
+    \item Ensuring game outputs are consistent with the effects of special cards \added{(\mref{mCE})}.
 \end{itemize}
 
 \subsection{R11: Advanced Scoring and Control Logic}
 The system must handle advanced scoring scenarios and control logic, including:
 \begin{itemize}
-    \item Supporting complex scoring rules and tie-breaking scenarios.
-    \item Managing game control logic for multiplayer and advanced game modes.
+    \item Supporting complex scoring rules and tie-breaking scenarios \added{(\mref{mScore})}.
+    \item Managing game control logic for multiplayer and advanced game modes \added{(\mref{mControl}, \mref{mMultiplayer})}.
 \end{itemize}
-
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -365,137 +357,158 @@ module. The \emph{Services} field specifies \emph{what} the module will do
 without documenting \emph{how} to do it. For each module, a suggestion for the
 implementing software is given under the \emph{Implemented By} title. If the
 entry is \emph{OS}, this means that the module is provided by the operating
-system or by standard programming language libraries.  \emph{\progname{}} means the
-module will be implemented by the \progname{} software.
+system or by standard programming language libraries.  If the entry is "UNO Flip Remix", it means the module will be implemented by the UNO Flip Remix software.
 
 Only the leaf modules in the hierarchy have to be implemented. If a dash
 (\emph{--}) is shown, this means that the module is not a leaf and will not have
 to be implemented.
 
-\subsection{HH (Hardware-Hiding Module)}
+\subsection{HH (Hardware-Hiding Module)} \label{mHH}
 
 \begin{description}
-\item[Secrets:] The data structure and algorithm used to implement the virtual
-  hardware.
-\item[Services:] Serves as a virtual hardware used by the rest of the
-  system. This module provides the interface between the hardware and the
-  software, allowing the system to display outputs or accept inputs.
+\item[Secrets:] The data structure and algorithm used to implement the virtual hardware.
+\item[Services:] Serves as a virtual hardware used by the rest of the system. This module provides the interface between the hardware and the software, allowing the system to display outputs or accept inputs.
 \item[Implemented By:] OS
 \end{description}
 
-\subsection{BH (Behaviour-Hiding Module)}
+\subsection{BH (Behaviour-Hiding Module)} \label{mBH}
 
 \begin{description}
 \item[Secrets:] The contents of the required behaviours, including turn management, game logic, and card effects.
-\item[Services:] Includes programs that provide externally visible behaviours of
-  the system as specified in the software requirements specification (SRS)
-  documents. This module serves as a communication layer between the
-  hardware-hiding module and the software decision module. The programs in this
-  module will need to change if there are changes in the SRS.
+\item[Services:] Includes programs that provide externally visible behaviours of the system as specified in the software requirements specification (SRS) documents. This module serves as a communication layer between the hardware-hiding module and the software decision module. The programs in this module will need to change if there are changes in the SRS.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{IM (Input Module)}
+\subsubsection{IM (Input Module)} \label{mIM}
 
 \begin{description}
 \item[Secrets:] The format and structure of the input data, including data serialization for communication.
-\item[Services:] Converts the input data into the data structure used by other
-  modules, such as the game logic or UI modules.
-\item[Implemented By:] \progname{}
+\item[Services:] Converts the input data into the data structure used by other modules, such as the game logic or UI modules.
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Data Type
 \end{description}
 
-\subsubsection{CE (Card Effect Module)}
+\subsubsection{CE (Card Effect Module)} \label{mCE}
 
 \begin{description}
 \item[Secrets:] The implementation details of special card effects, such as "Flip," "Skip," and "Draw Two."
 \item[Services:] Executes the effects of special cards and updates the game state accordingly.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{TM (Turn Management Module)}
+\subsubsection{TM (Turn Management Module)} \label{mTM}
 
 \begin{description}
 \item[Secrets:] The sequence and rules for determining the current player.
 \item[Services:] Manages the order of player turns, including handling special conditions like "Reverse" or "Skip" cards.
-\item[Implemented By:] \progname{}
-\item[Type of Module:] Record
+\item[Implemented By:] UNO Flip Remix
+\item[Type of Module:] \removed{Record} \added{Abstract Object}
 \end{description}
 
-\subsection{OM (Output Module)}
+\added{
+\subsubsection{GL (Game Logic Module)} \label{mGL}
+
+\begin{description}
+\item[Secrets:] The rules and logic for gameplay mechanics, including valid moves and player actions.
+\item[Services:] Manages turn resolution, validates moves, updates the game state, and communicates changes to other modules.
+\item[Implemented By:] UNO Flip Remix
+\item[Type of Module:] Abstract Object
+\end{description}
+}
+
+\added{
+\subsubsection{ST (Score Tracking Module)} \label{mScore}
+
+\begin{description}
+\item[Secrets:] The logic for calculating scores and determining game winners.
+\item[Services:] Tracks each player's points, updates scores based on remaining cards, and triggers win conditions.
+\item[Implemented By:] UNO Flip Remix
+\item[Type of Module:] Abstract Object
+\end{description}
+}
+
+\added{
+\subsubsection{VM (Verification Module)} \label{mVerification}
+
+\begin{description}
+\item[Secrets:] The conditions for rule legality and move validation.
+\item[Services:] Prevents illegal moves, checks that actions conform to game rules, and triggers alerts or skips turns as needed.
+\item[Implemented By:] UNO Flip Remix
+\item[Type of Module:] Abstract Object
+\end{description}
+}
+
+\subsection{OM (Output Module)} \label{mOM}
 
 \begin{description}
 \item[Secrets:] The formatting and rendering of game outputs, such as scoreboards and game results.
 \item[Services:] Provides visual or textual outputs to the user based on the game state.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsection{CM (Control Module)}
+\subsection{CM (Control Module)} \label{mCM}
 
 \begin{description}
 \item[Secrets:] The logic governing the control flow of the game, including state transitions and error handling.
 \item[Services:] Manages the overall game control, ensuring synchronization between modules.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{VO (Verification Output Module)}
+\subsubsection{VO (Verification Output Module)} \label{mVO}
 
 \begin{description}
 \item[Secrets:] The methods used to verify the correctness of game outputs.
 \item[Services:] Validates the final output of the game, ensuring compliance with rules and expected results.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{SL (Save/Load Module)}
+\subsubsection{SL (Save/Load Module)} \label{mSL}
 
 \begin{description}
 \item[Secrets:] The structure and format of saved game data.
 \item[Services:] Allows saving the current game state and loading it at a later time.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{AM (Animation Module)}
+\subsubsection{AM (Animation Module)} \label{mAM}
 
 \begin{description}
 \item[Secrets:] The implementation details of animations, including transitions and visual effects.
 \item[Services:] Provides animations for card movements, flips, and game interactions.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Object
 \end{description}
 
-\subsection{SD (Software Decision Module)}
+\subsection{SD (Software Decision Module)} \label{mSD}
 
 \begin{description}
 \item[Secrets:] The design decisions based on performance optimizations, networking protocols, and user interaction considerations. These secrets are \emph{not} described in the SRS.
-\item[Services:] Includes data structures and algorithms used in the system that
-  do not provide direct interaction with the user, such as multiplayer matchmaking and game state synchronization.
-\item[Implemented By:] \progname{}
+\item[Services:] Includes data structures and algorithms used in the system that do not provide direct interaction with the user, such as multiplayer matchmaking and game state synchronization.
+\item[Implemented By:] UNO Flip Remix
 \end{description}
 
-\subsubsection{MN (Multiplayer Networking Module)}
+\subsubsection{MN (Multiplayer Networking Module)} \label{mMN}
 
 \begin{description}
 \item[Secrets:] The implementation details of real-time communication, including protocols like UDP or WebSocket.
 \item[Services:] Handles communication between players, including matchmaking, game state synchronization, and latency management.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Library
 \end{description}
 
-\subsubsection{UI (User Interface Module)}
+\subsubsection{UI (User Interface Module)} \label{mUI}
 
 \begin{description}
 \item[Secrets:] The layout and design of user interface components, such as menus, HUD, and accessibility features.
 \item[Services:] Displays the game state to the user and accepts user inputs through various interactive elements.
-\item[Implemented By:] \progname{}
+\item[Implemented By:] UNO Flip Remix
 \item[Type of Module:] Abstract Object
 \end{description}
-
-
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -508,17 +521,17 @@ requirements and between the modules and the anticipated changes.
 \toprule
 \textbf{Requirement (Req.)} & \textbf{Modules}\\
 \midrule
-R1 & Hardware Handler, Input Manager, Turn Manager, User Interface\\
-R2 & Input Manager, Card Effect Module\\
-R3 & Verification Manager, Score Tracker\\
-R4 & Output Manager, Card Effect Module, User Interface\\
-R5 & Card Effect Module, Turn Manager, Control Logic Module, Animation Manager\\
-R6 & Output Manager, Card Effect Module, Control Logic Module, Turn Manager\\
-R7 & User Interface, Score Tracker, Control Logic Module, Turn Manager\\
-R8 & User Interface, Animation Manager, Control Logic Module, Turn Manager\\
-R9 & Verification Output, Save/Load Mechanism\\
-R10 & Output Manager, Card Effect Module, Control Logic Module\\
-R11 & Output Manager, Card Effect Module, Score Tracker, Control Logic Module\\
+R1 & \added{Hardware-Hiding Module, Input Module, Turn Management Module, User Interface Module}\\
+R2 & \added{Input Module, Card Effect Module}\\
+R3 & \added{Verification Module, Verification Output Module, Score Tracking Module}\\
+R4 & \added{Output Module, Card Effect Module, Control Module, User Interface Module}\\
+R5 & \added{Card Effect Module, Turn Management Module, Control Module, Animation Module}\\
+R6 & \added{Output Module, Card Effect Module, Control Module, Turn Management Module, Game Logic Module}\\
+R7 & \added{User Interface Module, Score Tracking Module, Control Module}\\
+R8 & \added{User Interface Module, Animation Module, Control Module}\\
+R9 & \added{Verification Output Module, Save/Load Module}\\
+R10 & \added{Output Module, Card Effect Module, Control Module}\\
+R11 & \added{Output Module, Card Effect Module, Score Tracking Module, Control Module}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Requirements and Modules}
@@ -531,57 +544,46 @@ R11 & Output Manager, Card Effect Module, Score Tracker, Control Logic Module\\
 \toprule
 \textbf{Anticipated Change (AC)} & \textbf{Modules}\\
 \midrule
-Hardware Change & Hardware Handler\\
-Input Change & Input Manager\\
-Turn Management & Turn Manager\\
-UI Update & User Interface\\
-Card Effect Update & Card Effect Module\\
-Verification Update & Verification Manager, Verification Output\\
-Output Update & Output Manager\\
-Animation Update & Animation Manager\\
-Save/Load Update & Save/Load Mechanism\\
-Control Logic & Control Logic Module\\
-Score Tracking & Score Tracker\\
+Hardware Change & \added{Hardware-Hiding Module}\\
+Input Change & \added{Input Module}\\
+Turn Management & \added{Turn Management Module}\\
+UI Update & \added{User Interface Module}\\
+Card Effect Update & \added{Card Effect Module}\\
+Verification Update & \added{Verification Module, Verification Output Module}\\
+Output Update & \added{Output Module}\\
+Animation Update & \added{Animation Module}\\
+Save/Load Update & \added{Save/Load Module}\\
+Control Logic & \added{Control Module, Game Logic Module}\\
+Score Tracking & \added{Score Tracking Module}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
 \label{TblACT}
 \end{table}
 
-
-
-
 \section{Use Hierarchy Between Modules} \label{SecUse}
 
-In this section, the uses hierarchy between modules is
-provided. \citet{Parnas1978} said of two programs A and B that A {\em uses} B if
+In this section, the uses hierarchy between modules is provided. \citet{Parnas1978} said of two programs A and B that A {\em uses} B if
 correct execution of B may be necessary for A to complete the task described in
 its specification. That is, A {\em uses} B if there exist situations in which
 the correct functioning of A depends upon the availability of a correct
-implementation of B.  Figure \ref{FigUH} illustrates the use relation between
-the modules. It can be seen that the graph is a directed acyclic graph
-(DAG). Each level of the hierarchy offers a testable and usable subset of the
-system, and modules in the higher level of the hierarchy are essentially simpler
-because they use modules from the lower levels.
+implementation of B.
 
-\wss{The uses relation is not a data flow diagram.  In the code there will often
-be an import statement in module A when it directly uses module B.  Module B
-provides the services that module A needs.  The code for module A needs to be
-able to see these services (hence the import statement).  Since the uses
+The uses relation is not a data flow diagram. In the code there will often
+be an import statement in module A when it directly uses module B. Module B
+provides the services that module A needs. The code for module A needs to be
+able to see these services (hence the import statement). Since the uses
 relation is transitive, there is a use relation without an import, but the
-arrows in the diagram typically correspond to the presence of import statement.}
+arrows in the diagram typically correspond to the presence of an import statement.
 
-\wss{If module A uses module B, the arrow is directed from A to B.}
+If module A uses module B, the arrow is directed from A to B.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{output.png}
+\includegraphics[width=0.9\textwidth]{output.png}
 \caption{Use hierarchy among modules}
 \label{FigUH}
 \end{figure}
-
-
-%\section*{References}
 
 \section{User Interfaces}
 
@@ -594,13 +596,18 @@ The user interface (UI) design for this system focuses on creating an intuitive 
     \item \textbf{Pop-Up Notifications:} Notifications are used to inform players about special events, such as a "Skip" card being played or a turn being reversed.
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{ui-diagram.png}
+\caption{UI State Diagram showing menu navigation and in-game transitions}
+\label{fig:ui-diagram}
+\end{figure}
+
 \subsection{Hardware User Interface}
 \begin{itemize}
     \item \textbf{Input Devices:} Supports mouse, keyboard, and touchscreens for input.
     \item \textbf{Output Devices:} Designed for compatibility with various screen sizes and resolutions.
 \end{itemize}
-
-
 
 \section{Design of Communication Protocols}
 
@@ -608,59 +615,73 @@ The communication protocols in this system ensure reliable and efficient data ex
 
 \subsection{Protocol Overview}
 \begin{itemize}
-    \item \textbf{Transport Layer:} Uses WebSocket protocol for real-time communication in multiplayer games. Ensures low latency and high reliability.
+    \item \textbf{Transport Layer:} Uses a custom TCP socket-based server to facilitate real-time communication between Unity clients. TCP ensures reliable packet delivery and strict message ordering.
     \item \textbf{Message Format:} Messages are serialized using JSON for simplicity and compatibility. Each message includes a header (e.g., message type) and a body (e.g., card played, turn updated).
+    \item \added{Each message is parsed by the Multiplayer Networking Module, which ensures it adheres to the defined protocol and updates the game state accordingly.}
 \end{itemize}
 
 \subsection{Error Handling and Recovery}
 \begin{itemize}
-    \item \textbf{Connection Loss:} Implements a reconnection mechanism to recover lost connections without disrupting the game state.
-    \item \textbf{Invalid Messages:} Validates incoming messages to ensure compliance with the protocol specification. Invalid messages are logged and discarded.
+    \item \textbf{Connection Loss:} The server supports reconnection attempts from clients. A basic handshake is re-established to restore session state with minimal disruption.
+    \item \textbf{Invalid Messages:} The server validates incoming messages to ensure compliance with the expected structure. Invalid or malformed data is logged and rejected to maintain state consistency.
+    \item \added{Keep-alive messages (heartbeats) may be used to monitor client activity and prevent dropped connections from going unnoticed.}
 \end{itemize}
 
 \subsection{Security}
 \begin{itemize}
-    \item \textbf{Encryption:} All data exchanged between clients and the server is encrypted using TLS to ensure data security.
-    \item \textbf{Authentication:} Players are authenticated via a token-based system to prevent unauthorized access.
+    \item \textbf{Encryption:} \added{This implementation does not currently use TLS or any form of encrypted messaging. All traffic between clients and the TCP server is unencrypted, which is acceptable for local testing or internal usage.}
+    \item \textbf{Authentication:} \added{No authentication system is in place. Players connect to the server via raw TCP, and once connected, they are prompted to enter a player name before beginning matchmaking.}
+    \item \textbf{Session Control:} \added{The server tracks connected clients and matches them in pairs to initiate a game. Game sessions are maintained server-side until completion.}
 \end{itemize}
 
-
-
-
 \section{Timeline}
-
-\wss{Schedule of tasks and who is responsible}
-
-\wss{You can point to GitHub if this information is included there}
 
 \begin{itemize}
     \item \textbf{January 20 – January 25: Project Planning and Requirements Gathering} \\
     Responsible: Jianhao Wei
-    \item \textbf{January 26 – February 5: Game Core Development} \\
-    Responsible: Zheng Bang Liang, Mingyang Xu
-    \item \textbf{February 6 – February 12: User Interface Development} \\
+
+    \item \textbf{January 26 – February 5: Game Core Development (Deck, Turn, Card Effect Systems)} \\
+    Responsible: Mingyang Xu, Zheng Bang Liang
+
+    \item \textbf{February 6 – February 12: UI and Game State Integration} \\
     Responsible: Zain-Alabedeen Garada, Kevin Ishak
-    \item \textbf{February 13 – February 20: Multiplayer and Network Functionality} \\
-    Responsible: Mingyang Xu, Zain-Alabedeen Garada
-    \item \textbf{February 21 – February 28: Integration and Initial Testing} \\
-    Responsible: Jianhao Wei, Kevin Ishak
-    \item \textbf{March 1 – March 10: Feedback and Feature Refinement} \\
-    Responsible: Zheng Bang Liang, Zain-Alabedeen Garada
-    \item \textbf{March 11 – March 20: Final Testing and Deployment} \\
-    Responsible: Jianhao Wei, Mingyang Xu, Kevin Ishak
+
+    \item \textbf{February 13 – February 20: Pre-Rev 0 Testing and Game Logic Validation} \\
+    Responsible: Jianhao Wei, Kevin Ishak \\
+    \added{This phase included unit testing for turn logic and card interactions. A playable offline version was finalized.}
+
+    \item \textbf{February 21 – February 28: Rev 0 Demo and Internal Feedback Cycle} \\
+    Responsible: All Members \\
+    \added{We demonstrated offline gameplay, gathered TA feedback, and finalized design documents.}
+
+    \item \textbf{February 29 – March 8: Multiplayer Functionality and Networking Implementation} \\
+    Responsible: Mingyang Xu, Zain-Alabedeen Garada \\
+    \added{Client-server syncing, player connection, and turn-by-turn multiplayer flow were introduced post-Rev 0.}
+
+    \item \textbf{March 9 – March 16: Rev 1 Finalization and Advanced Features} \\
+    Responsible: Kevin Ishak, Zain-Alabedeen Garada \\
+    \added{We completed AI logic, multiplayer improvements, and bug fixes for Rev 1 submission.}
+
+    \item \textbf{March 17 – March 24: Full Game Completion and Final Documentation} \\
+    Responsible: All Members \\
+    \added{Final implementation included card animations, game-end flow, and all UNO Flip rules. We completed all major documents: MG, MIS, SRS, VnV Plan, VnV Report, Hazard Analysis.}
+
+    \item \textbf{March 25 – March 30: EXPO Preparation and Presentation Rehearsal} \\
+    Responsible: All Members \\
+    \added{Prepared pitch-style final demo, poster design, and rehearsed Q\&A.}
 \end{itemize}
-
-
+\newpage
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
 \begin{enumerate}
     \item D. L. Parnas, "On the Criteria to Be Used in Decomposing Systems into Modules," \textit{Communications of the ACM}, vol. 15, no. 12, pp. 1053--1058, 1972.
+    \item D. L. Parnas, "Designing Software for Ease of Extension and Contraction," \textit{IEEE Transactions on Software Engineering}, vol. SE-5, no. 2, pp. 128–138, 1978.
     \item C. Richardson, "Decompose by Subdomain," \textit{Microservices.io}, 2023.
     \item Stack Overflow, "Abstraction vs Information Hiding vs Encapsulation," \textit{Stack Overflow}, 2023.
     \item M. Xu, "UNO Flip 3D - SRS Volere Documentation," \textit{GitHub Repository}, 2023.
     \item M. Xu, "UNO Flip 3D - Software Architecture Document," \textit{GitHub Repository}, 2023.
+    \item Mattel Games, "UNO Flip! Game Rules," [Online]. Available: https://www.unorules.org/uno-flip-rules/. Accessed: Mar. 31, 2025.
+    \item IETF, "The Transport Layer Security (TLS) Protocol Version 1.3," RFC 8446, Aug. 2018. [Online]. Available: https://tools.ietf.org/html/rfc8446
 \end{enumerate}
-
-\newpage{}
 
 \end{document}
