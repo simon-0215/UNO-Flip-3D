@@ -1,0 +1,183 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{float}
+\usepackage{hyperref}  % Required for clickable links
+\usepackage{tcolorbox} % Required for info boxes
+\usepackage{graphicx}
+\usepackage{longtable}
+\restylefloat{table}
+
+\usepackage{booktabs}
+\usepackage{pgf}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\date{}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{Usability Testing Documentation: UNO Flip Remix} 
+\author{Team 24 \\
+Mingyang Xu\\
+Jianhao Wei\\
+Kevin Ishak\\
+Zain-Alabedeen Garada}
+
+\date{\today}
+
+\begin{document}
+	
+\maketitle
+
+\pagenumbering{roman}
+
+\section{Revision History}
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+2025-02-15 & Mingyang Xu & Usability Testing Plan Initial Commit\\
+2025-03-17 & Mingyang Xu & Added Alpha Testing invitation format\\
+2025-04-04 & Mingyang Xu & Alpha Testing Usability Report\\
+\dots & \dots & \dots \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+~\newpage
+
+\newpage
+
+\section{Introduction}
+
+\subsection{Purpose of the Usability Testing Plan}
+The purpose of this usability testing plan is to ensure that \textbf{UNO Flip}, our digital adaptation of the classic UNO game with the added Flip mechanic, delivers a clear, intuitive, and enjoyable gameplay experience. Usability testing plays a vital role in identifying areas where the user interface, mechanics, and overall design can be improved to enhance user satisfaction and engagement.
+
+The testing plan aims to:
+\begin{itemize}
+    \item Assess the clarity and intuitiveness of the game's UI, including card visuals, turn indicators, and menu navigation.
+    \item Identify sources of confusion or difficulty for both first-time and returning players, particularly related to the Flip mechanic.
+    \item Measure user engagement, fun factor, and accessibility during gameplay sessions with diverse player backgrounds.
+    \item Collect structured user feedback via observations, surveys, and gameplay analytics to inform iterative design changes.
+\end{itemize}
+
+
+\subsection{Goals of Usability Testing}
+The usability testing for \textbf{UNO Flip} is designed to evaluate the game’s user experience and verify that the interface, gameplay mechanics, and visual feedback align with the expectations of casual and competitive card game players. The specific goals of this usability testing are as follows:
+
+\begin{itemize}
+    \item \textbf{User Experience Evaluation:} Assess whether the card interactions, flip mechanics, and turn-based system are intuitive and easy to understand.
+    \item \textbf{Engagement and Enjoyment:} Measure player satisfaction and emotional response through feedback surveys and direct gameplay observation.
+    \item \textbf{Game Flow and Clarity:} Determine whether players can smoothly complete rounds, understand game rules, and interact with UI elements without confusion.
+    \item \textbf{Accessibility and Inclusivity:} Ensure that the game is approachable to players of varying familiarity with UNO, including first-time users.
+    \item \textbf{Visual Feedback and Responsiveness:} Evaluate the effectiveness of animations, turn indicators, and card highlighting in supporting clear in-game communication.
+\end{itemize}
+
+
+
+
+
+
+
+\section{Feedback Collection and Analysis}
+
+The usability testing for \textbf{UNO Flip} involved structured feedback collection through gameplay observation, survey responses from 17 participants, and informal post-session comments. This section outlines the methods used to gather, analyze, and act upon user feedback to improve overall usability and player experience.
+
+\subsection{Observation Metrics}
+During playtesting sessions, the following gameplay interactions and behaviors were tracked:
+
+\begin{itemize}
+    \item \textbf{Time to Learn Interface:} Most users were able to begin playing quickly, though confusion with the flip mechanic was noted.
+    \item \textbf{Common Areas of Confusion:} The rules for flip cards and action cards were unclear to many participants during initial rounds.
+    \item \textbf{UI Misclicks and Delayed Input:} Several users reported unresponsive controls or delayed actions during gameplay.
+    \item \textbf{Menu Navigation:} Some players had difficulty locating the settings button or accessing help mid-game.
+    \item \textbf{Crash Events:} 2 out of 17 users experienced crashes during flip transitions.
+    \item \textbf{Engagement Indicators:} Most players stayed engaged through full matches, with 76.5\% describing the experience as “very fun.”
+\end{itemize}
+
+\subsection{Survey Structure}
+All 17 participants completed a structured post-play survey. The survey consisted of five major evaluation areas:
+
+\subsubsection{Gameplay Clarity and Usability}
+\begin{itemize}
+    \item \textbf{Interface Design:} 52.9\% of players rated it 4/5 and 29.4\% rated it 5/5, suggesting strong overall satisfaction with the layout.
+    \item \textbf{Text and Icon Readability:} 76.5\% found the game elements “very clear,” while 17.6\% found them “somewhat clear.”
+    \item \textbf{Reported Issues:} 57.1\% cited unclear rules; 42.9\% noted unresponsive controls; 28.6\% mentioned crashes or hard-to-find buttons.
+\end{itemize}
+
+\subsubsection{Engagement and Enjoyment}
+\begin{itemize}
+    \item \textbf{Overall Enjoyment:} 76.5\% rated the game as “very fun,” with the remaining 23.5\% describing it as “pretty good.”
+    \item \textbf{Replayability:} Informal feedback indicated high willingness to replay if rule clarity was improved.
+\end{itemize}
+
+\subsubsection{Visual Comfort and Feedback}
+\begin{itemize}
+    \item \textbf{Color and Visual Effects:} 64.7\% found the visuals “very comfortable,” while 35.3\% were neutral—none reported discomfort.
+    \item \textbf{Turn Indicators and Animations:} Suggested improvements included clearer player turn highlights and smoother transitions for flip events.
+\end{itemize}
+
+\subsection{Interview Structure}
+Select participants were also invited to share open-ended feedback after testing. The semi-structured interviews covered:
+
+\begin{itemize}
+    \item \textbf{First Impressions:} Generally positive, but some confusion early on due to lack of guidance on flip mechanics.
+    \item \textbf{Favorite Features:} The flip mechanic, bright colors, and smooth animations were commonly praised.
+    \item \textbf{Least Favorite Features:} Lack of in-game help, unclear action card effects, and occasional unresponsive controls.
+    \item \textbf{Flow and Pacing:} Most players found pacing reasonable, though beginners took longer to understand card interactions.
+    \item \textbf{Final Thoughts:} Players expressed interest in future versions with improved tutorials, mobile support, and multiplayer options.
+\end{itemize}
+\section{Scope}
+The scope of this usability testing plan is limited to evaluating the core single-player experience of the \textbf{UNO Flip} game on a desktop platform. The testing focuses on game mechanics, user interface clarity, responsiveness, and overall user satisfaction. Multiplayer features and mobile compatibility are considered out of scope for this testing cycle but may be explored in future iterations.
+
+\section{Methodology}
+A mixed-method approach was used to collect both quantitative and qualitative feedback from participants. The methodology includes:
+\begin{itemize}
+    \item \textbf{Pre-Testing Briefing:} Participants were given a short overview of the UNO Flip game and testing goals.
+    \item \textbf{Structured Tasks:} Users completed specific in-game tasks designed to test interface use, rule understanding, and use of the flip mechanic.
+    \item \textbf{Screen Recording and Observation:} Gameplay sessions were recorded (when permitted) to observe user behavior, confusion, or errors.
+    \item \textbf{Surveys and Interviews:} Participants completed a survey after testing and were optionally interviewed for additional feedback.
+    \item \textbf{Iterative Updates:} Collected feedback was used to guide improvements implemented between test rounds.
+\end{itemize}
+
+\section{Participant Criteria}
+Participants were selected from a pool of Mcmaster university students aged 18–25. The criteria for inclusion were:
+\begin{itemize}
+    \item Basic familiarity with digital games (casual or regular player)
+    \item No prior requirement to have played UNO Flip before
+    \item Willingness to provide honest and constructive feedback
+\end{itemize}
+
+A total of 17 participants were involved in the testing, including a balance of casual and strategic players to ensure diverse perspectives.
+
+\section{Improvements Made Based on Feedback}
+Following the usability testing and analysis, several improvements were made to the UNO Flip game:
+\begin{itemize}
+    \item \textbf{Enhanced Tutorial:} A step-by-step, animated tutorial was added to introduce rules and flip mechanics clearly.
+    \item \textbf{In-Game Help Button:} A help popup now provides instant access to card definitions and gameplay tips.
+    \item \textbf{Turn Indicator Effects:} Active player turns are now highlighted using a glow border and sound notification.
+    \item \textbf{UI Adjustments:} The settings icon was repositioned for better visibility; end-of-game screens were polished.
+    \item \textbf{Crash Fixes:} Identified crash cases during flip animations were resolved for a smoother experience.
+\end{itemize}
+
+These changes were implemented prior to final testing, which confirmed improved usability and user satisfaction.
+
+\section{Conclusion}
+The usability testing conducted for \textbf{UNO Flip} provided valuable insights into the user experience, especially regarding onboarding, interface clarity, and engagement. While the gameplay was generally well-received, early feedback highlighted the need for clearer rule communication and more intuitive design elements. By addressing these issues through iterative improvements, the team enhanced the playability and accessibility of the game. These results support a successful foundation for future development, including multiplayer support and mobile platform expansion.
+
+
+
+\end{document}
