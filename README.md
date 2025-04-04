@@ -11,6 +11,7 @@ The folders and files for this project are as follows:
 docs - Documentation for the project, including requirements, design specifications, and user manuals.
 refs - Reference materials used for the project, such as official UNO Flip game rules, research on card game mechanics, and design inspirations.
 NOTICE:
-UnoFlip FOLDER - Source code for the project, including the core game logic, user interface components, multiplayer modules AND testing files.
+UNOFlip FOLDER - Source code for the project, including the core game logic, user interface components AND testing files.
+Network UNO Card Game TCP Server FOLDER - Multiplayer modules and handles connection.
 
 Date of project end: April 2, 2025
