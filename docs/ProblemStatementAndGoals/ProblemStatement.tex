@@ -1,93 +1,123 @@
-\documentclass{article}
+% UNO Flip Remix - Problem Statement & Goals
+\documentclass[12pt]{article}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % for strikethrough
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+\usepackage{array}
 
-\usepackage{tabularx}
-\usepackage{booktabs}
+% Red strikethrough command
+\newcommand{\removed}[1]{\textcolor{red}{\sout{#1}}}
+% Green addition command
+\newcommand{\added}[1]{\textcolor{green}{#1}}
 
-\title{Problem Statement and Goals\\\progname}
-
-\author{\authname}
-
-\date{}
-
-\input{../Comments}
-\input{../Common}
+\title{UNO Flip Remix - Problem Statement \& Goals}
+\author{Team 24\\ Zain Garada \\ Kevin Ishak \\ Mingyang Xu \\ Jianhao Wei \\ \removed{Zheng Bang Liang}}
+\date{April 2, 2025}
 
 \begin{document}
-
 \maketitle
 
-\begin{table}[hp]
-\caption{Revision History} \label{TblRevisionHistory}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
-\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
-\midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
-\bottomrule
-\end{tabularx}
-\end{table}
+\section*{Revision History}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|m{9cm}|}
+\hline
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change} \\
+\hline
+Sept 21 & Zain Garada & Initial Problem Statement and Goals \\
+Sept 22 & Kevin Ishak & Initial Development Plan \\
+Sept 23 & Mingyang Xu & Initial POC Plan and Risks Analysis \\
+Sept 24 & Zheng Bang Liang & Refined Problem Statement and Goals \\
+Sept 24 & Jianhao Wei & Refined Development Plan \\
+Sept 24 & Kevin Ishak & Refined Development Plan with AI and Multiplayer \\
+Mar 24 & Kevin Ishak & Edited for feedback: improved structure, updated tech stack, added reflection and GitHub link\\
+\hline
+\end{tabular}
+\end{center}
 
-\section{Problem Statement}
+\section*{Problem Statement}
 
-\wss{You should check your problem statement with the
-\href{https://github.com/smiths/capTemplate/blob/main/docs/Checklists/ProbState-Checklist.pdf}
-{problem statement checklist}.} 
+\subsection*{Problem}
+\removed{The UNO Flip digital game project seeks to create a highly strategic and technically advanced version of the classic card game, adding complex AI behaviors and real-time multiplayer capabilities. While several online card games exist, they often lack depth in AI strategy and dynamic card interactions. Our game will introduce a novel AI system with learning capabilities, dynamic card interactions, and smooth multiplayer synchronization.}
 
-\wss{You can change the section headings, as long as you include the required
-information.}
+\added{UNO Flip Remix is a digital version of the classic Uno Flip card game, which is known for its fun and competitive gameplay involving flipping between light and dark card decks. Uno Flip is a great party game that many enjoy playing with friends, but there is currently no smooth, viable digital implementation that offers reliable AI and seamless multiplayer. This motivated our team to take on the challenge of bringing a complete, polished Uno Flip experience to players.}
 
-\subsection{Problem}
+This version aims to preserve the original rules of Uno Flip while adding meaningful strategic improvements and accessible gameplay experiences.
 
-\subsection{Inputs and Outputs}
+The core problem is the absence of a complex, interactive, and AI-driven card game that provides both a challenging single-player experience and a seamless multiplayer mode. This project will fill that gap by enhancing the traditional UNO Flip rules with added strategic depth and technical complexity.
 
-\wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
-Use abstraction so that you can avoid details.}
+\subsection*{Inputs and Outputs}
 
-\subsection{Stakeholders}
+\textbf{Inputs}
+\begin{itemize}
+    \item Player inputs (card selections, turn decisions)
+    \item Real-time network data (multiplayer mode)
+    \item AI predictions and decisions (single-player mode)
+    \added{\item Game state synchronization data between clients}
+\end{itemize}
 
-\subsection{Environment}
+\textbf{Outputs}
+\begin{itemize}
+    \item Real-time updates of game states for multiplayer sessions
+    \item AI-driven actions and strategy adaptation based on player behavior
+    \item \removed{Visual representation of card interactions and game state in both 2D and 3D}
+    \added{\item Visual representation of card interactions and game state in 2D user interface}
+    \added{\item Game log messages or updates (e.g., card plays, rule enforcement notifications)}
+\end{itemize}
 
-\wss{Hardware and software environment}
+\subsection*{Stakeholders}
+\begin{itemize}
+    \item Players seeking engaging and competitive Uno Flip experiences, including both casual and strategic players.
+    \item Game developers and researchers interested in AI behavior and multiplayer synchronization techniques.
+    \item \added{Capstone instructors and TAs responsible for evaluating the project's design, functionality, and documentation.}
+    \item \added{Future developers or students who may reference the codebase or use the game as a foundation for related projects.}
+\end{itemize}
 
-\section{Goals}
 
-\section{Stretch Goals}
+\subsection*{Environment}
 
-\section{Challenge Level and Extras}
+\textbf{Software:}
+\begin{itemize}
+    \item{\removed {Game developed using JavaScript for front-end, Node.js for the server-side}}
+    \item{\removed {TensorFlow or PyTorch for AI strategy development}}
+    \item{\removed {Socket.IO for real-time multiplayer synchronization}}
+    \item Game developed in Unity using C\# for both game logic and multiplayer networking.
+    \item Custom rule-based AI players developed within Unity.
+     \item \added{Mirror networking library used for multiplayer communication and synchronization.}
+    \item \added{NUnit testing framework used for writing and executing unit tests in C\#.}
+\end{itemize}
 
-\wss{State your expected challenge level (advanced, general or basic).  The
-challenge can come through the required domain knowledge, the implementation or
-something else.  Usually the greater the novelty of a project the greater its
-challenge level.  You should include your rationale for the selected level.
-Approval of the level will be part of the discussion with the instructor for
-approving the project.  The challenge level, with the approval (or request) of
-the instructor, can be modified over the course of the term.}
+\textbf{Hardware:}
+\begin{itemize}
+    \item{\removed{ The game will run on various hardware platforms (PCs, consoles, mobile devices) with standard graphical capabilities to support 3D animations.}}
+    \item{\added{ The game is currently supported on PC platforms, with future plans to deploy on other platforms such as web or mobile.}}
+\end{itemize}
 
-\wss{Teams may wish to include extras as either potential bonus grades, or to
-make up for a less advanced challenge level.  Potential extras include usability
-testing, code walkthroughs, user documentation, formal proof, GenderMag
-personas, Design Thinking, etc.  Normally the maximum number of extras will be
-two.  Approval of the extras will be part of the discussion with the instructor
-for approving the project.  The extras, with the approval (or request) of the
-instructor, can be modified over the course of the term.}
+\section*{Goals}
+The project has the following core goals:
+\begin{itemize}
+    \item \textbf{Multiplayer Synchronization}: Ensure seamless real-time multiplayer gameplay with smooth transitions and minimal network latency.
+    \item{\removed { \textbf{AI Strategy Optimization}: Implement reinforcement learning-based AI that evolves and adapts its gameplay strategy based on player actions.}}
+    \item \textbf{AI Strategy Optimization}: Implement rule-based AI that adapts gameplay strategy to simulate challenging opponents.
+    \item \textbf{Dynamic Card Interactions}: Develop complex card effects that interact with other cards dynamically, altering game state unpredictably.
+    \item{\removed { \textbf{3D Animations and Visual Feedback}: Integrate visually appealing, real-time 3D animations to enhance player experience.}}
+    \item \added{\textbf{2D Visual Feedback}: Provide intuitive and clean visual feedback for player interactions and game state.}
+    \item \added{\textbf{Player Enjoyment and Usability}: Ensure the game is enjoyable, intuitive, and passes usability testing through feedback-based iteration.}
+\end{itemize}
 
-\newpage{}
+\section*{Stretch Goals}
+\begin{itemize}
+    \item \textbf{Implement cross-platform multiplayer support:} Develop a multiplayer experience across different devices, ensuring compatibility. This will include features like matchmaking and lobbies. Our goal is to expand the player base and enhance community engagement.
+    \item \textbf{Introduce new card designs:} The goal is to enhance gameplay by introducing innovative card designs that feature unique mechanics and interactions. Each card will be developed with distinct abilities that promote strategic play and enable creative combinations.
+    \item \textbf{Add tutorials and strategy guides for players:} Develop comprehensive tutorials and strategy guides to help new players understand game mechanics and strategies. This will foster a more skilled player base.
+\end{itemize}
 
-\section*{Appendix --- Reflection}
+\section*{Reflection}
+We selected Uno Flip because it provides an opportunity to implement a turn-based card game with a unique two-sided mechanic. This mechanic introduces additional strategic depth that differentiates it from other card games. One early realization was that implementing synchronized game states across clients for multiplayer was more complex than expected. We also discovered that AI needed to handle hidden information, which added challenge to designing fair and strategic behaviors. These challenges guided our decision to use rule-based AI over machine learning for this iteration.
 
-\wss{Not required for CAS 741}
-
-\input{../Reflection.tex}
-
-\begin{enumerate}
-    \item What went well while writing this deliverable? 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item How did you and your team adjust the scope of your goals to ensure
-    they are suitable for a Capstone project (not overly ambitious but also of
-    appropriate complexity for a senior design project)?
-\end{enumerate}  
-
+\section*{Repository}
+This is the link to our repository:
+\href{https://github.com/simon-0215/UNO-Flip-3D}{GitHub Link}
 \end{document}
