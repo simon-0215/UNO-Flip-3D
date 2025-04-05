@@ -34,6 +34,7 @@ UNO-Flip-3D/
 │   ├── DevelopmentPlan/          # Gantt chart, schedule, and team roles
 │   ├── ProblemStatementAndGoals/    # Problem Statement and Goal of the project
 │   ├── Presentation/             # Final project expo poster and demo presentations
+|   |-- UserGuide                 # User guide for setup and using our software
 │
 ├── refs/                         # Reference material (e.g., UNO Flip rules, research)
 │
